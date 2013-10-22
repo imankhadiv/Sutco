@@ -1,0 +1,60 @@
+#! /bin/bash
+
+## Get the application module name
+while [[ -z "$appname" ]]; do
+  read -p "Please enter the name of your application module (must be in CamelCase): " appname
+  [[ -z "$appname" ]] && echo "You must enter an application module name"
+done
+
+while [[ -z "$appsource" ]]; do
+  read -p "Please enter the application source (epigenesys / genesys): " source
+  case $source in
+    epigenesys)
+      appsource="git.epigenesys.co.uk"
+      ;;
+    genesys)
+      appsource="epi-stu-repos1-git.shef.ac.uk"
+      ;;
+    *)
+      echo "You must enter a valid application source - either epigenesys or genesys"
+      ;;
+  esac
+done
+
+while [[ -z "$team" ]]; do
+  read -p "Please enter the team you are in (e.g. team1): " team
+  [[ -z "$team" ]] && echo "You must enter the team name"
+done
+
+## Get the url of the gem
+while [[ -z "$url" ]]; do
+  read -p "Please enter the gitlab url of the project (only the slug after git.epigenesys.co.uk/): " url
+  [[ -z "$url" ]] && echo "You must enter the url"
+done
+
+## Update the module application names
+for file in `grep -lr --exclude install 'Rails4Sample' *`; do perl -pi -e s,Rails4Sample,${appname},g $file; done
+perl -pi -e s,rails4_sample,${appname},g .ruby-gemset
+perl -pi -e s,rails4_sample,${appname},g config/database_sample.yml
+git remote set-url origin git@${appsource}:${url}.git
+
+## Update the application name for Capistrano
+perl -pi -e s,rails4_sample,${url},g config/deploy.rb
+perl -pi -e s,git@git.\(.*\).co.uk,git\\@${appsource},g config/deploy.rb
+perl -pi -e s,\"#\{application\}\",\"${team}\",g config/deploy/demo.rb
+  
+## Generate the new secret tokens
+SECRET1=`(env LC_CTYPE=C tr -cd "a-zA-Z0-9-_\$\?" < /dev/urandom) | head -c 128`  
+SECRET2=`(env LC_CTYPE=C tr -cd "a-zA-Z0-9-_\$\?" < /dev/urandom) | head -c 128`  
+SECRET3=`(env LC_CTYPE=C tr -cd "a-zA-Z0-9-_\$\?" < /dev/urandom) | head -c 128`
+SECRET="Rails.env.production? ? '${SECRET1}' : (Rails.env.demo? ? '${SECRET2}' : '${SECRET3}')" 
+perl -pi -e "s,nil$,${SECRET},g" config/initializers/secret_token.rb
+
+SECRET4=`(env LC_CTYPE=C tr -cd "a-zA-Z0-9-_\$\?" < /dev/urandom) | head -c 128`
+perl -pi -e "s,config.secret_key = 'CHANGE ME'$,config.secret_key = '${SECRET4}',g" config/initializers/devise.rb
+
+
+## Done!
+echo ""
+echo "The installation script has now completed."
+echo "Please type \"cd .. && cd -\" at the Terminal to reload RVM."
