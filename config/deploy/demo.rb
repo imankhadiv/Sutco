@@ -3,6 +3,7 @@ server "epi-stu-gen-demo2-ruby20.shef.ac.uk", :app, :web, :db, :primary => true
 set :deploy_to, "/srv/services/#{application}"
 set :user, "#{application}"
 set :rails_env, "demo"
+set :branch, "deploy"
 
 namespace :deploy do
   task :start, :roles => :app do;   passenger.start;    end
