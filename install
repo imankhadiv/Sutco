@@ -2,12 +2,13 @@
 
 ## Get the application module name
 while [[ -z "$appname" ]]; do
-  read -p "Please enter the name of your application module (must be in CamelCase): " appname
+  read -p "1) Please enter the name of your application module (must be in CamelCase): " appname
   [[ -z "$appname" ]] && echo "You must enter an application module name"
 done
 
 while [[ -z "$appsource" ]]; do
-  read -p "Please enter the application source (epigenesys / genesys): " source
+  echo
+  read -p "2) Please enter the application source (epigenesys / genesys): " source
   case $source in
     epigenesys)
       appsource="git.epigenesys.co.uk"
@@ -22,13 +23,26 @@ while [[ -z "$appsource" ]]; do
 done
 
 while [[ -z "$team" ]]; do
-  read -p "Please enter the team you are in (e.g. team1): " team
+  echo
+  echo "3) Please enter the name of your project"
+  [[ "$source" == "genesys" ]] && echo "   For mini-projects, this should be your team name (e.g. team1); for assessed projects, it should be the demo site name (e.g. eltc-tea)"
+  read -p "   Project name: " team
   [[ -z "$team" ]] && echo "You must enter the team name"
 done
 
-## Get the url of the gem
 while [[ -z "$url" ]]; do
-  read -p "Please enter the gitlab url of the project (only the slug after git.epigenesys.co.uk/): " url
+  echo
+  echo "4) Please enter Git clone URL for the project (from the Gitlab project page)"
+  case $source in 
+    epigenesys)
+      url_example="ris/ethics"
+      ;;
+    genesys)
+      url_example="genesys-team1/mini-project"
+      ;;
+  esac
+  echo "   For example: git@${appsource}:${url_example}.git"
+  read -p "   Project URL: " url
   [[ -z "$url" ]] && echo "You must enter the url"
 done
 
@@ -36,7 +50,7 @@ done
 for file in `grep -lr --exclude install 'Rails4Sample' *`; do perl -pi -e s,Rails4Sample,${appname},g $file; done
 perl -pi -e s,rails4_sample,${appname},g .ruby-gemset
 perl -pi -e s,rails4_sample,${appname},g config/database_sample.yml
-git remote set-url origin git@${appsource}:${url}.git
+git remote set-url origin ${url}
 
 ## Update the application name for Capistrano
 perl -pi -e s,rails4_sample,${url},g config/deploy.rb
