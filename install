@@ -22,12 +22,12 @@ while [[ -z "$appsource" ]]; do
   esac
 done
 
-while [[ -z "$team" ]]; do
+while [[ -z "$project" ]]; do
   echo
   echo "3) Please enter the name of your project"
   [[ "$source" == "genesys" ]] && echo "   For mini-projects, this should be your team name (e.g. team1); for assessed projects, it should be the demo site name (e.g. eltc-tea)"
-  read -p "   Project name: " team
-  [[ -z "$team" ]] && echo "You must enter the team name"
+  read -p "   Project name: " project
+  [[ -z "$project" ]] && echo "You must enter the project name"
 done
 
 while [[ -z "$url" ]]; do
@@ -53,9 +53,9 @@ perl -pi -e s,rails4_sample,${appname},g config/database_sample.yml
 git remote set-url origin ${url}
 
 ## Update the application name for Capistrano
-perl -pi -e s,rails4_sample,${url},g config/deploy.rb
-perl -pi -e s,git@git.\(.*\).co.uk,git\\@${appsource},g config/deploy.rb
-perl -pi -e s,\"#\{application\}\",\"${team}\",g config/deploy/demo.rb
+perl -pi -e s,"^set :application\, .*$","set :application\, '${project}'",g config/deploy.rb
+perl -pi -e s,"^set :repository\, .*$","set :repository\, '${url}'",g config/deploy.rb
+# perl -pi -e s,\"#\{application\}\",\"${project}\",g config/deploy/demo.rb
   
 ## Generate the new secret tokens
 SECRET1=`(env LC_CTYPE=C tr -cd "a-zA-Z0-9-_\$\?" < /dev/urandom) | head -c 128`  
