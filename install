@@ -54,8 +54,9 @@ git remote set-url origin ${url}
 
 ## Update the application name for Capistrano
 perl -pi -e s,"^set :application\, .*$","set :application\, '${project}'",g config/deploy.rb
-perl -pi -e s,"^set :repository\, .*$","set :repository\, '${url}'",g config/deploy.rb
+# perl -pi -e s,"^set :repository\, .*$","set :repository\, '${url}'",g config/deploy.rb
 # perl -pi -e s,\"#\{application\}\",\"${project}\",g config/deploy/demo.rb
+perl -pi -e s,"^set :repository\, .*$","set :repository\, '`echo ${url} | sed -e s/@/\\\\\\\\@/g`'",g config/deploy.rb
   
 ## Generate the new secret tokens
 SECRET1=`(env LC_CTYPE=C tr -cd "a-zA-Z0-9-_\$\?" < /dev/urandom) | head -c 128`  
