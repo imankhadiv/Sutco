@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'airbrake'
 
-gem 'rails', '~> 4.0.0'
+gem 'rails', '~> 4.0.1'
 gem 'haml-rails'
 gem 'simple_form'
 
