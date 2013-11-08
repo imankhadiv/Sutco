@@ -11,5 +11,6 @@ metrics/*
 doc/*
 .yardoc/*
 .sass-cache/
+vendor/bundle/*
 
 *.swp
