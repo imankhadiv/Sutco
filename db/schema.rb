@@ -11,46 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131026225303) do
+ActiveRecord::Schema.define(version: 20131123163136) do
 
-  create_table "boxes", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "fohs", force: true do |t|
+    t.string   "position"
+    t.integer  "required_number"
+    t.integer  "available_number"
+    t.datetime "date"
+    t.integer  "show_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fohs", ["show_id"], name: "index_fohs_on_show_id", using: :btree
+
+  create_table "roles", force: true do |t|
     t.string   "name"
-    t.string   "barcode"
+    t.string   "position"
+    t.integer  "required_number"
+    t.integer  "available_number"
+    t.integer  "show_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "copies", force: true do |t|
-    t.integer  "item_id"
-    t.integer  "box_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "copies", ["box_id"], name: "index_copies_on_box_id", using: :btree
-  add_index "copies", ["item_id"], name: "index_copies_on_item_id", using: :btree
-
-  create_table "items", force: true do |t|
-    t.string   "name"
-    t.string   "item_type"
-    t.string   "barcode"
-    t.float    "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "loans", force: true do |t|
-    t.datetime "loan_date"
-    t.datetime "expected_date"
-    t.datetime "return_date"
-    t.string   "student_name"
-    t.string   "ucard"
-    t.integer  "box_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "loans", ["box_id"], name: "index_loans_on_box_id", using: :btree
+  add_index "roles", ["show_id"], name: "index_roles_on_show_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -61,5 +49,53 @@ ActiveRecord::Schema.define(version: 20131026225303) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "shows", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "director"
+    t.string   "stage_manager"
+    t.string   "producer"
+    t.text     "synopsis"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "training_attendances", force: true do |t|
+    t.string   "username"
+    t.string   "recorder"
+    t.integer  "training_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "training_attendances", ["training_id"], name: "index_training_attendances_on_training_id", using: :btree
+
+  create_table "trainings", force: true do |t|
+    t.string   "title"
+    t.string   "type"
+    t.datetime "date"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workshop_attendances", force: true do |t|
+    t.string   "username"
+    t.string   "recorder"
+    t.integer  "workshop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "workshop_attendances", ["workshop_id"], name: "index_workshop_attendances_on_workshop_id", using: :btree
+
+  create_table "workshops", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

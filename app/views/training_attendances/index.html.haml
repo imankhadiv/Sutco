@@ -1,0 +1,23 @@
+%h1 Listing training_attendances
+
+%table
+  %tr
+    %th Username
+    %th Recorder
+    %th Training
+    %th
+    %th
+    %th
+
+  - @training_attendances.each do |training_attendance|
+    %tr
+      %td= training_attendance.username
+      %td= training_attendance.recorder
+      %td= training_attendance.training
+      %td= link_to 'Show', training_attendance
+      %td= link_to 'Edit', edit_training_attendance_path(training_attendance)
+      %td= link_to 'Destroy', training_attendance, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Training attendance', new_training_attendance_path

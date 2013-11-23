@@ -1,0 +1,2 @@
+module FoHsHelper
+end

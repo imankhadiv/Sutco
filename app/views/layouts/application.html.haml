@@ -24,9 +24,13 @@
               %span.icon-bar
               %span.icon-bar
             = link_to :root, class: 'navbar-brand' do
-              Team10MiniProject
+              SUTCo
             
           .collapse.navbar-collapse    
+            %ul.nav.navbar-nav
+              = navbar_link_to :root, title: "Go to your dashboard", identifier: :dashboard do
+                %i.icon-dashboard
+                Dashboard
             %ul.nav.navbar-nav
               = navbar_link_to :root, title: "Go to your dashboard", identifier: :dashboard do
                 %i.icon-dashboard

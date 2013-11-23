@@ -1,0 +1,13 @@
+= simple_form_for(@show) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :image
+    = f.input :director
+    = f.input :stage_manager
+    = f.input :producer
+    = f.input :synopsis
+
+  .form-actions
+    = f.button :submit

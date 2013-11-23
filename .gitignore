@@ -4,7 +4,7 @@ config/database.yml
 config/settings.yml
 log/*.log
 tmp/
-
+./idea
 .DS_Store
 coverage/*
 metrics/*

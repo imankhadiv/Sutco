@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Username:
+  = @training_attendance.username
+%p
+  %b Recorder:
+  = @training_attendance.recorder
+%p
+  %b Training:
+  = @training_attendance.training
+
+= link_to 'Edit', edit_training_attendance_path(@training_attendance)
+\|
+= link_to 'Back', training_attendances_path

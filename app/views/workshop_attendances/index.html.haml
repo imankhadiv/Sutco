@@ -1,0 +1,23 @@
+%h1 Listing workshop_attendances
+
+%table
+  %tr
+    %th Username
+    %th Recorder
+    %th Workshop
+    %th
+    %th
+    %th
+
+  - @workshop_attendances.each do |workshop_attendance|
+    %tr
+      %td= workshop_attendance.username
+      %td= workshop_attendance.recorder
+      %td= workshop_attendance.workshop
+      %td= link_to 'Show', workshop_attendance
+      %td= link_to 'Edit', edit_workshop_attendance_path(workshop_attendance)
+      %td= link_to 'Destroy', workshop_attendance, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Workshop attendance', new_workshop_attendance_path

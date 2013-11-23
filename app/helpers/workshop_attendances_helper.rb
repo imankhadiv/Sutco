@@ -1,0 +1,2 @@
+module WorkshopAttendancesHelper
+end

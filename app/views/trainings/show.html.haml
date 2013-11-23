@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @training.title
+%p
+  %b Type:
+  = @training.type
+%p
+  %b Date:
+  = @training.date
+%p
+  %b Description:
+  = @training.description
+
+= link_to 'Edit', edit_training_path(@training)
+\|
+= link_to 'Back', trainings_path
