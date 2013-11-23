@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Rails4Sample::Application.load_tasks
+Team10MiniProject::Application.load_tasks

@@ -11,10 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021152738) do
+ActiveRecord::Schema.define(version: 20131026225303) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "boxes", force: true do |t|
+    t.string   "name"
+    t.string   "barcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "copies", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "box_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "copies", ["box_id"], name: "index_copies_on_box_id", using: :btree
+  add_index "copies", ["item_id"], name: "index_copies_on_item_id", using: :btree
+
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.string   "item_type"
+    t.string   "barcode"
+    t.float    "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "loans", force: true do |t|
+    t.datetime "loan_date"
+    t.datetime "expected_date"
+    t.datetime "return_date"
+    t.string   "student_name"
+    t.string   "ucard"
+    t.integer  "box_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "loans", ["box_id"], name: "index_loans_on_box_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false

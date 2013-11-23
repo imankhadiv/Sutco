@@ -11,10 +11,10 @@ set :stages, %w(demo production)
 #set :default_stage, "demo"
 
 ssh_options[:forward_agent] = true
-set :application, 'rails4_sample'
+set :application, 'team10'
 set :scm, :git
 set :deploy_via, :remote_cache
-set :repository, "git@git.genesys-solutions.co.uk:#{application}.git"
+set :repository, 'genesys-team10/mini-project'
 set :use_sudo, false
 set :keep_releases, 2
 

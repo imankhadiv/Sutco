@@ -1,3 +1,3 @@
-Rails4Sample::Application.routes.draw do
+Team10MiniProject::Application.routes.draw do
   root 'pages#welcome'
 end
