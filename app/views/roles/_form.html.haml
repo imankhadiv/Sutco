@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.input :position
+    = f.input :position, collection:  ['Lighting Operator','Lighting Designer','Sound Operator','Sound Designer','Assistant Stage Manager','Deputy Stage Manager','Set Designer','Set Construction','Costume Designer','Costume Team','Make up','Make up team','Producer','Director','Dialect Coach','Physical Coach']
     = f.input :required_number
     = f.input :available_number
     = f.association :show
