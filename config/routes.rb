@@ -1,4 +1,6 @@
 Team10MiniProject::Application.routes.draw do
+  resources :applicants
+
   resources :profiles
 
   resources :training_attendances

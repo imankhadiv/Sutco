@@ -1,0 +1,21 @@
+%h1 Listing applicants
+
+%table
+  %tr
+    %th Status
+    %th Access level
+    %th
+    %th
+    %th
+
+  - @applicants.each do |applicant|
+    %tr
+      %td= applicant.status
+      %td= applicant.access_level
+      %td= link_to 'Show', applicant
+      %td= link_to 'Edit', edit_applicant_path(applicant)
+      %td= link_to 'Destroy', applicant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Applicant', new_applicant_path
