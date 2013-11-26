@@ -2,21 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0142be3c-8940-4843-b72f-b6070dd962d5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/fohs/_form.html.haml" afterPath="$PROJECT_DIR$/app/views/fohs/_form.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/roles/_form.html.haml" afterPath="$PROJECT_DIR$/app/views/roles/_form.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/foh.rb" afterPath="$PROJECT_DIR$/app/models/foh.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/role.rb" afterPath="$PROJECT_DIR$/app/models/role.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/applicants/_form.html.haml" afterPath="$PROJECT_DIR$/app/views/applicants/_form.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/applicants_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/applicants_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/applicants/index.html.haml" afterPath="$PROJECT_DIR$/app/views/applicants/index.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/profile.rb" afterPath="$PROJECT_DIR$/app/models/profile.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/applicants/show.html.haml" afterPath="$PROJECT_DIR$/app/views/applicants/show.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sutco.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385409175482" ignored="false" />
+    <file path="/Dummy.txt" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385426676966" ignored="false" />
     <file path="/20131125144327_add_user_id.rb" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385390674891" ignored="false" />
     <file path="/20131125143945_create_profiles.rb" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385390983721" ignored="false" />
     <file path="/applicant.rb" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385402515322" ignored="false" />
-    <file path="/_form.html.haml" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385410419507" ignored="false" />
+    <file path="/_form.html.haml" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385471772714" ignored="false" />
     <file path="/role.rb" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385410484331" ignored="false" />
     <file path="/foh.rb" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385410516388" ignored="false" />
+    <file path="/profile.rb" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385422758473" ignored="false" />
+    <file path="/index.html.haml" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385463578532" ignored="false" />
+    <file path="/applicants_controller.rb" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385426438954" ignored="false" />
+    <file path="/show.html.haml" changelist="0142be3c-8940-4843-b72f-b6070dd962d5" time="1385425396585" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,46 +41,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="role.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/role.rb">
+      <file leaf-file-name="applicants_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/applicants_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="73" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
+            <state line="6" column="26" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="foh.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/foh.rb">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/applicants/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="66" selection-start="116" selection-end="116" vertical-scroll-proportion="0.047244094">
+            <state line="11" column="36" selection-start="141" selection-end="141" vertical-scroll-proportion="-6.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fohs_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/fohs_controller.rb">
+      <file leaf-file-name="20131125180016_create_applicants.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20131125180016_create_applicants.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="12" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20131125155015_add_user_id_to_profiles.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20131125155015_add_user_id_to_profiles.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/applicants/new.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="schema.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/schema.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="30" selection-start="2417" selection-end="2417" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/roles/index.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/applicants/show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="-4.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/applicants/_form.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="167" selection-start="301" selection-end="301" vertical-scroll-proportion="0.13586956">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="_form.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/fohs/_form.html.haml">
+        <entry file="file://$PROJECT_DIR$/app/views/roles/_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="58" selection-start="130" selection-end="130" vertical-scroll-proportion="-2.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="20131123155818_create_roles.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20131123155818_create_roles.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -111,6 +161,11 @@
         <option value="$PROJECT_DIR$/app/views/fohs/_form.html.haml" />
         <option value="$PROJECT_DIR$/app/models/role.rb" />
         <option value="$PROJECT_DIR$/app/models/foh.rb" />
+        <option value="$PROJECT_DIR$/app/models/profile.rb" />
+        <option value="$PROJECT_DIR$/app/views/applicants/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/applicants_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/applicants/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/applicants/_form.html.haml" />
       </list>
     </option>
   </component>
@@ -146,7 +201,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,25 +309,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fohs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sutco" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sutco" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="applicants" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -311,19 +347,20 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="web.server" />
+    <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Rake.db:migrate">
     <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
@@ -422,6 +459,13 @@
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
@@ -527,11 +571,11 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Rake.db:migrate" />
-      <item index="1" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="2" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="3" class="java.lang.String" itemvalue="Rails.Production: sutco" />
-      <item index="4" class="java.lang.String" itemvalue="Rails.Development: sutco" />
+      <item index="0" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="2" class="java.lang.String" itemvalue="Rails.Production: sutco" />
+      <item index="3" class="java.lang.String" itemvalue="Rails.Development: sutco" />
+      <item index="4" class="java.lang.String" itemvalue="Rake.db:migrate" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -573,7 +617,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22024368" sideWeight="0.6711916" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2249297" sideWeight="0.6711916" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -657,86 +701,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20131125143945_create_profiles.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/profile.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="24" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/decorators/profile_decorator_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/profiles_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="38" selection-start="244" selection-end="244" vertical-scroll-proportion="0.37578288" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="35" selection-start="2391" selection-end="2391" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20131125180016_create_applicants.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="12" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/decorators/applicant_decorator_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/applicants_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/applicant.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/roles_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/roles/new.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/roles/_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="310" selection-start="403" selection-end="403" vertical-scroll-proportion="0.16968326">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20131123155818_create_roles.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/fohs_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/fohs/_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="58" selection-start="130" selection-end="130" vertical-scroll-proportion="-2.5">
+        <state line="1" column="23" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -748,9 +715,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/foh.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/show.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="66" selection-start="116" selection-end="116" vertical-scroll-proportion="0.047244094">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/applicant.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/shows_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/applicants_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="26" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="30" selection-start="2417" selection-end="2417" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/roles/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/applicants/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="36" selection-start="141" selection-end="141" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131125180016_create_applicants.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="12" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131125155015_add_user_id_to_profiles.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/applicants/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/applicants/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/roles/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/applicants/_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="167" selection-start="301" selection-end="301" vertical-scroll-proportion="0.13586956">
           <folding />
         </state>
       </provider>

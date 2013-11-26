@@ -2,8 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :status
-    = f.input :access_level
+    = f.input :status, collection: ["pending",'active']
+    = f.input :access_level, collection: ["Sutcom Member","Production Team Member","Committee Member","Senior Commite Member","Technical Manager","Drama Studio Manager"]
 
   .form-actions
     = f.button :submit

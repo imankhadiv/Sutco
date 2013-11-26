@@ -10,6 +10,7 @@
 
   - @applicants.each do |applicant|
     %tr
+
       %td= applicant.status
       %td= applicant.access_level
       %td= link_to 'Show', applicant

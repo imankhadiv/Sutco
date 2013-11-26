@@ -4,10 +4,13 @@ class ApplicantsController < ApplicationController
   # GET /applicants
   def index
     @applicants = Applicant.all
+    @profile = Profile.all
+
   end
 
   # GET /applicants/1
   def show
+    applicant = Applicant.find(params[:id])
   end
 
   # GET /applicants/new
