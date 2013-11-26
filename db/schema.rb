@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125221909) do
+ActiveRecord::Schema.define(version: 20131125180016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,24 +22,6 @@ ActiveRecord::Schema.define(version: 20131125221909) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "boxes", force: true do |t|
-    t.string   "name"
-    t.string   "barcode"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "copies", force: true do |t|
-    t.integer  "item_id"
-    t.integer  "box_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "quantity"
-  end
-
-  add_index "copies", ["box_id"], name: "index_copies_on_box_id", using: :btree
-  add_index "copies", ["item_id"], name: "index_copies_on_item_id", using: :btree
 
   create_table "fohs", force: true do |t|
     t.string   "position"
@@ -53,30 +35,6 @@ ActiveRecord::Schema.define(version: 20131125221909) do
 
   add_index "fohs", ["show_id"], name: "index_fohs_on_show_id", using: :btree
 
-  create_table "items", force: true do |t|
-    t.string   "name"
-    t.string   "item_type"
-    t.string   "barcode"
-    t.float    "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "current_level"
-  end
-
-  create_table "loans", force: true do |t|
-    t.datetime "loan_date"
-    t.datetime "expected_date"
-    t.datetime "return_date"
-    t.string   "student_name"
-    t.string   "ucard"
-    t.integer  "box_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "returned"
-  end
-
-  add_index "loans", ["box_id"], name: "index_loans_on_box_id", using: :btree
-
   create_table "profiles", force: true do |t|
     t.string   "name"
     t.string   "course"
@@ -85,7 +43,7 @@ ActiveRecord::Schema.define(version: 20131125221909) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "applicant_id"
+    t.integer  "user_id"
   end
 
   create_table "roles", force: true do |t|
@@ -139,22 +97,6 @@ ActiveRecord::Schema.define(version: 20131125221909) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "users", force: true do |t|
-    t.string   "username",               default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "workshop_attendances", force: true do |t|
     t.string   "username"
