@@ -20,6 +20,7 @@ class ApplicantsController < ApplicationController
 
   # GET /applicants/1/edit
   def edit
+    @applicant = Applicant.find(params[:id])
   end
 
   # POST /applicants
@@ -56,6 +57,6 @@ class ApplicantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def applicant_params
-      params.require(:applicant).permit(:status, :access_level)
+      params.require(:applicant).permit(:status, :level)
     end
 end

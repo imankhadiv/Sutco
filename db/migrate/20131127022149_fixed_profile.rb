@@ -1,4 +1,4 @@
-class ChangeProfile < ActiveRecord::Migration
+class FixedProfile < ActiveRecord::Migration
   def change
     drop_table :profiles
     create_table :profiles do |t|
@@ -10,6 +10,6 @@ class ChangeProfile < ActiveRecord::Migration
       t.references :applicant
 
       t.timestamps
-    end
+      end
   end
 end
