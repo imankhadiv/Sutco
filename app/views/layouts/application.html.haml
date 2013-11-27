@@ -30,12 +30,28 @@
             %ul.nav.navbar-nav
               = navbar_link_to :root, title: "Go to your dashboard", identifier: :dashboard do
                 %i.icon-dashboard
-                Dashboard
+                Home
             %ul.nav.navbar-nav
-              = navbar_link_to :root, title: "Go to your dashboard", identifier: :dashboard do
+              = navbar_link_to :shows, title: "Shows", identifier: :dashboard do
                 %i.icon-dashboard
-                Dashboard
-        
+                Shows
+            %ul.nav.navbar-nav
+              = navbar_link_to :fohs, title: "Front of House", identifier: :dashboard do
+                %i.icon-dashboard
+                Front of House
+            %ul.nav.navbar-nav
+              = navbar_link_to :workshops, title: "Workshops", identifier: :dashboard do
+                %i.icon-dashboard
+                Workshops
+            %ul.nav.navbar-nav
+              = navbar_link_to :trainings, title: "Trainings", identifier: :dashboard do
+                %i.icon-dashboard
+                Trainings
+            %ul.nav.navbar-nav
+              = navbar_link_to :roles, title: "Roles", identifier: :dashboard do
+                %i.icon-dashboard
+                Roles
+
       #navbar-background
       #main-container.container= yield
           
