@@ -22,8 +22,10 @@ class ProfilesController < ApplicationController
   # POST /profiles
   def create
     @profile = Profile.new(profile_params)
+    applicant = Applicant.new(profile_params)
 
     if @profile.save
+      applicant.save
       redirect_to @profile, notice: 'Profile was successfully created.'
     else
       render action: 'new'
