@@ -6,11 +6,11 @@ describe "applicants/index" , :type => :view do
     assign(:applicants, [
       stub_model(Applicant,
         :status => "Status",
-        :access_level => "Access Level"
+        :level => "Level"
       ),
       stub_model(Applicant,
         :status => "Status",
-        :access_level => "Access Level"
+        :level => "Level"
       )
     ])
   end
@@ -19,6 +19,6 @@ describe "applicants/index" , :type => :view do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Status".to_s, :count => 2
-    assert_select "tr>td", :text => "Access Level".to_s, :count => 2
+    assert_select "tr>td", :text => "Level".to_s, :count => 2
   end
 end

@@ -5,7 +5,7 @@ describe "applicants/show" , :type => :view do
   before(:each) do
     @applicant = assign(:applicant, stub_model(Applicant,
       :status => "Status",
-      :access_level => "Access Level"
+      :level => "Level"
     ))
   end
 
@@ -13,6 +13,6 @@ describe "applicants/show" , :type => :view do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Status/)
-    rendered.should match(/Access Level/)
+    rendered.should match(/Level/)
   end
 end
