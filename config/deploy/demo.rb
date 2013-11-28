@@ -4,6 +4,7 @@ set :deploy_to, "/srv/services/#{application}"
 set :user, "#{application}"
 set :rails_env, "demo"
 set :branch, "deploy"
+set :group_writable, false
 
 namespace :deploy do
   task :start, :roles => :app do;   passenger.start;    end
