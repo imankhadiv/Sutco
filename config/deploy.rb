@@ -11,10 +11,10 @@ set :stages, %w(demo production)
 #set :default_stage, "demo"
 
 ssh_options[:forward_agent] = true
-set :application, 'team10'
+set :application, 'sutco'
 set :scm, :git
 set :deploy_via, :remote_cache
-set :repository, 'genesys-team10/mini-project'
+set :repository, 'git@epi-stu-repos1-git.shef.ac.uk:genesys-team10/sutco.git'
 set :use_sudo, false
 set :keep_releases, 2
 
@@ -23,16 +23,16 @@ namespace :deploy do
   # #  Uncomment the following bit to skip assets precompile if nothing changed.
   # #  N.B. You mustn't enable this task on your first deploy, or it will fail.
   
-  # namespace :assets do
-  #   task :precompile, :roles => :web, :except => { :no_release => true } do
-  #     from = source.next_revision(current_revision)
-  #     if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
-  #       run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile"
-  #     else
-  #       logger.info "Skipping asset pre-compilation because there were no asset changes"
-  #     end
-  #   end
-  # end
+  namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile"
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+  end
 
 
   # desc "Set up shared folders"
@@ -74,9 +74,6 @@ namespace :passenger do
   desc "Stop the Passenger server (not supported)"
   task :stop, :roles => :app do; end
 end
-
-# Set up the shared directory
-after 'deploy:setup', 'deploy:setup_shared'
 
 # Symlink the database and shared file
 after 'deploy:finalize_update', 'deploy:symlink_shared'
