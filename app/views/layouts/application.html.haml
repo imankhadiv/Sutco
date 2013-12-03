@@ -12,7 +12,7 @@
   %head
     %title Team10MiniProject
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    = stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application"
+    = stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application"
     = favicon_link_tag '/favicon.ico'
     = csrf_meta_tags
@@ -40,12 +40,28 @@
             %ul.nav.navbar-nav
               = navbar_link_to :root, title: "Go to your dashboard", identifier: :dashboard do
                 %i.icon-dashboard
-                Dashboard
+                Home
             %ul.nav.navbar-nav
-              = navbar_link_to :root, title: "Go to your dashboard", identifier: :dashboard do
+              = navbar_link_to :shows, title: "Shows", identifier: :dashboard do
                 %i.icon-dashboard
-                Dashboard
-        
+                Shows
+            %ul.nav.navbar-nav
+              = navbar_link_to :fohs, title: "Front of House", identifier: :dashboard do
+                %i.icon-dashboard
+                Front of House
+            %ul.nav.navbar-nav
+              = navbar_link_to :workshops, title: "Workshops", identifier: :dashboard do
+                %i.icon-dashboard
+                Workshops
+            %ul.nav.navbar-nav
+              = navbar_link_to :trainings, title: "Trainings", identifier: :dashboard do
+                %i.icon-dashboard
+                Trainings
+            %ul.nav.navbar-nav
+              = navbar_link_to :roles, title: "Roles", identifier: :dashboard do
+                %i.icon-dashboard
+                Roles
+
       #navbar-background
       #main-container.container= yield
           

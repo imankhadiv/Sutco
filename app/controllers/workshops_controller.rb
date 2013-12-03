@@ -4,6 +4,7 @@ class WorkshopsController < ApplicationController
   # GET /workshops
   def index
     @workshops = Workshop.all
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 
   # GET /workshops/1
