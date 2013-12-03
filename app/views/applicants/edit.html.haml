@@ -1,0 +1,24 @@
+%h1 Editing applicant
+%p#notice= notice
+%p
+  %b Name:
+  = @applicant.name
+%p
+  %b Course:
+  = @applicant.course
+%p
+  %b Ucard:
+  = @applicant.ucard
+%p
+  %b Year:
+  = @applicant.year
+%p
+  %b Email:
+  = @applicant.email
+%p
+
+= render 'form'
+
+= link_to 'Show', @applicant
+\|
+= link_to 'Back', applicants_path

@@ -73,4 +73,7 @@ group :test do
   gem 'shoulda-matchers'    # The use of 'shoulda' and 'shoulda-context' will break testing in Ruby 1.9.3, so 'shoulda-matchers' instead
   
   gem 'simplecov'           # Code test coverage
+  gem 'watu_table_builder', :require => 'table_builder'
+  gem 'bootstrap-datepicker-rails'
+
 end

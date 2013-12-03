@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @applicant.name
+%p
+  %b Course:
+  = @applicant.course
+%p
+  %b Ucard:
+  = @applicant.ucard
+%p
+  %b Year:
+  = @applicant.year
+%p
+  %b Email:
+  = @applicant.email
+%p
+  %b Status:
+  = @applicant.status
+%p
+  %b Access level:
+  = @applicant.level
+
+
+
+= link_to 'Edit', edit_applicant_path(@applicant)
+\|
+= link_to 'Back', applicants_path
