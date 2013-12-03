@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require_tree .
 $(function (){
-    $('#workshops_date').datepicker();
+    $('#workshop_date').datepicker();
 });
