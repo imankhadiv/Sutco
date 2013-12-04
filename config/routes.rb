@@ -17,5 +17,8 @@ Team10MiniProject::Application.routes.draw do
 
   resources :shows
 
+  resources :calendars
+
+
   root 'pages#welcome'
 end
