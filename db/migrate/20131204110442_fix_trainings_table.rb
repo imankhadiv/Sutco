@@ -1,7 +1,7 @@
 class FixTrainingsTable < ActiveRecord::Migration
 
   def change
-    #drop_table :trainings
+    drop_table :trainings
     create_table :trainings do |t|
       t.string :title
       #type is a reserved word
