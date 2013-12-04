@@ -3,7 +3,7 @@ class CalendarsController < ApplicationController
 
   # GET /calendars
   def index
-    @events = Workshop.all + Training.all
+    @events = Workshop.all + Training.all + Social.all
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 
