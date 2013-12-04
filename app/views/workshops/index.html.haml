@@ -1,22 +1,21 @@
-%h1 Workshops Calendar
-
+%table
+  %tr
+    %th Title
+    %th Date
+    %th Description
+    %th{colspan: "3"} Options
+ 
+  - @workshops.each do |workshop|
+    %tr
+      %td= workshop.title
+      %td= workshop.date
+      %td= workshop.description
+      %td= link_to 'Show', workshop
+      %td= link_to 'Edit', edit_workshop_path(workshop)
+      %td= link_to 'Destroy', workshop, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
   = link_to 'New Workshop', new_workshop_path
-.calendar
-  %h2
-    .month
-      = link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m")
-      =h @date.strftime("%B %Y")
-      = link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m")
-  %h2
-    = calendar_for @workshops, :year => @date.year, :month => @date.month do |calendar|
-      = calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
-      - calendar.day(:day_method => :date) do |date, workshops|
-        %br= date.day
-        %ul
-          - for workshop in workshops
-            %br= link_to h(workshop.title), workshop
 
 
 
