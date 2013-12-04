@@ -1,4 +1,5 @@
 Team10MiniProject::Application.routes.draw do
+  devise_for :users
   resources :applicants
 
   resources :profiles
