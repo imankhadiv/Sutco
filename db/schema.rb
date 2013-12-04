@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20131204155755) do
     t.datetime "updated_at"
   end
 
+  create_table "socials", force: true do |t|
+    t.string   "title"
+    t.text     "location"
+    t.text     "description"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "training_attendances", force: true do |t|
     t.string   "username"
     t.string   "recorder"
