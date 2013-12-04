@@ -13,7 +13,7 @@ gem 'pg'
 gem 'devise'
 gem 'cancan'
 # gem 'devise_cas_authenticatable'  # CAS support for devise   [https://github.com/nbudin/devise_cas_authenticatable]
- gem 'devise_ldap_authenticatable' # LDAP support for devise  [https://github.com/cschiewek/devise_ldap_authenticatable]
+#gem 'devise_ldap_authenticatable' # LDAP support for devise  [https://github.com/cschiewek/devise_ldap_authenticatable]
 
 gem 'will_paginate'
 gem 'draper'
