@@ -1,4 +1,0 @@
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { autocomplete: 'off' }) do |f|
-  = f.input :username, required: true, autofocus: true, autocomplete: 'off', onfocus: 'this.onfocus="";', input_html: { placeholder: 'Please type in your username' }
-  = f.input :password, required: true, autocomplete: 'off', input_html: { placeholder: 'Please type in your password' }
-  = f.button :submit, 'Log in'
