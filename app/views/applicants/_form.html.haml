@@ -1,9 +1,0 @@
-= simple_form_for(@applicant) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :status, collection: ["pending",'active']
-    = f.input :level, collection: ["Sutco Member","Production Team Member","Committee Member","Senior Commite Member","Technical Manager","Drama Studio Manager"]
-
-  .form-actions
-    = f.button :submit

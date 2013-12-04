@@ -13,3 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(function (){
+    $('#workshop_date').datepicker();
+});

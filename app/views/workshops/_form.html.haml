@@ -4,7 +4,10 @@
   .form-inputs
     = f.input :title
     = f.input :description
-    = f.input :date
+    / = f.input :date
+    = f.label :date
+    = f.text_field :date, :as => :date_picker 
+  
 
   .form-actions
     = f.button :submit

@@ -1,7 +1,6 @@
 Team10MiniProject::Application.routes.draw do
-  resources :applicants
 
-  resources :profiles
+  devise_for :users,  :controllers => { :registrations => "users/registrations" }
 
   resources :training_attendances
 
@@ -16,6 +15,12 @@ Team10MiniProject::Application.routes.draw do
   resources :roles
 
   resources :shows
+
+  resources :calendars
+
+  resources :socials
+
+  get "pages/awaiting"
 
   root 'pages#welcome'
 end

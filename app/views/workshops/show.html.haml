@@ -10,6 +10,9 @@
   %b Date:
   = @workshop.date
 
+
 = link_to 'Edit', edit_workshop_path(@workshop)
+\|
+= link_to 'Delete', @workshop, :method => :delete, :data => { :confirm => 'Are you sure?' }
 \|
 = link_to 'Back', workshops_path

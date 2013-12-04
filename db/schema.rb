@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127022149) do
+ActiveRecord::Schema.define(version: 20131204155755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "applicants", force: true do |t|
-    t.string   "name"
-    t.string   "course"
-    t.integer  "ucard"
-    t.date     "year"
-    t.string   "email"
-    t.string   "status"
-    t.string   "level"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "fohs", force: true do |t|
     t.string   "position"
@@ -39,17 +27,6 @@ ActiveRecord::Schema.define(version: 20131127022149) do
   end
 
   add_index "fohs", ["show_id"], name: "index_fohs_on_show_id", using: :btree
-
-  create_table "profiles", force: true do |t|
-    t.string   "name"
-    t.string   "course"
-    t.integer  "ucard"
-    t.date     "year"
-    t.string   "email"
-    t.integer  "applicant_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -96,12 +73,37 @@ ActiveRecord::Schema.define(version: 20131127022149) do
 
   create_table "trainings", force: true do |t|
     t.string   "title"
-    t.string   "type"
+    t.string   "category"
     t.datetime "date"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "ucard"
+    t.string   "course"
+    t.boolean  "approved",               default: false, null: false
+    t.string   "level"
+  end
+
+  add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "workshop_attendances", force: true do |t|
     t.string   "username"

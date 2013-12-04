@@ -13,11 +13,15 @@ gem 'pg'
 gem 'devise'
 gem 'cancan'
 # gem 'devise_cas_authenticatable'  # CAS support for devise   [https://github.com/nbudin/devise_cas_authenticatable]
-# gem 'devise_ldap_authenticatable' # LDAP support for devise  [https://github.com/cschiewek/devise_ldap_authenticatable]
+ gem 'devise_ldap_authenticatable' # LDAP support for devise  [https://github.com/cschiewek/devise_ldap_authenticatable]
 
 gem 'will_paginate'
 gem 'draper'
 
+gem "watu_table_builder", :require => "table_builder"
+gem 'event-calendar', :require => 'event_calendar'
+gem "actionpack"
+gem "activesupport"
 # gem 'ransack'             # Searching and sorting
 # gem 'cocoon'              # Nice gem providing javascript and helper methods for adding/removing records in nested-forms [https://github.com/nathanvda/cocoon]
 
@@ -73,4 +77,7 @@ group :test do
   gem 'shoulda-matchers'    # The use of 'shoulda' and 'shoulda-context' will break testing in Ruby 1.9.3, so 'shoulda-matchers' instead
   
   gem 'simplecov'           # Code test coverage
+  gem 'watu_table_builder', :require => 'table_builder'
+  gem 'bootstrap-datepicker-rails'
+
 end
