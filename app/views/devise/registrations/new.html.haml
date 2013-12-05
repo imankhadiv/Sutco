@@ -1,0 +1,18 @@
+%h3  Sign Up
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email, :required => true, :autofocus => true
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
+    = f.input :firstname
+    = f.input :lastname
+    = f.input :course
+    = f.input :ucard
+    = f.input :level, collection: ['Level1','Level2','Level3','Level4']
+
+  .form-actions
+    %br
+    = f.submit 'Sign Up',:class => "form_submit"
+
