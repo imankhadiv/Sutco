@@ -5,7 +5,7 @@ Warden.test_mode!
 describe "Show tests" do
 
 		describe "Creating shows" do
-		  specify "I can create an show with a name and barcode" do
+		  specify "I can create a show" do
 		    visit new_show_path
 		    fill_in "Name", with: "Show 1"
 		    fill_in "Image", with: ""
@@ -24,8 +24,8 @@ describe "Show tests" do
 		
 		  end
 		
-		  specify "I cannot create an show with blank fields" do
-		  	pending
+		  specify "I cannot create a show with blank fields" do
+		  	pending "input validation to be added"
 		    visit new_show_path
 		    click_button "Create Show"
 		    page.should have_content "can't be blank"
@@ -36,7 +36,7 @@ describe "Show tests" do
 		
 		  let!(:show) { FactoryGirl.create(:show) }
 		
-		  specify "Given an show exists I can update it" do
+		  specify "Given a show exists I can update it" do
 		    visit shows_path
 		    click_link "Edit"
 		    fill_in "Name", with: "Show 2"
@@ -59,7 +59,7 @@ describe "Show tests" do
 		
 		   let!(:show) { FactoryGirl.create(:show) }
 		
-		   specify "Given an show exists I can delete it" do
+		   specify "Given a show exists I can delete it" do
 		
 		     visit shows_path
 		     click_link "Destroy"

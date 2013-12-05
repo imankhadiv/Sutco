@@ -65,6 +65,19 @@
               = navbar_link_to :roles, title: "Roles", identifier: :dashboard do
                 %i.icon-user
                 Roles
+            %ul.nav.navbar-nav
+              -if user_signed_in?
+                // %h1= "Logged in as <strong><%= current_user.email %></strong>."
+                = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'  |
+                = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+              -else
+                = navbar_link_to new_user_registration_path, title: "Sign UP", identifier: :dashboard do
+                  %i.icon-user
+                  Sign Up
+                = navbar_link_to new_user_session_path, title: "Log In", identifier: :dashboard do
+                  %i.icon-user
+                  Or Log In
+
 
       #navbar-background
       #main-container.container= yield

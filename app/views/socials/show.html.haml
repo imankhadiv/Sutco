@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @social.title
+%p
+  %b Date:
+  = @social.date
+%p
+  %b Location:
+  = @social.location
+%p
+  %b Description:
+  = @social.description
+
+
+
+= link_to 'Edit', edit_social_path(@social)
+\|
+= link_to 'Delete', @social, :method => :delete, :data => { :confirm => 'Are you sure?' }
+\|
+= link_to 'Back', socials_path
