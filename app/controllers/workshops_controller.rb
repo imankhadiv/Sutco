@@ -54,6 +54,6 @@ class WorkshopsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def workshop_params
-      params.require(:workshop).permit(:title, :description, :date)
+      params.require(:workshop).permit(:title, :description, :date, :time, :duration)
     end
 end

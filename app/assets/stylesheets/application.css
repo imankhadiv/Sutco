@@ -6,4 +6,6 @@
   *= require tables
   *= require utilities
   *= require misc
+  *= require datepicker
+  *= require bootstrap-timepicker
 */
