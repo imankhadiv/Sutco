@@ -79,5 +79,5 @@ group :test do
   gem 'simplecov'           # Code test coverage
   gem 'watu_table_builder', :require => 'table_builder'
   gem 'bootstrap-datepicker-rails'
-
+  gem 'capybara-bootstrap-datepicker'
 end
