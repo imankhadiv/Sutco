@@ -10,7 +10,8 @@
     = f.input :lastname
     = f.input :course
     = f.input :ucard
-    = f.input :level, collection: ['Level1','Level2','Level3','Level4']
+    = f.select :level, collection: ['Level1','Level2','Level3','Level4']
+
 
   .form-actions
     %br
