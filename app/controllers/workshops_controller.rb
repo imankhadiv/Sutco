@@ -1,6 +1,6 @@
 class WorkshopsController < ApplicationController
   before_action :set_workshop, only: [:show, :edit, :update, :destroy]
-
+  before_filter :set_nav_identifier
   # GET /workshops
   def index
     @workshops = Workshop.all
@@ -55,5 +55,10 @@ class WorkshopsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def workshop_params
       params.require(:workshop).permit(:title, :description, :date, :time, :duration)
+    end
+
+
+    def set_nav_identifier
+	@current_nav_identifier	= :workshops
     end
 end
