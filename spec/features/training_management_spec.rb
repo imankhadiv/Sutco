@@ -10,7 +10,8 @@ describe "Training tests" do
 		    fill_in "Title", with: "Training 1"
 		    fill_in "Category", with: "Lighting Operator"
 		    fill_in "Description", with: "Some description"
-		    select '2013', :from => 'Date'
+		    #fill_in "Date", with: "10/12/2013"
+		    #fill_in "Time", with: "11:45 AM"
 		    click_button "Create Training"
 		    page.should have_content "Training was successfully created"
 		    page.should have_content "Training 1"

@@ -9,6 +9,7 @@
    factory :workshop do
      title "Workshop 1"
      description "Some Description"
-     date Time.now
+     date Date.today
+            time Time.now
    end
  end

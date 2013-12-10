@@ -10,6 +10,7 @@
      title "Training 1"
      category "Lighting Operator"
      description "Some Description"
-     date Time.now
+     date Date.today
+          #  time Time.now
    end
  end

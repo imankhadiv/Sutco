@@ -13,6 +13,8 @@ describe "Show tests" do
 		    fill_in "Stage manager", with: "Some Stage manager"
 		    fill_in "Producer", with: "Some Producer"
 		    fill_in "Synopsis", with: "Some Description"
+		    #fill_in "Date", with: "10/12/2013"
+		    #fill_in "Time", with: "11:45 AM"
 		    click_button "Create Show"
 		    page.should have_content "Show was successfully created"
 		    page.should have_content "Show 1"

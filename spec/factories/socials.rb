@@ -10,6 +10,7 @@
      title "Social 1"
      location "RG-12"
      description "Some Description"
-     date Time.now
+     date Date.today
+         #   time Time.now
    end
  end

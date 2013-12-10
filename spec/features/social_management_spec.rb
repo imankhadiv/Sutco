@@ -10,7 +10,8 @@ describe "Social tests" do
 		    fill_in "Title", with: "Social 1"
 		    fill_in "Location", with: "RG-12"
 		    fill_in "Description", with: "Some description"
-		    select '2013', :from => 'Date'
+		    #fill_in "Date", with: "10/12/2013"
+		    #fill_in "Time", with: "11:45 AM"
 		    click_button "Create Social"
 		    page.should have_content "Social was successfully created"
 		    page.should have_content "Social 1"

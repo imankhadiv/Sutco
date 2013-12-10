@@ -9,7 +9,8 @@ describe "Workshop tests" do
 		    visit new_workshop_path
 		    fill_in "Title", with: "Workshop 1"
 		    fill_in "Description", with: "Some description"
-		    #select_date(Date.tomorrow, from:"Date", datepicker: :bootstrap)
+		    fill_in "Date", with: "10/12/2013"
+		     fill_in "Time", with: "11:45 AM"
 		    click_button "Create Workshop"
 		    page.should have_content "Workshop was successfully created"
 		    page.should have_content "Workshop 1"
