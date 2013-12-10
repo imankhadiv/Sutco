@@ -20,8 +20,10 @@ gem 'draper'
 
 gem "watu_table_builder", :require => "table_builder"
 gem 'event-calendar', :require => 'event_calendar'
+gem 'bootstrap-datetimepicker-rails'
 gem "actionpack"
 gem "activesupport"
+gem 'bootstrap-timepicker-rails'
 # gem 'ransack'             # Searching and sorting
 # gem 'cocoon'              # Nice gem providing javascript and helper methods for adding/removing records in nested-forms [https://github.com/nathanvda/cocoon]
 

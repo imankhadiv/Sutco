@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  validates :firstname, :lastname, :course, :level, presence: true
+  validates_format_of :email, :with => /.+@sheffield.ac.uk\z/
+  validates :ucard, :numericality => true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -9,6 +9,12 @@
 %p
   %b Date:
   = @workshop.date
+%p 
+  %b Time:
+  = @workshop.time
+%p
+  %b Duration (minutes):
+  = @workshop.duration
 
 
 = link_to 'Edit', edit_workshop_path(@workshop)
