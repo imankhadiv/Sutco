@@ -18,4 +18,8 @@
 $(function (){
 	$('#workshop_date').datepicker();
 	$('#workshop_time').timepicker();
+	$('#social_date').datepicker();
+	$('#social_time').timepicker();
+	$('#training_date').datepicker();
+	$('#training_time').timepicker();
 });

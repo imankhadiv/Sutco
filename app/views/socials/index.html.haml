@@ -1,17 +1,21 @@
 %table
   %tr
     %th Title
-    %th Date
     %th Location
     %th Description
+    %th Date
+    %th Time
+    %th Duration
     %th{colspan: "3"} Options
  
   - @socials.each do |social|
     %tr
       %td= social.title
-      %td= social.date
       %td= social.location
       %td= social.description
+      %td= social.date
+      %td= social.time
+      %td= social.duration
       %td= link_to 'Show', social
       %td= link_to 'Edit', edit_social_path(social)
       %td= link_to 'Destroy', social, :method => :delete, :data => { :confirm => 'Are you sure?' }

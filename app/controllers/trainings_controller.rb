@@ -53,7 +53,7 @@ class TrainingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def training_params
-      params.require(:training).permit(:title, :category, :date, :description)
+      params.require(:training).permit(:title, :category, :description, :date, :time, :duration)
     end
 
     def set_nav_identifier
