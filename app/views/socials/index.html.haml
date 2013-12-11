@@ -21,7 +21,9 @@
       %td= link_to 'Destroy', social, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-  = link_to 'New Social Event', new_social_path
+  %a.btn.btn-success.btn-lg{href: new_social_path, role: "button"} Create New Social
+%br
+  / = link_to 'New Social Event', new_social_path
 
 
 
