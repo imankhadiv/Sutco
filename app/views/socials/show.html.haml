@@ -14,7 +14,7 @@
   = @social.date
 %p
   %b Time:
-  = @social.time
+  = @social.time.strftime("%I:%M%p") 
 %p
   %b Duration:
   = @social.duration

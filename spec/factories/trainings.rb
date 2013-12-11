@@ -11,6 +11,6 @@
      category "Lighting Operator"
      description "Some Description"
      date Date.today
-          #  time Time.now
+            time Time.now
    end
  end

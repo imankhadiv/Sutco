@@ -16,7 +16,7 @@
       %td= training.category
       %td= training.description
       %td= training.date
-      %td= training.time
+      %td= training.time.strftime("%I:%M%p") 
       %td= training.duration
       %td= link_to 'Show', training
       %td= link_to 'Edit', edit_training_path(training)

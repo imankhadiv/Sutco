@@ -80,7 +80,8 @@ visit calendars_path
 			    fill_in "Title", with: "Training 1"
 			    fill_in "Category", with: "Lighting Operator"
 			    fill_in "Description", with: "Some description"
-			    select '2013', :from => 'Date'
+		    fill_in "Date", with: "10/12/2013"
+		    fill_in "Time", with: "11:45 AM"
 			    click_button "Create Training"
 			    page.should have_content "Training was successfully created"
 			    page.should have_content "Training 1"
@@ -93,7 +94,8 @@ visit calendars_path
 				  click_link "Create New Workshop"
 			    fill_in "Title", with: "Workshop 1"
 			    fill_in "Description", with: "Some description"
-			    #select_date(Date.tomorrow, from:"Date", datepicker: :bootstrap)
+		    fill_in "Date", with: "10/12/2013"
+		    fill_in "Time", with: "11:45 AM"
 			    click_button "Create Workshop"
 			    page.should have_content "Workshop was successfully created"
 			    page.should have_content "Workshop 1"
@@ -107,7 +109,8 @@ visit calendars_path
 			    fill_in "Title", with: "Social 1"
 			    fill_in "Location", with: "RG-12"
 			    fill_in "Description", with: "Some description"
-			    select '2013', :from => 'Date'
+		    fill_in "Date", with: "10/12/2013"
+		    fill_in "Time", with: "11:45 AM"
 			    click_button "Create Social"
 			    page.should have_content "Social was successfully created"
 			    page.should have_content "Social 1"
