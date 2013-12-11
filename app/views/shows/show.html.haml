@@ -19,6 +19,8 @@
   %b Synopsis:
   = @show.synopsis
 
-= link_to 'Edit', edit_show_path(@show)
+= link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,shows_path)
 \|
-= link_to 'Back', shows_path
+= link_to('<i class="icon-edit-sign"></i> Edit'.html_safe,edit_social_path(@show))
+\|
+= link_to('<i class="icon-trash"></i> Delete'.html_safe,@show, :method => :delete, :data => { :confirm => 'Are you sure?'})
