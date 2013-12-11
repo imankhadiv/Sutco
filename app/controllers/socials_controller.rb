@@ -54,6 +54,6 @@ class SocialsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def social_params
-      params.require(:social).permit(:title, :location, :description, :date)
+      params.require(:social).permit(:title, :location, :description, :date, :time, :duration)
     end
 end

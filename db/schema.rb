@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20131211152858) do
     t.string   "title"
     t.text     "location"
     t.text     "description"
-    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
+    t.time     "time"
+    t.integer  "duration"
   end
 
   create_table "training_attendances", force: true do |t|
@@ -94,10 +96,12 @@ ActiveRecord::Schema.define(version: 20131211152858) do
   create_table "trainings", force: true do |t|
     t.string   "title"
     t.string   "category"
-    t.datetime "date"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
+    t.time     "time"
+    t.integer  "duration"
   end
 
   create_table "users", force: true do |t|
