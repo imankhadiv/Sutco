@@ -1,10 +1,11 @@
 !!!
+
 / %html
 /   %head
 /     %title Team10MiniProject
 /     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-/     = stylesheet_link_tag    "application", media: :all
-/     = javascript_include_tag "application"
+/     = stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application"
+/     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application"
 /     = favicon_link_tag '/favicon.ico'
 /     = csrf_meta_tags
 
@@ -12,11 +13,10 @@
   %head
     %title Team10MiniProject
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    = stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application"
-    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application"
+    = stylesheet_link_tag "application", media: :all
+    = javascript_include_tag "application"
     = favicon_link_tag '/favicon.ico'
     = csrf_meta_tags
-
 
   %body
     .flash-messages    
@@ -42,27 +42,27 @@
                 %i.icon-dashboard
                 Home
             %ul.nav.navbar-nav
-              = navbar_link_to :calendars, title: "Event Calendar", identifier: :dashboard do
+              = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
                 %i.icon-calendar
                 Event Calendar
             %ul.nav.navbar-nav
-              = navbar_link_to :shows, title: "Shows", identifier: :dashboard do
+              = navbar_link_to :shows, title: "Shows", identifier: :shows do
                 %i.icon-film
                 Shows
             %ul.nav.navbar-nav
-              = navbar_link_to :fohs, title: "Front of House", identifier: :dashboard do
+              = navbar_link_to :fohs, title: "Front of House", identifier: :fohs do
                 %i.icon-home
                 Front of House
             %ul.nav.navbar-nav
-              = navbar_link_to :workshops, title: "Workshops", identifier: :dashboard do
+              = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
                 %i.icon-shopping-cart
                 Workshops
             %ul.nav.navbar-nav
-              = navbar_link_to :trainings, title: "Trainings", identifier: :dashboard do
+              = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
                 %i.icon-tasks
                 Trainings
             %ul.nav.navbar-nav
-              = navbar_link_to :roles, title: "Roles", identifier: :dashboard do
+              = navbar_link_to :roles, title: "Roles", identifier: :roles do
                 %i.icon-user
                 Roles
             %ul.nav.navbar-nav
@@ -71,10 +71,10 @@
                 = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'  |
                 = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
               -else
-                = navbar_link_to new_user_registration_path, title: "Sign UP", identifier: :dashboard do
+                = navbar_link_to new_user_registration_path, title: "Sign UP", identifier: :signup do
                   %i.icon-user
                   Sign Up
-                = navbar_link_to new_user_session_path, title: "Log In", identifier: :dashboard do
+                = navbar_link_to new_user_session_path, title: "Log In", identifier: :login do
                   %i.icon-user
                   Or Log In
 

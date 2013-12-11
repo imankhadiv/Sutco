@@ -7,11 +7,17 @@
   %b Type:
   = @training.category
 %p
+  %b Description:
+  = @training.description
+%p
   %b Date:
   = @training.date
 %p
-  %b Description:
-  = @training.description
+  %b Time:
+  = @training.time.strftime("%I:%M%p") 
+%p
+  %b Duration:
+  = @training.duration
 
 = link_to 'Edit', edit_training_path(@training)
 \|

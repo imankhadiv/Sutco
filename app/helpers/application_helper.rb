@@ -16,4 +16,9 @@ module ApplicationHelper
   def no_record_tr(colspan, text = 'No records to display')
     content_tag(:tr, content_tag(:td, text, colspan: colspan, class: 'text-center text-muted' ), class: 'tr-no-record')
   end
+  def link_to_icon(icon_name, url_or_object, options={})
+    link_to(("<i class=#{icon_name}></i>".html_safe),
+     url_or_object,
+    options )
+  end
 end

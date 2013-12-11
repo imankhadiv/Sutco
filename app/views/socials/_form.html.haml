@@ -3,10 +3,14 @@
 
   .form-inputs
     = f.input :title
-    = f.input :date
     = f.input :location
     = f.input :description
-  
+    %br= f.label :date
+    = f.text_field :date, as: :bootstrap_datepicker
+    %br= f.label :time
+    = f.text_field :time, as: :bootstrap_timepicker
+    = f.input :duration
+    %br
 
   .form-actions
     = f.button :submit

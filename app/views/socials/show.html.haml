@@ -4,14 +4,20 @@
   %b Title:
   = @social.title
 %p
-  %b Date:
-  = @social.date
-%p
   %b Location:
   = @social.location
 %p
   %b Description:
   = @social.description
+%p
+  %b Date:
+  = @social.date
+%p
+  %b Time:
+  = @social.time.strftime("%I:%M%p") 
+%p
+  %b Duration:
+  = @social.duration
 
 
 

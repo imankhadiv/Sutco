@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :edit, :update, :destroy]
-
+  before_filter :set_nav_identifier
   # GET /trainings
   def index
     @trainings = Training.all
@@ -53,6 +53,11 @@ class TrainingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def training_params
-      params.require(:training).permit(:title, :category, :date, :description)
+      params.require(:training).permit(:title, :category, :description, :date, :time, :duration)
     end
+
+    def set_nav_identifier
+	@current_nav_identifier	= :trainings
+    end
+
 end

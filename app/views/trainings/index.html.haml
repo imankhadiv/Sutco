@@ -4,16 +4,20 @@
   %tr
     %th Title
     %th Type
-    %th Date
     %th Description
+    %th Date
+    %th Time
+    %th Duration
     %th{colspan: "3"} Options
 
   - @trainings.each do |training|
     %tr
       %td= training.title
       %td= training.category
-      %td= training.date
       %td= training.description
+      %td= training.date
+      %td= training.time.strftime("%I:%M%p") 
+      %td= training.duration
       %td= link_to 'Show', training
       %td= link_to 'Edit', edit_training_path(training)
       %td= link_to 'Destroy', training, :method => :delete, :data => { :confirm => 'Are you sure?' }

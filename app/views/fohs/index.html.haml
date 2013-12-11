@@ -15,7 +15,7 @@
       %td= foh.required_number
       %td= foh.available_number
       %td= foh.date
-      %td= foh.show
+      %td= foh.show.name
       %td= link_to 'Show', foh
       %td= link_to 'Edit', edit_foh_path(foh)
       %td= link_to 'Destroy', foh, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
-
+  before_filter :set_nav_identifier
   # GET /shows
   def index
     @shows = Show.all
@@ -55,4 +55,9 @@ class ShowsController < ApplicationController
     def show_params
       params.require(:show).permit(:name, :image, :director, :stage_manager, :producer, :synopsis)
     end
+
+    def set_nav_identifier
+	@current_nav_identifier	= :shows
+    end
+
 end

@@ -1,6 +1,6 @@
 class FohsController < ApplicationController
   before_action :set_foh, only: [:show, :edit, :update, :destroy]
-
+  before_filter :set_nav_identifier
   # GET /fohs
   def index
     @fohs = Foh.all
@@ -54,5 +54,10 @@ class FohsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def foh_params
       params.require(:foh).permit(:position, :required_number, :available_number, :date, :show_id)
+    end
+
+
+    def set_nav_identifier
+	@current_nav_identifier	= :fohs
     end
 end
