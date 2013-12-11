@@ -1,4 +1,5 @@
 class ShowsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_show, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
   # GET /shows
@@ -8,6 +9,7 @@ class ShowsController < ApplicationController
 
   # GET /shows/1
   def show
+
   end
 
   # GET /shows/new

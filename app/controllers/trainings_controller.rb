@@ -1,6 +1,8 @@
 class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
+  load_and_authorize_resource
+
   # GET /trainings
   def index
     @trainings = Training.all

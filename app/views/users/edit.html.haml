@@ -1,0 +1,18 @@
+%h1= "Set Approval status for #{@user.firstname} #{@user.lastname}"
+
+
+= simple_form_for(@user) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :approved
+    = f.association :roles, as: :check_boxes
+
+
+
+  .form-actions
+    = f.button :submit
+
+
+
+=link_to 'Back', users_path

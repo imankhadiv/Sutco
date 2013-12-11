@@ -1,6 +1,8 @@
 class FohsController < ApplicationController
   before_action :set_foh, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
+  load_and_authorize_resource
+
   # GET /fohs
   def index
     @fohs = Foh.all

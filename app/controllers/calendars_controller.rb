@@ -1,6 +1,8 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show]
   before_filter :set_nav_identifier
+
+
   # GET /calendars
   def index
     @events = Workshop.all + Training.all + Social.all

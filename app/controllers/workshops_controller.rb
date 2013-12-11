@@ -1,6 +1,8 @@
 class WorkshopsController < ApplicationController
   before_action :set_workshop, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
+  load_and_authorize_resource
+
   # GET /workshops
   def index
     @workshops = Workshop.all

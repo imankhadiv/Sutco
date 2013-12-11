@@ -11,7 +11,7 @@
 
 %html
   %head
-    %title Team10MiniProject
+    %title SUTCo
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     = stylesheet_link_tag "application", media: :all
     = javascript_include_tag "application"
@@ -62,9 +62,9 @@
                 %i.icon-tasks
                 Trainings
             %ul.nav.navbar-nav
-              = navbar_link_to :roles, title: "Roles", identifier: :roles do
+              = navbar_link_to :users, title: "Users", identifier: :users do
                 %i.icon-user
-                Roles
+                Users
             %ul.nav.navbar-nav
               -if user_signed_in?
                 // %h1= "Logged in as <strong><%= current_user.email %></strong>."
@@ -76,7 +76,7 @@
                   Sign Up
                 = navbar_link_to new_user_session_path, title: "Log In", identifier: :login do
                   %i.icon-user
-                  Or Log In
+                  Log In
 
 
       #navbar-background
