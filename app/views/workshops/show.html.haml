@@ -11,7 +11,7 @@
   = @workshop.date
 %p 
   %b Time:
-  = @workshop.time
+  = @workshop.time.strftime("%I:%M%p") 
 %p
   %b Duration (minutes):
   = @workshop.duration

@@ -14,7 +14,7 @@
       %td= social.location
       %td= social.description
       %td= social.date
-      %td= social.time
+      %td= social.time.strftime("%I:%M%p") 
       %td= social.duration
       %td= link_to 'Show', social
       %td= link_to 'Edit', edit_social_path(social)

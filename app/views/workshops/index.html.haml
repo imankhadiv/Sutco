@@ -12,7 +12,7 @@
       %td= workshop.title
       %td= workshop.description
       %td= workshop.date
-      %td= workshop.time
+      %td= workshop.time.strftime("%I:%M%p") 
       %td= workshop.duration
       %td= link_to 'Show', workshop
       %td= link_to 'Edit', edit_workshop_path(workshop)

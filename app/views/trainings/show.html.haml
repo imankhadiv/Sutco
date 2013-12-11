@@ -14,7 +14,7 @@
   = @training.date
 %p
   %b Time:
-  = @training.time
+  = @training.time.strftime("%I:%M%p") 
 %p
   %b Duration:
   = @training.duration
