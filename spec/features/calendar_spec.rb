@@ -3,6 +3,13 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Calendar tests" do
+ before(:each) do
+ role = FactoryGirl.create(:role)
+	    user = FactoryGirl.create(:user)
+user.roles << role
+			login_as(user, :scope => :user)
+end
+
 	describe "View events in calendar" do			
 		describe "View trainings in calendar" do		
 		  let!(:training) { FactoryGirl.create(:training) }		

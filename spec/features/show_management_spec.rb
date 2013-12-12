@@ -3,7 +3,12 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Show tests" do
-
+ before(:each) do
+ role = FactoryGirl.create(:role)
+	    user = FactoryGirl.create(:user)
+user.roles << role
+			login_as(user, :scope => :user)
+end
 		describe "Creating shows" do
 		  specify "I can create a show" do
 		    visit new_show_path

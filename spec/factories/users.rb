@@ -10,6 +10,10 @@
 #
 
 FactoryGirl.define do
+   factory :role do
+   name "TechManager"   
+end
+
   factory :user do
     email "user@sheffield.ac.uk"
     password "123456789"
@@ -19,6 +23,7 @@ FactoryGirl.define do
     ucard '1234'
     course 'mycourse'
     level "Level1"
-
+     approved TRUE
   end
+
 end

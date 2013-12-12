@@ -1,6 +1,4 @@
 class Role < ActiveRecord::Base
-  belongs_to :show
-  validates :available_number, :required_number, :name, :position, :show, presence: true
-  validates :available_number, :required_number, :numericality => { :greater_than => 0}
+  has_and_belongs_to_many :users
 
 end

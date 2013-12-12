@@ -10,9 +10,11 @@ Team10MiniProject::Application.routes.draw do
 
   resources :workshops
 
+  resources :users
+
   resources :fohs
 
-  resources :roles
+  resources :show_roles
 
   resources :shows
 
@@ -21,6 +23,6 @@ Team10MiniProject::Application.routes.draw do
   resources :socials
 
   get "pages/awaiting"
-
-  root 'pages#welcome'
+  get "pages/welcome"
+  root 'calendars#index'
 end

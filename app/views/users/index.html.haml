@@ -1,0 +1,55 @@
+%h2 List of Users awaiting Approval
+%table
+  %tr
+    %th Name
+    %th Lastname
+    %th Ucard Number
+    %th Email
+    %th Course
+    %th Level
+    %th Approved
+    %th Actions
+
+
+  - @awaiting_users.each do |user|
+    %tr
+      %td= user.firstname
+      %td= user.lastname
+      %td= user.ucard
+      %td= user.email
+      %td= user.course
+      %td= user.level
+      %td= user.approved
+      %td= link_to 'Approve', edit_user_path(user)
+
+
+%br
+
+%h2 List of Current Users
+%table
+  %tr
+    %th Name
+    %th Lastname
+    %th Ucard Number
+    %th Email
+    %th Course
+    %th Level
+    %th Approved
+    %th Actions
+
+
+
+  - @approved_users.each do |user|
+    %tr
+      %td= user.firstname
+      %td= user.lastname
+      %td= user.ucard
+      %td= user.email
+      %td= user.course
+      %td= user.level
+      %td= user.approved
+      %td= link_to 'Change Approval status', edit_user_path(user)
+
+%br
+
+

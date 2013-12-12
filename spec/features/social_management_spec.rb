@@ -3,7 +3,12 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Social tests" do
-
+ before(:each) do
+ role = FactoryGirl.create(:role)
+	    user = FactoryGirl.create(:user)
+user.roles << role
+			login_as(user, :scope => :user)
+end
 		describe "Creating socials" do
 		  specify "I can create an social" do
 		    visit new_social_path

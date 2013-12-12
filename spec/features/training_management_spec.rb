@@ -3,7 +3,12 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Training tests" do
-
+ before(:each) do
+ role = FactoryGirl.create(:role)
+	    user = FactoryGirl.create(:user)
+user.roles << role
+			login_as(user, :scope => :user)
+end
 		describe "Creating trainings" do
 		  specify "I can create a training" do
 		    visit new_training_path

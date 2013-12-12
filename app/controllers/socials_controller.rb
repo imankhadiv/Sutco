@@ -1,5 +1,6 @@
 class SocialsController < ApplicationController
   before_action :set_social, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /socials
   def index

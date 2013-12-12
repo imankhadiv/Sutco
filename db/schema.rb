@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211134744) do
+ActiveRecord::Schema.define(version: 20131211152858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,15 +30,14 @@ ActiveRecord::Schema.define(version: 20131211134744) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
-    t.string   "position"
-    t.integer  "required_number"
-    t.integer  "available_number"
-    t.integer  "show_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "roles", ["show_id"], name: "index_roles_on_show_id", using: :btree
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -49,6 +48,18 @@ ActiveRecord::Schema.define(version: 20131211134744) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "show_roles", force: true do |t|
+    t.string   "name"
+    t.string   "position"
+    t.integer  "required_number"
+    t.integer  "available_number"
+    t.integer  "show_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "show_roles", ["show_id"], name: "index_show_roles_on_show_id", using: :btree
 
   create_table "shows", force: true do |t|
     t.string   "name"

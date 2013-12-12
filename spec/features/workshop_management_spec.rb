@@ -3,7 +3,12 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Workshop tests" do
-
+ before(:each) do
+ role = FactoryGirl.create(:role)
+	    user = FactoryGirl.create(:user)
+user.roles << role
+			login_as(user, :scope => :user)
+end
 		describe "Creating workshops" do
 		  specify "I can create a workshop" do
 		    visit new_workshop_path
