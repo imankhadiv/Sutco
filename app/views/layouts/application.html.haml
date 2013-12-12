@@ -36,47 +36,48 @@
             = link_to :root, class: 'navbar-brand' do
               SUTCo
             
-          .collapse.navbar-collapse    
-            %ul.nav.navbar-nav
-              = navbar_link_to :root, title: "Go to your dashboard", identifier: :dashboard do
-                %i.icon-dashboard
-                Home
-            %ul.nav.navbar-nav
-              = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
-                %i.icon-calendar
-                Event Calendar
-            %ul.nav.navbar-nav
-              = navbar_link_to :shows, title: "Shows", identifier: :shows do
-                %i.icon-film
-                Shows
-            %ul.nav.navbar-nav
-              = navbar_link_to :fohs, title: "Front of House", identifier: :fohs do
-                %i.icon-home
-                Front of House
-            %ul.nav.navbar-nav
-              = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
-                %i.icon-shopping-cart
-                Workshops
-            %ul.nav.navbar-nav
-              = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
-                %i.icon-tasks
-                Trainings
-            %ul.nav.navbar-nav
-              = navbar_link_to :users, title: "Users", identifier: :users do
-                %i.icon-user
-                Users
-            %ul.nav.navbar-nav
-              -if user_signed_in?
-                // %h1= "Logged in as <strong><%= current_user.email %></strong>."
+          .collapse.navbar-collapse
+            -if user_signed_in?
+              %ul.nav.navbar-nav
+                = navbar_link_to "pages/welcome", title: "Go to your dashboard", identifier: :dashboard do
+                  %i.icon-dashboard
+                  Home
+              %ul.nav.navbar-nav
+                = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
+                  %i.icon-calendar
+                  Event Calendar
+              %ul.nav.navbar-nav
+                = navbar_link_to :shows, title: "Shows", identifier: :shows do
+                  %i.icon-film
+                  Shows
+              %ul.nav.navbar-nav
+                = navbar_link_to :fohs, title: "Front of House", identifier: :fohs do
+                  %i.icon-home
+                  Front of House
+              %ul.nav.navbar-nav
+                = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
+                  %i.icon-shopping-cart
+                  Workshops
+              %ul.nav.navbar-nav
+                = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
+                  %i.icon-tasks
+                  Trainings
+              %ul.nav.navbar-nav
+                = navbar_link_to :users, title: "Users", identifier: :users do
+                  %i.icon-user
+                  Users
+              %ul.nav.navbar-nav
                 = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'  |
                 = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
-              -else
-                = navbar_link_to new_user_registration_path, title: "Sign UP", identifier: :signup do
-                  %i.icon-user
-                  Sign Up
-                = navbar_link_to new_user_session_path, title: "Log In", identifier: :login do
-                  %i.icon-user
-                  Log In
+            -#-else
+            -#  %ul.nav.navbar-nav
+            -#    = navbar_link_to new_user_registration_path, title: "Sign UP", identifier: :signup do
+            -#      %i.icon-user
+            -#      Sign Up
+            -#  %ul.nav.navbar-nav
+            -#    = navbar_link_to new_user_session_path, title: "Log In", identifier: :login do
+            -#      %i.icon-user
+            -#      Log In
 
 
       #navbar-background

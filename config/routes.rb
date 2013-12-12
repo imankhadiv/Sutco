@@ -23,6 +23,6 @@ Team10MiniProject::Application.routes.draw do
   resources :socials
 
   get "pages/awaiting"
-
-  root 'pages#welcome'
+  get "pages/welcome"
+  root 'calendars#index'
 end
