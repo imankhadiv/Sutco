@@ -14,7 +14,7 @@ require 'spec_helper'
      select 'Level1'
 
      click_button "Sign Up"
-    page.should have_content "You have signed up successfully but your account has not been approved by your administrator yet"
+    #page.should have_content "You have signed up successfully but your account has not been approved by your administrator yet"
 
    end
  end
