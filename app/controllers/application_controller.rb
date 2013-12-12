@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
 
     redirect_to root_path
   end
+  before_filter do
+  resource = controller_name.singularize.to_sym
+  method = "#{resource}_params"
+  params[resource] &&= send(method) if respond_to?(method, true)
+end
   # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
   rescue_from ActiveRecord::RecordNotFound do
     render template: 'errors/not_found', status: 404
