@@ -1,0 +1,11 @@
+= simple_form_for(@show_date) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :date
+    = f.input :time
+    = f.association :show
+
+  .form-actions
+    = f.button :submit

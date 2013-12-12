@@ -1,5 +1,7 @@
 Team10MiniProject::Application.routes.draw do
 
+  resources :show_dates
+
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
 
   resources :training_attendances
