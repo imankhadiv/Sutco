@@ -26,7 +26,9 @@ $(function (){
 	$('#social_time').timepicker();
 	$('#training_date').datepicker();
 	$('#training_time').timepicker();
-	$('#show_date_date').datepicker();
+	$('#show_date').datepicker();
+	$('#show_show_dates_date').datepicker();
+
 });
 
 $(function remove_fields(link) {
