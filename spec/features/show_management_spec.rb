@@ -11,10 +11,8 @@ user.roles << role
 end
 		describe "Creating shows" do
 		  specify "I can create a show" do
-		pending
 		    visit new_show_path
 		    fill_in "Name", with: "Show 1"
-		    fill_in "Image", with: ""
 		    fill_in "Director", with: "Some Director"
 		    fill_in "Stage manager", with: "Some Stage manager"
 		    fill_in "Producer", with: "Some Producer"
@@ -24,8 +22,6 @@ end
 		    last_nested_fields = all('.fields').last 
 		    within(last_nested_fields) do
 		      fill_in "Title", with: "Show 1"
-		      select_date('2013/December/12', :from => 'Date')
-		      select Time.now.strftime("%I:%M%p"), :from => 'Time'
 		    end
 
 		    click_button "Create Show"

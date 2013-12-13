@@ -62,11 +62,9 @@ end
 	describe "Create events in calendar" do	
 		describe "Create a show in calendar" do	
 			 specify "I can create a show in calendar view" do
-pending
 visit calendars_path
 				  click_link "Create New Show"
 				  fill_in "Name", with: "Show 1"
-			    fill_in "Image", with: ""
 			    fill_in "Director", with: "Some Director"
 			    fill_in "Stage manager", with: "Some Stage manager"
 			    fill_in "Producer", with: "Some Producer"

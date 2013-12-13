@@ -4,5 +4,5 @@
   = f.label :title, "Date"
   = f.date_select :date,:value => Date.today
   = f.label :title, "Time"
-  = f.time_select :date,:value => Time.now.strftime("%I:%M%p") 
+  = f.time_select :time,:value => Time.now.strftime("%I:%M%p") 
   = link_to_remove_fields "remove", f
