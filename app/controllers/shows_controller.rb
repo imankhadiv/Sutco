@@ -56,7 +56,7 @@ class ShowsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def show_params
-       params.require(:show).permit(:name, :image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :date, :time, :_destroy])
+       params.require(:show).permit(:name, :image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :title, :date, :time, :_destroy])
     end
 
     def set_nav_identifier

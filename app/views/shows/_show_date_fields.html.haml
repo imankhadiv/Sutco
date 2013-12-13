@@ -1,0 +1,11 @@
+%p.fields
+  / = f.label :title, "Title"
+  / = f.text_field :title
+  / = f.label :date, "Date"
+  / = f.text_field :date, as: :bootstrap_datepicker
+  / = f.label :time, "Time"
+  / = f.text_field :time, as: :bootstrap_timepicker
+  = f.input :title
+  = f.input :date
+  = f.input :time
+  = link_to_remove_fields "remove", f

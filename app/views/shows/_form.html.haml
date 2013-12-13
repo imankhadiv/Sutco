@@ -1,16 +1,16 @@
 = simple_form_for(@show) do |f|
   = f.error_notification
-
-  .form-inputs
-    = f.input :name
-    = f.input :image
-    = f.input :director
-    = f.input :stage_manager
-    = f.input :producer
-    = f.input :synopsis
-    = f.fields_for :show_dates do |u|
-      = u.input :title
-      = u.input :date
-      = u.input :time
+  %p
+    .form-inputs
+      = f.input :name
+      = f.input :image
+      = f.input :director
+      = f.input :stage_manager
+      = f.input :producer
+      = f.input :synopsis
+      = f.fields_for :show_dates do |u|
+        = render 'show_date_fields', :f => u
+  %p
+    = link_to_add_fields "Add Date", f, :show_dates
   .form-actions
     = f.button :submit
