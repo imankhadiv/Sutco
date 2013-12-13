@@ -15,6 +15,7 @@ class ShowsController < ApplicationController
   # GET /shows/new
   def new
     @show = Show.new
+    @show.show_dates.build
   end
 
   # GET /shows/1/edit
@@ -55,7 +56,7 @@ class ShowsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def show_params
-      params.require(:show).permit(:name, :image, :director, :stage_manager, :producer, :synopsis)
+       params.require(:show).permit(:name, :image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :date, :time, :_destroy])
     end
 
     def set_nav_identifier

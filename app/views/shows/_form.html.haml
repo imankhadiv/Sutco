@@ -8,6 +8,9 @@
     = f.input :stage_manager
     = f.input :producer
     = f.input :synopsis
-
+    = f.fields_for :show_dates do |u|
+      = u.input :title
+      = u.input :date
+      = u.input :time
   .form-actions
     = f.button :submit

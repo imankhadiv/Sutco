@@ -17,7 +17,7 @@ gem 'cancan'
 
 gem 'will_paginate'
 gem 'draper'
-
+gem "nested_form"
 gem "watu_table_builder", :require => "table_builder"
 gem 'event-calendar', :require => 'event_calendar'
 gem 'bootstrap-datetimepicker-rails'

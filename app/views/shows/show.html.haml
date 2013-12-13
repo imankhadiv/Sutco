@@ -19,6 +19,14 @@
   %b Synopsis:
   = @show.synopsis
 
+%p
+  %b Date:
+  -@show.show_dates.each do |c|
+    %tr
+      %td= c.date
+      %td= c.time.strftime("%I:%M%p")
+      %td= link_to 'Remove', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
+%p
 = link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,shows_path)
 \|
 = link_to('<i class="icon-edit-sign"></i> Edit'.html_safe,edit_social_path(@show))
