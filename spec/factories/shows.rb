@@ -11,5 +11,6 @@
      director "Some Director"
      producer "Some Producer"
      synopsis "Some Description"
+     stage_manager "Some Stage Manager"
    end
  end

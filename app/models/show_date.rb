@@ -1,8 +1,8 @@
 class ShowDate < ActiveRecord::Base
   belongs_to :show
-  validates :title, :date, :time, presence: true
-  validate :show_date_cannot_be_in_the_past
-  validate :show_time_cannot_be_in_the_past
+  #validates :title, :date, :time, presence: true
+  #validate :show_date_cannot_be_in_the_past
+  #validate :show_time_cannot_be_in_the_past
 
 
   def show_date_cannot_be_in_the_past

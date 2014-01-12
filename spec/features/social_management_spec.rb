@@ -36,7 +36,7 @@ end
 		
 		  let!(:social) { FactoryGirl.create(:social) }
 		
-		  specify "Given an social exists I can update it" do
+		  specify "Given a social exists I can update it" do
 		    visit socials_path
 		    click_link "Edit"
 		    fill_in "Title", with: "Social 2"
