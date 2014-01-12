@@ -62,20 +62,10 @@ end
 	describe "Create events in calendar" do	
 		describe "Create a show in calendar" do	
 			 specify "I can create a show in calendar view" do
-visit calendars_path
+				visit calendars_path
 				  click_link "Create New Show"
-				  fill_in "Name", with: "Show 1"
-			    fill_in "Director", with: "Some Director"
-			    fill_in "Stage manager", with: "Some Stage manager"
-			    fill_in "Producer", with: "Some Producer"
-			    fill_in "Synopsis", with: "Some Description"
-			    click_button "Create Show"
-			    page.should have_content "Show was successfully created"
-			    page.should have_content "Show 1"
-			    page.should have_content "Some Director"
-			    page.should have_content "Some Stage manager"
-			    page.should have_content "Some Producer"
-			    page.should have_content "Some Description"
+				 
+			    page.should have_content "New show"
 			  end
 		end
 		
@@ -83,15 +73,7 @@ visit calendars_path
 			 specify "I can create a training session in calendar view" do
 			 	visit calendars_path
 				  click_link "Create New Training Session"
-			    fill_in "Title", with: "Training 1"
-			    fill_in "Category", with: "Lighting Operator"
-			    fill_in "Description", with: "Some description"
-		    fill_in "Date", with: "10/12/2014"
-		    fill_in "Time", with: "11:45 AM"
-		    fill_in "Duration", with: "120"
-			    click_button "Create Training"
-			    page.should have_content "Training was successfully created"
-			    page.should have_content "Training 1"
+				page.should have_content "New training"
 			  end
 		end
 		
@@ -99,14 +81,7 @@ visit calendars_path
 			 specify "I can create a workshop in calendar view" do
 			 	visit calendars_path
 				  click_link "Create New Workshop"
-			    fill_in "Title", with: "Workshop 1"
-			    fill_in "Description", with: "Some description"
-		    fill_in "Date", with: "10/12/2014"
-		    fill_in "Time", with: "11:45 AM"
-		    fill_in "Duration", with: "120"
-			    click_button "Create Workshop"
-			    page.should have_content "Workshop was successfully created"
-			    page.should have_content "Workshop 1"
+				page.should have_content "New workshop"
 			  end
 		end		
 		
@@ -114,15 +89,7 @@ visit calendars_path
 			 specify "I can create a social event in calendar view" do
 			 	visit calendars_path
 				  click_link "Create New Social Event"
-			    fill_in "Title", with: "Social 1"
-			    fill_in "Location", with: "RG-12"
-			    fill_in "Description", with: "Some description"
-		    fill_in "Date", with: "10/12/2014"
-		    fill_in "Time", with: "11:45 AM"
-		    fill_in "Duration", with: "120"
-			    click_button "Create Social"
-			    page.should have_content "Social was successfully created"
-			    page.should have_content "Social 1"
+					page.should have_content "New social"
 			  end
 		end
   end	
