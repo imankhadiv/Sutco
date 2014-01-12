@@ -1,9 +1,12 @@
 class ShowDate < ActiveRecord::Base
   belongs_to :show
-  #validates :title, :date, :time, presence: true
+  #validates :date, :time, presence: true
   #validate :show_date_cannot_be_in_the_past
   #validate :show_time_cannot_be_in_the_past
 
+  def title
+    show.name
+  end
 
   def show_date_cannot_be_in_the_past
     errors.add(:date, "can't be in the past") if

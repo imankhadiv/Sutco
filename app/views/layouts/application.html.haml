@@ -39,7 +39,7 @@
           .collapse.navbar-collapse
             -if user_signed_in?
               %ul.nav.navbar-nav
-                = navbar_link_to "pages/welcome", title: "Go to your dashboard", identifier: :dashboard do
+                = navbar_link_to "/pages/welcome", title: "Go to your dashboard", identifier: :dashboard do
                   %i.icon-dashboard
                   Home
               %ul.nav.navbar-nav
