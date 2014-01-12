@@ -8,6 +8,7 @@ class ShowDatesController < ApplicationController
 
   # GET /show_dates/1
   def show
+	redirect_to @show_date.show
   end
 
   # GET /show_dates/new
