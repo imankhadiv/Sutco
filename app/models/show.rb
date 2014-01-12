@@ -5,4 +5,5 @@ class Show < ActiveRecord::Base
   validates :name, :director, :stage_manager, :producer, :synopsis, presence: true
 
 
+
 end

@@ -1,5 +1,9 @@
+- if @show.errors.any?
+  -@show.errors.full_messages.each do |msg|
+    %li=msg
+
 = simple_form_for(@show) do |f|
-  = f.error_notification
+  //= f.error_notification
   %p
     .form-inputs
       = f.input :name
