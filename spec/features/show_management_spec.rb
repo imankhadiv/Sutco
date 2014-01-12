@@ -13,13 +13,17 @@ end
 		  specify "I can create a show" do
 		    visit new_show_path
 		    fill_in "Name", with: "Show 1"
-		    fill_in "Image", with: ""
 		    fill_in "Director", with: "Some Director"
 		    fill_in "Stage manager", with: "Some Stage manager"
 		    fill_in "Producer", with: "Some Producer"
 		    fill_in "Synopsis", with: "Some Description"
-		    #fill_in "Date", with: "10/12/2013"
-		    #fill_in "Time", with: "11:45 AM"
+
+		    click_on "Add Date"
+		    last_nested_fields = all('.fields').last 
+		    within(last_nested_fields) do
+		      fill_in "Title", with: "Show 1"
+		    end
+
 		    click_button "Create Show"
 		    page.should have_content "Show was successfully created"
 		    page.should have_content "Show 1"

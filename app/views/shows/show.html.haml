@@ -4,8 +4,7 @@
   %b Name:
   = @show.name
 %p
-  %b Poster:
-  = image_tag @show.image, alt: "No Poster", size: "300x300"
+  = image_tag @show.image_url, alt: "No Poster"#, size: "480x300"
 %p
   %b Director:
   = @show.director
@@ -19,8 +18,18 @@
   %b Synopsis:
   = @show.synopsis
 
+%p
+  -if !@show.show_dates.empty?
+    %b Date:
+    -@show.show_dates.each do |c|
+      %br
+      %tr
+        %td= c.date
+        %td= c.time.strftime("%I:%M%p")
+        %td= link_to 'Remove', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
+%p
 = link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,shows_path)
 \|
-= link_to('<i class="icon-edit-sign"></i> Edit'.html_safe,edit_social_path(@show))
+= link_to('<i class="icon-edit-sign"></i> Edit'.html_safe,edit_show_path(@show))
 \|
 = link_to('<i class="icon-trash"></i> Delete'.html_safe,@show, :method => :delete, :data => { :confirm => 'Are you sure?'})

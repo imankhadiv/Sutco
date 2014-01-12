@@ -15,8 +15,9 @@ end
 		    fill_in "Title", with: "Social 1"
 		    fill_in "Location", with: "RG-12"
 		    fill_in "Description", with: "Some description"
-		    fill_in "Date", with: "10/12/2013"
+		    fill_in "Date", with: "10/12/2014"
 		    fill_in "Time", with: "11:45 AM"
+		    fill_in "Duration", with: "120"
 		    click_button "Create Social"
 		    page.should have_content "Social was successfully created"
 		    page.should have_content "Social 1"
@@ -36,7 +37,7 @@ end
 		
 		  let!(:social) { FactoryGirl.create(:social) }
 		
-		  specify "Given an social exists I can update it" do
+		  specify "Given a social exists I can update it" do
 		    visit socials_path
 		    click_link "Edit"
 		    fill_in "Title", with: "Social 2"

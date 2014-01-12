@@ -1,5 +1,9 @@
+- if @training.errors.any?
+  -@training.errors.full_messages.each do |msg|
+    %li=msg
+
 = simple_form_for(@training) do |f|
-  = f.error_notification
+  //= f.error_notification
 
   .form-inputs
     = f.input :title
@@ -9,7 +13,7 @@
     = f.text_field :date, as: :bootstrap_datepicker
     %br= f.label :time
     = f.text_field :time, as: :bootstrap_timepicker
-    = f.input :duration
+    = f.input :duration, :label => "Duration (in minutes)"
     %br
 
   .form-actions

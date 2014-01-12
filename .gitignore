@@ -13,5 +13,6 @@ doc/*
 .yardoc/*
 .sass-cache/
 vendor/bundle/*
+public/uploads
 
 *.swp
