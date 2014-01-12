@@ -10,7 +10,7 @@
      title "Social 1"
      location "RG-12"
      description "Some Description"
-     date Date.today
+     date Date.tomorrow
      time Time.now
      duration 60
    end

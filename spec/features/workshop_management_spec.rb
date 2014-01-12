@@ -14,8 +14,9 @@ end
 		    visit new_workshop_path
 		    fill_in "Title", with: "Workshop 1"
 		    fill_in "Description", with: "Some description"
-		    fill_in "Date", with: "10/12/2013"
+		    fill_in "Date", with: "10/12/2014"
 		     fill_in "Time", with: "11:45 AM"
+		    fill_in "Duration", with: "120"
 		    click_button "Create Workshop"
 		    page.should have_content "Workshop was successfully created"
 		    page.should have_content "Workshop 1"
