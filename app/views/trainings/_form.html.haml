@@ -1,5 +1,9 @@
+- if @training.errors.any?
+  -@training.errors.full_messages.each do |msg|
+    %li=msg
+
 = simple_form_for(@training) do |f|
-  = f.error_notification
+  //= f.error_notification
 
   .form-inputs
     = f.input :title
