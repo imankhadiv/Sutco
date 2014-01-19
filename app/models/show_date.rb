@@ -1,5 +1,6 @@
 class ShowDate < ActiveRecord::Base
   belongs_to :show
+  has_many :fohs, :dependent => :destroy
   validates :date, :time, presence: true
   validate :show_date_cannot_be_in_the_past
   validate :show_time_cannot_be_in_the_past

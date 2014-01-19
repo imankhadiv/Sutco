@@ -1,7 +1,5 @@
 class FohsController < ApplicationController
   before_action :set_foh, only: [:show, :edit, :update, :destroy]
-  before_filter :set_nav_identifier
-  load_and_authorize_resource
 
   # GET /fohs
   def index
@@ -14,6 +12,7 @@ class FohsController < ApplicationController
 
   # GET /fohs/new
   def new
+    @show_date = ShowDate.find(params[:show_date_id])
     @foh = Foh.new
   end
 
@@ -23,10 +22,12 @@ class FohsController < ApplicationController
 
   # POST /fohs
   def create
-    @foh = Foh.new(foh_params)
+    @show_date = ShowDate.find(params[:show_date_id])
+    @foh = @show_date.fohs.create(foh_params)
+    @foh.user_id = current_user.id
 
     if @foh.save
-      redirect_to @foh, notice: 'Foh was successfully created.'
+      redirect_to @show_date, notice: 'You have successfully applied for the position.'
     else
       render action: 'new'
     end
@@ -55,11 +56,6 @@ class FohsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def foh_params
-      params.require(:foh).permit(:position, :required_number, :available_number, :date, :show_id)
-    end
-
-
-    def set_nav_identifier
-	@current_nav_identifier	= :fohs
+      params.require(:foh).permit(:user_id, :show_date_id, :position_id, :phone_number)
     end
 end
