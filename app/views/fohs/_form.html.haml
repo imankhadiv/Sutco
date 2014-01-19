@@ -1,12 +1,18 @@
+- if @foh.errors.any?
+  -@foh.errors.full_messages.each do |msg|
+    %li=msg
+
 = simple_form_for([@show_date,@foh]) do |f|
-  = f.error_notification
   %h2= "Hi, #{current_user.firstname}"
   = "The following positions are available for #{@show_date.title} on #{@show_date.date}. Please select your desired position, fill in your phone number and click submit"
   %p
   .form-inputs
     .field
       = f.label :available_positions
-      = f.collection_radio_buttons(:position_id, Position.all, :id, :name)
+      = f.collection_radio_buttons(:position_id, Position.where.not(id: Position.joins(:fohs).where(fohs: {show_date_id: @show_date.id})), :id, :name, :item_wrapper_class => 'radio inline', :item_wrapper_tag => :label, :collection_wrapper_tag=> :div, :collection_wrapper_class => "controls")
+
+
+
     .field
       = f.input :phone_number
   %p

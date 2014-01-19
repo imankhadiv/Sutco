@@ -20,3 +20,12 @@ role1 = Role.create :name=>"TechManager"
 
 user1.roles << role1
 
+Position.create :name =>"Manager"
+Position.create :name =>"Box Officer"
+Position.create :name =>"Refreshment Officer"
+Position.create :name =>"Usher 1"
+Position.create :name =>"Usher 2"
+Position.create :name =>"Usher 3"
+Position.create :name =>"Usher 4"
+
+
