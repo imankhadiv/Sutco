@@ -1,6 +1,6 @@
 %p#notice= notice
+%p
+  %b Position applied for:
+  = @foh.position.name
+  = link_to 'Cancel this application', [@show_date, @foh], method: :delete, :data => { :confirm => 'Are you sure?' }
 
-
-= link_to 'Edit', edit_foh_path(@foh)
-\|
-= link_to 'Back', fohs_path

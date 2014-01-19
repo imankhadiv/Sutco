@@ -8,11 +8,17 @@ class FohsController < ApplicationController
 
   # GET /fohs/1
   def show
+    @show_date = ShowDate.find(params[:show_date_id])
+
   end
 
   # GET /fohs/new
   def new
     @show_date = ShowDate.find(params[:show_date_id])
+    @positions = Position.where.not(id: Position.joins(:fohs).where(fohs: {show_date_id: @show_date.id}))
+    if @positions.empty?
+      redirect_to @show_date, notice: 'All positions have been filled. Try a different date'
+    end
     @foh = Foh.new
   end
 
@@ -23,6 +29,7 @@ class FohsController < ApplicationController
   # POST /fohs
   def create
     @show_date = ShowDate.find(params[:show_date_id])
+
     @foh = @show_date.fohs.create(foh_params)
     @foh.user_id = current_user.id
 
@@ -44,8 +51,9 @@ class FohsController < ApplicationController
 
   # DELETE /fohs/1
   def destroy
+    @show_date = ShowDate.find(params[:show_date_id])
     @foh.destroy
-    redirect_to fohs_url, notice: 'Foh was successfully destroyed.'
+    redirect_to @show_date, notice: 'Foh was successfully destroyed.'
   end
 
   private

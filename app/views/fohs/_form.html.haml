@@ -9,7 +9,7 @@
   .form-inputs
     .field
       = f.label :available_positions
-      = f.collection_radio_buttons(:position_id, Position.where.not(id: Position.joins(:fohs).where(fohs: {show_date_id: @show_date.id})), :id, :name, :item_wrapper_class => 'radio inline', :item_wrapper_tag => :label, :collection_wrapper_tag=> :div, :collection_wrapper_class => "controls")
+      = f.collection_radio_buttons(:position_id, @positions, :id, :name, :item_wrapper_class => 'radio inline', :item_wrapper_tag => :label, :collection_wrapper_tag=> :div, :collection_wrapper_class => "controls")
 
 
 
