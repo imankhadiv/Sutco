@@ -8,7 +8,7 @@ class ShowDatesController < ApplicationController
 
   # GET /show_dates/1
   def show
-	redirect_to @show_date.show
+	  redirect_to @show_date.show
   end
 
   # GET /show_dates/new
@@ -43,7 +43,7 @@ class ShowDatesController < ApplicationController
   # DELETE /show_dates/1
   def destroy
     @show_date.destroy
-    redirect_to show_dates_url, notice: 'Show date was successfully destroyed.'
+    redirect_to @show_date.show, notice: 'Show date was successfully destroyed.'
   end
 
   private

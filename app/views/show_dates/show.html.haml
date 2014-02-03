@@ -13,6 +13,8 @@
   %b Show:
   = @show_date.show
 
+= link_to 'FOH', new_show_date_foh_path(@show_date)
 = link_to 'Edit', edit_show_date_path(@show_date)
+
 \|
 = link_to 'Back', show_dates_path

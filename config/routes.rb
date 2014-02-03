@@ -1,6 +1,10 @@
 Team10MiniProject::Application.routes.draw do
 
-  resources :show_dates
+  resources :positions
+
+  resources :show_dates do
+    resources :fohs
+  end
 
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
 
@@ -14,7 +18,7 @@ Team10MiniProject::Application.routes.draw do
 
   resources :users
 
-  resources :fohs
+  #resources :fohs
 
   resources :show_roles
 

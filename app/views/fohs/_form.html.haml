@@ -1,12 +1,20 @@
-= simple_form_for(@foh) do |f|
-  = f.error_notification
+- if @foh.errors.any?
+  -@foh.errors.full_messages.each do |msg|
+    %li=msg
 
+= simple_form_for([@show_date,@foh]) do |f|
+  %h2= "Hi, #{current_user.firstname}"
+  = "The following positions are available for #{@show_date.title} on #{@show_date.date}. Please select your desired position, fill in your phone number and click submit"
+  %p
   .form-inputs
-    = f.input :position, collection: ['FOH Manager','Usher']
-    = f.input :required_number
-    = f.input :available_number
-    = f.input :date
-    = f.association :show
+    .field
+      = f.label :available_positions
+      = f.collection_radio_buttons(:position_id, @positions, :id, :name, :item_wrapper_class => 'radio inline', :item_wrapper_tag => :label, :collection_wrapper_tag=> :div, :collection_wrapper_class => "controls")
 
+
+
+    .field
+      = f.input :phone_number
+  %p
   .form-actions
-    = f.button :submit
+    = f.submit "Apply"
