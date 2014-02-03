@@ -29,6 +29,7 @@ class FohsController < ApplicationController
   # POST /fohs
   def create
     @show_date = ShowDate.find(params[:show_date_id])
+    @positions = Position.where.not(id: Position.joins(:fohs).where(fohs: {show_date_id: @show_date.id}))
     @foh = @show_date.fohs.create(foh_params)
     @foh.user_id = current_user.id
 
