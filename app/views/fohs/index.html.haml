@@ -1,17 +1,2 @@
-%h1 Listing fohs
+%h1 Listing front of house positions
 
-%table
-  %tr
-    %th
-    %th
-    %th
-
-  - @fohs.each do |foh|
-    %tr
-      %td= link_to 'Show', foh
-      %td= link_to 'Edit', edit_foh_path(foh)
-      %td= link_to 'Destroy', foh, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Foh', new_foh_path
