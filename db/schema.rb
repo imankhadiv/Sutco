@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20140119161048) do
   add_index "show_roles", ["show_id"], name: "index_show_roles_on_show_id", using: :btree
 
   create_table "shows", force: true do |t|
-    t.string   "name"
     t.string   "image"
     t.string   "director"
     t.string   "stage_manager"
@@ -86,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140119161048) do
     t.text     "synopsis"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "socials", force: true do |t|

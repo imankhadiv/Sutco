@@ -7,7 +7,7 @@
 #calendar td,
 #calendar th {
   font-family: "Lucida Grande",arial,helvetica,sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   padding: 6px;
   border: 1px solid #999;
 }
@@ -16,6 +16,7 @@
   background: #DDD;
   color: #666;
   text-align: center;
+  font-weight: bold;
   width: 14.2857142857143%;
 }
 
@@ -24,6 +25,7 @@
   color: #777;
   height: 80px;
   vertical-align: top;
+  font-weight: bold;
   font-size: 16px;
 }
 
@@ -59,6 +61,57 @@
 
 }
 
+#calendar ulshow a{
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  text-align: center;  
+  font-weight: bold;
+  vertical-align: center;
+  color: #00DD00;
+  display: block;
+}
+
+#calendar ulsocial a{
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  text-align: center;  
+  font-weight: bold;
+  vertical-align: center;
+  color: #0033CC;
+  display: block;
+     
+
+}
+
+#calendar ultraining a{
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  text-align: center; 
+  font-weight: bold;
+  vertical-align: center;
+  color: #FF6600;
+  display: block;
+
+}
+
+#calendar ulworkshop a{
+  margin: 0;
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 14px;
+  text-align: center;  
+  font-weight: bold;
+  vertical-align: center;
+   color: #3399FF;
+  display: block;
+
+}
 #calendar li {
   margin: 0;
   padding: 0;

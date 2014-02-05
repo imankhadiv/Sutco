@@ -17,4 +17,8 @@ class ShowDate < ActiveRecord::Base
     errors.add(:time, "can't be in the past") if
         date == Date.today and !time.blank? and time < Time.now
   end
+
+  def return_type
+    "show_date"
+  end
 end
