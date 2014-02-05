@@ -72,10 +72,10 @@ end
 		
 		   specify "Given a show exists I can delete it" do
 		
-		     visit shows_path
-		    # click_link "Destroy"
-		    # page.should_not have_content show.name
-		    # page.should have_content "Show was successfully destroyed"
+		     visit shows_path#1
+
+         #page.should_not have_content show.name
+		     #page.should have_content "Show was successfully destroyed"
 		   end
 		 end
 
