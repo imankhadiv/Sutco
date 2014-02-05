@@ -48,7 +48,7 @@ namespace :deploy do
     # Symlink the database configuration
     run "ln -nfs #{File.join(shared_path, 'config', 'database.yml')} #{File.join(release_path,'config','database.yml')}"
     # Symlink the upload directory
-    # run "ln -nfs #{File.join(shared_path, 'uploads')} #{File.join(release_path, 'uploads')}"
+    run "ln -nfs #{File.join(shared_path, 'uploads')} #{File.join(release_path, 'uploads')}"
     # No need to symlink if we're not doing caching
     #run "ln -nfs #{shared_path}/cache #{release_path}/public/cache"
   end

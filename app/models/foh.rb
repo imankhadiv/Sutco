@@ -5,6 +5,6 @@ class Foh < ActiveRecord::Base
 
   validates :position, :user, :phone_number, presence: true
   validates :phone_number, :numericality => true, :length => { :minimum => 10, :maximum => 11 }
-  #validates :show_date, uniqueness: {scope: :user,  message: "You can only apply for one position for a particular show date" }
+  validates :show_date, uniqueness: {scope: :user,  message: "You can only apply for one position for a particular show date" }
 
 end
