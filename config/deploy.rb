@@ -35,13 +35,13 @@ namespace :deploy do
   end
 
 
-  desc "Set up shared folders"
-  task :setup_shared do
-     # Create the upload directory folder
-     run "mkdir -p #{File.join(shared_path, 'uploads')}"
-     # 2775 - rwxrwsr-x (setgid for group access to folder)
-     run "chmod 2775 #{File.join(shared_path, 'uploads')}"
-  end
+  #desc "Set up shared folders"
+  #task :setup_shared do
+  #   # Create the upload directory folder
+  #   run "mkdir -p #{File.join(shared_path, 'uploads')}"
+  #   # 2775 - rwxrwsr-x (setgid for group access to folder)
+  #   run "chmod 2775 #{File.join(shared_path, 'uploads')}"
+  #end
 
   desc "Symlink folders on each release."
   task :symlink_shared do
