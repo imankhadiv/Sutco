@@ -1,5 +1,6 @@
 class FohsController < ApplicationController
   before_action :set_foh, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /fohs
   def index

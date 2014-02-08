@@ -56,7 +56,6 @@
   padding-left: 3px;
   font-size: 11px;
   text-align: left;  
-  vertical-align: center;
   text-shadow: 5px 5px 5px #00FF00;
 
 }
@@ -68,7 +67,6 @@
   font-size: 14px;
   text-align: center;  
   font-weight: bold;
-  vertical-align: center;
   color: #00DD00;
   display: block;
 }
@@ -80,7 +78,6 @@
   font-size: 14px;
   text-align: center;  
   font-weight: bold;
-  vertical-align: center;
   color: #0033CC;
   display: block;
      
@@ -94,7 +91,6 @@
   font-size: 14px;
   text-align: center; 
   font-weight: bold;
-  vertical-align: center;
   color: #FF6600;
   display: block;
 
@@ -107,8 +103,7 @@
   font-size: 14px;
   text-align: center;  
   font-weight: bold;
-  vertical-align: center;
-   color: #3399FF;
+  color: #3399FF;
   display: block;
 
 }
