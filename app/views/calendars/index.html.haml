@@ -16,19 +16,19 @@
       = calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
       - calendar.day(:day_method => :date) do |date, events|
         = date.day    
-        %p    
+        %p
+
         - for event in events
-          - if(event.return_type.eql?"show_date")
+          - if(event.event_name.eql?'ShowDate')
             %ulshow
               = link_to h(event .title), event
-          - elsif(event.return_type.eql?"social")
+          - elsif(event.event_name.eql?"Social")
             %ulsocial
               = link_to h(event .title), event
-
-          - elsif(event.return_type.eql?"training")
+          - elsif(event.event_name.eql?"Training")
             %ultraining
               = link_to h(event .title), event
-          - elsif(event.return_type.eql?"workshop")
+          - elsif(event.event_name.eql?"Workshop")
             %ulworkshop
               = link_to h(event .title), event
 
