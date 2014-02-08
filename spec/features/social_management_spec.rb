@@ -26,7 +26,7 @@ end
 		  end
 		
 		  specify "I cannot create a social with blank fields" do
-		  	pending "input validation to be added"
+		  	#pending "input validation to be added"
 		    visit new_social_path
 		    click_button "Create Social"
 		    page.should have_content "can't be blank"
