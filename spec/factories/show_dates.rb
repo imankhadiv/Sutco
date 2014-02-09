@@ -7,14 +7,14 @@
 
 FactoryGirl.define do
 
-  # post factory with a `belongs_to` association for the user
+  # show_date factory with a `belongs_to` association for the show
   factory :show_date do
     date  Date.tomorrow
     time  Time.now
     show
   end
 
-  # user factory without associated posts
+  # show factory without associated show_dates
   factory :show do
     name "Show 1"
     director "Some Director"
@@ -22,7 +22,7 @@ FactoryGirl.define do
     synopsis "Some Description"
     stage_manager "Some Stage Manager"
 
-    # user_with_posts will create post data after the user has been created
+    # show_with_show_dates will create show_date data after the show has been created
     factory :show_with_show_dates do
       # posts_count is declared as an ignored attribute and available in
       # attributes on the factory, as well as the callback via the evaluator

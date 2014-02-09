@@ -1,31 +1,33 @@
+//Displays a List of Users for Admin use
+
 %h2 List of Users awaiting Approval
-%table
-  %tr
-    %th Name
-    %th Lastname
-    %th Ucard Number
-    %th Email
-    %th Course
-    %th Level
-    %th Approved
-    %th Actions
-
-
-  - @awaiting_users.each do |user|
+-if @awaiting_users.empty?
+  You have no unapproved users
+-else
+  %table
     %tr
-      %td= user.firstname
-      %td= user.lastname
-      %td= user.ucard
-      %td= user.email
-      %td= user.course
-      %td= user.level
-      %td= user.approved
-      %td= link_to 'Approve', edit_user_path(user)
+      %th Name
+      %th Lastname
+      %th Ucard Number
+      %th Email
+      %th Course
+      %th Level
+      %th Approved
+      %th Actions
 
+    - @awaiting_users.each do |user|
+      %tr
+        %td= user.firstname
+        %td= user.lastname
+        %td= user.ucard
+        %td= user.email
+        %td= user.course
+        %td= user.level
+        %td= user.approved
+        %td= link_to 'Approve User', edit_user_path(user)
 
 %br
-
-%h2 List of Current Users
+%h2 List of Currently Approved Users
 %table
   %tr
     %th Name

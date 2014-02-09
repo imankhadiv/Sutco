@@ -1,18 +1,17 @@
-%h1= "Set Approval status for #{@user.firstname} #{@user.lastname}"
+// User Edit page for admins
 
+%h1= "Edit Approval status and roles for #{@user.firstname} #{@user.lastname}"
 
 = simple_form_for(@user) do |f|
   = f.error_notification
 
+  // The approval status can be set to true and the role(s) of the user can be selected from the list of roles
   .form-inputs
-    = f.input :approved
+    = f.label "Approved: "
+    = f.check_box :approved
     = f.association :roles, as: :check_boxes
-
-
 
   .form-actions
     = f.button :submit
-
-
 
 =link_to 'Back', users_path

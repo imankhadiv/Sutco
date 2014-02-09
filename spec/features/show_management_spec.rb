@@ -3,12 +3,14 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Show tests" do
- before(:each) do
- role = FactoryGirl.create(:role)
-	    user = FactoryGirl.create(:user)
-user.roles << role
-			login_as(user, :scope => :user)
-end
+
+  before(:each) do
+      role = FactoryGirl.create(:role)
+      user = FactoryGirl.create(:user)
+      user.roles << role
+	    login_as(user, :scope => :user)
+  end
+
 		describe "Creating shows" do
 		  specify "I can create a show" do
 		    visit new_show_path
@@ -49,7 +51,6 @@ end
 		  specify "Given a show exists I can update it" do
 		    visit edit_show_path(show_with_show_dates.id)
         #(find(:css, 'i.icon-trash')).click
-
         page.should have_content "Editing show"
 		    fill_in "Name", with: "Show 2"
 		    fill_in "Director", with: "Some Director"
@@ -69,8 +70,7 @@ end
 		  end
 		end
 		
-		### No option for it ! 
-		
+		### No option for it !
 		
 		 describe "Deleting shows" do
 		
