@@ -1,5 +1,5 @@
 module ShowsHelper
-
+  # this method is implemented to display the show name and three different icons for view, edit and delet buttons.
   def show_name_links(show)
     content_tag :h3 do
       [ show.name,

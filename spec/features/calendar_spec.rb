@@ -2,13 +2,13 @@ require 'spec_helper'
 include Warden::Test::Helpers
 Warden.test_mode!
 
-describe "Calendar tests" do
- before(:each) do
- role = FactoryGirl.create(:role)
+  describe "Calendar tests" do
+    before(:each) do
+      role = FactoryGirl.create(:role)
 	    user = FactoryGirl.create(:user)
-user.roles << role
+      user.roles << role
 			login_as(user, :scope => :user)
-end
+    end
 
 	describe "View events in calendar" do			
 		describe "View trainings in calendar" do		
@@ -35,11 +35,9 @@ end
 		end
 		
 		describe "View shows in calendar" do		
-		  let!(:show) { FactoryGirl.create(:show) }		
-		  specify "Given a show exists I can view it in calendar" do
-		  	pending "shows to be added in calendar"
-		    visit calendars_path
-		    
+      let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
+      specify "Given a show exists I can view it in calendar" do
+        visit calendars_path
 		    page.should have_content "Show 1"
 				click_link "Show 1"
 		    page.should have_content "Show 1"

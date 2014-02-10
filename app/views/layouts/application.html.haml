@@ -2,7 +2,6 @@
 
 / %html
 /   %head
-/     %title Team10MiniProject
 /     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 /     = stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application"
 /     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application"
@@ -65,16 +64,6 @@
               %ul.nav.navbar-nav
                 = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'  |
                 = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
-            -#-else
-            -#  %ul.nav.navbar-nav
-            -#    = navbar_link_to new_user_registration_path, title: "Sign UP", identifier: :signup do
-            -#      %i.icon-user
-            -#      Sign Up
-            -#  %ul.nav.navbar-nav
-            -#    = navbar_link_to new_user_session_path, title: "Log In", identifier: :login do
-            -#      %i.icon-user
-            -#      Log In
-
 
       #navbar-background
       #main-container.container= yield

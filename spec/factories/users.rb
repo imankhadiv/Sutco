@@ -10,10 +10,12 @@
 #
 
 FactoryGirl.define do
-   factory :role do
-   name "TechManager"   
-end
+  #Defines a default role for user
+  factory :role do
+    name "TechManager"
+  end
 
+  #Defines a default user for use in the tests
   factory :user do
     email "user@sheffield.ac.uk"
     password "123456789"

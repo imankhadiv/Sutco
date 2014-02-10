@@ -1,4 +1,5 @@
 class WorkshopAttendancesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_workshop_attendance, only: [:show, :edit, :update, :destroy]
 
   # GET /workshop_attendances

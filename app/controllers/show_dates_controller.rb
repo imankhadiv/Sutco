@@ -1,4 +1,5 @@
 class ShowDatesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_show_date, only: [:show, :edit, :update, :destroy]
 
   # GET /show_dates

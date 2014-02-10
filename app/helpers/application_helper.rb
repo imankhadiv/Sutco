@@ -16,15 +16,13 @@ module ApplicationHelper
   def no_record_tr(colspan, text = 'No records to display')
     content_tag(:tr, content_tag(:td, text, colspan: colspan, class: 'text-center text-muted' ), class: 'tr-no-record')
   end
+
   def link_to_icon(icon_name,link_name,url_or_object, options={})
-    link_to(("<i class=#{icon_name}></i><span id='link_name'>#{link_name}</span>".html_safe),
+    link_to(("<div class='icon'><i class=#{icon_name}></i><span id=#{link_name}>#{link_name}</span></div>".html_safe),
 
   url_or_object,
     options )
   end
-
-
-
 
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
@@ -37,8 +35,5 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
-
-
-
 
 end

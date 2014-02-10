@@ -1,3 +1,10 @@
+#
+#
+# shows_controller.rb
+#
+# This is the controller class for Shows. Different users have different permissions to view, create, update and delete a show.
+
+#
 class ShowsController < ApplicationController
   load_and_authorize_resource
   before_action :set_show, only: [:show, :edit, :update, :destroy]
