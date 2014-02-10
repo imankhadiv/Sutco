@@ -3,7 +3,6 @@ class ShowRolesController < ApplicationController
   before_filter :set_nav_identifier
   # GET /roles
   def index
-    @roles = Role.all
   end
 
   # GET /roles/1
@@ -12,7 +11,6 @@ class ShowRolesController < ApplicationController
 
   # GET /roles/new
   def new
-    @role = Role.new
   end
 
   # GET /roles/1/edit
@@ -48,15 +46,12 @@ class ShowRolesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_role
-      @role = Role.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def role_params
-      params.require(:role).permit(:name, :position, :required_number, :available_number, :show_id)
     end
 
     def set_nav_identifier
-	@current_nav_identifier	= :roles
     end
 end
