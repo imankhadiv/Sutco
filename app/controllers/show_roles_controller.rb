@@ -1,3 +1,4 @@
+
 class ShowRolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
