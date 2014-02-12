@@ -15,4 +15,13 @@ class ShowDate < ActiveRecord::Base
     show.name
   end
 
+  def foh_available
+    # @show_date = ShowDate.find(params[:show_date_id])
+    positions = Position.where.not(id: Position.joins(:fohs).where(fohs: {show_date_id: id}))
+    if positions.empty?
+      return false
+    else
+      return true
+    end
+  end
 end
