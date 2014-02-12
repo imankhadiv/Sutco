@@ -10,7 +10,12 @@ Team10MiniProject::Application.routes.draw do
 
   resources :training_attendances
 
-  resources :trainings
+  resources :trainings do
+    member do
+      get :attend
+    end
+
+  end
 
   resources :workshop_attendances
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119161048) do
+ActiveRecord::Schema.define(version: 20140212124507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20140119161048) do
   add_index "show_roles", ["show_id"], name: "index_show_roles_on_show_id", using: :btree
 
   create_table "shows", force: true do |t|
+    t.string   "name"
     t.string   "image"
     t.string   "director"
     t.string   "stage_manager"
@@ -85,7 +86,6 @@ ActiveRecord::Schema.define(version: 20140119161048) do
     t.text     "synopsis"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
   end
 
   create_table "socials", force: true do |t|
@@ -108,6 +108,14 @@ ActiveRecord::Schema.define(version: 20140119161048) do
   end
 
   add_index "training_attendances", ["training_id"], name: "index_training_attendances_on_training_id", using: :btree
+
+  create_table "training_records", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "training_id"
+    t.boolean  "attended"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "trainings", force: true do |t|
     t.string   "title"
