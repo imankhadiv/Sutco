@@ -3,10 +3,10 @@ module ShowsHelper
   def show_name_links(show)
     content_tag :h3 do
     if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-      [ show.name,
-        link_to_icon('icon-desktop','View','View', show),
-        link_to_icon('icon-edit-sign','Edit','Edit', edit_show_path(show)),
-        link_to_icon('icon-trash','Delete','Delete', show, {
+      [ link_to(show.name,show),
+        link_to_icon('icon-desktop','View', show),
+        link_to_icon('icon-edit-sign','Edit', edit_show_path(show)),
+        link_to_icon('icon-trash','Delete', show, {
           confirm: 'Are you sure?',
           method: :delete
       })

@@ -2,7 +2,8 @@
   %h1 Shows
   
 = render @shows
-%a.btn.btn-success.btn-lg{href: new_show_path, role: "button"} Create New Show
+- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+  %a.btn.btn-success.btn-lg{href: new_show_path, role: "button"} Create New Show
 %br
 %br
 
