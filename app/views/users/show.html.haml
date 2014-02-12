@@ -1,9 +1,10 @@
+%h2 Profile
 %p
   %b Email:
   = current_user.email
 %p
   %b Name:
-  = current_user.firstname + current_user.lastname
+  = current_user.firstname + " " + current_user.lastname
 %p
   %b Course:
   = current_user.course
@@ -13,6 +14,23 @@
 %p
   %b Level:
   = current_user.level
+
+-if !@fohs.empty?
+  %h2 List of Front of house positions you have applied
+  %table
+    %tr
+      %th Show
+      %th Position
+      %th Date
+      %th Time
+
+    - @fohs.each do |foh|
+      %tr
+        %td= link_to foh.show_date.show.name, foh.show_date.show
+        %td= foh.position.name
+        %td= foh.show_date.date
+        %td= foh.show_date.time.strftime("%I:%M%p")
+
 /= link_to 'FOH', new_show_date_foh_path(@show_date)
 /= link_to 'Edit', edit_show_date_path(@show_date)
 

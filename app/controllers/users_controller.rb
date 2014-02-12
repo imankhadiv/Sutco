@@ -7,7 +7,7 @@
 #
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :show]
   before_filter :set_nav_identifier
   load_and_authorize_resource
 
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+	@fohs = Foh.where(user_id: @user)
   end
 
   #edit user attributes such as approval status or roles
