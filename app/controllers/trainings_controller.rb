@@ -46,6 +46,14 @@ class TrainingsController < ApplicationController
     @training.destroy
     redirect_to trainings_url, notice: 'Training was successfully destroyed.'
   end
+  def attend
+    userID = current_user.id
+    trainingID = params[:id]
+    TrainingRecord.create_new_record  userID, trainingID
+    redirect_to @training, notice: 'Registration successful.'
+
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
