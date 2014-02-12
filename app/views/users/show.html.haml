@@ -1,0 +1,20 @@
+%p
+  %b Email:
+  = current_user.email
+%p
+  %b Name:
+  = current_user.firstname + current_user.lastname
+%p
+  %b Course:
+  = current_user.course
+%p
+  %b Ucard Number:
+  = current_user.ucard
+%p
+  %b Level:
+  = current_user.level
+/= link_to 'FOH', new_show_date_foh_path(@show_date)
+/= link_to 'Edit', edit_show_date_path(@show_date)
+
+/\|
+/= link_to 'Back', show_dates_path

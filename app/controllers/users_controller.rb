@@ -20,6 +20,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   #edit user attributes such as approval status or roles
   def update
     if @user.update(user_params)

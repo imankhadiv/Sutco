@@ -13,6 +13,7 @@ class Ability
     if user.role? :member
       can :read, [Show, ShowDate]
       can :manage, [Foh]
+      can [:show, :update], User, :id=> user.id
     elsif user.role? :production_team
       can :manage, [Show, Workshop]
     elsif user.role? :senior_committee
@@ -24,9 +25,7 @@ class Ability
       can :manage, [Show, Workshop, Training, Calendar]
     elsif user.role? :committee
       can :manage, [Show, Workshop, Calendar]
-     # manage products, assets he owns
-     #can :manage, Product do |product|
-     # product.try(:owner) == user
+      
      #end
     end
   end

@@ -64,7 +64,8 @@
                     Users
               - else
                 %ul.nav.navbar-nav
-                  = navbar_link_to edit_user_registration_path, title: "Profile", identifier: :user do
+                  /= navbar_link_to edit_user_registration_path, title: "Profile", identifier: :user do
+                  = navbar_link_to user_path(current_user), title: "Profile", identifier: :user do
                     %i.icon-user
                     Profile
               %ul.nav.navbar-nav
