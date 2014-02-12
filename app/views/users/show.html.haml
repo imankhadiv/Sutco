@@ -32,7 +32,7 @@
         %td= foh.show_date.time.strftime("%I:%M%p")
 
 /= link_to 'FOH', new_show_date_foh_path(@show_date)
-/= link_to 'Edit', edit_show_date_path(@show_date)
+= link_to 'Update My Profile', edit_user_registration_path(@user)
 
 /\|
 /= link_to 'Back', show_dates_path
