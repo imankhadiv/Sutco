@@ -5,14 +5,11 @@ class TrainingRecord < ActiveRecord::Base
 
 
   def self.create_new_record userID, trainingID
-
-    record = TrainingRecord.new(user_id: userID, training_id: trainingID)
+    record = TrainingRecord.create(user_id: userID, training_id: trainingID)
   end
 
-  def self.registered_user
-
-
-
+  def self.training_applied userID, trainingID
+      TrainingRecord.where(user_id:userID,training_id:trainingID)
   end
 
 
