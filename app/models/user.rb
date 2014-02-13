@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /.+@sheffield.ac.uk\z/
   validates :ucard, :numericality => true
   has_and_belongs_to_many :roles
+  has_many :training_records
 
   # enable the required devise modules
   devise :database_authenticatable, :registerable,

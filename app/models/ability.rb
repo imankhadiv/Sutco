@@ -6,29 +6,35 @@
 
 class Ability
   include CanCan::Ability
-
   def initialize(user)
     user ||= User.new # guest user
-
     if user.role? :member
       can :read, [Show, ShowDate]
       can :manage, [Foh]
-    elsif user.role? :production_team
-      can :manage, [Show, Workshop]
-    elsif user.role? :senior_committee
-      can :manage, [Show, Workshop, Training]
+      can [:show, :update], User, :id=> user.id
+      can  [:attend, :read], [Training, Workshop]
+    end
+    if user.role? :committee
+      can :read, [Show, ShowDate]
+      can  [:attend, :read], [Training, Workshop]
+      can :manage, [Foh]
     end
     if user.role? :tech_manager
       can :manage, :all
-    elsif user.role? :drama_studio_manager
-      can :manage, [Show, Workshop, Training, Calendar]
-    elsif user.role? :committee
-      can :manage, [Show, Workshop, Calendar]
-     # manage products, assets he owns
-     #can :manage, Product do |product|
-     # product.try(:owner) == user
-     #end
     end
-  end
+    if user.role? :production_team
+      can :read, [Show, ShowDate]
+      can  [:attend, :read], [Training, Workshop]
+      can :manage, [Foh]
+    end
+    if user.role? :drama_studio_manager
+      can :read, [Show, ShowDate]
+      can  [:attend, :read], [Training, Workshop]
+      can :manage, [Foh]
+    end
+    if user.role? :senior_committee
+      can :manage, [Show, Workshop, Foh, Training, User]
+    end
 
+  end
 end

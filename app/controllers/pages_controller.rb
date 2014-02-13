@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def welcome
     authenticate_user!
-    @current_nav_identifier = :dashboard
+    @current_nav_identifier = :home
   end
 
   def awaiting

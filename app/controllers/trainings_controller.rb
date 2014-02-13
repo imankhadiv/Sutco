@@ -10,6 +10,7 @@ class TrainingsController < ApplicationController
 
   # GET /trainings/1
   def show
+
   end
 
   # GET /trainings/new
@@ -45,6 +46,12 @@ class TrainingsController < ApplicationController
   def destroy
     @training.destroy
     redirect_to trainings_url, notice: 'Training was successfully destroyed.'
+  end
+  def attend
+    userID = current_user.id
+    trainingID = params[:id]
+    TrainingRecord.create_new_record  userID, trainingID
+    redirect_to @training, notice: "You have successfully registered for #{@training.title}"
   end
 
   private

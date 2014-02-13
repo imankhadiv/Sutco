@@ -49,8 +49,8 @@ describe "Show tests" do
 
       let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
 		  specify "Given a show exists I can update it" do
-		    visit edit_show_path(show_with_show_dates.id)
-        #(find(:css, 'i.icon-trash')).click
+		    visit show_path(show_with_show_dates.id)
+        click_on "Edit"
         page.should have_content "Editing show"
 		    fill_in "Name", with: "Show 2"
 		    fill_in "Director", with: "Some Director"

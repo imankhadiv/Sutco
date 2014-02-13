@@ -25,7 +25,7 @@ FactoryGirl.define do
     ucard '1234'
     course 'mycourse'
     level "Level1"
-     approved TRUE
+    approved TRUE
   end
 
 end

@@ -1,4 +1,4 @@
-%p#notice= notice
+
 
 %p
   %b Title:
@@ -19,6 +19,10 @@
   %b Duration:
   = @training.duration
 
+
+=check_training_attendee(@training)
+%p
 = link_to 'Edit', edit_training_path(@training)
+
 \|
 = link_to 'Back', trainings_path

@@ -3,15 +3,12 @@
     %li=msg
 
 = simple_form_for([@show_date,@foh]) do |f|
-  %h2= "Hi, #{current_user.firstname}"
-  = "The following positions are available for #{@show_date.title} on #{@show_date.date}. Please select your desired position, fill in your phone number and click submit"
+  %p= "The following positions are available for #{@show_date.title} on #{@show_date.date.strftime("%B %d, %Y")}"
+  %p= "Please select your desired position, fill in your phone number and click Apply"
   %p
   .form-inputs
     .field
-      //= f.label :available_positions
-      //= f.collection_radio_buttons(:position_id, @positions, :id, :name, :item_wrapper_class => 'radio inline', :item_wrapper_tag => :label, :collection_wrapper_tag=> :div, :collection_wrapper_class => "controls")
       = f.association :position, as: :radio_buttons, collection: @positions
-
     .field
       = f.input :phone_number
   %p

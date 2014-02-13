@@ -66,6 +66,9 @@ class ShowsController < ApplicationController
        params.require(:show).permit(:name, :image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :title, :date, :time, :_destroy])
     end
 
+
+
+
     def set_nav_identifier
 	@current_nav_identifier	= :shows
     end

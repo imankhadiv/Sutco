@@ -1,34 +1,37 @@
 Team10MiniProject::Application.routes.draw do
 
-  resources :positions
-
-  resources :show_dates do
-    resources :fohs
-  end
+  root 'calendars#index'
+  get "pages/awaiting", as: :awaiting
+  get "pages/welcome", as: :welcome
 
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
-
-  resources :training_attendances
-
-  resources :trainings
-
-  resources :workshop_attendances
-
-  resources :workshops
-
   resources :users
 
-  #resources :fohs
-
-  resources :show_roles
+  resources :positions
 
   resources :shows
 
   resources :calendars
 
+  resources :show_dates do
+    resources :fohs, only: [:new, :create, :show]
+  end
+
+  resources :fohs, only: [:index]
+
+  resources :trainings do
+    member do
+      get :attend
+      get :get_training_users
+    end
+  end
+  resources :workshops
+
+  resources :show_roles
+
+
+
   resources :socials
 
-  get "pages/awaiting"
-  get "pages/welcome"
-  root 'calendars#index'
+
 end

@@ -38,17 +38,27 @@
           .collapse.navbar-collapse
             -if user_signed_in?
               %ul.nav.navbar-nav
-                = navbar_link_to "/pages/welcome", title: "Go to your dashboard", identifier: :dashboard do
-                  %i.icon-dashboard
+                = navbar_link_to welcome_path, title: "Homepage", identifier: :home do
+                  %i.icon-home
                   Home
               %ul.nav.navbar-nav
                 = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
                   %i.icon-calendar
                   Event Calendar
               %ul.nav.navbar-nav
-                = navbar_link_to :shows, title: "Shows", identifier: :shows do
-                  %i.icon-film
-                  Shows
+                %li.dropdown{class: (:active if @current_nav_identifier == :shows)}
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
+                    %i.icon-film
+                    = "Shows"
+                    %b.caret
+                  %ul.dropdown-menu
+                    = navbar_link_to :shows, title: "Shows" do
+                      %i.icon-film
+                      List of Shows
+                    = navbar_link_to fohs_path, title: "Shows"  do
+                      %i.icon-male
+                      %i.icon-female
+                      Front of House
               %ul.nav.navbar-nav
                 = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
                   %i.icon-shopping-cart
@@ -57,13 +67,21 @@
                 = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
                   %i.icon-tasks
                   Trainings
+              - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+                %ul.nav.navbar-nav
+                  = navbar_link_to :users, title: "Users", identifier: :users do
+                    %i.icon-user
+                    Users
+              - else
+                %ul.nav.navbar-nav
+                  = navbar_link_to user_path(current_user), title: "Profile", identifier: :users do
+                    %i.icon-user
+                    Profile
               %ul.nav.navbar-nav
-                = navbar_link_to :users, title: "Users", identifier: :users do
-                  %i.icon-user
-                  Users
-              %ul.nav.navbar-nav
-                = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'  |
-                = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+                = navbar_link_to destroy_user_session_path,method: :delete, title: "Log out", identifier: :logout do
+                  %i.icon-signout
+                  Log out
+
 
       #navbar-background
       #main-container.container= yield
