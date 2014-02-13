@@ -14,6 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #method to add the additional required user attributes to the devise default
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:firstname, :lastname, :ucard, :course, :level]
+    devise_parameter_sanitizer.for(:account_update) << [:firstname, :lastname, :ucard, :course, :level]
+
   end
 
   def set_nav_identifier
@@ -21,6 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
  def after_inactive_sign_up_path_for(resource)
-    pages_awaiting_path
+    awaiting_path
  end
+  def after_update_path_for(resource)
+    current_user
+  end
 end

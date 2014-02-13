@@ -1,9 +1,12 @@
 class FohsController < ApplicationController
   before_action :set_foh, only: [:show, :edit, :update, :destroy]
+  before_filter :set_nav_identifier
+
   load_and_authorize_resource
 
   # GET /fohs
   def index
+    @show_dates = ShowDate.all
     @fohs = Foh.all
   end
 
@@ -62,7 +65,9 @@ class FohsController < ApplicationController
     def set_foh
       @foh = Foh.find(params[:id])
     end
-
+    def set_nav_identifier
+      @current_nav_identifier	= :shows
+    end
     # Only allow a trusted parameter "white list" through.
     def foh_params
       params.require(:foh).permit(:user_id, :show_date_id, :position_id, :phone_number)
