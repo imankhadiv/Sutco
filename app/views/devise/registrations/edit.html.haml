@@ -5,7 +5,7 @@
 
   .form-inputs
     = f.label :email 
-    %p= f.email_field :email, :autofocus => true 
+    %p= f.email_field :email, :disabled => true 
     = f.label :password 
     %p= f.password_field :password, :autocomplete => "off" 
     %p (leave blank if you don't want to change it)
@@ -15,7 +15,18 @@
     = f.label :current_password 
     
     %p= f.password_field :current_password
-    %i (we need your current password to confirm your changes)
+    %p (we need your current password to confirm your changes)
+    = f.label :firstname
+    %p= f.text_field :firstname
+    = f.label :lastname
+    %p= f.text_field :lastname
+    = f.label :course
+    %p= f.text_field :course
+    = f.label :ucard
+    %p= f.text_field :ucard
+    = f.label "Current School Year/Level"
+    %p= f.select :level, collection: ['Level1','Level2','Level3','Level4']
+
 
     %p= f.submit "Update"
 %br
