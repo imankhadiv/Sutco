@@ -8,16 +8,12 @@ Team10MiniProject::Application.routes.draw do
 
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
 
-  resources :training_attendances
-
   resources :trainings do
     member do
       get :attend
+      get :get_training_users
     end
-
   end
-
-  resources :workshop_attendances
 
   resources :workshops
 
