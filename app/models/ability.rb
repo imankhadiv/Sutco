@@ -14,6 +14,7 @@ class Ability
       can :read, [Show, ShowDate]
       can :manage, [Foh]
       can [:show, :update], User, :id=> user.id
+      can  [:attend, :read], [Training, Workshop]
     elsif user.role? :production_team
       can :manage, [Show, Workshop]
     elsif user.role? :senior_committee
