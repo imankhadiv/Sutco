@@ -8,24 +8,29 @@ describe "FOH tests" do
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
+    Position.create :name =>"Manager"
+    Position.create :name =>"Box Officer"
+    Position.create :name =>"Refreshment Officer"
+    Position.create :name =>"Usher 1"
+    Position.create :name =>"Usher 2"
+    Position.create :name =>"Usher 3"
+    Position.create :name =>"Usher 4"
   end
-  describe "Apply for FOH" do
 
-    #let!(:show) { FactoryGirl.create(:show) }
+  describe "View list of available FOH" do
     let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
+    specify "Given a show exists with several show dates, I can view a list of these dates and apply for foh" do
+      visit fohs_path
+      page.should have_content "Show 1"
+      click_on "Apply for foh"
+      page.should have_content "Apply for a front of house position"
+    end
+  end
 
-    #let!(:position) { FactoryGirl.create(:position) }
-
+  describe "Apply for FOH" do
+    let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
     specify "Given a show exists with several show dates, I can apply for FOH for one of them" do
-      Position.create :name =>"Manager"
-      Position.create :name =>"Box Officer"
-      Position.create :name =>"Refreshment Officer"
-      Position.create :name =>"Usher 1"
-      Position.create :name =>"Usher 2"
-      Position.create :name =>"Usher 3"
-      Position.create :name =>"Usher 4"
       visit show_path(show_with_show_dates.id)
-
       click_on "Apply for foh"
       page.should have_content "Apply for a front of house position"
       page.should have_content "Manager"
@@ -43,13 +48,6 @@ describe "FOH tests" do
     end
 
     specify "Once a position is taken, it should be removed from the application web page" do
-      Position.create :name =>"Manager"
-      Position.create :name =>"Box Officer"
-      Position.create :name =>"Refreshment Officer"
-      Position.create :name =>"Usher 1"
-      Position.create :name =>"Usher 2"
-      Position.create :name =>"Usher 3"
-      Position.create :name =>"Usher 4"
       visit show_path(show_with_show_dates.id)
 
       click_on "Apply for foh"
@@ -67,15 +65,7 @@ describe "FOH tests" do
     end
 
     specify "Do not allow user to apply for multiple positions within the same day" do
-      Position.create :name =>"Manager"
-      Position.create :name =>"Box Officer"
-      Position.create :name =>"Refreshment Officer"
-      Position.create :name =>"Usher 1"
-      Position.create :name =>"Usher 2"
-      Position.create :name =>"Usher 3"
-      Position.create :name =>"Usher 4"
       visit show_path(show_with_show_dates.id)
-
       click_on "Apply for foh"
       page.should have_content "Apply for a front of house position"
       page.should have_content "Manager"
@@ -93,19 +83,4 @@ describe "FOH tests" do
       page.should have_content "You can only apply for one position for a particular show date"
     end
   end
-
-  ### No option for it !
-
-
-  describe "Cancel application" do
-
-    let!(:show) { FactoryGirl.create(:show) }
-
-    specify "Given an application has been submitted, I can Cancel it" do
-
-      pending "cancel function and interface to be implemented"
-    end
-  end
-
-
 end
