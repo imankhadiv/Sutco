@@ -38,8 +38,8 @@
           .collapse.navbar-collapse
             -if user_signed_in?
               %ul.nav.navbar-nav
-                = navbar_link_to welcome_path, title: "Go to your dashboard", identifier: :dashboard do
-                  %i.icon-dashboard
+                = navbar_link_to welcome_path, title: "Homepage", identifier: :home do
+                  %i.icon-home
                   Home
               %ul.nav.navbar-nav
                 = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
@@ -56,7 +56,8 @@
                       %i.icon-film
                       List of Shows
                     = navbar_link_to fohs_path, title: "Shows"  do
-                      %i.icon-film
+                      %i.icon-male
+                      %i.icon-female
                       Front of House
               %ul.nav.navbar-nav
                 = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
