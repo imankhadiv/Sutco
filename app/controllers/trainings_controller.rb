@@ -47,11 +47,19 @@ class TrainingsController < ApplicationController
     @training.destroy
     redirect_to trainings_url, notice: 'Training was successfully destroyed.'
   end
+
   def attend
-    userID = current_user.id
-    trainingID = params[:id]
-    TrainingRecord.create_new_record  userID, trainingID
+    user_id = current_user.id
+    training_id = params[:id]
+    TrainingRecord.create_new_record  user_id, training_id
     redirect_to @training, notice: "You have successfully registered for #{@training.title}"
+  end
+
+
+  def attendee
+    user_ids = TrainingRecord.get params[:id]
+    @users = User.get_users user_ids
+
   end
 
   private
@@ -59,6 +67,7 @@ class TrainingsController < ApplicationController
     def set_training
       @training = Training.find(params[:id])
     end
+
 
     # Only allow a trusted parameter "white list" through.
     def training_params
