@@ -1,2 +1,14 @@
-%h1 Listing front of house positions
-
+%h1 Available front of house positions
+%table
+  %tr
+    %th Show
+    %th Date
+    %th Time
+    %th Apply
+  -@show_dates.each do |c|
+    - if(c.foh_available)
+      %tr
+        %td= c.show.name
+        %td= c.date.strftime("%B %d, %Y")
+        %td= c.time.strftime("%I:%M%p")
+        %td= link_to 'Apply for foh', new_show_date_foh_path(c)
