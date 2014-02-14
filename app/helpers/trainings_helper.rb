@@ -7,4 +7,5 @@ module TrainingsHelper
       "You have registered for #{training.title}"
     end
   end
+
  end
