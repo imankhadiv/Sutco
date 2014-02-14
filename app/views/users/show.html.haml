@@ -1,4 +1,4 @@
-%h2 My Profile
+%h2 Profile
 %p
   %b Email:
   = current_user.email
@@ -16,7 +16,7 @@
   = current_user.level
 
 -if !@fohs.empty?
-  %h2 List of your Front of house positions
+  %h2 List of Front of house positions
   %table
     %tr
       %th Show
@@ -62,5 +62,5 @@
         %td= foh.workshop.date
         %td= foh.workshop.time.strftime("%I:%M%p")
 
-= link_to 'Update My Profile', edit_user_registration_path(@user)
+= link_to 'Update Profile', edit_user_registration_path(@user)
 
