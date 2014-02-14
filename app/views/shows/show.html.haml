@@ -1,10 +1,9 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @show.name
+%h1= @show.name
 %p
-  = image_tag @show.image_url, alt: "No Poster"#, size: "480x300"
+  = image_tag @show.image_url, alt: "No Poster", height: 480, width: "auto"
 %p
   %b Director:
   = @show.director
@@ -20,15 +19,15 @@
 
 %p
   -if !@show.show_dates.empty?
-    %b Date:
-    -@show.show_dates.each do |c|
-      %br
-      %tr
-        %td= c.date.strftime("%B %d, %Y")
-        %td= c.time.strftime("%I:%M%p")
-        - if(c.foh_available)
-          %td= link_to 'Apply for foh', new_show_date_foh_path(c)
-        - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-          %td= link_to 'Remove', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %b Show Date(s):
+    %table
+      -@show.show_dates.each do |c|
+        %tr
+          %td= c.date.strftime("%B %d, %Y")
+          %td= c.time.strftime("%I:%M%p")
+          - if(c.foh_available)
+            %td= link_to 'Apply for front of house', new_show_date_foh_path(c)
+          - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+            %td= link_to 'Remove Date', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
 %p
 =navigation_links(@show)

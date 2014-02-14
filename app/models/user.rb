@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   validates :ucard, :numericality => true
   has_and_belongs_to_many :roles
   has_many :training_records
+  has_many :workshop_records
 
   # enable the required devise modules
   devise :database_authenticatable, :registerable,

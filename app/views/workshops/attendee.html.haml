@@ -1,6 +1,6 @@
 
 %h1 Registered Users
--if !@training_records.empty?
+-if !@workshop_records.empty?
   %table
     %tr
       %th First Name
@@ -8,7 +8,7 @@
       %th Email
       -#%th Record attendance
 
-    - @training_records.each do |record|
+    - @workshop_records.each do |record|
       %tr
         %td= record.user.firstname
         %td= record.user.lastname

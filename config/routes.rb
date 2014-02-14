@@ -25,7 +25,12 @@ Team10MiniProject::Application.routes.draw do
       get :attendee
     end
   end
-  resources :workshops
+  resources :workshops do
+    member do
+      get :attend
+      get :attendee
+    end
+  end
 
   resources :show_roles
 
