@@ -48,6 +48,18 @@ class WorkshopsController < ApplicationController
     redirect_to workshops_url, notice: 'Workshop was successfully destroyed.'
   end
 
+  def attend
+    user_id = current_user.id
+    workshop_id = params[:id]
+    WorkshopRecord.create_new_record  user_id, workshop_id
+    redirect_to @workshop, notice: "You have successfully registered for #{@workshop.title}"
+  end
+
+
+  def attendee
+    @workshop_records =  @workshop.workshop_records
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_workshop
