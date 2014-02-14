@@ -82,5 +82,62 @@ describe "FOH tests" do
       click_button "Apply"
       page.should have_content "You can only apply for one position for a particular show date"
     end
+
+    specify "when all the positions are taken, do not display the link for apply for FOH on the show page" do
+      Position.delete_all
+      Position.create :name =>"Manager"
+      visit show_path(show_with_show_dates.id)
+      click_on "Apply for foh"
+      page.should have_content "Apply for a front of house position"
+      page.should have_content "Manager"
+
+      page.choose("Manager")
+      fill_in "Phone number", with: "07405149580"
+      click_button "Apply"
+      page.should have_content "You have successfully applied for the position"
+
+      visit show_path(show_with_show_dates.id)
+      click_on "Apply for foh"
+      page.should have_content "Apply for a front of house position"
+      page.should have_content "Manager"
+
+      page.choose("Manager")
+      fill_in "Phone number", with: "07405149580"
+      click_button "Apply"
+      page.should have_content "You have successfully applied for the position"
+
+      visit show_path(show_with_show_dates.id)
+      click_on "Apply for foh"
+      page.should have_content "Apply for a front of house position"
+      page.should have_content "Manager"
+
+      page.choose("Manager")
+      fill_in "Phone number", with: "07405149580"
+      click_button "Apply"
+      page.should have_content "You have successfully applied for the position"
+
+      visit show_path(show_with_show_dates.id)
+      click_on "Apply for foh"
+      page.should have_content "Apply for a front of house position"
+      page.should have_content "Manager"
+
+      page.choose("Manager")
+      fill_in "Phone number", with: "07405149580"
+      click_button "Apply"
+      page.should have_content "You have successfully applied for the position"
+
+      visit show_path(show_with_show_dates.id)
+      click_on "Apply for foh"
+      page.should have_content "Apply for a front of house position"
+      page.should have_content "Manager"
+
+      page.choose("Manager")
+      fill_in "Phone number", with: "07405149580"
+      click_button "Apply"
+      page.should have_content "You have successfully applied for the position"
+
+      visit show_path(show_with_show_dates.id)
+      page.should_not have_content "Apply for foh"
+    end
   end
 end
