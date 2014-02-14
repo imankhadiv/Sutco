@@ -52,13 +52,5 @@ class User < ActiveRecord::Base
     user.roles
   end
 
-  def self.get_users user_ids
-    users = Array.new
-    user_ids.each do |id|
-      users << User.where(id:user_ids)
-    end
-    users
-  end
-
 
 end

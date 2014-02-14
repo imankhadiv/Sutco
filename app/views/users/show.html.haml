@@ -31,6 +31,22 @@
         %td= foh.show_date.date
         %td= foh.show_date.time.strftime("%I:%M%p")
 
+-if !@training_records.empty?
+  %h2 List of Training Records
+  %table
+    %tr
+      %th Title
+      %th Description
+      %th Date
+      %th Time
+
+    - @training_records.each do |foh|
+      %tr
+        %td= link_to foh.training.title, foh.training
+        %td= foh.training.description
+        %td= foh.training.date
+        %td= foh.training.time.strftime("%I:%M%p")
+
 /= link_to 'FOH', new_show_date_foh_path(@show_date)
 = link_to 'Update My Profile', edit_user_registration_path(@user)
 

@@ -12,13 +12,6 @@ class TrainingRecord < ActiveRecord::Base
       TrainingRecord.where(user_id:user_id,training_id:training_id)
   end
 
-  def self.get training_id
-    user_ids = Array.new
-    records = TrainingRecord.where training_id:training_id
-    records.each do |v|
-      user_ids << v.user_id
-    end
-    user_ids
-  end
+
 
 end

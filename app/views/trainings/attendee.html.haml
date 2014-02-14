@@ -1,23 +1,14 @@
 
 %h1 Registered Users
-
-%table
-  %tr
-    %th First Name
-    %th Last Name
-    %th Course
-    %th Ucard
-    %th Email
-
-  - @users.each do |user|
+-if !@training_records.empty?
+  %table
     %tr
+      %th First Name
+      %th Last Name
+      %th Email
 
-      - user.each do |u|
-        %tr
-          %td= u.firstname
-          %td= u.lastname
-          %td= u.course
-          %td= u.ucard
-          %td= u.email
-
-
+    - @training_records.each do |record|
+      %tr
+        %td= link_to  record.user.firstname, user_path(record.user.id)
+        %td= record.user.lastname
+        %td= record.user.email

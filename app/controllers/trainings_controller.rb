@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_action :set_training, only: [:show, :edit, :update, :destroy]
+  before_action :set_training, only: [:show, :edit, :update, :destroy, :attendee]
   before_filter :set_nav_identifier
   load_and_authorize_resource
 
@@ -57,9 +57,7 @@ class TrainingsController < ApplicationController
 
 
   def attendee
-    user_ids = TrainingRecord.get params[:id]
-    @users = User.get_users user_ids
-
+    @training_records =  @training.training_records
   end
 
   private
