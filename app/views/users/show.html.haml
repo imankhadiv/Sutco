@@ -16,7 +16,7 @@
   = current_user.level
 
 -if !@fohs.empty?
-  %h2 List of Front of house positions you have applied
+  %h2 List of Front of house positions
   %table
     %tr
       %th Show
@@ -62,8 +62,5 @@
         %td= foh.workshop.date
         %td= foh.workshop.time.strftime("%I:%M%p")
 
-/= link_to 'FOH', new_show_date_foh_path(@show_date)
-= link_to 'Update My Profile', edit_user_registration_path(@user)
+= link_to 'Update Profile', edit_user_registration_path(@user)
 
-/\|
-/= link_to 'Back', show_dates_path
