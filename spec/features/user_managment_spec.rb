@@ -70,9 +70,9 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-        page.should have_content "List of Users awaiting Approval"
+        page.should have_content "List of users awaiting approval"
         page.should have_content "Imanewuser"
-        page.should have_content "List of Currently Approved Users"
+        page.should have_content "List of currently approved users"
         page.should have_content "Imanapproveduser"
    end
 
@@ -87,9 +87,9 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-        page.should have_content "List of Users awaiting Approval"
+        page.should have_content "List of users awaiting approval"
         page.should have_content "Imanewuser"
-        page.should have_content "List of Currently Approved Users"
+        page.should have_content "List of currently approved users"
         page.should have_content "Imanapproveduser"
    end
 
@@ -105,7 +105,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -115,7 +115,7 @@ require 'spec_helper'
     page.check("Member")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -130,7 +130,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -139,7 +139,7 @@ require 'spec_helper'
     page.check("Member")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -154,7 +154,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -164,7 +164,7 @@ require 'spec_helper'
     page.check("ProductionTeam")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -179,7 +179,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -188,7 +188,7 @@ require 'spec_helper'
     page.check("ProductionTeam")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -204,7 +204,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -214,7 +214,7 @@ require 'spec_helper'
     page.check("Committee")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -229,7 +229,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -238,7 +238,7 @@ require 'spec_helper'
     page.check("Committee")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -253,7 +253,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -263,7 +263,7 @@ require 'spec_helper'
     page.check("DramaStudioManager")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -278,7 +278,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -287,7 +287,7 @@ require 'spec_helper'
     page.check("DramaStudioManager")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -302,7 +302,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -312,7 +312,7 @@ require 'spec_helper'
     page.check("SeniorCommittee")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -327,7 +327,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -336,7 +336,7 @@ require 'spec_helper'
     page.check("SeniorCommittee")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -351,7 +351,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -361,7 +361,7 @@ require 'spec_helper'
     page.check("SeniorCommittee")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
@@ -376,7 +376,7 @@ require 'spec_helper'
     fill_in "Password", with: user.password
     click_button "Sign in"
     click_on "Users"
-    page.should have_content "List of Users awaiting Approval"
+    page.should have_content "List of users awaiting approval"
     page.should have_content "Imanewuser"
     page.should have_link "Approve User"
     click_link "Approve User"
@@ -385,7 +385,7 @@ require 'spec_helper'
     page.check("SeniorCommittee")
     click_button "Update User"
     page.should_not have_link "Approve User"
-    page.should have_content "List of Currently Approved Users"
+    page.should have_content "List of currently approved users"
     page.should have_content "Imanewuser"
    end
 
