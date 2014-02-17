@@ -58,7 +58,7 @@ end
 		   specify "Given a workshop exists I can delete it" do
 		
 		     visit workshops_path
-		     click_link "Destroy"
+		     click_link "Delete"
 		     page.should_not have_content workshop.title
 		     page.should have_content "Workshop was successfully destroyed"
 		   end

@@ -1,5 +1,5 @@
 class TrainingsController < ApplicationController
-  before_action :set_training, only: [:show, :edit, :update, :destroy]
+  before_action :set_training, only: [:show, :edit, :update, :destroy, :attendee]
   before_filter :set_nav_identifier
   load_and_authorize_resource
 
@@ -47,11 +47,17 @@ class TrainingsController < ApplicationController
     @training.destroy
     redirect_to trainings_url, notice: 'Training was successfully destroyed.'
   end
+
   def attend
-    userID = current_user.id
-    trainingID = params[:id]
-    TrainingRecord.create_new_record  userID, trainingID
+    user_id = current_user.id
+    training_id = params[:id]
+    TrainingRecord.create_new_record  user_id, training_id
     redirect_to @training, notice: "You have successfully registered for #{@training.title}"
+  end
+
+
+  def attendee
+    @training_records =  @training.training_records
   end
 
   private
@@ -59,6 +65,7 @@ class TrainingsController < ApplicationController
     def set_training
       @training = Training.find(params[:id])
     end
+
 
     # Only allow a trusted parameter "white list" through.
     def training_params

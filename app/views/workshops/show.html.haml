@@ -1,8 +1,5 @@
-%p#notice= notice
-
 %p
-  %b Title:
-  = @workshop.title
+  %h2= @workshop.title
 %p
   %b Description:
   = @workshop.description
@@ -11,14 +8,18 @@
   = @workshop.date
 %p 
   %b Time:
-  = @workshop.time.strftime("%I:%M%p") 
+  = @workshop.time.strftime("%I:%M%p")
 %p
   %b Duration (minutes):
-  = @workshop.duration
+  #{@workshop.duration} minutes
+
+%h4=check_workshop_attendee(@workshop)
+%p
+- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+
+  %a.btn.btn-primary.btn-lg{href:attendee_workshop_path(@workshop) , role: "button"} View registered users
 
 
 = link_to 'Edit', edit_workshop_path(@workshop)
-\|
-= link_to 'Delete', @workshop, :method => :delete, :data => { :confirm => 'Are you sure?' }
 \|
 = link_to 'Back', workshops_path

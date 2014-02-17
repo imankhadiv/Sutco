@@ -33,7 +33,7 @@ class Ability
       can :manage, [Foh]
     end
     if user.role? :senior_committee
-      can :manage, [Show, Workshop, Foh, Training, User]
+      can :manage, [Show, ShowDate, Workshop, Foh, Training, User]
     end
 
   end

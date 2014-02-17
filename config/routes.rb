@@ -22,10 +22,15 @@ Team10MiniProject::Application.routes.draw do
   resources :trainings do
     member do
       get :attend
-      get :get_training_users
+      get :attendee
     end
   end
-  resources :workshops
+  resources :workshops do
+    member do
+      get :attend
+      get :attendee
+    end
+  end
 
   resources :show_roles
 

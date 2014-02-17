@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
   def show
 	@fohs = Foh.where(user_id: @user)
+  @training_records = @user.training_records
+  @workshop_records = @user.workshop_records
+
   end
 
   #edit user attributes such as approval status or roles

@@ -1,0 +1,17 @@
+
+%h1 Registered Users
+-if !@workshop_records.empty?
+  %table
+    %tr
+      %th First Name
+      %th Last Name
+      %th Email
+      -#%th Record attendance
+
+    - @workshop_records.each do |record|
+      %tr
+        %td= record.user.firstname
+        %td= record.user.lastname
+        %td= record.user.email
+        -#%td= check_box_tag "record_attended[]", record.attended
+

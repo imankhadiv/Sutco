@@ -1,8 +1,6 @@
 
-
 %p
-  %b Title:
-  = @training.title
+  %h2= @training.title
 %p
   %b Type:
   = @training.category
@@ -14,15 +12,21 @@
   = @training.date
 %p
   %b Time:
-  = @training.time.strftime("%I:%M%p") 
+  = @training.time.strftime("%I:%M%p")
 %p
   %b Duration:
-  = @training.duration
+  #{@training.duration} minutes
 
-
-=check_training_attendee(@training)
+%h4=check_training_attendee(@training)
 %p
+- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+
+  %a.btn.btn-primary.btn-lg{href:attendee_training_path(@training) , role: "button"} View registered users
+
+
 = link_to 'Edit', edit_training_path(@training)
 
 \|
 = link_to 'Back', trainings_path
+
+

@@ -59,7 +59,7 @@ end
 		   specify "Given a training exists I can delete it" do
 		
 		     visit trainings_path
-		     click_link "Destroy"
+		     click_link "Delete"
 		     page.should_not have_content training.title
 		     page.should have_content "Training was successfully destroyed"
 		   end
