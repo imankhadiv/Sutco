@@ -1,8 +1,6 @@
 
-
 %p
-  %b Title:
-  = @training.title
+  %h2= @training.title
 %p
   %b Type:
   = @training.category
@@ -14,11 +12,10 @@
   = @training.date
 %p
   %b Time:
-  = @training.time.strftime("%I:%M%p") 
+  = @training.time.strftime("%I:%M%p")
 %p
   %b Duration:
-  = @training.duration
-
+  #{@training.duration} minutes
 
 %h4=check_training_attendee(@training)
 %p

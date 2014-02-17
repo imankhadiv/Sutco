@@ -1,3 +1,5 @@
+%h1 List of Workshops
+
 %table
   %tr
     %th Title
@@ -16,7 +18,7 @@
       %td= workshop.duration
       %td= link_to 'Show', workshop
       %td= link_to 'Edit', edit_workshop_path(workshop)
-      %td= link_to 'Destroy', workshop, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Delete', workshop, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
   = link_to 'New Workshop', new_workshop_path
