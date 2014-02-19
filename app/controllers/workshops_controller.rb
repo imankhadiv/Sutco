@@ -54,11 +54,10 @@ class WorkshopsController < ApplicationController
     WorkshopRecord.create_new_record  user_id, workshop_id
     redirect_to @workshop, notice: "You have successfully registered for #{@workshop.title}"
   end
+
   def record_attendance
-
     WorkshopRecord.update_all(["attended=?", true], :id => params[:workshop_records_ids])
-    redirect_to workshops_url, notice: "successfully updated"
-
+    redirect_to workshops_url, notice: "Attendance was successfully updated"
   end
 
 
@@ -77,8 +76,7 @@ class WorkshopsController < ApplicationController
       params.require(:workshop).permit(:title, :description, :date, :time, :duration)
     end
 
-
     def set_nav_identifier
-	@current_nav_identifier	= :workshops
+	    @current_nav_identifier	= :workshops
     end
 end
