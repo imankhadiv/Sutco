@@ -1,6 +1,8 @@
 class SocialsController < ApplicationController
-  before_action :set_social, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+  before_action :set_social, only: [:show, :edit, :update, :destroy]
+  before_filter :set_nav_identifier
+
 
   # GET /socials
   def index
@@ -55,5 +57,9 @@ class SocialsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def social_params
       params.require(:social).permit(:title, :location, :description, :date, :time, :duration)
+    end
+
+    def set_nav_identifier
+      @current_nav_identifier	= :socials
     end
 end

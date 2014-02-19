@@ -18,7 +18,7 @@ module ShowsHelper
     end
   end
 
-  def navigation_links(show)
+  def show_navigation_links(show)
   content_tag :h3 do
     if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
      [

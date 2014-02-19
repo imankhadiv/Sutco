@@ -18,10 +18,14 @@
       %td= training.date
       %td= training.time.strftime("%I:%M%p") 
       %td= training.duration
-      %td= link_to 'Show', training
+      %td= link_to 'View', training
       %td= link_to 'Edit', edit_training_path(training)
       %td= link_to 'Delete', training, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Training', new_training_path
+- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+  %a.btn.btn-success.btn-lg{href: new_training_path, role: "button"} Create New Training
+
+%br
+%br

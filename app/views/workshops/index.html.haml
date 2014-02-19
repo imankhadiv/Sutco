@@ -16,12 +16,14 @@
       %td= workshop.date
       %td= workshop.time.strftime("%I:%M%p") 
       %td= workshop.duration
-      %td= link_to 'Show', workshop
+      %td= link_to 'View', workshop
       %td= link_to 'Edit', edit_workshop_path(workshop)
       %td= link_to 'Delete', workshop, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-  = link_to 'New Workshop', new_workshop_path
-
+- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+  %a.btn.btn-success.btn-lg{href: new_workshop_path, role: "button"} Create New Workshop
+%br
+%br
 
 

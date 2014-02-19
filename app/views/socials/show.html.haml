@@ -1,6 +1,4 @@
-%p
-  %b Title:
-  = @social.title
+%h2= @social.title
 %p
   %b Location:
   = @social.location
@@ -18,9 +16,4 @@
   = @social.duration
 
 
-
-= link_to 'Edit', edit_social_path(@social)
-\|
-= link_to 'Delete', @social, :method => :delete, :data => { :confirm => 'Are you sure?' }
-\|
-= link_to 'Back', socials_path
+=social_navigation_links(@social)

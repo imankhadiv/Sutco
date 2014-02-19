@@ -28,4 +28,4 @@
           - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
             %td= link_to 'Remove Date', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
 %p
-=navigation_links(@show)
+=show_navigation_links(@show)
