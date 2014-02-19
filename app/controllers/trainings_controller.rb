@@ -61,7 +61,7 @@ class TrainingsController < ApplicationController
   end
 
   def record_attendance
-    TrainingRecord.update_all(["attended=?", true], :id => params[:training_records_ids])
+    TrainingRecord.where(:id => params[:training_records_ids]).update_all(["attended=?", true] )
     redirect_to trainings_url, notice: "The attendance was successfully updated"
   end
 
