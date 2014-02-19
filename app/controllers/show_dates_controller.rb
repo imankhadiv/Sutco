@@ -3,9 +3,9 @@ class ShowDatesController < ApplicationController
   before_action :set_show_date, only: [:show, :edit, :update, :destroy]
 
   # GET /show_dates
-  def index
-    @show_dates = ShowDate.all
-  end
+  #def index
+   # @show_dates = ShowDate.all
+  #end
 
   # GET /show_dates/1
   def show
