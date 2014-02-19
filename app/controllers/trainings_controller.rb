@@ -60,6 +60,14 @@ class TrainingsController < ApplicationController
     @training_records =  @training.training_records
   end
 
+  def record_attendance
+
+    TrainingRecord.update_all(["attended=?", true], :id => params[:training_records_ids])
+    redirect_to trainings_url, notice: "successfully updated"
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_training
