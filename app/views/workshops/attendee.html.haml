@@ -6,12 +6,16 @@
       %th First Name
       %th Last Name
       %th Email
-      -#%th Record attendance
+      %th Attended
+    = form_tag record_attendance_workshops_path, :method =>:put do
+      - @workshop_records.each do |record|
+        %tr
+          %td= record.user.firstname
+          %td= record.user.lastname
+          %td= record.user.email
+          -if record.attended
+            %td attended
+          -else
+            %td= check_box_tag "workshop_records_ids[]", record.id
 
-    - @workshop_records.each do |record|
-      %tr
-        %td= record.user.firstname
-        %td= record.user.lastname
-        %td= record.user.email
-        -#%td= check_box_tag "record_attended[]", record.attended
-
+      =submit_tag "Submit"

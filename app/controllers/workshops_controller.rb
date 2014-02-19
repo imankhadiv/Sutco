@@ -54,6 +54,12 @@ class WorkshopsController < ApplicationController
     WorkshopRecord.create_new_record  user_id, workshop_id
     redirect_to @workshop, notice: "You have successfully registered for #{@workshop.title}"
   end
+  def record_attendance
+
+    WorkshopRecord.update_all(["attended=?", true], :id => params[:workshop_records_ids])
+    redirect_to workshops_url, notice: "successfully updated"
+
+  end
 
 
   def attendee

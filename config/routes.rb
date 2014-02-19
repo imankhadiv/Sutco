@@ -35,6 +35,10 @@ Team10MiniProject::Application.routes.draw do
       get :attend
       get :attendee
     end
+    collection do
+      put :record_attendance
+
+    end
   end
 
   resources :show_roles
