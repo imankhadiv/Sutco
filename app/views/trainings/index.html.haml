@@ -1,26 +1,28 @@
-%h1 List of trainings
+.page-header
+  %h1 List of trainings
 
-%table
-  %tr
-    %th Title
-    %th Type
-    %th Description
-    %th Date
-    %th Time
-    %th Duration (minutes)
-    %th{colspan: "3"} Options
-
-  - @trainings.each do |training|
+%table.table.table-striped.table-bordered.table-responsive
+  .thead
     %tr
-      %td= training.title
-      %td= training.category
-      %td= training.description
-      %td= training.date
-      %td= training.time.strftime("%I:%M%p") 
-      %td= training.duration
-      %td= link_to 'View', training
-      %td= link_to 'Edit', edit_training_path(training)
-      %td= link_to 'Delete', training, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Title
+      %th Type
+      %th Description
+      %th Date
+      %th Time
+      %th Duration (minutes)
+      %th{colspan: "3"} Options
+  .tbody
+    - @trainings.each do |training|
+      %tr
+        %td= training.title
+        %td= training.category
+        %td= training.description
+        %td= training.date.strftime("%B %d, %Y")
+        %td= training.time.strftime("%I:%M%p")
+        %td= training.duration
+        %td= link_to 'View', training
+        %td= link_to 'Edit', edit_training_path(training)
+        %td= link_to 'Delete', training, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
