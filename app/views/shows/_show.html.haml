@@ -1,6 +1,6 @@
 .show
-  %h1= show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
-  #show_image= image_tag show.image_url, alt: "No Poster", width: 580, height: "auto"
+  = show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
+  #show_image= image_tag show.image_url, alt: "No Poster", 	clip:rect("0px" "500px" "350px" "0px"); #width: 500, height: "auto"
 
 
 

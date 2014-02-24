@@ -1,10 +1,9 @@
 module ShowsHelper
-  # this method is implemented to display the show name and three different icons for view, edit and delet buttons.
+  # this method is implemented to display the show name and three different icons for view, edit and delete buttons.
   def show_name_links(show)
     content_tag :h3 do
-    if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+    if (current_user.role? "ProductionTeam")
       [ link_to(show.name,show),
-        link_to_icon('icon-desktop','View', show),
         link_to_icon('icon-edit-sign','Edit', edit_show_path(show)),
         link_to_icon('icon-trash','Delete', show, {
           data: {confirm: 'Are you sure?'},
@@ -20,7 +19,7 @@ module ShowsHelper
 
   def show_navigation_links(show)
   content_tag :h3 do
-    if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+    if (current_user.role? "ProductionTeam")
      [
       link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,shows_path),
      "|",

@@ -1,9 +1,16 @@
 .page-header
   %h1 Shows
-  
-= render @shows
-- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+
+.container
+  - @shows.each do |show|
+    .col-md-6
+      .row
+        .show
+          = show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
+          #show_image= image_tag show.image_url, alt: "No Poster";
+
+- if (current_user.role? "ProductionTeam")
   %a.btn.btn-success.btn-lg{href: new_show_path, role: "button"} Create New Show
-%br
-%br
+  %br
+  %br
 
