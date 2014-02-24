@@ -9,7 +9,7 @@
   = @training.description
 %p
   %b Date:
-  = @training.date
+  = @training.date.strftime("%B %d, %Y")
 %p
   %b Time:
   = @training.time.strftime("%I:%M%p")

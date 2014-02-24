@@ -3,12 +3,15 @@
 -if !@training_records.empty?
   = form_tag record_attendance_trainings_path, :method =>:put do
 
-    %table
-      %tr
-        %th First Name
-        %th Last Name
-        %th Email
-        %th Attended?
+    %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+      %thead
+        %tr
+          %th First Name
+          %th Last Name
+          %th Email
+          %th Attended?
+
+      %tbody
         - @training_records.each do |record|
           %tr
             %td= record.user.firstname

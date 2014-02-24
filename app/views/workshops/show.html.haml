@@ -4,7 +4,7 @@
   = @workshop.description
 %p
   %b Date:
-  = @workshop.date
+  = @workshop.date.strftime("%B %d, %Y")
 %p 
   %b Time:
   = @workshop.time.strftime("%I:%M%p")
