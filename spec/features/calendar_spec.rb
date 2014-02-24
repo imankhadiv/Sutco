@@ -5,8 +5,10 @@ Warden.test_mode!
   describe "Calendar tests" do
     before(:each) do
       role = FactoryGirl.create(:role)
-	    user = FactoryGirl.create(:user)
+      role2 = Role.create :name =>"ProductionTeam"
+      user = FactoryGirl.create(:user)
       user.roles << role
+      user.roles << role2
 			login_as(user, :scope => :user)
     end
 

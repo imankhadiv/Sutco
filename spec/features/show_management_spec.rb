@@ -5,7 +5,7 @@ Warden.test_mode!
 describe "Show tests" do
 
   before(:each) do
-      role = FactoryGirl.create(:role)
+      role = Role.create :name =>"ProductionTeam"
       user = FactoryGirl.create(:user)
       user.roles << role
 	    login_as(user, :scope => :user)
