@@ -15,8 +15,7 @@
             %td= record.user.lastname
             %td= record.user.email
             -if record.attended
-              %td= check_box_tag "attended_ids[]", record.id, true
-              = hidden_field_tag('temp_ids[]', record.id)
+              %td attended
             -else
               %td= check_box_tag "unattended_ids[]", record.id,false
     %h3=submit_tag "Submit Attendance"
