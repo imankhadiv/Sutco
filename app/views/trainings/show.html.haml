@@ -9,7 +9,7 @@
   = @training.description
 %p
   %b Date:
-  = @training.date
+  = @training.date.strftime("%B %d, %Y")
 %p
   %b Time:
   = @training.time.strftime("%I:%M%p")
@@ -23,10 +23,7 @@
 
   %a.btn.btn-primary.btn-lg{href:attendee_training_path(@training) , role: "button"} View registered users
 
+=training_navigation_links(@training)
 
-= link_to 'Edit', edit_training_path(@training)
-
-\|
-= link_to 'Back', trainings_path
 
 

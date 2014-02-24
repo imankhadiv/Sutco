@@ -1,17 +1,28 @@
 
-%h1 Registered Users
+%h1 Registered Users for #{@training.title}
 -if !@training_records.empty?
-  %table
-    %tr
-      %th First Name
-      %th Last Name
-      %th Email
-      -#%th Record attendance
+  = form_tag record_attendance_trainings_path, :method =>:put do
 
-    - @training_records.each do |record|
-      %tr
-        %td= record.user.firstname
-        %td= record.user.lastname
-        %td= record.user.email
-        -#%td= check_box_tag "record_attended[]", record.attended
+    %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+      %thead
+        %tr
+          %th First Name
+          %th Last Name
+          %th Email
+          %th Attended?
+
+      %tbody
+        - @training_records.each do |record|
+          %tr
+            %td= record.user.firstname
+            %td= record.user.lastname
+            %td= record.user.email
+            -if record.attended
+              %td= check_box_tag "attended_ids[]", record.id, true
+              = hidden_field_tag('temp_ids[]', record.id)
+            -else
+              %td= check_box_tag "unattended_ids[]", record.id,false
+    %h3=submit_tag "Submit Attendance"
+    %h3=link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,@training)
+%br
 

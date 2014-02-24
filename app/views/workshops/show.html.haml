@@ -1,11 +1,10 @@
-%p
-  %h2= @workshop.title
+%h2= @workshop.title
 %p
   %b Description:
   = @workshop.description
 %p
   %b Date:
-  = @workshop.date
+  = @workshop.date.strftime("%B %d, %Y")
 %p 
   %b Time:
   = @workshop.time.strftime("%I:%M%p")
@@ -15,11 +14,8 @@
 
 %h4=check_workshop_attendee(@workshop)
 %p
-- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
 
+- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
   %a.btn.btn-primary.btn-lg{href:attendee_workshop_path(@workshop) , role: "button"} View registered users
 
-
-= link_to 'Edit', edit_workshop_path(@workshop)
-\|
-= link_to 'Back', workshops_path
+=workshop_navigation_links(@workshop)

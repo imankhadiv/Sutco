@@ -59,6 +59,10 @@
                 = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
                   %i.icon-tasks
                   Trainings
+              %ul.nav.navbar-nav
+                = navbar_link_to :socials, title: "Socials", identifier: :socials do
+                  %i.icon-group
+                  Socials
               - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
                 %ul.nav.navbar-nav
                   = navbar_link_to :users, title: "Users", identifier: :users do

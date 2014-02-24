@@ -45,20 +45,20 @@ class FohsController < ApplicationController
   end
 
   # PATCH/PUT /fohs/1
-  def update
-    if @foh.update(foh_params)
-      redirect_to @foh, notice: 'Foh was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
-
-  # DELETE /fohs/1
-  def destroy
-    @show_date = ShowDate.find(params[:show_date_id])
-    @foh.destroy
-    redirect_to @show_date, notice: 'Foh was successfully destroyed.'
-  end
+  #def update
+  #  if @foh.update(foh_params)
+  #    redirect_to @foh, notice: 'Foh was successfully updated.'
+  #  else
+  #    render action: 'edit'
+  #  end
+  #end
+  #
+  ## DELETE /fohs/1
+  #def destroy
+  #  @show_date = ShowDate.find(params[:show_date_id])
+  #  @foh.destroy
+  #  redirect_to @show_date, notice: 'Foh was successfully destroyed.'
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.

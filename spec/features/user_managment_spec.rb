@@ -31,8 +31,8 @@ require 'spec_helper'
    specify "I can not visit the site before approval" do
      user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
      visit new_user_session_path
-     fill_in "Email", with: user1.email
-     fill_in "Password", with: user1.password
+     fill_in 'user_email', with: user1.email
+     fill_in 'user_password', with: user1.password
      click_button "Sign in"
      page.should have_content "Your account has not been approved by your administrator yet."
      page.should_not have_content "Home"
@@ -46,8 +46,8 @@ require 'spec_helper'
 
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
     visit new_user_session_path
-    fill_in "Email", with: user1.email
-    fill_in "Password", with: user1.password
+    fill_in 'user_email', with: user1.email
+    fill_in 'user_password', with: user1.password
     click_button "Sign in"
     page.should_not have_content "Your account has not been approved by your administrator yet."
     page.should have_content "Home"
@@ -66,8 +66,8 @@ require 'spec_helper'
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     user2 = User.create :email =>"testuser2@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanapproveduser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
         page.should have_content "List of users awaiting approval"
@@ -83,8 +83,8 @@ require 'spec_helper'
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     user2 = User.create :email =>"testuser2@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanapproveduser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
         page.should have_content "List of users awaiting approval"
@@ -101,8 +101,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -126,8 +126,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -150,8 +150,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -175,8 +175,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -200,8 +200,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -225,8 +225,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -249,8 +249,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -274,8 +274,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -298,8 +298,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -323,8 +323,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -347,8 +347,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -372,8 +372,8 @@ require 'spec_helper'
     user.roles << role
     user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanewuser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
     visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button "Sign in"
     click_on "Users"
     page.should have_content "List of users awaiting approval"
@@ -405,15 +405,15 @@ describe "Access control for different roles for show model" do
     page.should have_content "You are not authorized to access this page"
   end
 
-  specify "As a production team member, I can't add shows" do
+  specify "As a production team member, I can add shows" do
     role = Role.create :name =>"ProductionTeam"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should_not have_content "Create New Show"
+    page.should have_content "Create New Show"
     visit new_show_path
-    page.should have_content "You are not authorized to access this page"
+    page.should_not have_content "You are not authorized to access this page"
   end
 
   specify "As a committee member, I can't add shows" do
@@ -438,26 +438,26 @@ describe "Access control for different roles for show model" do
     page.should have_content "You are not authorized to access this page"
   end
 
-  specify "As a senior committee, I can add shows" do
+  specify "As a senior committee, I can't add shows" do
     role = Role.create :name =>"SeniorCommittee"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should have_content "Create New Show"
+    page.should_not have_content "Create New Show"
     visit new_show_path
-    page.should_not have_content "You are not authorized to access this page"
+    page.should have_content "You are not authorized to access this page"
   end
 
-  specify "As a tech manager, I can add shows" do
+  specify "As a tech manager, I can't add shows" do
     role = Role.create :name =>"TechManager"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should have_content "Create New Show"
+    page.should_not have_content "Create New Show"
     visit new_show_path
-    page.should_not have_content "You are not authorized to access this page"
+    page.should have_content "You are not authorized to access this page"
   end
 
   let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
@@ -475,17 +475,17 @@ describe "Access control for different roles for show model" do
     page.should have_content "You are not authorized to access this page"
   end
 
- specify "As a production team member, I can't edit shows" do
+ specify "As a production team member, I can edit shows" do
     role = Role.create :name =>"ProductionTeam"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should_not have_link "Edit"
+    page.should have_link "Edit"
     click_on "Show 1"
-    page.should_not have_link "Edit"
+    page.should have_link "Edit"
     visit edit_show_path(show_with_show_dates.id)
-    page.should have_content "You are not authorized to access this page"
+    page.should_not have_content "You are not authorized to access this page"
   end
 
  specify "As a committee member, I can't edit shows" do
@@ -514,30 +514,30 @@ describe "Access control for different roles for show model" do
     page.should have_content "You are not authorized to access this page"
   end
 
- specify "As a senior committee, I can edit shows" do
+ specify "As a senior committee, I can't edit shows" do
     role = Role.create :name =>"SeniorCommittee"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should have_link "Edit"
+    page.should_not have_link "Edit"
     click_on "Show 1"
-    page.should have_link "Edit"
+    page.should_not have_link "Edit"
     visit edit_show_path(show_with_show_dates.id)
-    page.should_not have_content "You are not authorized to access this page"
+    page.should have_content "You are not authorized to access this page"
   end
 
- specify "As a tech manager, I can edit shows" do
+ specify "As a tech manager, I can't edit shows" do
     role = Role.create :name =>"TechManager"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should have_link "Edit"
+    page.should_not have_link "Edit"
     click_on "Show 1"
-    page.should have_link "Edit"
+    page.should_not have_link "Edit"
     visit edit_show_path(show_with_show_dates.id)
-    page.should_not have_content "You are not authorized to access this page"
+    page.should have_content "You are not authorized to access this page"
   end
 
 #Deleting
@@ -552,15 +552,15 @@ describe "Access control for different roles for show model" do
     page.should_not have_link "Delete"
   end
 
- specify "As a production team member, I can't delete shows" do
+ specify "As a production team member, I can delete shows" do
     role = Role.create :name =>"ProductionTeam"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should_not have_link "Delete"
+    page.should have_link "Delete"
     click_on "Show 1"
-    page.should_not have_link "Delete"
+    page.should have_link "Delete"
   end
 
  specify "As a committee member, I can't delete shows" do
@@ -585,26 +585,26 @@ describe "Access control for different roles for show model" do
     page.should_not have_link "Delete"
   end
 
- specify "As a senior committee, I can delete shows" do
+ specify "As a senior committee, I can't delete shows" do
     role = Role.create :name =>"SeniorCommittee"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should have_link "Delete"
+    page.should_not have_link "Delete"
     click_on "Show 1"
-    page.should have_link "Delete"
+    page.should_not have_link "Delete"
   end
 
- specify "As a tech manager, I can delete shows" do
+ specify "As a tech manager, I can't delete shows" do
     role = Role.create :name =>"TechManager"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit shows_path
-    page.should have_link "Delete"
+    page.should_not have_link "Delete"
     click_on "Show 1"
-    page.should have_link "Delete"
+    page.should_not have_link "Delete"
   end
 
 end
