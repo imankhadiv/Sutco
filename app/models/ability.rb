@@ -9,7 +9,7 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user
     if user.role? :member
-      can :read, [Show, ShowDate]
+      can :read, [Show, ShowDate, Social]
       can :manage, [Foh]
       can [:show, :update], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
@@ -17,15 +17,15 @@ class Ability
     if user.role? :committee
       can :read, [Show, ShowDate]
       can  [:attend, :read], [Training, Workshop]
-      can :manage, [Foh]
+      can :manage, [Foh, Social]
     end
     if user.role? :tech_manager
-      can :manage, :all
+      can :read, [Show,ShowDate, Social]
+      can :manage, [Workshop, Foh, Training, User]
     end
     if user.role? :production_team
-      can :read, [Show, ShowDate]
+      can :manage, [Show, ShowDate, Foh, Social]
       can  [:attend, :read], [Training, Workshop]
-      can :manage, [Foh]
     end
     if user.role? :drama_studio_manager
       can :read, [Show, ShowDate]
@@ -33,7 +33,8 @@ class Ability
       can :manage, [Foh]
     end
     if user.role? :senior_committee
-      can :manage, [Show, ShowDate, Workshop, Foh, Training, User]
+      can :read, [Show,ShowDate]
+      can :manage, [Workshop, Foh, Training, User, Social]
     end
 
   end
