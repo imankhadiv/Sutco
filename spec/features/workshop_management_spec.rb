@@ -54,14 +54,92 @@ end
 		 describe "Deleting workshops" do
 		
 		   let!(:workshop) { FactoryGirl.create(:workshop) }
-		
-		   specify "Given a workshop exists I can delete it" do
+
+       specify "Given a workshop exists I can delete it" do
 		
 		     visit workshops_path
 		     click_link "Delete"
 		     page.should_not have_content workshop.title
 		     page.should have_content "Workshop was successfully destroyed"
-		   end
+
+
+       end
+     end
+
+    describe "I can apply for a workshop sessions" do
+
+
+        let!(:workshop) { FactoryGirl.create(:workshop)}
+
+         before(:each) do
+         role1 = Role.create :name => 'Member'
+         user = User.create :email =>"testuser3@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
+
+         user.roles << role1
+          login_as(user, :scope => :user)
+
+
+   end
+
+
+     specify "As a member, I can Apply for a workshop session " do
+       visit workshop_path(workshop.id)
+       page.should have_link "Attend Workshop"
+
+       click_link 'Attend Workshop'
+       page.should have_content "You have successfully registered for #{workshop.title}"
+
+
+     end
+     specify "As a memeber I can not see the apply button If I have already applied for the workshop" do
+       visit workshop_path(workshop.id)
+       page.should have_link "Attend Workshop"
+
+       click_link 'Attend Workshop'
+       page.should have_content "You have successfully registered for #{workshop.title}"
+
+       visit workshop_path(workshop.id)
+       page.should_not have_link "Attend Workshop"
+
+     end
+
+   end
+
+      describe "recording attendance"    do
+          let!(:workshop) { FactoryGirl.create(:workshop) }
+
+          specify "As a Techmanager I can view a list of registered users" do
+
+         user = User.create :email =>"testuser2@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
+         workshop_record = WorkshopRecord.create :user_id => user.id, :workshop_id => workshop.id
+
+         visit workshop_path(workshop.id)
+         page.should have_content "View registered users"
+
+         click_on 'View registered users'
+
+         page.should have_content user.firstname
+         page.should have_content user.lastname
+         page.should have_content user.email
+         page.should have_content 'attended' if workshop_record.attended
+
+       end
+
+       specify "As a Techmanager I can record attendance of each user" do
+         user = User.create :email =>"testuser2@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
+
+         workshop_record = WorkshopRecord.create :user_id => user.id, :workshop_id => workshop.id
+
+         visit attendee_workshop_path(workshop.id)
+
+         page.should have_selector("input[type=submit][value='Submit Attendance']")
+
+         click_on 'Submit Attendance'
+
+         page.should have_content "Attendance was successfully updated"
+
+
+       end
 		 end
 
 

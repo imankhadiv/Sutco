@@ -17,13 +17,10 @@ Warden.test_mode!
         user = FactoryGirl.create(:user)
         user.roles << role
         login_as(user, :scope => :user)
-        #role1 = Role.create :name => 'Member'
 
       end
 
 		  specify "I can create a training" do
-        #user.roles << role
-        #login_as(user, :scope => :user)
 		    visit new_training_path
 		    fill_in "Title", with: "Training 1"
 		    fill_in "Category", with: "Lighting Operator"
@@ -77,8 +74,6 @@ Warden.test_mode!
 
 
 		   specify "Given a training exists I can delete it" do
-         #user.roles << role
-         #login_as(user, :scope => :user)
 		     visit trainings_path
 		     click_link "Delete"
 		     page.should_not have_content training.title
@@ -111,17 +106,12 @@ Warden.test_mode!
 
          click_on 'View registered users'
 
-        #page.check("attended_ids[]")
-
          click_on 'Submit'
          page.should have_content "The attendance was successfully updated"
 
          visit training_path(training.id)
 
          click_on 'View registered users'
-         #page.should have_content 'attended'
-
-
 
        end
      end
@@ -152,7 +142,7 @@ Warden.test_mode!
              page.should have_content "You have successfully registered for #{training.title}"
 
        end
-       specify "As a memeber I can not see the apply button If I have aleready applied" do
+       specify "As a memeber I can not see the apply button If I have already applied for the training" do
          visit training_path(training.id)
          page.should have_link "Attend Training"
 
