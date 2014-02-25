@@ -37,7 +37,7 @@ Warden.test_mode!
 		
 		  specify "I cannot create a training with blank fields" do
 
-        pending "input validation to be added"
+        #pending "input validation to be added"
 		    visit new_training_path
 		    click_button "Create Training"
 		    page.should have_content "can't be blank"

@@ -1,5 +1,7 @@
 Team10MiniProject::Application.routes.draw do
 
+  resources :roles
+
   root 'calendars#index'
   get "pages/awaiting", as: :awaiting
   get "pages/welcome", as: :welcome

@@ -7,7 +7,7 @@
   = @social.description
 %p
   %b Date:
-  = @social.date
+  = @social.date.strftime("%B %d, %Y")
 %p
   %b Time:
   = @social.time.strftime("%I:%M%p") 

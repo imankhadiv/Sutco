@@ -4,47 +4,45 @@
 -if @awaiting_users.empty?
   You have no unapproved users
 -else
-  %table
+  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+    %thead
+      %tr
+        %th Name
+        %th Ucard Number
+        %th Email
+        %th Course
+        %th Level
+        %th Actions
+    %tbody
+      - @awaiting_users.each do |user|
+        %tr
+          %td= link_to user.firstname + " " + user.lastname, user
+          %td= user.ucard
+          %td= user.email
+          %td= user.course
+          %td= user.level
+          %td= link_to 'Approve User', edit_user_path(user)
+
+%br
+%h2 List of currently approved users
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+  %thead
     %tr
       %th Name
       %th Ucard Number
       %th Email
       %th Course
       %th Level
-      %th Approved
       %th Actions
-
-    - @awaiting_users.each do |user|
+  %tbody
+    - @approved_users.each do |user|
       %tr
         %td= link_to user.firstname + " " + user.lastname, user
         %td= user.ucard
         %td= user.email
         %td= user.course
         %td= user.level
-        %td= user.approved
-        %td= link_to 'Approve User', edit_user_path(user)
-
-%br
-%h2 List of currently approved users
-%table
-  %tr
-    %th Name
-    %th Ucard Number
-    %th Email
-    %th Course
-    %th Level
-    %th Approved
-    %th Actions
-
-  - @approved_users.each do |user|
-    %tr
-      %td= link_to user.firstname + " " + user.lastname, user
-      %td= user.ucard
-      %td= user.email
-      %td= user.course
-      %td= user.level
-      %td= user.approved
-      %td= link_to 'Change Approval status', edit_user_path(user)
+        %td= link_to 'Change Approval status', edit_user_path(user)
 
 %a.btn.btn-primary.btn-lg{href: user_path(current_user), role: "button"} View My Profile
 %br

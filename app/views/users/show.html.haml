@@ -1,66 +1,79 @@
-%h2 Profile
-%p
-  %b Email:
-  = current_user.email
-%p
-  %b Name:
-  = current_user.firstname + " " + current_user.lastname
-%p
-  %b Course:
-  = current_user.course
-%p
-  %b Ucard Number:
-  = current_user.ucard
-%p
-  %b Level:
-  = current_user.level
+.container
+  .col-md-4
+    .row
+      %h2 Profile
 
--if !@fohs.empty?
-  %h2 List of Front of house positions
-  %table
-    %tr
-      %th Show
-      %th Position
-      %th Date
-      %th Time
+      %p
+        %b Email:
+        = @user.email
+      %p
+        %b Name:
+        = @user.firstname + " " + @user.lastname
+      %p
+        %b Course:
+        = @user.course
+      %p
+        %b Ucard Number:
+        = @user.ucard
+      %p
+        %b Level:
+        = @user.level
+      %br
+      -if (@user.eql? current_user)
+        %a.btn.btn-primary{href: edit_user_registration_path(@user), role: "button"} Update My Profile
 
-    - @fohs.each do |foh|
-      %tr
-        %td= link_to foh.show_date.show.name, foh.show_date.show
-        %td= foh.position.name
-        %td= foh.show_date.date
-        %td= foh.show_date.time.strftime("%I:%M%p")
+  .col-md-7
+    .row
 
--if !@training_records.empty?
-  %h2 List of Training Records
-  %table
-    %tr
-      %th Title
-      %th Description
-      %th Date
-      %th Time
+      -if !@fohs.empty?
+        %h2 List of Front of house positions
+        %table.table.table-striped.table-responsive.table-customstyle
+          %thead
+            %tr
+              %th Show
+              %th Position
+              %th Date
+              %th Time
+          %tbody
+            - @fohs.each do |foh|
+              %tr
+                %td= link_to foh.show_date.show.name, foh.show_date.show
+                %td= foh.position.name
+                %td= foh.show_date.date.strftime("%B %d, %Y")
+                %td= foh.show_date.time.strftime("%I:%M%p")
 
-    - @training_records.each do |foh|
-      %tr
-        %td= link_to foh.training.title, foh.training
-        %td= foh.training.description
-        %td= foh.training.date
-        %td= foh.training.time.strftime("%I:%M%p")
--if !@workshop_records.empty?
-  %h2 List of Workshop Records
-  %table
-    %tr
-      %th Title
-      %th Description
-      %th Date
-      %th Time
+      -if !@training_records.empty?
+        %h2 List of Training Records
+        %table.table.table-striped.table-responsive.table-customstyle
+          %thead
+            %tr
+              %th Title
+              %th Description
+              %th Date
+              %th Time
+          %tbody
+            - @training_records.each do |foh|
+              %tr
+                %td= link_to foh.training.title, foh.training
+                %td= foh.training.description
+                %td= foh.training.date.strftime("%B %d, %Y")
+                %td= foh.training.time.strftime("%I:%M%p")
 
-    - @workshop_records.each do |foh|
-      %tr
-        %td= link_to foh.workshop.title, foh.workshop
-        %td= foh.workshop.description
-        %td= foh.workshop.date
-        %td= foh.workshop.time.strftime("%I:%M%p")
+      -if !@workshop_records.empty?
+        %h2 List of Workshop Records
+        %table.table.table-striped.table-responsive.table-customstyle
+          %thead
+            %tr
+              %th Title
+              %th Description
+              %th Date
+              %th Time
+          %tbody
+            - @workshop_records.each do |foh|
+              %tr
+                %td= link_to foh.workshop.title, foh.workshop
+                %td= foh.workshop.description
+                %td= foh.workshop.date.strftime("%B %d, %Y")
+                %td= foh.workshop.time.strftime("%I:%M%p")
 
-= link_to 'Update Profile', edit_user_registration_path(@user)
-
+%br
