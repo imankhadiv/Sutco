@@ -27,7 +27,6 @@ end
 		  end
 		
 		  specify "I cannot create a social with blank fields" do
-		  	#pending "input validation to be added"
 		    visit new_social_path
 		    click_button "Create Social"
 		    page.should have_content "can't be blank"
@@ -47,7 +46,16 @@ end
 		
 		    page.should have_content "Social 2"
 		    page.should have_content "Social was successfully updated"
-		  end
+      end
+
+      specify "I cannot update a social with blank fields" do
+        visit socials_path
+        click_link "Edit"
+        fill_in "Title", with: ""
+        fill_in "Description", with: ""
+        click_button "Update Social"
+        page.should have_content "can't be blank"
+      end
 		end
 		
 		### No option for it ! 

@@ -42,6 +42,14 @@ describe "Add/Edit/Delete workshops" do
     page.should have_content "Workshop 2"
     page.should have_content "Workshop was successfully updated"
   end
+  specify "I cannot update a workshop with blank fields" do
+    visit workshops_path
+    click_link "Edit"
+    fill_in "Title", with: ""
+    fill_in "Description", with: ""
+    click_button "Update Workshop"
+    page.should have_content "can't be blank"
+  end
 
   specify "Given a workshop exists I can delete it" do
     visit workshops_path

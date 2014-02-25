@@ -43,7 +43,14 @@ describe "Add/Edit/Delete trainings" do
     page.should have_content "Training 2"
     page.should have_content "Training was successfully updated"
   end
-
+  specify "I cannot update a training with blank fields" do
+    visit trainings_path
+    click_link "Edit"
+    fill_in "Title", with: ""
+    fill_in "Description", with: ""
+    click_button "Update Training"
+    page.should have_content "can't be blank"
+  end
   specify "Given a training exists I can delete it" do
     visit trainings_path
     click_link "Delete"
