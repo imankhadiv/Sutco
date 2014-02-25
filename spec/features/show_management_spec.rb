@@ -44,7 +44,25 @@ describe "Show tests" do
   describe "Updating shows" do
 
     let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
-    specify "Given a show exists I can update it" do
+    specify "Given a show exists I can update it, remove a show date" do
+      visit show_path(show_with_show_dates.id)
+      click_on "Edit"
+      page.should have_content "Editing show"
+      fill_in "Name", with: "Show 2"
+      fill_in "Director", with: "Some Director"
+      fill_in "Stage manager", with: "Some Stage manager"
+      fill_in "Producer", with: "Some Producer"
+      fill_in "Synopsis", with: "Some Description"
+      click_on "remove"
+      last_nested_fields = all('.fields').first
+      within(last_nested_fields) do
+        select "2015", :from => "show[show_dates_attributes][0][date(1i)]"
+      end
+      click_button "Update Show"
+      page.should have_content "Show 2"
+      page.should have_content "Show was successfully updated"
+    end
+    specify "Given a show exists I can update it, add a show date" do
       visit show_path(show_with_show_dates.id)
       click_on "Edit"
       page.should have_content "Editing show"
@@ -54,15 +72,14 @@ describe "Show tests" do
       fill_in "Producer", with: "Some Producer"
       fill_in "Synopsis", with: "Some Description"
       click_on "Add Date"
-      last_nested_fields = all('.fields').last
+      last_nested_fields = all('.fields').first
       within(last_nested_fields) do
-        #select "2015", :from => "show[show_dates_attributes][0][date(1i)]"
+        select "2015", :from => "show[show_dates_attributes][0][date(1i)]"
       end
       click_button "Update Show"
       page.should have_content "Show 2"
       page.should have_content "Show was successfully updated"
     end
-
     specify "I cannot update a show with blank fields" do
       visit show_path(show_with_show_dates.id)
       click_on "Edit"
@@ -74,12 +91,13 @@ describe "Show tests" do
   end
 
  describe "Deleting shows" do
-   let!(:show) { FactoryGirl.create(:show) }
+   let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
    specify "Given a show exists I can delete it" do
-     visit shows_path
-     #expect {(find(:css, 'i.icon-trash')).click}.to change(Show, :count).by(-1)
-     #page.should_not have_content show.name
-     #page.should have_content "Show was successfully destroyed"
+     visit show_path(show_with_show_dates.id)
+     click_on "Delete"
+     #page.driver.browser.switch_to.alert.accept
+     page.should_not have_content show_with_show_dates.name
+     page.should have_content "Show was successfully destroyed"
    end
  end
 
