@@ -14,7 +14,7 @@
       %tbody
         - @training_records.each do |record|
           %tr
-            %td= record.user.firstname
+            %td= link_to "#{record.user.firstname}", user_path(record.user)
             %td= record.user.lastname
             %td= record.user.email
             -if record.attended
