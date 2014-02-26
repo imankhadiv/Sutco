@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226134731) do
+ActiveRecord::Schema.define(version: 20140226141213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boards", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.string   "title"
+    t.integer  "board_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "body"
+  end
 
   create_table "fohs", force: true do |t|
     t.integer  "show_date_id"
@@ -66,10 +89,8 @@ ActiveRecord::Schema.define(version: 20140226134731) do
   add_index "show_dates", ["show_id"], name: "index_show_dates_on_show_id", using: :btree
 
   create_table "show_roles", force: true do |t|
-    t.string   "name"
     t.string   "position"
     t.integer  "required_number"
-    t.integer  "available_number"
     t.integer  "show_id"
     t.datetime "created_at"
     t.datetime "updated_at"
