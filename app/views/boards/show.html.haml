@@ -1,0 +1,34 @@
+
+%p
+  %b Title:
+  = @board.title
+
+  %h1 Listing conversations
+
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+  %thead
+    %tr
+      %th Title
+      %th User
+      %th Comment
+      %th Created at
+      %th
+  %tbody
+    - @conversations.each do |conversation|
+      %tr
+        %td= link_to(conversation.title, board_conversation_path(@board,conversation))
+        %td= conversation.user.firstname
+        %td= conversation.body
+        %td= conversation.created_at.strftime("%B %d, %Y %I:%M%p")
+        /%td= link_to 'Show', conversation
+        /%td= link_to 'Edit', edit_conversation_path(conversation)
+        /%td= link_to 'Destroy', conversation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Conversation', new_board_conversation_path(@board)
+
+
+= link_to 'Edit', edit_board_path(@board)
+\|
+= link_to 'Back', boards_path

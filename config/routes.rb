@@ -1,5 +1,12 @@
 Team10MiniProject::Application.routes.draw do
 
+
+  resources :boards  do
+    resources :conversations do
+      resources :comments
+    end
+  end
+
   resources :roles
 
   root 'calendars#index'

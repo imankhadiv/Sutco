@@ -89,8 +89,10 @@ ActiveRecord::Schema.define(version: 20140226141213) do
   add_index "show_dates", ["show_id"], name: "index_show_dates_on_show_id", using: :btree
 
   create_table "show_roles", force: true do |t|
+    t.string   "name"
     t.string   "position"
     t.integer  "required_number"
+    t.integer  "available_number"
     t.integer  "show_id"
     t.datetime "created_at"
     t.datetime "updated_at"

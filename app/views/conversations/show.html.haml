@@ -1,0 +1,37 @@
+%p
+  %h1= @conversation.title
+%p
+  %h3= @conversation.body
+
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+  %thead
+    %tr
+      %th Comment
+      %th User
+
+  %tbody
+
+    - @comments.each do |comment|
+      %tr
+        %td= comment.body
+        %td= comment.user.firstname
+      /%td= link_to 'Show', comment
+      /%td= link_to 'Edit', edit_comment_path(comment)
+      /%td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= simple_form_for([@board, @conversation, @new_comment]) do |f|
+  = f.error_notification
+
+  = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter Comment'
+  %p
+  .form-actions
+    = f.submit "Add Comment"
+
+
+/= link_to 'New Comment', new_board_conversation_comment_path(@board, @conversation)
+
+= link_to 'Edit', edit_board_conversation_path(@board, @conversation)
+\|
+= link_to 'Back', board_path(@board)
