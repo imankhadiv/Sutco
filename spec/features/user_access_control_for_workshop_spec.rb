@@ -73,7 +73,7 @@ describe "Access control for different roles for workshop model" do
     let!(:workshop) { FactoryGirl.create(:workshop) }
 #Editing
     specify "As a member, I can't edit workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"Member"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -87,7 +87,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a production team member, I can't edit workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"ProductionTeam"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -101,7 +101,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a committee member, I can't edit workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"Committee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -115,7 +115,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a drama studio manager, I can't edit workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"DramaStudioManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -129,7 +129,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a senior committee, I can edit workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"SeniorCommittee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -143,7 +143,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a tech manager, I can edit workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"TechManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -160,7 +160,7 @@ describe "Access control for different roles for workshop model" do
     let!(:workshop) { FactoryGirl.create(:workshop) }
     #Deleting
     specify "As a member, I can't delete workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"Member"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -172,7 +172,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a production team member, I can't delete workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"ProductionTeam"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -184,7 +184,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a committee member, I can't delete workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"Committee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -196,7 +196,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a drama studio manager, I can't delete workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"DramaStudioManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -208,7 +208,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a senior committee, I can delete workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"SeniorCommittee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -220,7 +220,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a tech manager, I can delete workshops" do
-      pending "Interface to be modified"
+      #pending "Interface to be modified"
       role = Role.create :name =>"TechManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -350,7 +350,7 @@ describe "Access control for different roles for workshop model" do
     end
 
     specify "As a senior committee, I can't record attendance for a workshop" do
-      pending "SeniorCommittee recording attendance, to be confirmed and updated"
+      #pending "SeniorCommittee recording attendance, to be confirmed and updated"
       role = Role.create :name =>"SeniorCommittee"
       user = FactoryGirl.create(:user)
       user.roles << role
