@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226141213) do
+ActiveRecord::Schema.define(version: 20140226160413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20140226141213) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "public"
+    t.integer  "show_id"
   end
 
   create_table "comments", force: true do |t|
@@ -89,10 +91,8 @@ ActiveRecord::Schema.define(version: 20140226141213) do
   add_index "show_dates", ["show_id"], name: "index_show_dates_on_show_id", using: :btree
 
   create_table "show_roles", force: true do |t|
-    t.string   "name"
     t.string   "position"
     t.integer  "required_number"
-    t.integer  "available_number"
     t.integer  "show_id"
     t.datetime "created_at"
     t.datetime "updated_at"
