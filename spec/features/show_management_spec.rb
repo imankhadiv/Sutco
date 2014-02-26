@@ -20,7 +20,7 @@ describe "Show tests" do
       fill_in "Producer", with: "Some Producer"
       fill_in "Synopsis", with: "Some Description"
       click_on "Add Date"
-      last_nested_fields = all('.fields').last
+      last_nested_fields = all('.fields').first
       within(last_nested_fields) do
         select "2015", :from => "show[show_dates_attributes][0][date(1i)]"
       end
