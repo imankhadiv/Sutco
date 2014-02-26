@@ -28,4 +28,18 @@
           - if (current_user.role? "ProductionTeam")
             %td= link_to 'Remove Date', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
 %p
+
+%p
+  -if !@show.show_roles.empty?
+    %b Show Role(s):
+    %table.table.table-striped.table-bordered.table-responsive.table-nonfluid
+      -@show.show_roles.each do |c|
+        %tr
+          - if(c.required_number)
+            %td= c.position
+            %td= c.required_number
+            / %td= link_to 'Apply for roles', new_show_date_foh_path(c)
+          / - if (current_user.role? "ProductionTeam")
+          /   %td= link_to 'Remove Date', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
+%p
 =show_navigation_links(@show)

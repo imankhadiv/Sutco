@@ -1,0 +1,9 @@
+%p.fields
+  = f.label :title, "Position"
+  %br 
+  = select("pos1","pos2", ["None","Some"])
+  %br 
+  = f.label :title, "Required Number"
+  %br 
+  = select("1","2", ["1","2"])
+  = link_to_remove_fields "remove", f
