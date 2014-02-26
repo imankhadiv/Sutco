@@ -8,6 +8,8 @@ class Ability
   include CanCan::Ability
   def initialize(user)
     user ||= User.new # guest user
+    alias_action :create, :read, :update, :destroy, :to => :crud
+
     if user.role? :member
       can :read, [Show, ShowDate, Social]
       can :manage, [Foh]
@@ -16,6 +18,7 @@ class Ability
     end
     if user.role? :committee
       can :read, [Show, ShowDate]
+      can [:show, :update], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can :manage, [Foh, Social]
     end
@@ -25,16 +28,19 @@ class Ability
     end
     if user.role? :production_team
       can :manage, [Show, ShowDate, Foh, Social]
+      can [:show, :update], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
     end
     if user.role? :drama_studio_manager
-      can :read, [Show, ShowDate]
+      can :read, [Show, ShowDate, Social]
+      can [:show, :update], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can :manage, [Foh]
     end
     if user.role? :senior_committee
       can :read, [Show,ShowDate]
-      can :manage, [Workshop, Foh, Training, User, Social]
+      can :manage, [Foh, User, Social]
+      can [:crud, :attend], [Workshop, Training]
     end
 
   end

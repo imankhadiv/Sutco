@@ -10,7 +10,10 @@
       %th Date
       %th Time
       %th Duration
-      %th{colspan: "3"} Options
+      - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+        %th{colspan: "3"} Options
+      - else
+        %th Options
   %tbody
     - @trainings.each do |training|
       %tr
@@ -21,8 +24,9 @@
         %td= training.time.strftime("%I:%M%p")
         %td  #{training.duration} minutes
         %td= link_to 'View', training
-        %td= link_to 'Edit', edit_training_path(training)
-        %td= link_to 'Delete', training, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+          %td= link_to 'Edit', edit_training_path(training)
+          %td= link_to 'Delete', training, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

@@ -19,8 +19,7 @@
 
 %h4=check_training_attendee(@training)
 %p
-- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-
+- if (current_user.role? "TechManager")
   %a.btn.btn-primary.btn-lg{href:attendee_training_path(@training) , role: "button"} View registered users
 
 =training_navigation_links(@training)

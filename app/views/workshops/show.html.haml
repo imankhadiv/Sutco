@@ -15,7 +15,7 @@
 %h4=check_workshop_attendee(@workshop)
 %p
 
-- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+- if (current_user.role? "TechManager")
   %a.btn.btn-primary.btn-lg{href:attendee_workshop_path(@workshop) , role: "button"} View registered users
 
 =workshop_navigation_links(@workshop)

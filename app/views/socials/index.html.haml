@@ -10,7 +10,10 @@
       %th Date
       %th Time
       %th Duration
-      %th{colspan: "3"} Options
+      - if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
+        %th{colspan: "3"} Options
+      - else
+        %th Options
   %tbody
     - @socials.each do |social|
       %tr
@@ -21,8 +24,9 @@
         %td= social.time.strftime("%I:%M%p")
         %td  #{social.duration} minutes
         %td= link_to 'View', social
-        %td= link_to 'Edit', edit_social_path(social)
-        %td= link_to 'Destroy', social, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
+          %td= link_to 'Edit', edit_social_path(social)
+          %td= link_to 'Destroy', social, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 - if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
