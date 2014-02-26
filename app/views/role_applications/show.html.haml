@@ -1,0 +1,11 @@
+%p#notice= notice
+%b= "Your application for #{@role_application.show_role.position} in #{@role_application.show_role.show.name}"
+%br
+%br
+%p
+  %b Why did apply for the role:
+  %br
+  = @role_application.content
+
+
+= link_to 'Back', user_path(current_user)

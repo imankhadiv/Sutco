@@ -7,4 +7,5 @@
 
 class ShowRole < ActiveRecord::Base
   belongs_to :show
+  has_many :role_applications, :dependent => :destroy
 end
