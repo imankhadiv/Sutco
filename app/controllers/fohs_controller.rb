@@ -11,18 +11,18 @@ class FohsController < ApplicationController
   end
 
   # GET /fohs/1
-  def show
-    @show_date = ShowDate.find(params[:show_date_id])
+ # def show
+  #  @show_date = ShowDate.find(params[:show_date_id])
 
-  end
+  #end
 
   # GET /fohs/new
   def new
     @show_date = ShowDate.find(params[:show_date_id])
     @positions = Position.where.not(id: Position.joins(:fohs).where(fohs: {show_date_id: @show_date.id}))
-    if @positions.empty?
-      redirect_to @show_date, notice: 'All positions have been filled. Try a different date'
-    end
+   # if @positions.empty?
+    #  redirect_to @show_date, notice: 'All positions have been filled. Try a different date'
+    #end
     @foh = Foh.new
   end
 
@@ -62,9 +62,9 @@ class FohsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_foh
-      @foh = Foh.find(params[:id])
-    end
+   # def set_foh
+    #  @foh = Foh.find(params[:id])
+    #end
     def set_nav_identifier
       @current_nav_identifier	= :shows
     end

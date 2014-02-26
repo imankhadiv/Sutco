@@ -9,13 +9,13 @@ module ApplicationHelper
   def navbar_link_to(*args, &block)
     nav_link_to(@current_nav_identifier, *args, &block)
   end
-  def subnav_link_to(*args, &block)
-    nav_link_to(@current_subnav_identifier, *args, &block)
-  end
+ # def subnav_link_to(*args, &block)
+  #  nav_link_to(@current_subnav_identifier, *args, &block)
+  #end
   
-  def no_record_tr(colspan, text = 'No records to display')
-    content_tag(:tr, content_tag(:td, text, colspan: colspan, class: 'text-center text-muted' ), class: 'tr-no-record')
-  end
+  #def no_record_tr(colspan, text = 'No records to display')
+   # content_tag(:tr, content_tag(:td, text, colspan: colspan, class: 'text-center text-muted' ), class: 'tr-no-record')
+  #end
 
   def link_to_icon(icon_name,link_name,url_or_object, options={})
     link_to(("<div class='icon'><i class=#{icon_name}></i><span id=#{link_name}>#{link_name}</span></div>".html_safe),

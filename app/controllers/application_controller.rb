@@ -7,11 +7,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
-    if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-      redirect_to :back
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path
   end
 
 before_filter do
@@ -22,6 +18,8 @@ end
 
   # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
   rescue_from ActiveRecord::RecordNotFound do
+    #flash[:error] = "The page does not exist"
+    #redirect_to root_path
     render template: 'errors/not_found', status: 404
   end
   

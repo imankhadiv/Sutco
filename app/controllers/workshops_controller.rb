@@ -56,10 +56,8 @@ class WorkshopsController < ApplicationController
   end
 
   def record_attendance
-
     WorkshopRecord.where(id:params[:unattended_ids]).update_all(attended:true)
     redirect_to workshops_url, notice: "Attendance was successfully updated"
-
   end
 
 

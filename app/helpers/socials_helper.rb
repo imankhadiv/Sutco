@@ -4,7 +4,7 @@ module SocialsHelper
 
   def social_navigation_links(social)
     content_tag :h3 do
-      if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+      if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
         [
             link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,socials_path),
             "|",

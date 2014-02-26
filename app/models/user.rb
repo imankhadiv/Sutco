@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   def inactive_message
     if !approved?
       :not_approved
-    else
-      super # Use whatever other message
+    #else
+    #  super # Use whatever other message
     end
   end
 
@@ -48,10 +48,10 @@ class User < ActiveRecord::Base
   end
 
   #Returns the roles which belong to the user with the specified id
-  def self.user_role(id)
-    user = User.find_by_id(id)
-    user.roles
-  end
+  #def self.user_role(id)
+  #  user = User.find_by_id(id)
+  #  user.roles
+  #end
 
 
 end
