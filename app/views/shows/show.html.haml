@@ -38,7 +38,7 @@
           - if(c.required_number > 0)
             %td= c.position
             %td= c.required_number
-            / %td= link_to 'Apply for roles', new_show_date_foh_path(c)
+            %td= link_to 'Apply for roles', new_show_role_role_application_path(c)
             - if (current_user.role? "ProductionTeam")
               %td= link_to 'Remove Role', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
 %p
