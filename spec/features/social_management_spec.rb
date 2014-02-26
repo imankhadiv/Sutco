@@ -68,7 +68,7 @@ end
 		   specify "Given a social exists I can delete it" do
 		
 		     visit socials_path
-		     click_link "Destroy"
+		     click_link "Delete"
 		     page.should_not have_content social.title
 		     page.should have_content "Social was successfully destroyed"
 		   end

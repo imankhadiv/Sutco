@@ -26,7 +26,7 @@
         %td= link_to 'View', social
         - if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
           %td= link_to 'Edit', edit_social_path(social)
-          %td= link_to 'Destroy', social, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Delete', social, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 - if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
