@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226160413) do
+ActiveRecord::Schema.define(version: 20140301144634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,25 @@ ActiveRecord::Schema.define(version: 20140226160413) do
   add_index "fohs", ["show_date_id"], name: "index_fohs_on_show_date_id", using: :btree
   add_index "fohs", ["user_id"], name: "index_fohs_on_user_id", using: :btree
 
+  create_table "notifications", force: true do |t|
+    t.integer  "conversation_id"
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.boolean  "seen",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "positions", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "role_applications", force: true do |t|
+    t.integer  "show_role_id"
+    t.integer  "user_id"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
