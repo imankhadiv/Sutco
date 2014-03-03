@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
+  before_filter :set_nav_identifier
+  load_and_authorize_resource
 
   # GET /boards
   def index
@@ -55,5 +57,9 @@ class BoardsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def board_params
       params.require(:board).permit(:title)
+    end
+
+    def set_nav_identifier
+      @current_nav_identifier	= :boards
     end
 end

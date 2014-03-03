@@ -2,12 +2,11 @@
 .page-header
   %h1= @board.title
 
-%h4 Conversations
 -if(!@conversations.empty?)
   %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
     %thead
       %tr
-        %th Title
+        %th Conversations
         %th Comment
 
     %tbody

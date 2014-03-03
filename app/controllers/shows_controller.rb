@@ -16,7 +16,7 @@ class ShowsController < ApplicationController
 
   # GET /shows/1
   def show
-
+    @board = Board.find_by_show_id(@show.id)
   end
 
   # GET /shows/new

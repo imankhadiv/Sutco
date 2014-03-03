@@ -1,7 +1,12 @@
 .page-header
   %h1= @show.name
+  -if(@board)
+    %i=link_to 'Go to Message Board', board_path(@board)
 %p
-  = image_tag @show.image_url, alt: "No Poster", height: 480, width: "auto"
+  -if(@show.image.nil?)
+    = image_tag @show.image_url, alt: "No Poster", height: 480, width: "auto"
+  -else
+    %i= "No Show poster yet"
 %p
   %b Director:
   = @show.director
