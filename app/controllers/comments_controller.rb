@@ -31,6 +31,7 @@ class CommentsController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(comment_params)
     @comment.user_id = current_user.id
+    @comment.notify_users
 
     if @comment.save
       redirect_to board_conversation_path(@board, @conversation), notice: 'Comment was successfully created.'
