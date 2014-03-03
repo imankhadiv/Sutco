@@ -1,38 +1,27 @@
-%p
+.page-header
   %h1= @conversation.title
 %p
-  %h3= @conversation.body
+  %h4= @conversation.body
 
--if(!@comments.empty?)
-  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
-    %thead
-      %tr
-        %th Comment
-        %th User
-
-    %tbody
-
-      - @comments.each do |comment|
-        %tr
-          %td= comment.body
-          %td= comment.user.firstname
-        /%td= link_to 'Show', comment
-        /%td= link_to 'Edit', edit_comment_path(comment)
-        /%td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= simple_form_for([@board, @conversation, @new_comment]) do |f|
-  = f.error_notification
-
-  = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter Comment'
+.col-md-8
+  %i #{@comments.count} Replies
   %p
-  .form-actions
-    = f.submit "Add Comment"
+  -if(!@comments.empty?)
+    - @comments.each do |comment|
+      %i.commenter= comment.user.firstname
+      .commenter.h6= comment.created_at.strftime("%B %d, %Y %I:%M%p")
+      .comment.p= comment.body
+      %hr
 
+  %i.h4.commenter= "Leave a comment"
+  = simple_form_for([@board, @conversation, @new_comment]) do |f|
+    = f.error_notification
+    = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter your Comment here'
+    %p
+    .form-actions
+      = f.submit "Add Comment"
 
-/= link_to 'New Comment', new_board_conversation_comment_path(@board, @conversation)
-
-= link_to 'Edit', edit_board_conversation_path(@board, @conversation)
-\|
-= link_to 'Back', board_path(@board)
+  %p
+    = link_to 'Edit Conversation', edit_board_conversation_path(@board, @conversation)
+    \|
+    = link_to 'Back to the main board', board_path(@board)
