@@ -6,18 +6,12 @@
     %th User
     %th Content
     %th
-    %th
-    %th
 
   - @role_applications.each do |role_application|
     %tr
       %td= role_application.show_role_id
       %td= role_application.user_id
       %td= role_application.content
-      %td= link_to 'Show', role_application
-      %td= link_to 'Edit', edit_role_application_path(role_application)
-      %td= link_to 'Destroy', role_application, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'View Application', role_application
+      / %td= link_to 'Destroy', role_application, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Role application', new_role_application_path

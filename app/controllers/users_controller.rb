@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 	@fohs = Foh.where(user_id: @user)
   @training_records = @user.training_records
   @workshop_records = @user.workshop_records
+  @role_applications = @user.role_applications
 
   end
 
