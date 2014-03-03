@@ -39,6 +39,7 @@ class CommentsController < ApplicationController
       flash[:error] = 'You have not entered any comment!'
       redirect_to board_conversation_path(@board, @conversation)
     end
+
   end
 
   # PATCH/PUT /comments/1

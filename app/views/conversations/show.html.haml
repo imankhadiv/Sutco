@@ -7,11 +7,9 @@
   %i #{@comments.count} Replies
   %p
   -if(!@comments.empty?)
-    - @comments.each do |comment|
-      %i.commenter= comment.user.firstname
-      .commenter.h6= comment.created_at.strftime("%B %d, %Y %I:%M%p")
-      .comment.p= comment.body
-      %hr
+    -#- @comments.each do |comment|
+  = render @conversation.comments
+
 
   %i.h4.commenter= "Leave a comment"
   = simple_form_for([@board, @conversation, @new_comment]) do |f|
@@ -19,7 +17,7 @@
     = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter your Comment here'
     %p
     .form-actions
-      = f.submit "Add Comment"
+      = f.submit "Add Comment", remote: true
 
   %p
     = link_to 'Edit Conversation', edit_board_conversation_path(@board, @conversation)
