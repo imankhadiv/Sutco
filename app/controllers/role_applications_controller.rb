@@ -1,4 +1,5 @@
 class RoleApplicationsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_role_application, only: [:show, :edit, :update, :destroy]
 
   # GET /role_applications

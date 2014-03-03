@@ -76,4 +76,21 @@
                 %td= foh.workshop.date.strftime("%B %d, %Y")
                 %td= foh.workshop.time.strftime("%I:%M%p")
 
+      -if !@role_applications.empty?
+        %h2 List of Show Role Records
+        %table.table.table-striped.table-responsive.table-customstyle
+          %thead
+            %tr
+              %th Show
+              %th Show Role
+              %th Status
+              %th Application
+          %tbody
+            - @role_applications.each do |application|
+              %tr
+                %td= link_to application.show_role.show.name, application.show_role.show
+                %td= application.show_role.position
+                %td= application.status
+                %td= link_to "View", application
+
 %br

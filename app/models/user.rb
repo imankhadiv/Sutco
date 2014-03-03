@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :training_records
   has_many :workshop_records
+  has_many :role_applications
   has_many :notifications
   has_many :comments
   has_many :conversations
