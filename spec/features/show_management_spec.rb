@@ -13,6 +13,7 @@ describe "Show tests" do
 
   describe "Creating shows" do
     specify "I can create a show" do
+      pending
       visit new_show_path
       fill_in "Name", with: "Show 1"
       fill_in "Director", with: "Some Director"
