@@ -6,8 +6,7 @@
   .form-inputs
     %p= "Why did you apply for the role?"
     = f.text_area :content
-    = f.label "Approved: "
-    = f.check_box :approved
+    = f.select :status ,options_for_select(["Pending","Approved","Rejected"])
 
   .form-actions
     = f.button :submit
