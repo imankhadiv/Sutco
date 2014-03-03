@@ -6,6 +6,8 @@
   .form-inputs
     %p= "Why did you apply for the role?"
     = f.text_area :content
+    = f.label "Approved: "
+    = f.check_box :approved
 
   .form-actions
     = f.button :submit
