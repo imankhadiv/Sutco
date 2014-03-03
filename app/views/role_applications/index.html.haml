@@ -1,17 +1,20 @@
-%h1 Listing role_applications
-
-%table
-  %tr
-    %th Show role
-    %th User
-    %th Content
-    %th
+%h1 Listing applications
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+  %thead
+    %tr
+      %th Show Name
+      %th Position
+      %th Applicant
+      %th 
+      %th
 
   - @role_applications.each do |role_application|
-    %tr
-      %td= role_application.show_role_id
-      %td= role_application.user_id
-      %td= role_application.content
-      %td= link_to 'View Application', role_application
+    %tbody
+      %tr 
+        %td= role_application.show_role.show.name
+        %td= role_application.show_role.position
+        %td= role_application.user.firstname
+        %td= role_application.user.lastname
+        %td= link_to 'View Application', role_application
       / %td= link_to 'Destroy', role_application, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

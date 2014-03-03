@@ -1,2 +1,17 @@
-%h1 Listing roles
+%h1 Available show roles
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+  %thead
+    %tr
+      %th Show
+      %th Role
+      %th Available number
+      %th Options
+  %thead
+    -@show_roles.each do |c|
+      %tr
+        %td= link_to c.show.name, c.show
+        %td= c.position
+        %td= c.required_number
+        %td= link_to 'Apply for show role', new_show_role_role_application_path(c)
+
 
