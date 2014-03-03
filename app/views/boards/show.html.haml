@@ -3,25 +3,25 @@
   %h1= @board.title
 
 %h4 Conversations
-
-%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
-  %thead
-    %tr
-      %th Title
-      %th User
-      %th Comment
-      %th Created at
-
-  %tbody
-    - @conversations.each do |conversation|
+-if(!@conversations.empty?)
+  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+    %thead
       %tr
-        %td= link_to(conversation.title, board_conversation_path(@board,conversation))
-        %td= conversation.user.firstname
-        %td= conversation.body
-        %td= conversation.created_at.strftime("%B %d, %Y %I:%M%p")
-        /%td= link_to 'Show', conversation
-        /%td= link_to 'Edit', edit_conversation_path(conversation)
-        /%td= link_to 'Destroy', conversation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Title
+        %th User
+        %th Comment
+        %th Created at
+
+    %tbody
+      - @conversations.each do |conversation|
+        %tr
+          %td= link_to(conversation.title, board_conversation_path(@board,conversation))
+          %td= conversation.user.firstname
+          %td= conversation.body
+          %td= conversation.created_at.strftime("%B %d, %Y %I:%M%p")
+          /%td= link_to 'Show', conversation
+          /%td= link_to 'Edit', edit_conversation_path(conversation)
+          /%td= link_to 'Destroy', conversation, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

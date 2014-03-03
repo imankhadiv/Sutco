@@ -3,21 +3,22 @@
 %p
   %h3= @conversation.body
 
-%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
-  %thead
-    %tr
-      %th Comment
-      %th User
-
-  %tbody
-
-    - @comments.each do |comment|
+-if(!@comments.empty?)
+  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+    %thead
       %tr
-        %td= comment.body
-        %td= comment.user.firstname
-      /%td= link_to 'Show', comment
-      /%td= link_to 'Edit', edit_comment_path(comment)
-      /%td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Comment
+        %th User
+
+    %tbody
+
+      - @comments.each do |comment|
+        %tr
+          %td= comment.body
+          %td= comment.user.firstname
+        /%td= link_to 'Show', comment
+        /%td= link_to 'Edit', edit_comment_path(comment)
+        /%td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
