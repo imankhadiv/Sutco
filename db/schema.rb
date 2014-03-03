@@ -205,3 +205,4 @@ ActiveRecord::Schema.define(version: 20140303110053) do
   end
 
 end
+
