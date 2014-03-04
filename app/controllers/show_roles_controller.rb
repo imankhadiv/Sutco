@@ -1,10 +1,11 @@
 
 class ShowRolesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_show_role, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
   # GET /roles
   def index
-
+    @show_roles = ShowRole.all
   end
 
   # GET /roles/1

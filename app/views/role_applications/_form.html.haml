@@ -1,13 +1,20 @@
 = simple_form_for([@show_role, @role_application]) do |f|
-  = f.error_notification
-  %p= "You are applying for #{@show_role.position} in #{@show_role.show.name}"
+  // = f.error_notification
+  %b= "You are applying for #{@show_role.position} in #{@show_role.show.name}"
 
+  - if @role_application.errors.any?
+    -@role_application.errors.full_messages.each do |msg|
+      %li=msg
 
   .form-inputs
-    %p= "Why did you apply for the role?"
+  %br
+    %b= "Why did you apply for the role?"
+    %br
     = f.text_area :content
-    = f.select :status ,options_for_select(["Pending","Approved","Rejected"])
+    %br
 
+    = f.select :status ,options_for_select(["Pending","Approved","Rejected"])
+  %br
   .form-actions
     = f.button :submit
 
