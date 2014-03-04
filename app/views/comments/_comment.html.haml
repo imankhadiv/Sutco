@@ -1,0 +1,5 @@
+.comment
+  %i.commenter= comment.user.firstname
+  .commenter.h6= comment.created_at.strftime("%B %d, %Y %I:%M%p")
+  .comment.p= comment.body
+  %hr

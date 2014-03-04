@@ -33,12 +33,19 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.notify_users
 
-    if @comment.save
-      redirect_to board_conversation_path(@board, @conversation), notice: 'Comment was successfully created.'
-    else
-      flash[:error] = 'You have not entered any comment!'
-      redirect_to board_conversation_path(@board, @conversation)
+
+    respond_to do |format|
+     if @comment.save
+      format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+      format.js   {}
+      format.json { render json: @comment, status: :created, location: @comment }
+
+      else
+        format.html { render action: 'show'}
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   # PATCH/PUT /comments/1
