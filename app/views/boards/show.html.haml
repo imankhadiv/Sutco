@@ -2,12 +2,16 @@
 .page-header
   %h1= @board.title
 
+%p= link_to 'Add Conversation', new_board_conversation_path(@board)
+
 -if(!@conversations.empty?)
   %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
     %thead
       %tr
-        %th Conversations
+        %th Conversation Topics
         %th Comment
+        -if(current_user.role? "SeniorCommittee")
+          %th Moderate?
 
     %tbody
       - @conversations.each do |conversation|
@@ -16,14 +20,10 @@
             = link_to(conversation.title, board_conversation_path(@board,conversation))
             %i.h6= "(created by " + conversation.user.firstname + " on " + conversation.created_at.strftime("%B %d, %Y %I:%M%p") + ") "
           %td= conversation.body
-          /%td= link_to 'Show', conversation
           /%td= link_to 'Edit', edit_conversation_path(conversation)
-          /%td= link_to 'Destroy', conversation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          -if(current_user.role? "SeniorCommittee")
+            %td= link_to 'Remove conversation', [@board, conversation], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 
-%p= link_to 'New Conversation', new_board_conversation_path(@board)
 
 
-= link_to 'Edit', edit_board_path(@board)
-\|
-= link_to 'Back', boards_path

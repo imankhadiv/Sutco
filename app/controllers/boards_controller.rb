@@ -11,6 +11,8 @@ class BoardsController < ApplicationController
   # GET /boards/1
   def show
     @conversations = @board.conversations
+    #@showid = @board.show.id
+    #RoleApplication.find_by(user_id: current_user, show_id: @showid)
   end
 
   # GET /boards/new

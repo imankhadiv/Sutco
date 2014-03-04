@@ -51,8 +51,9 @@ class ConversationsController < ApplicationController
 
   # DELETE /conversations/1
   def destroy
+    @board = Board.find(params[:board_id])
     @conversation.destroy
-    redirect_to conversations_url, notice: 'Conversation was successfully destroyed.'
+    redirect_to @board, notice: 'Conversation was successfully moderated.'
   end
 
   private

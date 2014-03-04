@@ -17,6 +17,8 @@ class ShowsController < ApplicationController
   # GET /shows/1
   def show
     @board = Board.find_by_show_id(@show.id)
+    @show_roles = ShowRole.select('id').where(show_id: @show.id)
+    @user_ids = RoleApplication.select(:user_id).where(show_role_id: @show_roles, status: 'Approved')
   end
 
   # GET /shows/new
