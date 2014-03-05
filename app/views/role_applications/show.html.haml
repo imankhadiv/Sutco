@@ -1,16 +1,32 @@
 %p#notice= notice
-%b= "Your application for #{@role_application.show_role.position} in #{@role_application.show_role.show.name}"
+- if (current_user.role? "DramaStudioManager")
+  %b Applicant name:
+  = @role_application.user.firstname
+  = @role_application.user.lastname
+  %br
+  %b Show:
+  = @role_application.show_role.show.name
+  %br
+  %b Position:
+  = @role_application.show_role.position
+
+- else
+  %b= "Your application for #{@role_application.show_role.position} in #{@role_application.show_role.show.name}"
+
 %br
 %br
 %p
-  %b Why did apply for the role:
+  %b Why did you apply for the role:
   %br
   = @role_application.content
   %br
   - if (current_user.role? "DramaStudioManager")
     = simple_form_for([@show_role, @role_application]) do |f|
       .form-inputs
-      = f.input :status, collection: [ "Pending", "Approved", "Rejected"]
+      = f.label :show_role
+      %br
+      = f.collection_select(:show_role_id, ShowRole.all, :id, :position)
+      = f.input :status, collection: [ "Pending", "Approved", "Rejected"], :include_blank => false
       %br
 
       .form-actions
@@ -22,7 +38,7 @@
     %br
 
 = link_to role_application_navigation_links(@role_application)
- 
+
   
   
 
