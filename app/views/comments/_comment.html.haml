@@ -2,4 +2,7 @@
   %i.commenter= comment.user.firstname
   .commenter.h6= comment.created_at.strftime("%B %d, %Y %I:%M%p")
   .comment.p= comment.body
+  -if(current_user.role? "SeniorCommittee")
+    = link_to 'Remove comment', [@board, @conversation, comment], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
   %hr
