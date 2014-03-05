@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   def index
     @awaiting_users = User.not_approved
     @approved_users = User.approved
-@awaiting_role_applications = RoleApplication.where(status:"Pending")
   end
 
   def edit

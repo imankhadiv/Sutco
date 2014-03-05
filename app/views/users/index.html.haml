@@ -24,29 +24,6 @@
           %td= link_to 'Approve User', edit_user_path(user)
 
 
-%h2 List of role applications awaiting approval
--if @awaiting_role_applications.empty?
-  You have no unapproved applications
--else
-  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
-    %thead
-      %tr
-        %th Show Name
-        %th Position
-        %th Applicant
-        %th 
-        %th Status
-        %th 
-
-    - @awaiting_role_applications.each do |role_application|
-      %tbody
-        %tr 
-          %td= role_application.show_role.show.name
-          %td= role_application.show_role.position
-          %td= role_application.user.firstname
-          %td= role_application.user.lastname
-          %td= role_application.status
-          %td= link_to 'Process Application', role_application
 
 %br
 %h2 List of currently approved users
