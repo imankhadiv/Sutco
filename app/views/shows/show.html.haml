@@ -1,11 +1,8 @@
 .page-header
   %h1= @show.name
-  -if(@board)
-    %i=link_to 'Go to Message Board', board_path(@board)
-
--@user_ids.each do |c|
-  -if(current_user.eql? c.user)
-    Approved
+  -if @user_ids.include? current_user.id
+    -if(@board)
+      %i=link_to 'Go to Message Board', board_path(@board)
 
 %p
   -if(@show.image.nil?)
