@@ -7,9 +7,23 @@
   %br
   = @role_application.content
   %br
-  %b Status:
-  %br
-  = @role_application.status
+  - if (current_user.role? "DramaStudioManager")
+    = simple_form_for([@show_role, @role_application]) do |f|
+      .form-inputs
+      = f.input :status, collection: [ "Pending", "Approved", "Rejected"]
+      %br
+
+      .form-actions
+      = f.button :submit, "Update Application Status"
+
+  - else
+    %b Status:
+    = @role_application.status
+    %br
+
+= link_to role_application_navigation_links(@role_application)
+ 
+  
+  
 
 
-= link_to 'Back', user_path(current_user)
