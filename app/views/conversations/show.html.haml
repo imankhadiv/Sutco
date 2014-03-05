@@ -1,14 +1,17 @@
 .page-header
   %h1= @conversation.title
 %p
-  %h4= @conversation.body
+%h4 Initial comment
+%i.commenter= @conversation.user.firstname
+.commenter.h6= @conversation.created_at.strftime("%B %d, %Y %I:%M%p")
+.comment= @conversation.body
+%hr
 
 .col-md-8
-  %i #{@comments.count} Replies
-  %p
+  %h4 Replies
+
 
   #comments= render @conversation.comments
-
 
   %i.h4.commenter= "Leave a comment"
   = simple_form_for([@board, @conversation, @new_comment],remote: true) do |f|

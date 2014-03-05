@@ -9,7 +9,6 @@
     %thead
       %tr
         %th Conversation Topics
-        %th Comment
         -if(current_user.role? "SeniorCommittee")
           %th Moderate?
 
@@ -18,8 +17,8 @@
         %tr
           %td
             = link_to(conversation.title, board_conversation_path(@board,conversation))
+            (#{conversation.comments.count} comments)
             %i.h6= "(created by " + conversation.user.firstname + " on " + conversation.created_at.strftime("%B %d, %Y %I:%M%p") + ") "
-          %td= conversation.body
           /%td= link_to 'Edit', edit_conversation_path(conversation)
           -if(current_user.role? "SeniorCommittee")
             %td= link_to 'Remove conversation', [@board, conversation], :method => :delete, :data => { :confirm => 'Are you sure?' }

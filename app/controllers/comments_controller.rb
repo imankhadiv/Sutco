@@ -32,15 +32,14 @@ class CommentsController < ApplicationController
     @comment = @conversation.comments.create(comment_params)
     @comment.user_id = current_user.id
     @comment.notify_users
-
+    @count = @conversation.comments.count
 
     respond_to do |format|
      if @comment.save
       format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
       format.js   {}
       format.json { render json: @comment, status: :created, location: @comment }
-
-      else
+     else
         format.html { render action: 'show'}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
@@ -59,8 +58,10 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
+    @conversation = Conversation.find(params[:conversation_id])
+    @board = Board.find(params[:board_id])
     @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    redirect_to [@board, @conversation], notice: 'Comment was successfully destroyed.'
   end
 
   private

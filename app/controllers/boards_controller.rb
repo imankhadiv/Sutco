@@ -11,8 +11,17 @@ class BoardsController < ApplicationController
   # GET /boards/1
   def show
     @conversations = @board.conversations
-    #@showid = @board.show.id
-    #RoleApplication.find_by(user_id: current_user, show_id: @showid)
+    if (!@board.public)
+
+      @show_roles = ShowRole.select('id').where(show_id: @board.show.id)
+      @user_ids = RoleApplication.where(show_role_id: @show_roles, status: 'Approved').pluck(:user_id)
+      #render :text => @user_ids.inspect
+
+    unless (user_can_view_board(@user_ids))
+        flash[:error] = "You can't view this board"
+        redirect_to root_path
+      end
+    end
   end
 
   # GET /boards/new
@@ -64,4 +73,13 @@ class BoardsController < ApplicationController
     def set_nav_identifier
       @current_nav_identifier	= :boards
     end
+
+    def user_can_view_board(users)
+     if users.include? current_user.id
+        true
+     else
+         false
+       end
+    end
+
 end
