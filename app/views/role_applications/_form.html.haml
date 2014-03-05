@@ -11,8 +11,6 @@
     %b= "Why did you apply for the role?"
     %br
     = f.text_area :content
-    %br
-    = f.select :status ,options_for_select(["Pending","Approved","Rejected"])
   %br
   .form-actions
     = f.button :submit

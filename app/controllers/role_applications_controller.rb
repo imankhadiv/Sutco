@@ -28,6 +28,7 @@ class RoleApplicationsController < ApplicationController
      @show_role = ShowRole.find(params[:show_role_id])
     @role_application = @show_role.role_applications.create(role_application_params)
     @role_application.user_id = current_user.id
+    @role_application.status = "Pending"
 
     if @role_application.save
       redirect_to @role_application, notice: 'Role application was successfully created.'
