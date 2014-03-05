@@ -17,7 +17,7 @@ class BoardsController < ApplicationController
       @user_ids = RoleApplication.where(show_role_id: @show_roles, status: 'Approved').pluck(:user_id)
       #render :text => @user_ids.inspect
 
-    unless (user_can_view_board(@user_ids))
+    unless (user_can_view_board(@user_ids)) || (current_user.role? "ProductionTeam")
         flash[:error] = "You can't view this board"
         redirect_to root_path
       end

@@ -10,8 +10,8 @@
 .col-md-8
   %h4 Replies
 
-
-  #comments= render @conversation.comments
+  -if(@comments)
+    #comments= render @conversation.comments
 
   %i.h4.commenter= "Leave a comment"
   = simple_form_for([@board, @conversation, @new_comment],remote: true) do |f|
