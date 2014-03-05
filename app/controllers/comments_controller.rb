@@ -32,10 +32,12 @@ class CommentsController < ApplicationController
     @comment = @conversation.comments.create(comment_params)
     @comment.user_id = current_user.id
     @comment.notify_users
+    @comment.notify_users_for_show
     @count = @conversation.comments.count
 
     respond_to do |format|
      if @comment.save
+
       format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
       format.js   {}
       format.json { render json: @comment, status: :created, location: @comment }

@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :conversation
   validates :body, presence: true
-  #after_save :notify_users
+  #after_save :notify_users_for_show
 
 
 
@@ -15,6 +15,12 @@ class Comment < ActiveRecord::Base
 
     end
 
+  end
+  def notify_users_for_show
+    role_applications = RoleApplication.where(status:'Approved')
+    role_applications.each do |app|
+      Notification.create(user_id:app.user_id,comment_id:id,conversation_id:conversation_id) if app.id != user_id
+    end
   end
 
 end
