@@ -5,7 +5,7 @@
       %i=link_to 'Go to Message Board', board_path(@board)
 
 %p
-  -if(!@show.image.nil?)
+  -if(@show.image?)
     = image_tag @show.image_url, alt: "No Poster", height: 480, width: "auto"
   -else
     %i= "No Show poster yet"

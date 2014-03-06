@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :edit, :update, :destroy]
+  before_filter :set_nav_identifier
 
   # GET /conversations
   def index
@@ -61,7 +62,9 @@ class ConversationsController < ApplicationController
     def set_conversation
       @conversation = Conversation.find(params[:id])
     end
-
+  def set_nav_identifier
+    @current_nav_identifier	= :boards
+  end
     # Only allow a trusted parameter "white list" through.
     def conversation_params
       params.require(:conversation).permit(:title, :body, :board_id, :user_id)
