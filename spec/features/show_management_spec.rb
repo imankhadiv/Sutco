@@ -20,9 +20,17 @@ describe "Show tests" do
       fill_in "Producer", with: "Some Producer"
       fill_in "Synopsis", with: "Some Description"
       click_on "Add Date"
+      first_nested_fields = all('.fields').first
+      within(first_nested_fields) do
+        select "2015", :from => "show[show_dates_attributes][0][date(1i)]"
+      end
       last_nested_fields = all('.fields').last
       within(last_nested_fields) do
-        select "2015", :from => "show[show_dates_attributes][0][date(1i)]"
+        select "Lighting Operator", :from => "show[show_roles_attributes][0][position]"
+        #select "1", :from => "show[show_roles_attributes][0][required_number]"
+        #page.should have_content "Required number"
+        fill_in "show[show_roles_attributes][0][required_number]", with: 1
+        #fill_in "Required number", with: 1
       end
       click_button "Create Show"
       page.should have_content "Show was successfully created"

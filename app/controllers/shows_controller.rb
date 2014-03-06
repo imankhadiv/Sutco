@@ -16,13 +16,16 @@ class ShowsController < ApplicationController
 
   # GET /shows/1
   def show
-
+    @board = Board.find_by_show_id(@show.id)
+    @show_roles = ShowRole.select('id').where(show_id: @show.id)
+    @user_ids = RoleApplication.where(show_role_id: @show_roles, status: 'Approved').pluck(:user_id)
   end
 
   # GET /shows/new
   def new
     @show = Show.new
     @show.show_dates.build
+    @show.show_roles.build
   end
 
   # GET /shows/1/edit
@@ -63,7 +66,7 @@ class ShowsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def show_params
-       params.require(:show).permit(:name, :image, :image_cache, :remove_image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :title, :date, :time, :_destroy])
+       params.require(:show).permit(:name, :image, :image_cache, :remove_image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :title, :date, :time, :_destroy], show_roles_attributes: [:id, :position, :required_number, :_destroy])
     end
 
     def set_nav_identifier

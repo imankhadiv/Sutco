@@ -3,6 +3,7 @@ class WorkshopsController < ApplicationController
   before_filter :set_nav_identifier
   load_and_authorize_resource
 
+
   # GET /workshops
   def index
     @workshops = Workshop.all

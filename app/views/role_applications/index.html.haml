@@ -1,0 +1,22 @@
+%h1 Listing applications
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+  %thead
+    %tr
+      %th Show Name
+      %th Position
+      %th Applicant
+      %th 
+      %th Status
+      %th 
+
+  - @role_applications.each do |role_application|
+    %tbody
+      %tr 
+        %td= role_application.show_role.show.name
+        %td= role_application.show_role.position
+        %td= role_application.user.firstname
+        %td= role_application.user.lastname
+        %td= role_application.status
+        %td= link_to 'Process Application', role_application
+
+

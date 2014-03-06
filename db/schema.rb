@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214150640) do
+ActiveRecord::Schema.define(version: 20140303110053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boards", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "public"
+    t.integer  "show_id"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.string   "title"
+    t.integer  "board_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "body"
+  end
 
   create_table "fohs", force: true do |t|
     t.integer  "show_date_id"
@@ -28,10 +53,28 @@ ActiveRecord::Schema.define(version: 20140214150640) do
   add_index "fohs", ["show_date_id"], name: "index_fohs_on_show_date_id", using: :btree
   add_index "fohs", ["user_id"], name: "index_fohs_on_user_id", using: :btree
 
+  create_table "notifications", force: true do |t|
+    t.integer  "conversation_id"
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.boolean  "seen",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "positions", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "role_applications", force: true do |t|
+    t.integer  "show_role_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "roles", force: true do |t|
@@ -66,10 +109,8 @@ ActiveRecord::Schema.define(version: 20140214150640) do
   add_index "show_dates", ["show_id"], name: "index_show_dates_on_show_id", using: :btree
 
   create_table "show_roles", force: true do |t|
-    t.string   "name"
     t.string   "position"
     t.integer  "required_number"
-    t.integer  "available_number"
     t.integer  "show_id"
     t.datetime "created_at"
     t.datetime "updated_at"

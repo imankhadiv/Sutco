@@ -6,5 +6,7 @@
 
 
 class ShowRole < ActiveRecord::Base
-
+  belongs_to :show
+  has_many :role_applications, :dependent => :destroy
+  validates :required_number, :numericality => { :greater_than => 0}
 end

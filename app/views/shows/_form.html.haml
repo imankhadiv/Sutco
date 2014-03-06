@@ -22,5 +22,14 @@
         = render 'show_date_fields', :f => u
   %p
     = link_to_add_fields "Add Date", f, :show_dates
+
+  %p
+    .form-inputs
+      = f.fields_for :show_roles do |u|
+        = render 'show_role_fields', :f => u
+  %p
+    = link_to_add_fields "Add Role", f, :show_roles
+
+
   .form-actions
     = f.button :submit

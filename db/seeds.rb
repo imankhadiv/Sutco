@@ -39,3 +39,6 @@ if Position.count < 7
   Position.create :name =>"Usher 4"
 end
 
+unless Board.find_by_title('General Message Board')
+  Board.create(title: "General Message Board", public: true)
+end

@@ -1,5 +1,12 @@
 Team10MiniProject::Application.routes.draw do
 
+
+  resources :boards  do
+    resources :conversations do
+      resources :comments
+    end
+  end
+
   resources :roles
 
   root 'calendars#index'
@@ -43,9 +50,11 @@ Team10MiniProject::Application.routes.draw do
     end
   end
 
-  resources :show_roles
 
-
+  resources :show_roles do
+    resources :role_applications, only: [:new, :create, :show]
+  end
+  resources :role_applications
 
   resources :socials
 
