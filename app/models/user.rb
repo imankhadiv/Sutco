@@ -51,6 +51,14 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role_string.to_s.camelize)
   end
 
+
+  def self.get_production_team_members
+    members = Array.new
+    User.all.each do |user|
+       members << user.id if (user.role?"ProductionTeam")
+    end
+    members
+  end
   #Returns the roles which belong to the user with the specified id
   #def self.user_role(id)
   #  user = User.find_by_id(id)

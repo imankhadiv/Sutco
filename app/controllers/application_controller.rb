@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :ie6_warning
-  #after_filter :check_notification
+  after_filter :check_notification
 
 
 
@@ -56,7 +56,7 @@ end
   #     response.headers['Expires'] = '-1'
   #   end
   def check_notification
-    #flash[:notice]="you have #{Notification.get_number_of_notifications current_user} notifications " unless (Notification.check_notification current_user).empty?
+    flash[:notice]="you have #{Notification.get_number_of_notifications current_user} notifications " unless (Notification.check_notification current_user).empty?
   end
 
   private 

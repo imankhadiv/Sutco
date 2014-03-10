@@ -32,7 +32,6 @@ class CommentsController < ApplicationController
     @comment = @conversation.comments.create(comment_params)
     @comment.user_id = current_user.id
     @comment.notify_users
-    @comment.notify_users_for_show
     @count = @conversation.comments.count
 
     respond_to do |format|
