@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
       end
     end
     if(!@board.public)
-      AppMailer.comment_mail(@comment.user_id, @board).deliver
+      AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
     end
 
   end

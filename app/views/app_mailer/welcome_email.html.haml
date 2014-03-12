@@ -1,2 +1,8 @@
-.p
-  Thanks for registering
+%p
+  = "Your status has been updated"
+  -if(@user.approved)
+    %p="Approval Status: Approved"
+  %p= "Role(s) "
+  -@user.roles.each do |role|
+    %p=role.name
+  %p= "You can sign in at " + link_to("Sutco", root_url)

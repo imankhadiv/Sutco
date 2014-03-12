@@ -4,11 +4,12 @@ class AppMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user
     @url  = 'http://localhost:3000'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @user.email, subject: 'Status change')
   end
 
-  def comment_mail(user_id, board)
+  def comment_mail(user_id, board, comment)
     @url  = 'http://localhost:3000'
-    mail(to: (User.where(id: Board.board_users(board)).pluck(:email) - User.where(id: user_id).pluck(:email)), subject: 'Welcome to My Awesome Site')
+    @comment = comment
+    mail(to: (User.where(id: Board.board_users(board)).pluck(:email) - User.where(id: user_id).pluck(:email)), subject: 'New Comment')
   end
 end
