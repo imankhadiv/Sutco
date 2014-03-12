@@ -2,3 +2,22 @@
   %h1 Welcome
 .jumbotron
   %h2 Welcome to the SUTCo Management Application!
+  %br
+
+  - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+    %a.btn.btn-lg.btn-success{href: shows_path}
+      %i.fa.fa-flag.fa-2x.pull-left
+      Manage Shows And Roles
+    %br
+    %br
+    %a.btn.btn-lg.btn-info{href: trainings_path}
+      %i.fa.fa-flag.fa-2x.pull-left
+      Manage Traning Sessions
+    %br
+    %br
+  - if (current_user.role? "DramaStudioManager")
+    %a.btn.btn-lg.btn-warning{href: role_applications_path}
+      %i.fa.fa-flag.fa-2x.pull-left
+      Process Role Applications
+    %br
+    %br
