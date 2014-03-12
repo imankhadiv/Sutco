@@ -37,13 +37,17 @@ class CommentsController < ApplicationController
     respond_to do |format|
      if @comment.save
 
-      format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+       format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
       format.js   {}
       format.json { render json: @comment, status: :created, location: @comment }
+
      else
         format.html { render action: 'show'}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
+    end
+    if(!@board.public)
+      AppMailer.comment_mail(@comment.user_id, @board).deliver
     end
 
   end
