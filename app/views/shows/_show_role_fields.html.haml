@@ -1,7 +1,49 @@
 %p.fields
 
   = f.label :title, "Position"  
-  = f.select :position ,options_for_select(["Lighting Operator", "Lighting Designer", "Sound Operator", "Sound Designer", "Assistant Stage Manager", "Deputy Stage Manager", "Set Designer", "Set Construction", "Costume Designer", "Costume Team", "Make up", "Make up team", "Producer", "Director", "Dialect Coach", "Physical Coach"]) 
+  = f.select :position ,options_for_select(["Lighting Operator", "Lighting Designer", "Sound Operator", "Sound Designer", "Assistant Stage Manager", "Deputy Stage Manager", "Set Designer", "Set Construction", "Costume Designer", "Costume Team", "Make up", "Make up team", "Producer", "Director", "Dialect Coach", "Physical Coach","other"]) 
+  //= f.label :position
+  //%select#show_role_position{name: "show[show_roles_attributes][0][position]"}
+  //  %option{value: "January"} January
+  //  %option{value: "February"} February
+  //  %option{value: "December"} December
+  //  %option{value: "other"} Other
+  :javascript
+    $.fn.serializeObject = function()
+    {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+    var count = 0;
+    $('select').each(function(i, select){
+
+        if (!$(select).data('name')) {
+            $(select).data('name', $(select).attr('name'));
+        }
+        $(select).change(function(){
+            if (($(this).val() == 'other')) {
+                $('<input/>', {
+                    'name' : $(this).attr('name')
+                }).insertAfter($(this));
+                $(this).attr('name', '');
+                throw BreakException;
+            } else {
+                $('input[name=\"'+$(this).data('name')+'\"]').remove();
+                $(this).attr('name', $(this).data('name'));
+            }
+        });
+    });  
   = f.label :title, "Required number"
   = f.number_field :required_number,:min => 1, :step => 1
   = link_to_remove_fields "remove", f
