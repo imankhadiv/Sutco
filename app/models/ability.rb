@@ -35,7 +35,8 @@ class Ability
       can :read, [Show, ShowDate, Social]
       can [:show, :update], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
-      can :manage, [Foh, RoleApplication, Board]
+      can :manage, [Foh, RoleApplication, Board, ShowRole]
+
     end
     if user.role? :senior_committee
       can :read, [Show,ShowDate]
