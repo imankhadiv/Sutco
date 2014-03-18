@@ -10,9 +10,12 @@
   %br
     %b= "Why did you apply for the role?"
     %br
-    = f.text_area :content
-  %br
+    %br
+    #roleapplication 
+      = f.text_area :content
+
   .form-actions
-    = f.button :submit
+    #roleapplication
+      = f.button :submit, "Submit"
 
 
