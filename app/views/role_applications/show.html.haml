@@ -55,9 +55,9 @@
           .form-actions
           #roleapplication
             = f.button :submit, "Update Application Status"
-
+          %br
           #roleapplication 
-            %ulblue 
+            %ulblueright 
               = link_to "Back To Application List", role_applications_path
     
       - else
@@ -65,7 +65,7 @@
         = @role_application.status
         %br
         #roleapplication 
-          %ulblue 
+          %ulblueright 
             = link_to "View All My Application Records", current_user
 
 
