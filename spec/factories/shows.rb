@@ -33,7 +33,7 @@ FactoryGirl.define do
       # show_dates_count is declared as an ignored attribute and available in
       # attributes on the factory, as well as the callback via the evaluator
       ignore do
-        show_dates_count 5
+        show_dates_count 1
       end
       # the after(:create) yields two values; the show instance itself and the
       # evaluator, which stores all values from the factory, including ignored

@@ -84,6 +84,7 @@ describe "FOH tests" do
     end
 
     specify "when all the positions are taken, do not display the link for Apply for front of house on the show page" do
+      pending
       Position.delete_all
       Position.create :name =>"Manager"
       visit show_path(show_with_show_dates.id)
