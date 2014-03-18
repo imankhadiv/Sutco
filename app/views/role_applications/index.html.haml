@@ -5,7 +5,6 @@
       %th Show Name
       %th Position
       %th Applicant
-      %th 
       %th Status
       %th 
 
@@ -15,8 +14,7 @@
         %tr 
           %td= role_application.show_role.show.name
           %td= role_application.show_role.position
-          %td= link_to role_application.user.firstname, role_application.user
-          %td= link_to role_application.user.lastname, role_application.user
+          %td= link_to role_application.user.firstname + " " + role_application.user.lastname, role_application.user
           %td= role_application.status
           - if (role_application.status == "Pending")
             %td= link_to 'Process Application', role_application
@@ -31,7 +29,6 @@
       %th Show Name
       %th Position
       %th Applicant
-      %th 
       %th Status
       %th 
 
@@ -41,8 +38,7 @@
         %tr 
           %td= role_application.show_role.show.name
           %td= role_application.show_role.position
-          %td= link_to role_application.user.firstname, role_application.user
-          %td= link_to role_application.user.lastname, role_application.user
+          %td= link_to role_application.user.firstname + " " + role_application.user.lastname, role_application.user
           %td= role_application.status
           - if (role_application.status == "Pending")
             %td= link_to 'Process Application', role_application
