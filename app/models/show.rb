@@ -12,6 +12,7 @@ class Show < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   validates :name, :director, :stage_manager, :producer, :synopsis, presence: true
   after_create :create_board
+  has_one :board, :dependent => :destroy
 
   def create_board
     Board.create(:title => name, public: false, show_id: id)
