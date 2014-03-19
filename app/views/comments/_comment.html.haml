@@ -1,5 +1,8 @@
 .comment
-  %i.commenter= comment.user.firstname if comment.user_id
+  -if(comment.user.eql?(current_user))
+    %i.commenter= "You"
+  -else
+    %i.commenter= comment.user.firstname if comment.user_id
 
   .commenter.h6= comment.created_at.strftime("%B %d, %Y %I:%M%p")
   .comment.p= comment.body

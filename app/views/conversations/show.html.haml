@@ -2,7 +2,10 @@
   %h1= @conversation.title
 %p
 %h4 Initial comment
-%i.commenter= @conversation.user.firstname
+-if(@conversation.user.eql?(current_user))
+  %i.commenter= "You"
+-else
+  %i.commenter= @conversation.user.firstname
 .commenter.h6= @conversation.created_at.strftime("%B %d, %Y %I:%M%p")
 .comment= @conversation.body
 
