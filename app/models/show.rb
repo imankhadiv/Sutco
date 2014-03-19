@@ -11,11 +11,17 @@ class Show < ActiveRecord::Base
   accepts_nested_attributes_for :show_roles, :allow_destroy => true
   mount_uploader :image, ImageUploader
   validates :name, :director, :stage_manager, :producer, :synopsis, presence: true
+  validate :show_dates_must_be_unique
   after_create :create_board
   has_one :board, :dependent => :destroy
 
   def create_board
     Board.create(:title => name, public: false, show_id: id)
+  end
+
+  def show_dates_must_be_unique
+    errors.add(:show_dates, "can't be duplicated") unless
+        show_dates.map(&:date).uniq.count == show_dates.to_a.count
   end
 
 end
