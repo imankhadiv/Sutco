@@ -1,23 +1,19 @@
 .page-header
-  %h1 Welcome
-.jumbotron
+  %h1 Home
+.dashboard.clearfix
   %h2 Welcome to the SUTCo Management Application!
-  %br
-
-  - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-    %a.btn.btn-lg.btn-success{href: shows_path}
-      %i.fa.fa-flag.fa-2x.pull-left
-      Manage Shows And Roles
-    %br
-    %br
-    %a.btn.btn-lg.btn-info{href: trainings_path}
-      %i.fa.fa-flag.fa-2x.pull-left
-      Manage Traning Sessions
-    %br
-    %br
-  - if (current_user.role? "DramaStudioManager")
-    %a.btn.btn-lg.btn-warning{href: role_applications_path}
-      %i.fa.fa-flag.fa-2x.pull-left
-      Process Role Applications
-    %br
-    %br
+  %ul.tiles
+    .col1.clearfix
+      %li.tile.tile-big.tile-1.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+        %div
+          %p You have unprocessed requests
+        %div
+          %p
+            =link_to "Process Role Applications", role_applications_path
+    .col2.clearfix
+      %li.tile.tile-small.tile.tile-2.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
+        %div
+          %p.icon-calendar
+            =link_to "View Calendar", calendars_path
+        %div
+          %p Event Calendar

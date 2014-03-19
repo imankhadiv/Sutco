@@ -4,10 +4,15 @@
 .container
   - @shows.each do |show|
     .col-md-6
-      .row
+      //.row
+      //  .show
+      = show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
+    %li.tile.tile-big.tile-4
+      %figure
         .show
-          = show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
           #show_image= image_tag show.image_url, alt: "No Poster";
+          //%img{src: show.image_url}
+        %figcaption.tile-caption.caption-left #{show.synopsis}
 
 - if (current_user.role? "ProductionTeam")
   %a.btn.btn-success.btn-lg{href: new_show_path, role: "button"} Create New Show
