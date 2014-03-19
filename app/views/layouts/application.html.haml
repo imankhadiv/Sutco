@@ -12,7 +12,9 @@
   %body
     .flash-messages    
       - flash.each do |name, msg|
-        .alert.fade.in{ class: "alert-#{ name == :notice ? 'success' : 'danger' }" }
+        -#.alert.fade.in{ class: "alert-#{ name == :notice ? 'success' : 'danger' }" }
+        //.alert.fade.in{ class: "alert-#{ name == ('success' if :notice)||('info' if :notifications) || 'danger'}"}
+        .alert.fade.in{ class: "alert-#{flash_class(name)}" }
           %a.close{ data: { dismiss: :alert } } &times;
           = msg
 

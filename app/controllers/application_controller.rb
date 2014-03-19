@@ -55,8 +55,9 @@ end
   #     response.headers['Pragma'] = 'no-cache'
   #     response.headers['Expires'] = '-1'
   #   end
+  add_flash_types :notifications
   def check_notification
-    flash[:notice]="you have #{Notification.get_number_of_notifications current_user} notifications " unless (Notification.check_notification current_user).empty?
+    flash[:notifications]="you have #{Notification.get_number_of_notifications current_user} notifications " unless (Notification.check_notification current_user).empty?
   end
 
   private 
