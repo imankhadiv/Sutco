@@ -1,5 +1,5 @@
 
-- if (current_user.role? "DramaStudioManager")
+- if (current_user.role? "TechManager")
   %h2= "Processing application for #{@role_application.show_role.position}"
 - else
   %h2= "Your application for #{@role_application.show_role.position}"
@@ -30,7 +30,7 @@
         = link_to "View The Show", @role_application.show_role.show
   .col-md-7
     %br
-    - if (current_user.role? "DramaStudioManager")
+    - if (current_user.role? "TechManager")
       %p
         %b Applicant name:
         =link_to @role_application.user.firstname + " " + @role_application.user.lastname, @role_application.user
@@ -45,7 +45,7 @@
       = @role_application.content
       %br
     %p
-      - if (current_user.role? "DramaStudioManager")
+      - if (current_user.role? "TechManager")
         = simple_form_for([@show_role, @role_application]) do |f|
           .form-inputs
           #roleapplication
