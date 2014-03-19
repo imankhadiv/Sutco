@@ -17,7 +17,7 @@ class Comment < ActiveRecord::Base
       role_applications = RoleApplication.where(status:'Approved')
       role_applications.each do |app|
         Notification.create(user_id:app.user_id,comment_id:id,conversation_id:conversation_id) if app.user_id != user_id
-        #notify_production_team
+        notify_production_team
       end
 
     end

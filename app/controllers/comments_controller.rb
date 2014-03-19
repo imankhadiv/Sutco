@@ -37,17 +37,16 @@ class CommentsController < ApplicationController
     respond_to do |format|
      if @comment.save
 
-       format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-      format.js   {}
-      format.json { render json: @comment, status: :created, location: @comment }
+      format.js   { render 'create_success' }
 
      else
-        format.html { render action: 'show'}
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { render 'create_failure'}
       end
     end
     if(!@board.public)
       AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
+    else
+      AppMailer.general_comment(@comment.user_id, @comment).deliver
     end
 
   end
@@ -68,6 +67,8 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to [@board, @conversation], notice: 'Comment was successfully destroyed.'
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

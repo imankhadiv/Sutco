@@ -12,4 +12,9 @@ class AppMailer < ActionMailer::Base
     @comment = comment
     mail(to: (User.where(id: Board.board_users(board)).pluck(:email) - User.where(id: user_id).pluck(:email)), subject: 'New Comment')
   end
+
+  def general_comment(user_id, comment)
+    @comment = comment
+    mail(to: (User.all.pluck(:email) - User.where(id: user_id).pluck(:email)), subject: 'New Comment')
+  end
 end

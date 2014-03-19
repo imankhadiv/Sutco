@@ -3,6 +3,7 @@ Team10MiniProject::Application.routes.draw do
 
   resources :boards  do
     resources :conversations do
+      get :ajax_get_comments
       resources :comments
     end
   end

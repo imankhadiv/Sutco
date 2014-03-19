@@ -5,10 +5,12 @@
 %i.commenter= @conversation.user.firstname
 .commenter.h6= @conversation.created_at.strftime("%B %d, %Y %I:%M%p")
 .comment= @conversation.body
+
 %hr
 
 .col-md-8
   %h4 Replies
+  .commentcount.h4=@conversation.comments.count
 
   -if(@comments)
     #comments= render @conversation.comments
@@ -22,3 +24,15 @@
       = f.submit "Add Comment", remote: true, :class => 'btn btn-primary'
   %h3.i= link_to ' Back to the main board', board_path(@board), :class=> 'icon-circle-arrow-left'
   %br
+
+-#
+-#:javascript
+-#  setInterval(function()
+-#  {
+-#      //$("#{escape_javascript(render @conversation.comments)}").appendTo("#comments");
+-#      //$("#comments").load("#{escape_javascript(board_conversation_ajax_get_comments_path(@board,@conversation))}")
+-#                 //alert("hi");
+-#
+-#  }, 3000);
+
+

@@ -44,4 +44,17 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
+  def flash_class(name)
+    if name == :notice
+      'success'
+    elsif name == :notifications
+      'info'
+    else
+      'danger'
+    end
+  end
+
+
+
+
 end
