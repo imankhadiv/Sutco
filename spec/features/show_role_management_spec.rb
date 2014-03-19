@@ -48,6 +48,20 @@ describe "Show role tests" do
       page.should_not have_content "Lighting operator"
 
     end
+
+    specify "I cannot add an empty show role" do
+    visit show_path(show_with_show_roles.id)
+      click_on "Edit"
+      page.should have_content "Editing show"
+      click_on "Add Role"
+      last_nested_fields = all('.fields').last
+      within(last_nested_fields) do
+        select "other", :from => "show[show_roles_attributes][0][position]"
+        fill_in "show[show_roles_attributes][0][required_number]", with: ""
+      end
+      click_button "Update Show"
+      page.should have_content "required number is not a number"
+    end
   end
 
 end
