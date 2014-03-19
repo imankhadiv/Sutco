@@ -29,7 +29,7 @@ class Ability
       can :manage, [Workshop, Foh, Training, User, RoleApplication, Board]
     end
     if user.role? :production_team
-      can :manage, [Show, ShowDate, Foh, Social, Board]
+      can :manage, [Show, ShowDate, Foh, Social, Board, ShowRole]
       can [:show, :update], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can [:show, :create], [RoleApplication]
