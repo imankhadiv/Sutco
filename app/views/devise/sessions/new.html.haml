@@ -1,14 +1,23 @@
 // Sign in page for users of the application
 
-.border-form-div
-  %h2 Login
+.dashboard.clearfix
+  %ul.tiles
+    .col1.clearfix
+      %li.tile.tile-4
+        %img{src: "/assets/sutco.jpg"}
 
-  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    = f.email_field :email, :placeholder => "Email address", :autofocus => true
-    = f.password_field :password, :placeholder => "Password"
-    = f.label "Keep me Signed in: "
-    = f.check_box :remember_me, :as => :boolean if devise_mapping.rememberable?
-    %br
-    = f.submit "Sign in", :class => 'btn btn-primary'
-  %br
-  = render "devise/shared/links"
+    .col2.clearfix
+      .border-form-div
+        %h2 Login
+
+
+
+        = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          = f.email_field :email, :placeholder => "Email address", :autofocus => true
+          = f.password_field :password, :placeholder => "Password"
+          = f.label "Keep me Signed in: "
+          = f.check_box :remember_me, :as => :boolean if devise_mapping.rememberable?
+          %br
+          = f.submit "Sign in", :class => 'btn btn-primary'
+        %br
+        = render "devise/shared/links"

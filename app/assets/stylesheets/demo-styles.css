@@ -584,7 +584,6 @@ header a {
 
 .tile img {
     width: 500px;
-    height: 320px;
     overflow: hidden;
    width: 100%
 }
@@ -893,11 +892,27 @@ header a {
   width: 300px
 }
 
-input {
+input[type = "email"] {
   display: block;
   line-height: 40px;
   padding: 0 10px;
-  width: 260px;
+  width: 230px;
+  height: 40px;
+  float: left
+}
+input[type = "password"] {
+  display: block;
+  line-height: 40px;
+  padding: 0 10px;
+  width: 230px;
+  height: 40px;
+  float: left
+}
+input[type = "submit"] {
+  display: block;
+  line-height: 40px;
+  padding: 0 10px;
+  width: 230px;
   height: 40px;
   float: left
 }
