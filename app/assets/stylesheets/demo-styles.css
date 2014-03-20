@@ -583,11 +583,10 @@ header a {
 }
 
 .tile img {
-    width: 500px
-    height: 320px
-    overflow: hidden
-    img
-      width: 100%
+    width: 500px;
+    height: 320px;
+    overflow: hidden;
+   width: 100%
 }
 
 .tile-caption {
