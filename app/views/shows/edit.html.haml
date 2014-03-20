@@ -1,7 +1,10 @@
 %h1 Editing show
-
-= render 'form'
-
-= link_to 'Show', @show
-\|
-= link_to 'Back', shows_path
+.div.tiles
+  = render 'form'
+.div.tiles
+  %p
+    %br
+    %br
+    = link_to 'Show', @show
+    \|
+    = link_to 'Back', shows_path

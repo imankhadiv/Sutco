@@ -4,30 +4,39 @@
   = devise_error_messages!
 
   .form-inputs
-    = f.label :email 
+    %p= f.label :email 
     %p= f.email_field :email, :disabled => true 
-    = f.label :password 
+    %br
+    %br
+    %p= f.label :password 
     %p= f.password_field :password, :autocomplete => "off" 
     %p (leave blank if you don't want to change it)
-
-    = f.label :password_confirmation 
+    %br
+    %br
+    %p= f.label :password_confirmation 
     %p= f.password_field :password_confirmation 
-    = f.label :current_password 
-    
+    %br
+    %br
+    %p= f.label :current_password
     %p= f.password_field :current_password
     %p (we need your current password to confirm your changes)
-    = f.label :firstname
+    %br
+    %br
+    %p= f.label :firstname
     %p= f.text_field :firstname
-    = f.label :lastname
+    %p= f.label :lastname
     %p= f.text_field :lastname
-    = f.label :course
+    %p= f.label :course
     %p= f.text_field :course
-    = f.label :ucard
+    %p= f.label :ucard
     %p= f.text_field :ucard
-    = f.label "Current School Year/Level"
+    %p= f.label "Current School Year/Level"
     %p= f.select :level, collection: ['Level1','Level2','Level3','Level4']
 
 
     %p= f.submit "Update"
-%br
-= link_to "Back", :back
+.div.tiles
+  %p
+    %br
+    %br
+    = link_to "Back", :back

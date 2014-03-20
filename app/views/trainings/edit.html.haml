@@ -1,7 +1,10 @@
 %h1 Editing training
-
-= render 'form'
-
-= link_to 'Show', @training
-\|
-= link_to 'Back', trainings_path
+.div.tiles
+  = render 'form'
+.div.tiles
+  %p
+    %br
+    %br
+  = link_to 'Show', @training
+  \|
+  = link_to 'Back', trainings_path

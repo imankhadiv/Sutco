@@ -25,8 +25,12 @@
     %p
     .form-actions
       = f.submit "Add Comment", remote: true, :class => 'btn btn-primary'
-  %h3.i= link_to ' Back to the main board', board_path(@board), :class=> 'icon-circle-arrow-left'
-  %br
+  .div.tiles
+    %p
+      %br
+      %br
+      %h3.i= link_to ' Back to the main board', board_path(@board), :class=> 'icon-circle-arrow-left'
+      %br
 
 -#
 -#:javascript

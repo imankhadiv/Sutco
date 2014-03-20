@@ -1,7 +1,10 @@
 %h1 Editing conversation
-
-= render 'form'
-
-= link_to 'Show', board_conversation_path(@board,@conversation)
-\|
-= link_to 'Back', @board
+.div.tiles
+  = render 'form'
+.div.tile
+  %p
+    %br
+    %br
+    link_to 'Show', board_conversation_path(@board,@conversation)
+    \|
+    = link_to 'Back', @board
