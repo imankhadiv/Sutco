@@ -1,4 +1,4 @@
-%h1 To be processed
+%h1 To Be Processed
 %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
   %thead
     %tr
@@ -7,9 +7,9 @@
       %th Applicant
       %th Status
       %th 
+  %tbody
+    - @role_applications.each do |role_application|
 
-  - @role_applications.each do |role_application|
-    %tbody
       - if ((role_application.status == "Pending") && (role_application.show_role.notexpired?))
         %tr 
           %td= role_application.show_role.show.name
@@ -22,7 +22,7 @@
             %td= link_to 'View Application', role_application
 
 
-%h1 All applications
+%h1 All Applications
 %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
   %thead
     %tr
@@ -31,9 +31,9 @@
       %th Applicant
       %th Status
       %th 
+  %tbody
+    - @role_applications.each do |role_application|
 
-  - @role_applications.each do |role_application|
-    %tbody
       - if (role_application.show_role.notexpired?)
         %tr 
           %td= role_application.show_role.show.name
