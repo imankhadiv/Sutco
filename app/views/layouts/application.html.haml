@@ -3,6 +3,7 @@
 %html
   %head
     %title SUTCo
+    
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
     = stylesheet_link_tag "application", media: :all
     = javascript_include_tag "application"
@@ -27,7 +28,7 @@
               %span.icon-bar
               %span.icon-bar
             = link_to :root, class: 'navbar-brand' do
-              SUTCo
+              %img{src: "/assets/SUTCO-ICON.png", height: "30", width: "auto"}
             
           .collapse.navbar-collapse
             -if user_signed_in?
