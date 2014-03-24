@@ -20,7 +20,7 @@ describe "Access control for different roles for FOH model" do
     login_as(user, :scope => :user)
     visit show_path(show_with_show_dates.id)
     click_on "Apply for front of house"
-    page.should have_content "Apply for a front of house position"
+    page.should have_content "You are applying for a front of house position"
     page.should have_content "Manager"
     page.should have_content "Box Officer"
     page.should have_content "Refreshment Officer"
@@ -34,14 +34,14 @@ describe "Access control for different roles for FOH model" do
     page.should have_content "You have successfully applied for the position"
   end
 
-  specify "As a production team member, I can Apply for a front of house position" do
+  specify "As a production team member, I can You are applying for a front of house position" do
     role = Role.create :name =>"ProductionTeam"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_dates.id)
     click_on "Apply for front of house"
-    page.should have_content "Apply for a front of house position"
+    page.should have_content "You are applying for a front of house position"
     page.should have_content "Manager"
     page.should have_content "Box Officer"
     page.should have_content "Refreshment Officer"
@@ -55,14 +55,14 @@ describe "Access control for different roles for FOH model" do
     page.should have_content "You have successfully applied for the position"
   end
 
-  specify "As a committee member, I can Apply for a front of house position" do
+  specify "As a committee member, I can You are applying for a front of house position" do
     role = Role.create :name =>"Committee"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_dates.id)
     click_on "Apply for front of house"
-    page.should have_content "Apply for a front of house position"
+    page.should have_content "You are applying for a front of house position"
     page.should have_content "Manager"
     page.should have_content "Box Officer"
     page.should have_content "Refreshment Officer"
@@ -76,14 +76,14 @@ describe "Access control for different roles for FOH model" do
     page.should have_content "You have successfully applied for the position"
   end
 
-  specify "As a drama studio manager, I can Apply for a front of house position" do
+  specify "As a drama studio manager, I can You are applying for a front of house position" do
     role = Role.create :name =>"DramaStudioManager"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_dates.id)
     click_on "Apply for front of house"
-    page.should have_content "Apply for a front of house position"
+    page.should have_content "You are applying for a front of house position"
     page.should have_content "Manager"
     page.should have_content "Box Officer"
     page.should have_content "Refreshment Officer"
@@ -97,14 +97,14 @@ describe "Access control for different roles for FOH model" do
     page.should have_content "You have successfully applied for the position"
   end
 
-  specify "As a senior committee, I can Apply for a front of house position" do
+  specify "As a senior committee, I can You are applying for a front of house position" do
     role = Role.create :name =>"SeniorCommittee"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_dates.id)
     click_on "Apply for front of house"
-    page.should have_content "Apply for a front of house position"
+    page.should have_content "You are applying for a front of house position"
     page.should have_content "Manager"
     page.should have_content "Box Officer"
     page.should have_content "Refreshment Officer"
@@ -118,14 +118,14 @@ describe "Access control for different roles for FOH model" do
     page.should have_content "You have successfully applied for the position"
   end
 
-  specify "As a tech manager, I can Apply for a front of house position" do
+  specify "As a tech manager, I can You are applying for a front of house position" do
     role = Role.create :name =>"TechManager"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_dates.id)
     click_on "Apply for front of house"
-    page.should have_content "Apply for a front of house position"
+    page.should have_content "You are applying for a front of house position"
     page.should have_content "Manager"
     page.should have_content "Box Officer"
     page.should have_content "Refreshment Officer"
