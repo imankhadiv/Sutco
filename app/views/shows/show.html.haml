@@ -25,7 +25,7 @@
 %p
   -if !@show.show_dates.empty?
     %b Show Date(s):
-    %table.table.table-striped.table-bordered.table-responsive.table-nonfluid
+    %table.table.table-striped.table-bordered.table-responsive.table-nonfluid.table-hover
       -@show.show_dates.each do |c|
         %tr
           %td= c.date.strftime("%B %d, %Y")
@@ -38,7 +38,7 @@
 %p
   -if !@show.show_roles.empty?
     %b Show Role(s):
-    %table.table.table-striped.table-bordered.table-responsive.table-nonfluid
+    %table.table.table-striped.table-bordered.table-responsive.table-nonfluid.table-hover
       -@show.show_roles.each do |c|
         %tr
           - if(c.required_number > 0)

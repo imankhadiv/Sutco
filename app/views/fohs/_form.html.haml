@@ -1,6 +1,5 @@
 - if @foh.errors.any?
-  -@foh.errors.full_messages.each do |msg|
-    %li=msg
+  =@foh.errors.full_messages.last
 
 .container
   .col-md-5

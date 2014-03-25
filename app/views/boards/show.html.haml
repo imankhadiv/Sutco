@@ -5,7 +5,7 @@
 %p= link_to 'Add Conversation', new_board_conversation_path(@board)
 
 -if(!@conversations.empty?)
-  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
     %thead
       %tr
         %th Conversation Topics
