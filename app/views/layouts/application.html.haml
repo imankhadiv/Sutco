@@ -1,5 +1,4 @@
 !!!
-
 %html
   %head
     %title SUTCo
@@ -73,6 +72,9 @@
               - if (Board.find_by_title('General Message Board'))
                 %ul.nav.navbar-nav
                   = navbar_link_to board_path(Board.find_by_title('General Message Board')), title: "Message Board", identifier: :boards do
+
+                    -if notification_number > 0
+                      .badge.badge-important= notification_number
                     %i.icon-group
                     Message Board
               - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))

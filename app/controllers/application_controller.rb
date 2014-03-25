@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :ie6_warning
   after_filter :check_notification
 
-
-
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
     redirect_to root_path
@@ -57,7 +55,8 @@ end
   #   end
   add_flash_types :notifications
   def check_notification
-    flash[:notifications]="you have #{Notification.get_number_of_notifications current_user} notifications " unless (Notification.check_notification current_user).empty?
+    #flash[:notifications]="you have #{Notification.get_number_of_notifications current_user} notifications " unless (Notification.check_notification current_user).empty?
+
   end
 
   private 

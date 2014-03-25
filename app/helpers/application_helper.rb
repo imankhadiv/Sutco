@@ -1,4 +1,5 @@
 module ApplicationHelper
+  attr_accessor :notification_number
   def nav_link_to(current_identifier, *args, &block)
     identifier = block_given? ? args[1].delete(:identifier) : args[2].delete(:identifier)
     content_tag :li, class: (:active if identifier == current_identifier) do
@@ -52,6 +53,10 @@ module ApplicationHelper
     else
       'danger'
     end
+  end
+  :debugger
+  def notification_number
+    @notifications = Notification.get_number_of_notifications current_user
   end
 
 
