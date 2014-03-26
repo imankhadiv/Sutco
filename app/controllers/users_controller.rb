@@ -7,7 +7,8 @@
 #
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show, :report]
+  before_action :set_records, only: [:show, :report]
   before_filter :set_nav_identifier
   load_and_authorize_resource
 
@@ -21,12 +22,12 @@ class UsersController < ApplicationController
   end
 
   def show
-	@fohs = Foh.where(user_id: @user)
-  @training_records = @user.training_records
-  @workshop_records = @user.workshop_records
-  @role_applications = @user.role_applications
-
+    @role_applications = @user.role_applications
   end
+
+  def report
+    @role_applications = RoleApplication.where(user_id: @user, status: 'Approved')
+  end 
 
   #edit user attributes such as approval status or roles
   def update
@@ -51,5 +52,11 @@ class UsersController < ApplicationController
   #sets the navigation identifier for the users link on the menu bar
   def set_nav_identifier
     @current_nav_identifier	= :users
+  end
+
+  def set_records
+    @fohs = Foh.where(user_id: @user)
+    @training_records = @user.training_records
+    @workshop_records = @user.workshop_records
   end
 end

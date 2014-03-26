@@ -1,0 +1,85 @@
+.container
+  
+  %h2 User Profile
+  %p
+    %b Name:
+    = @user.firstname + " " + @user.lastname
+  %p
+    %b Email:
+    = @user.email
+  %p
+    %b Course:
+    = @user.course
+  %p
+    %b Level:
+    = @user.level
+
+
+  -if !@fohs.empty?
+    %h2 List of Front of house positions
+    %table.table.table-striped.table-responsive.table-customstyle.table-nonfluid
+      %thead
+        %tr
+          %th Show
+          %th Position
+          %th Date
+          %th Time
+      %tbody
+        - @fohs.each do |foh|
+          %tr
+            %td= foh.show_date.show.name
+            %td= foh.position.name
+            %td= foh.show_date.date.strftime("%B %d, %Y")
+            %td= foh.show_date.time.strftime("%I:%M%p")
+
+  -if !@training_records.empty?
+    %h2 List of Training Records
+    %table.table.table-striped.table-responsive.table-customstyle.table-nonfluid
+      %thead
+        %tr
+          %th Title
+          %th Description
+          %th Date
+          %th Time
+      %tbody
+        - @training_records.each do |foh|
+          %tr
+            %td= foh.training.title
+            %td= foh.training.description
+            %td= foh.training.date.strftime("%B %d, %Y")
+            %td= foh.training.time.strftime("%I:%M%p")
+
+  -if !@workshop_records.empty?
+    %h2 List of Workshop Records
+    %table.table.table-striped.table-responsive.table-customstyle.table-nonfluid
+      %thead
+        %tr
+          %th Title
+          %th Description
+          %th Date
+          %th Time
+      %tbody
+        - @workshop_records.each do |foh|
+          %tr
+            %td= foh.workshop.title
+            %td= foh.workshop.description
+            %td= foh.workshop.date.strftime("%B %d, %Y")
+            %td= foh.workshop.time.strftime("%I:%M%p")
+
+  -if !@role_applications.empty?
+    %h2 List of Show Role Records
+    %table.table.table-striped.table-responsive.table-customstyle.table-nonfluid
+      %thead
+        %tr
+          %th Show
+          %th Show Role
+      %tbody
+        - @role_applications.each do |application|
+          %tr
+            %td= application.show_role.show.name
+            %td= application.show_role.position
+
+%p#pdf_link
+  = link_to "Download Report (PDF)", report_user_path(@user, :format => "pdf")
+
+%br

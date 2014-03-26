@@ -93,8 +93,7 @@
                 %td= application.status
                 %td= link_to "View", application
 
-%p#pdf_link
-  = link_to 
-  = link_to "Download Invoice (PDF)", user_path(@user, :format => "pdf")
+%p
+  = link_to "Generate Report", report_user_path(@user)
 
 %br

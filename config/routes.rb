@@ -15,7 +15,11 @@ Team10MiniProject::Application.routes.draw do
   get "pages/welcome", as: :welcome
 
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
-  resources :users
+  resources :users do 
+    member do
+      get :report
+    end
+  end
 
   resources :positions
 
@@ -47,7 +51,6 @@ Team10MiniProject::Application.routes.draw do
     end
     collection do
       put :record_attendance
-
     end
   end
 
