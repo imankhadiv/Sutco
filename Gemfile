@@ -25,6 +25,8 @@ gem 'bootstrap-datetimepicker-rails'
 gem "actionpack"
 gem "activesupport"
 gem 'bootstrap-timepicker-rails'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
 # gem 'ransack'             # Searching and sorting
 # gem 'cocoon'              # Nice gem providing javascript and helper methods for adding/removing records in nested-forms [https://github.com/nathanvda/cocoon]
 
