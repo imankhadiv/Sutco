@@ -13,13 +13,13 @@ class Ability
     if user.role? :member
       can :read, [Show, ShowDate, Social]
       can :manage, [Foh, Board]
-      can [:show, :update], User, :id=> user.id
+      can [:show, :update, :report], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can [:show, :create], [RoleApplication]
     end
     if user.role? :committee
       can :read, [Show, ShowDate]
-      can [:show, :update], User, :id=> user.id
+      can [:show, :update, :report], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can :manage, [Foh, Social, Board]
       can [:show, :create], [RoleApplication]
@@ -30,7 +30,7 @@ class Ability
     end
     if user.role? :production_team
       can :manage, [Show, ShowDate, Foh, Social, Board, ShowRole]
-      can [:show, :update], User, :id=> user.id
+      can [:show, :update, :report], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can [:show, :create], [RoleApplication]
     end
@@ -46,7 +46,7 @@ class Ability
       can :read, [Show,ShowDate]
       can :manage, [Foh, User, Social, Board]
       can [:crud, :attend], [Workshop, Training]
-      can [:show, :create], [RoleApplication]
+      can [:show, :create, :report], [RoleApplication]
     end
 
   end
