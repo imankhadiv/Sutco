@@ -54,9 +54,24 @@ module ApplicationHelper
       'danger'
     end
   end
-  :debugger
+
   def notification_number
     @notifications = Notification.get_number_of_notifications current_user
+  end
+
+  def get_conversations
+    n = Notification.where(user_id:current_user)
+    conversation_ids = Array.new
+    n.each do |v|
+      conversation_ids << v.conversation_id
+    end
+    conversations = Conversation.where(id:conversation_ids)
+
+  end
+
+  def link_to_conversation conversation_id
+    conversation = Conversation.find(conversation_id)
+    board_conversation_path(conversation.board_id,conversation_id)
   end
 
 

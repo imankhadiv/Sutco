@@ -12,12 +12,9 @@
   %body
     .flash-messages    
       - flash.each do |name, msg|
-        -#.alert.fade.in{ class: "alert-#{ name == :notice ? 'success' : 'danger' }" }
-        //.alert.fade.in{ class: "alert-#{ name == ('success' if :notice)||('info' if :notifications) || 'danger'}"}
         .alert.fade.in{ class: "alert-#{flash_class(name)}" }
           %a.close{ data: { dismiss: :alert } } &times;
           = msg
-
     #wrap
       %nav.navbar.navbar-inverse.navbar-fixed-top
         .container
@@ -69,14 +66,28 @@
                 = navbar_link_to :socials, title: "Socials", identifier: :socials do
                   %i.icon-group
                   Socials
-              - if (Board.find_by_title('General Message Board'))
+              -if notification_number > 0
                 %ul.nav.navbar-nav
-                  = navbar_link_to board_path(Board.find_by_title('General Message Board')), title: "Message Board", identifier: :boards do
+                  %li.dropdown{class: (:active if @current_nav_identifier == :boards)}
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "", :href => boards_path}
+                      %i.icon-edit
+                      Message Board
+                      %b.caret
+                      -if notification_number > 0
+                        .badge.badge-important= notification_number
+                        -#%b.caret
+                        %ul.dropdown-menu
+                          -get_conversations.each do |conversation|
+                            = navbar_link_to (link_to_conversation conversation.id), title: "Shows" do
+                              %i.icon-comments
+                              =conversation.title
+              -else
+                %ul.nav.navbar-nav
+                  = navbar_link_to :boards, title: "Message Boards", identifier: :boards do
+                    %i.icon-comments
+                    Message Boards
 
-                    -if notification_number > 0
-                      .badge.badge-important= notification_number
-                    %i.icon-group
-                    Message Board
+
               - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
                 %ul.nav.navbar-nav
                   = navbar_link_to :users, title: "Users", identifier: :users do
@@ -92,10 +103,8 @@
                   %i.icon-signout
                   Log out
 
-
       #navbar-background
       #main-container.container= yield
-
 
     #footer
       .container
