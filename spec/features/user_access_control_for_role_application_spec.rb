@@ -10,7 +10,7 @@ describe "Access control for different roles for role application model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_roles_show_dates.id)
-    click_on "Apply for roles"
+    click_on "Apply for role"
     page.should have_content "Why did you apply for the role?"
     fill_in "role_application[content]", with: "I am interested in the role."
     click_on "Submit"
@@ -23,7 +23,7 @@ describe "Access control for different roles for role application model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_roles_show_dates.id)
-    click_on "Apply for roles"
+    click_on "Apply for role"
     page.should have_content "Why did you apply for the role?"
     fill_in "role_application[content]", with: "I am interested in the role."
     click_on "Submit"
@@ -36,7 +36,7 @@ describe "Access control for different roles for role application model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_roles_show_dates.id)
-    click_on "Apply for roles"
+    click_on "Apply for role"
     page.should have_content "Why did you apply for the role?"
     fill_in "role_application[content]", with: "I am interested in the role."
     click_on "Submit"
@@ -49,7 +49,7 @@ describe "Access control for different roles for role application model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_roles_show_dates.id)
-    click_on "Apply for roles"
+    click_on "Apply for role"
     page.should have_content "Why did you apply for the role?"
     fill_in "role_application[content]", with: "I am interested in the role."
     click_on "Submit"
@@ -62,7 +62,7 @@ describe "Access control for different roles for role application model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_roles_show_dates.id)
-    click_on "Apply for roles"
+    click_on "Apply for role"
     page.should have_content "Why did you apply for the role?"
     fill_in "role_application[content]", with: "I am interested in the role."
     click_on "Submit"
@@ -75,7 +75,7 @@ describe "Access control for different roles for role application model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit show_path(show_with_show_roles_show_dates.id)
-    click_on "Apply for roles"
+    click_on "Apply for role"
     page.should have_content "Why did you apply for the role?"
     fill_in "role_application[content]", with: "I am interested in the role."
     click_on "Submit"

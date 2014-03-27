@@ -15,7 +15,7 @@ describe "Role application tests" do
     let!(:show_with_show_roles_show_dates) { FactoryGirl.create(:show_with_show_roles_show_dates) }
   	specify "I can create application" do
       visit show_path(show_with_show_roles_show_dates.id)
-      click_on "Apply for roles"
+      click_on "Apply for role"
       page.should have_content "Why did you apply for the role?"
       fill_in "role_application[content]", with: "I am interested in the role."
       click_on "Submit"
