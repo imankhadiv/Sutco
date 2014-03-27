@@ -5,7 +5,6 @@
   %thead
     %tr
       %th Title
-      %th Description
       %th Date
       %th Time
       %th Duration
@@ -17,7 +16,6 @@
     - @workshops.each do |workshop|
       %tr
         %td= workshop.title
-        %td= workshop.description
         %td= workshop.date.strftime("%B %d, %Y")
         %td= workshop.time.strftime("%I:%M%p")
         %td  #{workshop.duration} minutes
