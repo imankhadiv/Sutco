@@ -19,8 +19,8 @@ end
 
   # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
   rescue_from ActiveRecord::RecordNotFound do
+    @current_nav_identifier	= :home
     #flash[:error] = "The page does not exist"
-    #redirect_to root_path
     render template: 'errors/not_found', status: 404
   end
   
