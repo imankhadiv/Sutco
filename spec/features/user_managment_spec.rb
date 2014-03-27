@@ -38,8 +38,7 @@ describe "Signing up and signing in" do
    page.should_not have_content "HOME"
    page.should_not have_content "EVENT CALENDAR"
    page.should_not have_content "SHOWS"
-   page.should_not have_content "WORKSHOPS"
-   page.should_not have_content "TRAININGS"
+   page.should_not have_content "EVENTS"
  end
 
  specify "I can visit the site after approval" do
@@ -53,8 +52,7 @@ describe "Signing up and signing in" do
   page.should have_content "HOME"
   page.should have_content "EVENT CALENDAR"
   page.should have_content "SHOWS"
-  page.should have_content "WORKSHOPS"
-  page.should have_content "TRAININGS"
+  page.should have_content "EVENTS"
  end
 end
 
