@@ -79,7 +79,8 @@
             %td= application.show_role.show.name
             %td= application.show_role.position
 
-%p#pdf_link
-  = link_to "Download Report (PDF)", report_user_path(@user, :format => "pdf")
+  %p#pdf_link
+    %a.btn.btn-primary.btn-lg{href:report_user_path(@user, :format => "pdf") , role: "button"} Download Report (PDF)
+    / = link_to "Download Report (PDF)", report_user_path(@user, :format => "pdf")
 
 %br
