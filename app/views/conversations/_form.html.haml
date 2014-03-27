@@ -3,7 +3,9 @@
 
   .form-inputs
     = f.input :title
-    = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter your Comment here'
+
+    = f.input :body, :label => "Initial Comment", :placeholder => 'Enter your Comment here', as: :text, :input_html => { :cols => 70, :rows => 3 }
+    %br
 
 
   .form-actions

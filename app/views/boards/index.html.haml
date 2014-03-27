@@ -1,15 +1,16 @@
 %h1 My message boards
 
-%table.table.table-striped.table-nonfluid.table-hover
-  %tr
-    %th Boards
-    %th Conversations
-
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
+  %thead
+    %tr
+      %th Boards
+      %th Conversations
+  %tbody
   - @boards.each do |board|
     %tr
-      -if board.authorized(current_user)
-        %td= link_to board.title, board
-        %td= board.conversations.count
+    -if board.authorized(current_user)
+      %td= link_to board.title, board
+      %td= board.conversations.count
 
 %br
 
