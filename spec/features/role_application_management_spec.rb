@@ -16,7 +16,7 @@ describe "Role application tests" do
   	specify "I can create application" do
       visit show_path(show_with_show_roles_show_dates.id)
       click_on "Apply for role"
-      page.should have_content "Why did you apply for the role?"
+      page.should have_content "Why are you applying for this role?"
       fill_in "role_application[content]", with: "I am interested in the role."
       click_on "Submit"
       page.should have_content "Role application was successfully created."

@@ -54,6 +54,21 @@ describe "Signing up and signing in" do
   page.should have_content "SHOWS"
   page.should have_content "EVENTS"
  end
+
+ specify "I can visit the home page" do
+
+   user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
+   visit new_user_session_path
+   fill_in 'user_email', with: user1.email
+   fill_in 'user_password', with: user1.password
+   click_button "Sign in"
+   page.should_not have_content "Your account has not been approved by your administrator yet."
+   page.should have_content "HOME"
+   page.should have_content "EVENT CALENDAR"
+   page.should have_content "SHOWS"
+   page.should have_content "EVENTS"
+ end
+
 end
 
 describe "User approval" do
@@ -503,5 +518,14 @@ describe "Profile" do
     page.should have_content "Newcourse"
     page.should have_content "4321"
     page.should have_content 'Level2'
+  end
+
+  specify "As a Member, I can visit the homepage"  do
+    role = Role.create :name =>"Member"
+    user = FactoryGirl.create(:user)
+    user.roles << role
+    login_as(user, :scope => :user)
+    visit welcome_path
+    page.should have_content "Welcome to the SUTCo Management Application!"
   end
 end
