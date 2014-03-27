@@ -1,3 +1,11 @@
+#calendar .container {
+    position: relative;
+    z-index: 2;
+    padding-top: $grid-gutter-width / 2;
+    padding-bottom: 0;
+  background: white;
+  width: 100%;
+}
 
 #calendar table {
   border-collapse: collapse;
@@ -6,32 +14,35 @@
 
 #calendar td,
 #calendar th {
-  font-family: "Lucida Grande",arial,helvetica,sans-serif;
-  font-size: 12px;
+  font-family: 'Lato';
+  font-size: 16px;
   padding: 6px;
-  border: 1px solid #999;
+  border: 2px solid #303030;
 }
 
 #calendar th {
-  background: #DDD;
-  color: #666;
+  background: #777777;
+  color: #FFF;
   text-align: center;
-  font-weight: bold;
+  font-weight: normal;
   width: 14.2857142857143%;
+
 }
 
 #calendar td {
-  background: #FFF;
-  color: #777;
+  background: #777777;
+  color: #fff;
   height: 80px;
   vertical-align: top;
   text-align: center;
   font-weight: bold;
   font-size: 16px;
+
 }
 
 #calendar .notmonth {
-  color: #CCC;
+  background: #4E4E4E;
+  color: #CCC
 }
 
 #calendar #month {
@@ -44,70 +55,193 @@
 #calendar #month a, #calendar #month a:hover {
   text-decoration: none;
   padding: 0 10px;
-  color: #999;
+  color: #fff;
 }
 
 #calendar .today {
-  background-color: #D7F2FF;
+  background-color: #BBB;
+  color:#fff
 }
 
-#calendar ul {
+
+#calendar mon{
+  font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+  margin: .25em 0;
+  font-weight: 100;
+  font-size: 25px;
+  font-weight: normal;
+  text-align:center;
+  color:#666
+}
+
+#calendar ularrow a{
+
   margin: 0;
   margin-top: 0px;
   padding-left: 3px;
-  font-size: 11px;
-  text-align: left;  
-  text-shadow: 5px 5px 5px #00FF00;
-
-}
-
-#calendar ulshow a{
-  margin: 0;
-  margin-top: 0px;
-  padding-left: 3px;
-  font-size: 14px;
+  font-size: 24px;
   text-align: center;  
-  font-weight: bold;
-  color: #00DD00;
-  display: block;
+  font-weight: normal;
+  color: #666;
+  display: inline;
 }
 
-#calendar ulsocial a{
-  margin: 0;
-  margin-top: 0px;
-  padding-left: 3px;
-  font-size: 14px;
-  text-align: center;  
-  font-weight: bold;
-  color: #0033CC;
-  display: block;
-     
+
+#calendar .linkshow {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    margin-top: 0px;
+    padding-left: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;  
+    background: #00A3A3;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+  width: 100%;
+}
+
+#calendar .linktraining {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    margin-top: 0px;
+    padding-left: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;  
+    background: #FE7C22;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+  width: 100%;
+}
+
+#calendar .linkworkshop {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    margin-top: 0px;
+    padding-left: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;  
+    background: #6BA5E7;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+  width: 100%;
+}
+
+#calendar .linksocial {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    margin-top: 0px;
+    padding-left: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;  
+    background: #691BB8;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+  width: 100%;
+}
+
+
+
+
+#calendar a{
+  color:#fff
+}
+
+
+
+
+#calendar .buttonshow {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: inline;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #00A3A3;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 130px;
+    height: 130px;
+
 
 }
 
-#calendar ultraining a{
-  margin: 0;
-  margin-top: 0px;
-  padding-left: 3px;
-  font-size: 14px;
-  text-align: center; 
-  font-weight: bold;
-  color: #FF6600;
-  display: block;
+#calendar .buttonworkshop {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: inline;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #6BA5E7;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 130px;
+    height: 130px;
+
 
 }
 
-#calendar ulworkshop a{
-  margin: 0;
-  margin-top: 0px;
-  padding-left: 3px;
-  font-size: 14px;
-  text-align: center;  
-  font-weight: bold;
-  color: #3399FF;
-  display: block;
+#calendar .buttonsocial {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: inline;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #691BB8;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 130px;
+    height: 130px;
+
 
 }
+
+
+#calendar .buttontraining {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: inline;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #FE7C22;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 130px;
+    height: 130px;
+}
+
+
+
 #calendar li {
   margin: 0;
   padding: 0;

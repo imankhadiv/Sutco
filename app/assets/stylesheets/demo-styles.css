@@ -2,21 +2,21 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 100;
-  src: local('Lato Hairline'), local('Lato-Hairline'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/boeCNmOCCh-EWFLSfVffDg.woff) format('woff')
+  src: local('Lato Hairline'), local('Lato-Hairline'), url(boeCNmOCCh-EWFLSfVffDg.woff) format('woff')
 }
 
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff')
+  src: local('Lato Light'), local('Lato-Light'), url(KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff')
 }
 
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff')
+  src: local('Lato Regular'), local('Lato-Regular'), url(9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff')
 }
 
 @font-face {
@@ -379,7 +379,6 @@ body {
   font-weight: 300;
   font-size: 16px;
   background-color: #eee;
-  background: url(../images/1.png) left top no-repeat;
   background-size: 100% 100%
 }
 
@@ -616,9 +615,24 @@ header a {
   transition: left .3s linear
 }
 
+.caption-right {
+  right: -100%;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  height: 18em;
+  -webkit-transition: right .3s linear;
+  -o-transition: right .3s linear;
+  transition: right .3s linear
+}
+
 .tile:hover .caption-left {
   left: 0
 }
+.tile:hover .caption-right {
+  right: 0
+}
+
 
 .tile-small {
   width: 49%;
@@ -1254,3 +1268,199 @@ input[type = "submit"] {
     opacity: 1
   }
 }
+
+
+
+.buttonshow {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #00A3A3;
+    color: #FFFFFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 20%;
+    height: 50px;
+
+
+}
+
+.buttonshow:hover {
+    background: #74A599;
+}
+
+.buttonshow:active {
+    background: #F6A953;
+}
+
+
+.buttonworkshop {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #2EB8E6;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 20%;
+    height: 50px;
+
+
+}
+
+.buttonworkshop:hover {
+    background: #74A599;
+}
+
+.buttonworkshop:active {
+    background: #F6A953;
+}
+
+
+.buttonsocial {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #2447B2;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 20%;
+    height: 50px;
+
+
+}
+
+.buttonsocial:hover {
+    background: #74A599;
+}
+
+.buttontrainning:active {
+    buttonsocial: #F6A953;
+}
+
+
+
+.buttontraining {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #FE7C22;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 20%;
+    height: 50px;
+
+
+}
+
+.buttontraining :hover {
+    background: #74A599;
+}
+
+.buttontraining :active {
+    buttonsocial: #F6A953;
+}
+
+
+.buttonshowname {
+    display: inline;
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #ffffff;
+    color: #636387;
+    border: 0px none;
+    outline: 0px none;
+    width: 290px;
+
+}
+
+.buttonshowname :hover {
+    background: #74A599;
+}
+
+.buttonshowname :active {
+    background: #F6A953;
+}
+
+
+.buttonedit {
+    display: inline;
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #29A3A3;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 90px;
+    position: absolute;
+    right: 121px;
+
+}
+
+.buttonedit :hover {
+    background: #74A599;
+}
+
+.buttonedit :active {
+    background: #F6A953;
+}
+
+.buttondelete {
+    display: inline;
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: #ED5E2F;
+    color: #FFF;
+    border: 0px none;
+    outline: 0px none;
+    width: 90px;
+    position: absolute;
+    right: 31px;
+
+}
+
+.buttondelete :hover {
+    background: #74A599;
+}
+
+.buttondelete :active {
+    background: #F6A953;
+}
+
+

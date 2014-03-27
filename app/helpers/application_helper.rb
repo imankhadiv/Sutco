@@ -25,6 +25,12 @@ module ApplicationHelper
     options )
   end
 
+  def link_to_button(button_name,link_name,url_or_object, options={})
+    link_to(("<div class=#{button_name}><span id=#{link_name}>#{link_name}</span></div>".html_safe),
+     url_or_object,
+    options )
+  end
+
   #improve later
   def link_to_function(name, function, html_options={})
     onclick = "#{"#{html_options[:onclick]}; " if html_options[:onclick]}#{function}; return false;"

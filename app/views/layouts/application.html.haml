@@ -31,16 +31,16 @@
               %ul.nav.navbar-nav
                 = navbar_link_to welcome_path, title: "Homepage", identifier: :home do
                   %i.icon-home
-                  Home
+                  HOME
               %ul.nav.navbar-nav
                 = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
                   %i.icon-calendar
-                  Event Calendar
+                  EVENT CALENDAR
               %ul.nav.navbar-nav
                 %li.dropdown{class: (:active if @current_nav_identifier == :shows)}
                   %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
                     %i.icon-film
-                    = "Shows"
+                    = "SHOWS"
                     %b.caret
                   %ul.dropdown-menu
                     = navbar_link_to :shows, title: "Shows" do
@@ -57,21 +57,21 @@
               %ul.nav.navbar-nav
                 = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
                   %i.icon-shopping-cart
-                  Workshops
+                  WORKSHOPS
               %ul.nav.navbar-nav
                 = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
                   %i.icon-tasks
-                  Trainings
+                  TRAININGS
               %ul.nav.navbar-nav
                 = navbar_link_to :socials, title: "Socials", identifier: :socials do
                   %i.icon-group
-                  Socials
+                  SOCIALS
               -if notification_number > 0
                 %ul.nav.navbar-nav
                   %li.dropdown{class: (:active if @current_nav_identifier == :boards)}
                     %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "", :href => boards_path}
                       %i.icon-edit
-                      Message Board
+                      MASSAGE BOARD
                       %b.caret
                       -if notification_number > 0
                         .badge.badge-important= notification_number
@@ -85,23 +85,23 @@
                 %ul.nav.navbar-nav
                   = navbar_link_to :boards, title: "Message Boards", identifier: :boards do
                     %i.icon-comments
-                    Message Boards
+                    MESSAGE BOARDS
 
 
               - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
                 %ul.nav.navbar-nav
                   = navbar_link_to :users, title: "Users", identifier: :users do
                     %i.icon-user
-                    Users
+                    USERS
               - else
                 %ul.nav.navbar-nav
                   = navbar_link_to user_path(current_user), title: "Profile", identifier: :users do
                     %i.icon-user
-                    Profile
+                    PROFILE
               %ul.nav.navbar-nav
                 = navbar_link_to destroy_user_session_path,method: :delete, title: "Log out", identifier: :logout do
                   %i.icon-signout
-                  Log out
+                  LOG OUT
 
       #navbar-background
       #main-container.container= yield
