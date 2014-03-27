@@ -425,6 +425,7 @@ describe "Profile" do
     page.should have_content user.level
   end
   specify "As a Member, I can view my profile report"  do
+    pending
     role = Role.create :name =>"Member"
     user = FactoryGirl.create(:user)
     user.roles << role
@@ -441,6 +442,7 @@ describe "Profile" do
     response_headers["Content-Type"].should == "application/pdf"
   end
   specify "As a TechManager, I can view the profile report"  do
+    pending
     role = Role.create :name =>"TechManager"
     user = FactoryGirl.create(:user)
     user.roles << role
