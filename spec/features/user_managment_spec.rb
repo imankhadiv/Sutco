@@ -520,6 +520,23 @@ describe "Profile" do
     page.should have_content 'Level2'
   end
 
+  specify "As a Member, I cannot update my profile page with blank fields" do
+    role = Role.create :name =>"Member"
+    user = FactoryGirl.create(:user)
+    user.roles << role
+    login_as(user, :scope => :user)
+    visit calendars_path
+    click_on "Profile"
+    click_on "Update My Profile"
+    fill_in "Password", with: "987654321"
+    fill_in "Password confirmation", with: "987654321"
+    fill_in "Current password", with: user.password
+    fill_in "Firstname", with: ""
+    fill_in "Lastname", with: ""
+    click_on "Update"
+    page.should have_content "can't be blank"
+  end
+
   specify "As a Member, I can visit the homepage"  do
     role = Role.create :name =>"Member"
     user = FactoryGirl.create(:user)
@@ -527,5 +544,14 @@ describe "Profile" do
     login_as(user, :scope => :user)
     visit welcome_path
     page.should have_content "Welcome to the SUTCo Management Application!"
+  end
+
+  specify "As a Member, I get an error page if I visit a non-existing page"  do
+    role = Role.create :name =>"Member"
+    user = FactoryGirl.create(:user)
+    user.roles << role
+    login_as(user, :scope => :user)
+    visit show_path(1000)
+    page.should have_content "Sorry, this page does not exist"
   end
 end

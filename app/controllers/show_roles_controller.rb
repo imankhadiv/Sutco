@@ -9,12 +9,6 @@ class ShowRolesController < ApplicationController
   end
 
 
-  # GET /roles/new
-  def new
-    @show_role = ShowRole.new
-  end
-
-
   # DELETE /roles/1
   def destroy
     @show_role.destroy
@@ -28,9 +22,9 @@ class ShowRolesController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def show_role_params
-      params.require(:show_role).permit(:position, :required_number, :show_id)
-    end
+    #def show_role_params
+    #  params.require(:show_role).permit(:position, :required_number, :show_id)
+    #end
 
   def set_nav_identifier
     @current_nav_identifier	= :shows

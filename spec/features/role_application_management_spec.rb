@@ -14,7 +14,8 @@ describe "Role application tests" do
   describe "Apply for role" do 
     let!(:show_with_show_roles_show_dates) { FactoryGirl.create(:show_with_show_roles_show_dates) }
   	specify "I can create application" do
-      visit show_path(show_with_show_roles_show_dates.id)
+      #visit show_path(show_with_show_roles_show_dates.id)
+      visit show_roles_path
       click_on "Apply for role"
       page.should have_content "Why are you applying for this role?"
       fill_in "role_application[content]", with: "I am interested in the role."
@@ -22,7 +23,20 @@ describe "Role application tests" do
       page.should have_content "Role application was successfully created."
       page.should have_content "I am interested in the role."
       page.should have_content "Pending"
-  	end
+    end
+
+    let!(:show_with_show_roles_show_dates) { FactoryGirl.create(:show_with_show_roles_show_dates) }
+    specify "I cannot create an application with empty fields" do
+      #visit show_path(show_with_show_roles_show_dates.id)
+      visit show_roles_path
+      click_on "Apply for role"
+      page.should have_content "Why are you applying for this role?"
+      fill_in "role_application[content]", with: ""
+      click_on "Submit"
+      page.should have_content "can't be blank"
+    end
+
+
   end
 end
 

@@ -48,10 +48,10 @@ class RoleApplicationsController < ApplicationController
   end
 
   # DELETE /role_applications/1
-  def destroy
-    @role_application.destroy
-    redirect_to role_applications_url, notice: 'Role application was successfully destroyed.'
-  end
+  #def destroy
+  #  @role_application.destroy
+  #  redirect_to role_applications_url, notice: 'Role application was successfully destroyed.'
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
