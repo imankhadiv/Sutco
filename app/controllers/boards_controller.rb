@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
   # GET /boards/1
   def show
     @conversations = @board.conversations
-    unless (@board.authorized(current_user) || (current_user.role? "ProductionTeam"))
+    unless (@board.authorized(current_user) || (current_user.role? "ProductionTeam") || (current_user.role? "SeniorCommittee"))
         flash[:error] = "You can't view this board"
         redirect_to root_path
     end

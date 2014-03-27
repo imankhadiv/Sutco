@@ -8,7 +8,7 @@
   %tbody
   - @boards.each do |board|
     %tr
-    -if board.authorized(current_user)
+    -if (board.authorized(current_user) || (current_user.role? "SeniorCommittee") || (current_user.role? "ProductionTeam"))
       %td= link_to board.title, board
       %td= board.conversations.count
 
