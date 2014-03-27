@@ -26,6 +26,17 @@ Team10MiniProject::Application.configure do
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'gmail.com',
+      user_name:            'sutcogenesys@gmail.com',
+      password:             'sutcogene',
+      authentication:       'plain',
+      enable_starttls_auto: true  }
+  config.action_mailer.default_url_options = { :host => 'https://sutco.demo.genesys-solutions.org.uk' }
+
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.

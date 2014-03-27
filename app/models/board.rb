@@ -3,4 +3,10 @@ class Board < ActiveRecord::Base
   validates :title, presence: true
   belongs_to :show
 
+
+def self.board_users(board)
+  @show_roles = ShowRole.select('id').where(show_id: board.show.id)
+  @user_ids = RoleApplication.where(show_role_id: @show_roles, status: 'Approved').pluck(:user_id)
+end
+
 end

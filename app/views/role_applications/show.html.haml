@@ -1,43 +1,73 @@
-%p#notice= notice
-- if (current_user.role? "DramaStudioManager")
-  %b Applicant name:
-  = @role_application.user.firstname
-  = @role_application.user.lastname
-  %br
-  %b Show:
-  = @role_application.show_role.show.name
-  %br
-  %b Position:
-  = @role_application.show_role.position
 
+- if (current_user.role? "TechManager")
+  %h2= "Processing application for #{@role_application.show_role.position}"
 - else
-  %b= "Your application for #{@role_application.show_role.position} in #{@role_application.show_role.show.name}"
+  %h2= "Your application for #{@role_application.show_role.position}"
 
-%br
-%br
-%p
-  %b Why did you apply for the role:
-  %br
-  = @role_application.content
-  %br
-  - if (current_user.role? "DramaStudioManager")
-    = simple_form_for([@show_role, @role_application]) do |f|
-      .form-inputs
-      = f.label :show_role
-      %br
-      = f.collection_select(:show_role_id, ShowRole.all, :id, :position)
-      = f.input :status, collection: [ "Pending", "Approved", "Rejected"], :include_blank => false
-      %br
-
-      .form-actions
-      = f.button :submit, "Update Application Status"
-
-  - else
-    %b Status:
-    = @role_application.status
+.container
+  .col-md-5
     %br
+    %p
+      %b Show:
+      = @role_application.show_role.show.name
+    %p
+      -if(@role_application.show_role.show.image?)
+        = image_tag @role_application.show_role.show.image_url, alt: "No Poster", height: "auto", width: "320"
+      -else
+        %i= "No Show poster yet"
+    %p
+      %b Director:
+      = @role_application.show_role.show.director
+    %p
+      %b Stage manager:
+      = @role_application.show_role.show.stage_manager
+    %p
+      %b Producer:
+      = @role_application.show_role.show.producer
 
-= link_to role_application_navigation_links(@role_application)
+    #roleapplication 
+      %ulblue 
+        = link_to "View The Show", @role_application.show_role.show
+  .col-md-7
+    %br
+    - if (current_user.role? "TechManager")
+      %p
+        %b Applicant name:
+        =link_to @role_application.user.firstname + " " + @role_application.user.lastname, @role_application.user
+      %p
+        %b Position:
+        = @role_application.show_role.position
+      
+
+    %p
+      %b Why did you apply for the role:
+      %br
+      = @role_application.content
+      %br
+    %p
+      - if (current_user.role? "TechManager")
+        = simple_form_for([@show_role, @role_application]) do |f|
+          .form-inputs
+          #roleapplication
+            = f.input :status, collection: [ "Pending", "Approved", "Rejected"], :include_blank => false
+          %br
+    
+          .form-actions
+          #roleapplication
+            = f.button :submit, "Update Application Status"
+          %br
+          #roleapplication 
+            %ulblueright 
+              = link_to "Back To Application List", role_applications_path
+    
+      - else
+        %b Status:
+        = @role_application.status
+        %br
+        #roleapplication 
+          %ulblueright 
+            = link_to "View All My Application Records", current_user
+
 
   
   

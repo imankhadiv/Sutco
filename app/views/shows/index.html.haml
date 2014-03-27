@@ -1,16 +1,30 @@
 .page-header
   %h1 Shows
 
-.container
-  - @shows.each do |show|
-    .col-md-6
-      .row
-        .show
-          = show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
-          #show_image= image_tag show.image_url, alt: "No Poster";
+.dashboard
+  .container
+    - if (current_user.role? "ProductionTeam")
+      %a.buttonshow{href:new_show_path, role:"button"} Create New Show
+      %br
 
-- if (current_user.role? "ProductionTeam")
-  %a.btn.btn-success.btn-lg{href: new_show_path, role: "button"} Create New Show
-  %br
-  %br
+    - @shows.each do |show|
+      = show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
+
+      .col-md-6
+      %li.tile.tile-big.tile-4
+        %figure
+          .show
+            #show_image= image_tag show.image_url, alt: "No Poster";
+            //%img{src: show.image_url}
+          %figcaption.tile-caption.caption-left #{show.synopsis}
+          %figcaption.tile-caption.caption-right 
+            Director: #{show.director}
+            %br
+            %br
+            Show Date(s):
+            -show.show_dates.each do |c|
+              #{c.date.strftime("%B %d, %Y")}
+
+
+
 

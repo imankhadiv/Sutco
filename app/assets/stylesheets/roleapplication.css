@@ -1,0 +1,53 @@
+
+#roleapplication ulblue a{
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 3px;
+  font-size: 18px;
+  text-align: left;  
+  color:cornflowerblue;
+  display: block;
+}
+
+#roleapplication ulblueright a{
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 3px;
+  font-size: 18px;
+  text-align: right;  
+  color:cornflowerblue;
+  display: block;
+}
+
+#roleapplication textarea {
+    width: 400px;
+    height: 200px;
+    border-width: 3px;
+    background-color: #EEEEEE;
+}
+
+#roleapplication input[type=submit] {
+  padding:5px 15px; 
+  background:cornflowerblue; 
+  border:0 none;
+  cursor:pointer;
+  font-size: 18px;
+  color: white;
+  border-radius: 5px; 
+}
+
+#roleapplication select {
+
+  border-width: 1px;
+  background-color: #EEEEEE;
+  top: 0;
+  left: 0;
+  padding: 4px;
+  margin-top: 1px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+
+}

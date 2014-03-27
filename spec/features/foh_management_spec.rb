@@ -23,7 +23,7 @@ describe "FOH tests" do
       visit fohs_path
       page.should have_content "Show 1"
       click_on "Apply"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
     end
   end
 
@@ -32,7 +32,7 @@ describe "FOH tests" do
     specify "Given a show exists with several show dates, I can Apply for front of house for one of them" do
       visit show_path(show_with_show_dates.id)
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
       page.should have_content "Box Officer"
       page.should have_content "Refreshment Officer"
@@ -51,7 +51,7 @@ describe "FOH tests" do
       visit show_path(show_with_show_dates.id)
 
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
 
       page.choose("Manager")
@@ -67,7 +67,7 @@ describe "FOH tests" do
     specify "Do not allow user to apply for multiple positions within the same day" do
       visit show_path(show_with_show_dates.id)
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
 
       page.choose("Manager")
@@ -84,11 +84,12 @@ describe "FOH tests" do
     end
 
     specify "when all the positions are taken, do not display the link for Apply for front of house on the show page" do
+      pending
       Position.delete_all
       Position.create :name =>"Manager"
       visit show_path(show_with_show_dates.id)
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
 
       page.choose("Manager")
@@ -98,7 +99,7 @@ describe "FOH tests" do
 
       visit show_path(show_with_show_dates.id)
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
 
       page.choose("Manager")
@@ -108,7 +109,7 @@ describe "FOH tests" do
 
       visit show_path(show_with_show_dates.id)
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
 
       page.choose("Manager")
@@ -118,7 +119,7 @@ describe "FOH tests" do
 
       visit show_path(show_with_show_dates.id)
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
 
       page.choose("Manager")
@@ -128,7 +129,7 @@ describe "FOH tests" do
 
       visit show_path(show_with_show_dates.id)
       click_on "Apply for front of house"
-      page.should have_content "Apply for a front of house position"
+      page.should have_content "You are applying for a front of house position"
       page.should have_content "Manager"
 
       page.choose("Manager")

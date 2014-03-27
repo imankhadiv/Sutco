@@ -1,4 +1,5 @@
 module ApplicationHelper
+  attr_accessor :notification_number
   def nav_link_to(current_identifier, *args, &block)
     identifier = block_given? ? args[1].delete(:identifier) : args[2].delete(:identifier)
     content_tag :li, class: (:active if identifier == current_identifier) do
@@ -24,6 +25,12 @@ module ApplicationHelper
     options )
   end
 
+  def link_to_button(button_name,link_name,url_or_object, options={})
+    link_to(("<div class=#{button_name}><span id=#{link_name}>#{link_name}</span></div>".html_safe),
+     url_or_object,
+    options )
+  end
+
   #improve later
   def link_to_function(name, function, html_options={})
     onclick = "#{"#{html_options[:onclick]}; " if html_options[:onclick]}#{function}; return false;"
@@ -43,5 +50,37 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+
+  def flash_class(name)
+    if name == :notice
+      'success'
+    elsif name == :notifications
+      'info'
+    else
+      'danger'
+    end
+  end
+
+  def notification_number
+    @notifications = Notification.get_number_of_notifications current_user
+  end
+
+  def get_conversations
+    n = Notification.where(user_id:current_user)
+    conversation_ids = Array.new
+    n.each do |v|
+      conversation_ids << v.conversation_id
+    end
+    conversations = Conversation.where(id:conversation_ids)
+
+  end
+
+  def link_to_conversation conversation_id
+    conversation = Conversation.find(conversation_id)
+    board_conversation_path(conversation.board_id,conversation_id)
+  end
+
+
+
 
 end

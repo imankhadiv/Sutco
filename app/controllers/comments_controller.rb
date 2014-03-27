@@ -31,21 +31,23 @@ class CommentsController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(comment_params)
     @comment.user_id = current_user.id
-    @comment.notify_users
-    @comment.notify_users_for_show
+
     @count = @conversation.comments.count
 
     respond_to do |format|
      if @comment.save
-
-      format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-      format.js   {}
-      format.json { render json: @comment, status: :created, location: @comment }
+      format.js   { render 'create_success' }
+      @comment.notify_users
+      if(!@board.public)
+        AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
+      else
+        #AppMailer.general_comment(@comment.user_id, @comment).deliver
+      end
      else
-        format.html { render action: 'show'}
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { render 'create_failure'}
       end
     end
+
 
   end
 
@@ -65,6 +67,8 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to [@board, @conversation], notice: 'Comment was successfully destroyed.'
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

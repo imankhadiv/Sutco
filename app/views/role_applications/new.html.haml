@@ -1,5 +1,27 @@
-%h1 Role Application
+%h2 You are applying for  #{@show_role.position} in #{@show_role.show.name}
 
-= render 'form'
+.container
+  .col-md-5
+    %br
+    %p
+      -if(@show_role.show.image?)
+        = image_tag @show_role.show.image_url, alt: "No Poster", height: "auto", width: "320"
+      -else
+        %i= "No Show poster yet"
+    %p
+      %b Director:
+      = @show_role.show.director
+    %p
+      %b Stage manager:
+      = @show_role.show.stage_manager
+    %p
+      %b Producer:
+      = @show_role.show.producer
 
-= link_to 'Back', role_applications_path
+    #roleapplication 
+      %ulblue 
+        = link_to "Back To Show", @show_role.show
+  .col-md-7
+    = render 'form'
+    %br
+

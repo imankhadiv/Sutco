@@ -11,12 +11,13 @@ html, body
   height: 100%
   margin: 0 auto -60px
   padding: 50px 0 80px
+  font-weight: 400
   #navbar-background
     position: absolute
     top: 0
     left: 0
     right: 0
-    height: 101px
+
     background: cornflowerblue
     z-index: 1
     
@@ -25,7 +26,6 @@ html, body
     z-index: 2
     padding-top: $grid-gutter-width / 2
     padding-bottom: 0
-    border-radius: 10px
     background: white
   
 #footer
@@ -131,3 +131,15 @@ hr
   height: auto
   margin-bottom: 15px
   padding: 7px 9px
+.error
+  color: #ff0a11
+.table-hover tbody tr:hover
+  td, th
+    background-color: rgba(1, 1, 1, 0.23)
+
+.badge-important
+  background-color: red
+
+@media print 
+  #pdf_link 
+    display: none

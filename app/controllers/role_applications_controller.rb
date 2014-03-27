@@ -41,7 +41,7 @@ class RoleApplicationsController < ApplicationController
   # PATCH/PUT /role_applications/1
   def update
     if @role_application.update(role_application_params)
-      redirect_to @role_application, notice: 'Role application was successfully updated.'
+      redirect_to role_applications_url, notice: 'Role application was successfully updated.'
     else
       render action: 'edit'
     end

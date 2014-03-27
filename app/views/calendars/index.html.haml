@@ -1,18 +1,22 @@
-.page-header
-  %h1 Event Calendar
-- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-  %a.btn.btn-primary.btn-lg{href: new_social_path, role: "button"} Create New Social Event
-  %a.btn.btn-success.btn-lg{href: new_show_path, role: "button"} Create New Show
-  %a.btn.btn-info.btn-lg{href: new_workshop_path, role: "button"} Create New Workshop
-  %a.btn.btn-warning.btn-lg{href: new_training_path, role: "button"} Create New Training Session
-
 #calendar
-  %h2
-    .month
-      = link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")
-      =h @date.strftime("%B %Y")
-      = link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d")
-  %h2
+  .container
+    %br
+    - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+      %button.buttonshow
+        = link_to "Create New Show", new_show_path
+      %button.buttonworkshop
+        = link_to "Create New Workshop", new_workshop_path
+      %button.buttontraining
+        = link_to "Create New Training", new_training_path
+      %button.buttonsocial
+        = link_to "Create New Social", new_social_path
+
+
+    %h2
+      %ularrow= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")
+      %mon= @date.strftime("%B %Y")
+      %ularrow= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d")
+    %h2
     = calendar_for @events, :year => @date.year, :month => @date.month do |calendar|
       = calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
       - calendar.day(:day_method => :date) do |date, events|
@@ -21,15 +25,18 @@
 
         - for event in events
           - if(event.event_name.eql?'ShowDate')
-            %ulshow
+            //%ulshow
+            //  = link_to h(event .title), event
+            %button.linkshow
               = link_to h(event .title), event
           - elsif(event.event_name.eql?"Social")
-            %ulsocial
+            %button.linksocial
               = link_to h(event .title), event
           - elsif(event.event_name.eql?"Training")
-            %ultraining
+            %button.linktraining
               = link_to h(event .title), event
           - elsif(event.event_name.eql?"Workshop")
-            %ulworkshop
+            %button.linkworkshop
               = link_to h(event .title), event
+    %br
 

@@ -58,6 +58,7 @@ class ShowRolesController < ApplicationController
       params.require(:show_role).permit(:position, :required_number, :show_id)
     end
 
-    def set_nav_identifier
-    end
+  def set_nav_identifier
+    @current_nav_identifier	= :shows
+  end
 end

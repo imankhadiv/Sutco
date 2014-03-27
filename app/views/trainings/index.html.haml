@@ -1,12 +1,11 @@
 .page-header
   %h1 List of trainings
 
-%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
   %thead
     %tr
       %th Title
       %th Type
-      %th Description
       %th Date
       %th Time
       %th Duration
@@ -19,7 +18,6 @@
       %tr
         %td= training.title
         %td= training.category
-        %td= training.description
         %td= training.date.strftime("%B %d, %Y")
         %td= training.time.strftime("%I:%M%p")
         %td  #{training.duration} minutes

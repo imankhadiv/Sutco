@@ -1,8 +1,8 @@
 !!!
-
 %html
   %head
     %title SUTCo
+    
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
     = stylesheet_link_tag "application", media: :all
     = javascript_include_tag "application"
@@ -12,10 +12,9 @@
   %body
     .flash-messages    
       - flash.each do |name, msg|
-        .alert.fade.in{ class: "alert-#{ name == :notice ? 'success' : 'danger' }" }
+        .alert.fade.in{ class: "alert-#{flash_class(name)}" }
           %a.close{ data: { dismiss: :alert } } &times;
           = msg
-
     #wrap
       %nav.navbar.navbar-inverse.navbar-fixed-top
         .container
@@ -25,23 +24,23 @@
               %span.icon-bar
               %span.icon-bar
             = link_to :root, class: 'navbar-brand' do
-              SUTCo
+              %img{src: "/assets/SUTCO-ICON.png", height: "30", width: "auto"}
             
           .collapse.navbar-collapse
             -if user_signed_in?
               %ul.nav.navbar-nav
                 = navbar_link_to welcome_path, title: "Homepage", identifier: :home do
                   %i.icon-home
-                  Home
+                  HOME
               %ul.nav.navbar-nav
                 = navbar_link_to :calendars, title: "Event Calendar", identifier: :calendar do
                   %i.icon-calendar
-                  Event Calendar
+                  EVENT CALENDAR
               %ul.nav.navbar-nav
                 %li.dropdown{class: (:active if @current_nav_identifier == :shows)}
                   %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
                     %i.icon-film
-                    = "Shows"
+                    = "SHOWS"
                     %b.caret
                   %ul.dropdown-menu
                     = navbar_link_to :shows, title: "Shows" do
@@ -51,46 +50,79 @@
                       %i.icon-male
                       %i.icon-female
                       Front of House
+                    = navbar_link_to show_roles_path, title: "Shows"  do
+                      %i.icon-camera
+                      Roles
                     - if (current_user.role? "DramaStudioManager")
                       = navbar_link_to role_applications_path, title: "Shows"  do
-                        %i.icon-meh
+                        %i.icon-smile
                         Role Applications
               %ul.nav.navbar-nav
                 = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
                   %i.icon-shopping-cart
-                  Workshops
+                  WORKSHOPS
               %ul.nav.navbar-nav
                 = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
                   %i.icon-tasks
-                  Trainings
+                  TRAININGS
               %ul.nav.navbar-nav
                 = navbar_link_to :socials, title: "Socials", identifier: :socials do
                   %i.icon-group
-                  Socials
-              - if (Board.find_by_title('General Message Board'))
+                  SOCIALS
+              -if notification_number > 0
                 %ul.nav.navbar-nav
-                  = navbar_link_to board_path(Board.find_by_title('General Message Board')), title: "Message Board", identifier: :boards do
-                    %i.icon-group
-                    Message Board
+                  %li.dropdown{class: (:active if @current_nav_identifier == :boards)}
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "", :href => boards_path}
+                      %i.icon-edit
+                      MESSAGE BOARD
+                      %b.caret
+                      -if notification_number > 0
+                        .badge.badge-important= notification_number
+                        -#%b.caret
+                        %ul.dropdown-menu
+                          -get_conversations.each do |conversation|
+                            = navbar_link_to (link_to_conversation conversation.id), title: "Shows" do
+                              %i.icon-comments
+                              =conversation.title
+              -else
+                %ul.nav.navbar-nav
+                  = navbar_link_to :boards, title: "Message Boards", identifier: :boards do
+                    %i.icon-comments
+                    MESSAGE BOARDS
+
+
+
+
               - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
                 %ul.nav.navbar-nav
-                  = navbar_link_to :users, title: "Users", identifier: :users do
-                    %i.icon-user
-                    Users
+                  %li.dropdown{class: (:active if @current_nav_identifier == :users)}
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
+                      %i.icon-user
+                      = "USERS"
+                      %b.caret
+                    %ul.dropdown-menu
+                      = navbar_link_to :users, title: "Users", identifier: :users do
+                        %i.icon-user
+                        Manage Users
+                      = navbar_link_to user_path(current_user), title: "Users", identifier: :users do
+                        %i.icon-user
+                        My Profile
+
+
+
+
               - else
                 %ul.nav.navbar-nav
                   = navbar_link_to user_path(current_user), title: "Profile", identifier: :users do
                     %i.icon-user
-                    Profile
+                    PROFILE
               %ul.nav.navbar-nav
                 = navbar_link_to destroy_user_session_path,method: :delete, title: "Log out", identifier: :logout do
                   %i.icon-signout
-                  Log out
-
+                  LOG OUT
 
       #navbar-background
       #main-container.container= yield
-
 
     #footer
       .container

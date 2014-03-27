@@ -13,4 +13,7 @@ class Notification < ActiveRecord::Base
   def self.get_number_of_notifications user_id
     (self.check_notification user_id).size
   end
+
+
+
 end

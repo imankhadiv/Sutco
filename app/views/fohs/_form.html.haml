@@ -1,16 +1,44 @@
 - if @foh.errors.any?
-  -@foh.errors.full_messages.each do |msg|
-    %li=msg
+  =@foh.errors.full_messages.last
 
-= simple_form_for([@show_date,@foh]) do |f|
-  %p= "The following positions are available for #{@show_date.title} on #{@show_date.date.strftime("%B %d, %Y")}"
-  %p= "Please select your desired position, fill in your phone number and click Apply"
-  %p
-  .form-inputs
-    .field
-      = f.association :position, as: :radio_buttons, collection: @positions
-    .field
-      = f.input :phone_number
-  %p
-  .form-actions
-    = f.submit "Apply"
+.container
+  .col-md-5
+    %br
+    %p
+      -if(@show_date.show.image?)
+        = image_tag @show_date.show.image_url, alt: "No Poster", height: "auto", width: "320"
+      -else
+        %i= "No Show poster yet"
+    %p
+      %b Date:
+      = @show_date.date
+    %p
+      %b Time:
+      = @show_date.time.strftime("%I:%M%p") 
+
+
+    #roleapplication 
+      %ulblue 
+        = link_to "Back To Show", @show_date.show
+  .col-md-7
+    %br
+    = simple_form_for([@show_date,@foh]) do |f|
+      %p= "The following positions are available for #{@show_date.title} on #{@show_date.date.strftime("%B %d, %Y")}"
+      %p= "Please select your desired position, fill in your phone number and click Apply"
+      %p
+      .form-inputs
+        .field
+          = f.association :position, as: :radio_buttons, collection: @positions
+        .field
+          = f.input :phone_number
+      %p
+      .form-actions
+        = f.submit "Apply"
+
+      %p
+        %br
+        %br
+        #roleapplication 
+          %ulblueright 
+            = link_to 'View All FOH Positions', fohs_path
+

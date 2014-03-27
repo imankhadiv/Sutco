@@ -28,6 +28,13 @@ class ConversationsController < ApplicationController
 
   end
 
+  #def ajax_get_comments
+  #  # @comments = comments for the conversation I want
+  #  respond_to do |format|
+  #    @conversation = Conversation.find(params[:id])
+  #    format.js
+  #  end
+  #end
   # POST /conversations
   def create
     @board = Board.find(params[:board_id])
