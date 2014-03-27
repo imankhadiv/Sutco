@@ -31,17 +31,17 @@ class CommentsController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(comment_params)
     @comment.user_id = current_user.id
-    @comment.notify_users
+
     @count = @conversation.comments.count
 
     respond_to do |format|
      if @comment.save
-
       format.js   { render 'create_success' }
+      @comment.notify_users
       if(!@board.public)
         AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
       else
-        AppMailer.general_comment(@comment.user_id, @comment).deliver
+        #AppMailer.general_comment(@comment.user_id, @comment).deliver
       end
      else
         format.js { render 'create_failure'}

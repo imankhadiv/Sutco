@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
   validates :body, presence: true
 
 
+
   def notify_users
     board = Conversation.find(conversation_id).board
     if(board.public)
