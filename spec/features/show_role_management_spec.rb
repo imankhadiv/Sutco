@@ -36,7 +36,6 @@ describe "Show role tests" do
       page.should have_content "Show 2"
       page.should have_content "Show was successfully update"
       page.should have_content "Lighting Designer"
-      page.should have_content "Apply for role"
     end
 
     let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }

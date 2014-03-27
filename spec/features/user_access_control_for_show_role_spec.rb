@@ -2,14 +2,14 @@ require 'spec_helper'
 
 
 describe "Access control for different roles for show roles" do
-let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
+let!(:show_with_show_roles_show_dates) { FactoryGirl.create(:show_with_show_roles_show_dates) }
 #creating
   specify "As a member, I cannot remove show roles" do
     role = Role.create :name =>"Member"
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
-    visit show_path(show_with_show_roles.id)
+    visit show_path(show_with_show_roles_show_dates.id)
     page.should_not have_content "Remove Role"
   end
 
@@ -18,7 +18,7 @@ let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
-     visit show_path(show_with_show_roles.id)
+     visit show_path(show_with_show_roles_show_dates.id)
       click_on "Remove Role"
       page.should have_content "Show 1"
       page.should have_content "Show role was successfully destroyed"
@@ -30,7 +30,7 @@ let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
-    visit show_path(show_with_show_roles.id)
+    visit show_path(show_with_show_roles_show_dates.id)
       click_on "Edit"
       page.should have_content "Editing show"
       fill_in "Name", with: "Show 2"
@@ -56,7 +56,7 @@ let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
-    visit show_path(show_with_show_roles.id)
+    visit show_path(show_with_show_roles_show_dates.id)
     page.should_not have_content "Remove Role"
   end
 
@@ -65,7 +65,7 @@ let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
-    visit show_path(show_with_show_roles.id)
+    visit show_path(show_with_show_roles_show_dates.id)
     page.should_not have_content "Remove Role"
   end
 
@@ -74,7 +74,7 @@ let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
-    visit show_path(show_with_show_roles.id)
+    visit show_path(show_with_show_roles_show_dates.id)
     page.should_not have_content "Remove Role"
   end
 
@@ -83,7 +83,7 @@ let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
     user = FactoryGirl.create(:user)
     user.roles << role
     login_as(user, :scope => :user)
-    visit show_path(show_with_show_roles.id)
+    visit show_path(show_with_show_roles_show_dates.id)
     page.should_not have_content "Remove Role"
   end
 
