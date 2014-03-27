@@ -35,11 +35,11 @@ describe "Signing up and signing in" do
    fill_in 'user_password', with: user1.password
    click_button "Sign in"
    page.should have_content "Your account has not been approved by your administrator yet."
-   page.should_not have_content "Home"
-   page.should_not have_content "Event Calendar"
-   page.should_not have_content "Shows"
-   page.should_not have_content "Workshops"
-   page.should_not have_content "Trainings"
+   page.should_not have_content "HOME"
+   page.should_not have_content "EVENT CALENDAR"
+   page.should_not have_content "SHOWS"
+   page.should_not have_content "WORKSHOPS"
+   page.should_not have_content "TRAININGS"
  end
 
  specify "I can visit the site after approval" do
@@ -50,11 +50,11 @@ describe "Signing up and signing in" do
   fill_in 'user_password', with: user1.password
   click_button "Sign in"
   page.should_not have_content "Your account has not been approved by your administrator yet."
-  page.should have_content "Home"
-  page.should have_content "Event Calendar"
-  page.should have_content "Shows"
-  page.should have_content "Workshops"
-  page.should have_content "Trainings"
+  page.should have_content "HOME"
+  page.should have_content "EVENT CALENDAR"
+  page.should have_content "SHOWS"
+  page.should have_content "WORKSHOPS"
+  page.should have_content "TRAININGS"
  end
 end
 

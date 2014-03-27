@@ -72,7 +72,7 @@ Warden.test_mode!
 		describe "Create a training session in calendar" do	
 			 specify "I can create a training session in calendar view" do
 			 	visit calendars_path
-				  click_link "Create New Training Session"
+				  click_link "Create New Training"
 				page.should have_content "New training"
 			  end
 		end
@@ -88,7 +88,7 @@ Warden.test_mode!
 		describe "Create a social event in calendar" do	
 			 specify "I can create a social event in calendar view" do
 			 	visit calendars_path
-				  click_link "Create New Social Event"
+				  click_link "Create New Social"
 					page.should have_content "New social"
 			  end
 		end
