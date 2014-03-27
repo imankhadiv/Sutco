@@ -40,7 +40,7 @@
       
 
     %p
-      %b Why did you apply for the role:
+      %b Why are you applying for this role:
       %br
       = @role_application.content
       %br
@@ -51,7 +51,6 @@
           #roleapplication
             = f.input :status, collection: [ "Pending", "Approved", "Rejected"], :include_blank => false
           %br
-    
           .form-actions
           #roleapplication
             = f.button :submit, "Update Application Status"
@@ -59,7 +58,6 @@
           #roleapplication 
             %ulblueright 
               = link_to "Back To Application List", role_applications_path
-    
       - else
         %b Status:
         = @role_application.status
