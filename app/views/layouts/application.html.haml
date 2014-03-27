@@ -24,7 +24,8 @@
               %span.icon-bar
               %span.icon-bar
             = link_to :root, class: 'navbar-brand' do
-              %img{src: "/assets/SUTCO-ICON.png", height: "30", width: "auto"}
+              %img{src: image_path("SUTCO-ICON.png"), height: "30", width: "auto"}
+
             
           .collapse.navbar-collapse
             -if user_signed_in?
