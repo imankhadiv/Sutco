@@ -60,6 +60,6 @@ class SocialsController < ApplicationController
     end
 
     def set_nav_identifier
-      @current_nav_identifier	= :socials
+      @current_nav_identifier	= :events
     end
 end
