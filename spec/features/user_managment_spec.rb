@@ -429,13 +429,13 @@ describe "Profile" do
     login_as(user, :scope => :user)
     visit calendars_path
     click_on "Profile"
-    click_on "Report"
+    click_on "Generate User Report"
     page.should have_content "User Profile"
     page.should have_content user.firstname
     page.should have_content user.lastname
     page.should have_content user.course
     page.should have_content user.level
-    click_on "Download"
+    click_on "Download Report (PDF)"
     response_headers["Content-Type"].should == "application/pdf"
   end
   specify "As a TechManager, I can view the profile report"  do
@@ -446,13 +446,13 @@ describe "Profile" do
     visit calendars_path
     click_on "Users"
     click_on "View My Profile"
-    click_on "Generate Report"
+    click_on "Generate User Report"
     page.should have_content "User Profile"
     page.should have_content user.firstname
     page.should have_content user.lastname
     page.should have_content user.course
     page.should have_content user.level
-    click_on "Download Report"
+    click_on "Download Report (PDF)"
     response_headers["Content-Type"].should == "application/pdf"
   end
   specify "As a TechManager, I can update my profile page"  do
