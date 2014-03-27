@@ -44,7 +44,10 @@
           - if(c.required_number > 0)
             %td= c.position
             %td= c.required_number
-            %td= link_to 'Apply for roles', new_show_role_role_application_path(c)
+            -if(c.applied?(current_user.id))
+              %td= link_to 'View my application', current_user
+            -else
+              %td= link_to 'Apply for role', new_show_role_role_application_path(c)
             -if(current_user.role? "ProductionTeam")
               %td= link_to 'Remove Role', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
             

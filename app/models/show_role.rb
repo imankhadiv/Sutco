@@ -22,4 +22,15 @@ class ShowRole < ActiveRecord::Base
    @returnvalue
   end
 
+  def applied?(user)
+     @returnvalue = false
+    @applications = RoleApplication.where(show_role_id: id)
+    @applications.each do |application|
+    if application.user.id == user
+      @returnvalue = true
+     end
+   end
+   @returnvalue
+  end
+
 end
