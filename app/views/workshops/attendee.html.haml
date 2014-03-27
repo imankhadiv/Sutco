@@ -1,6 +1,12 @@
+.page-header
+  %h1 Registered Users for #{@workshop.title}
 
-%h1 Registered Users
--if !@workshop_records.empty?
+-if @workshop_records.empty?
+  .jumbotron
+    %h2 No user has registered for this workshop yet
+  %h3=link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,@workshop)
+
+-else
   = form_tag record_attendance_workshops_path, :method =>:put do
 
     %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
