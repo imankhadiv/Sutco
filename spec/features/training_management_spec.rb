@@ -60,15 +60,15 @@ describe "Add/Edit/Delete trainings" do
 end
 
 describe "Record attendance" do
- let!(:training) { FactoryGirl.create(:training)}
- before(:each) do
+let!(:training) { FactoryGirl.create(:training)}
+before(:each) do
    role = FactoryGirl.create(:role)
    user = FactoryGirl.create(:user)
    user.roles << role
    login_as(user, :scope => :user)
- end
+end
 
- specify "As a Techmanager I can view a list of registered users" do
+specify "As a Techmanager I can view a list of registered users" do
    user = User.create :email =>"testuser2@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanapproveduser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
    training_record = TrainingRecord.create :user_id => user.id, :training_id => training.id
 
@@ -80,9 +80,9 @@ describe "Record attendance" do
    page.should have_content "#{user.lastname}"
    page.should have_content "#{user.email}"
    page.should_not have_content 'attended'
- end
+end
 
- specify "As a Techmanager I can record attendance" do
+specify "As a Techmanager I can record attendance" do
    user = User.create :email =>"testuser2@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'Imanapproveduser',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
    raining_record = TrainingRecord.create :user_id => user.id, :training_id => training.id
 
@@ -96,28 +96,28 @@ describe "Record attendance" do
    click_on 'View registered users'
    page.should have_content 'attended'
 
- end
+end
 end
 
 describe "Apply for a training sessions" do
 
- let!(:training) { FactoryGirl.create(:training)}
- before(:each) do
+let!(:training) { FactoryGirl.create(:training)}
+before(:each) do
    role1 = Role.create :name => 'Member'
    user = FactoryGirl.create(:user)
    user.roles << role1
    login_as(user, :scope => :user)
- end
+end
 
- specify "As a member, I can Apply for a training session " do
+specify "As a member, I can Apply for a training session " do
        visit training_path(training.id)
        page.should have_link "Attend Training"
 
        click_link 'Attend Training'
        page.should have_content "You have successfully registered for #{training.title}"
- end
+end
 
- specify "As a member I can not see the apply button If I have already applied for the training" do
+specify "As a member I can not see the apply button If I have already applied for the training" do
    visit training_path(training.id)
    page.should have_link "Attend Training"
    click_link 'Attend Training'
@@ -125,6 +125,6 @@ describe "Apply for a training sessions" do
    visit training_path(training.id)
    page.should have_content "You have registered for #{training.title}"
    page.should_not have_link "Attend Training"
- end
+end
 end
 

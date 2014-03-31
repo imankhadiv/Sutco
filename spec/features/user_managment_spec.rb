@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "Signing up and signing in" do
- let!(:user) { FactoryGirl.create(:user) }
- specify "I can sign up" do
+let!(:user) { FactoryGirl.create(:user) }
+specify "I can sign up" do
    visit new_user_registration_path
    fill_in "Email", with: "testuser@sheffield.ac.uk"
    fill_in "Password", with: user.password
@@ -19,7 +19,7 @@ describe "Signing up and signing in" do
 
   end
 
- specify "Do not allow user to sign up without filling all the fields" do
+specify "Do not allow user to sign up without filling all the fields" do
    visit new_user_registration_path
    fill_in "Email", with: "testuser@sheffield.ac.uk"
    fill_in "Password", with: user.password
@@ -28,7 +28,7 @@ describe "Signing up and signing in" do
    page.should_not have_content "Sign up successful"
   end
 
- specify "I can not visit the site before approval" do
+specify "I can not visit the site before approval" do
    user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>FALSE
    visit new_user_session_path
    fill_in 'user_email', with: user1.email
@@ -40,9 +40,9 @@ describe "Signing up and signing in" do
    page.should_not have_content "SHOWS"
    page.should_not have_content "WORKSHOPS"
    page.should_not have_content "TRAININGS"
- end
+end
 
- specify "I can visit the site after approval" do
+specify "I can visit the site after approval" do
 
   user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
   visit new_user_session_path
@@ -55,11 +55,11 @@ describe "Signing up and signing in" do
   page.should have_content "SHOWS"
   page.should have_content "WORKSHOPS"
   page.should have_content "TRAININGS"
- end
+end
 end
 
 describe "User approval" do
- specify "As a TechManager, I can view the list of users that is under approval, as well as the list of users that has been approved" do
+specify "As a TechManager, I can view the list of users that is under approval, as well as the list of users that has been approved" do
   role = Role.create :name =>"TechManager"
   user = FactoryGirl.create(:user)
   user.roles << role
@@ -74,9 +74,9 @@ describe "User approval" do
       page.should have_content "Imanewuser"
       page.should have_content "List of currently approved users"
       page.should have_content "Imanapproveduser"
- end
+end
 
- specify "As a SeniorCommittee, I can view the list of users that is under approval, as well as the list of users that has been approved" do
+specify "As a SeniorCommittee, I can view the list of users that is under approval, as well as the list of users that has been approved" do
   role = Role.create :name =>"SeniorCommittee"
   user = FactoryGirl.create(:user)
   user.roles << role
@@ -91,10 +91,10 @@ describe "User approval" do
   page.should have_content "Imanewuser"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanapproveduser"
- end
+end
 
 
- specify "As a TechManager, I can aprove users and assign roles to them as Member" do
+specify "As a TechManager, I can aprove users and assign roles to them as Member" do
   role = Role.create :name =>"TechManager"
   Role.create :name =>"Member"
   user = FactoryGirl.create(:user)
@@ -117,9 +117,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a SeniorCommittee, I can aprove users and assign roles to them as Member" do
+specify "As a SeniorCommittee, I can aprove users and assign roles to them as Member" do
   role = Role.create :name =>"SeniorCommittee"
   Role.create :name =>"Member"
   user = FactoryGirl.create(:user)
@@ -141,9 +141,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a TechManager, I can approve users and assign roles to them as ProductionTeam" do
+specify "As a TechManager, I can approve users and assign roles to them as ProductionTeam" do
   role = Role.create :name =>"TechManager"
   Role.create :name =>"ProductionTeam"
   user = FactoryGirl.create(:user)
@@ -166,9 +166,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a SeniorCommittee, I can approve users and assign roles to them as ProductionTeam" do
+specify "As a SeniorCommittee, I can approve users and assign roles to them as ProductionTeam" do
   role = Role.create :name =>"SeniorCommittee"
   Role.create :name =>"ProductionTeam"
   user = FactoryGirl.create(:user)
@@ -190,10 +190,10 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
 
- specify "As a TechManager, I can approve users and assign roles to them as Committee" do
+specify "As a TechManager, I can approve users and assign roles to them as Committee" do
   role = Role.create :name =>"TechManager"
   Role.create :name =>"Committee"
   user = FactoryGirl.create(:user)
@@ -216,9 +216,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a SeniorCommittee, I can approve users and assign roles to them as Committee" do
+specify "As a SeniorCommittee, I can approve users and assign roles to them as Committee" do
   role = Role.create :name =>"SeniorCommittee"
   Role.create :name =>"Committee"
   user = FactoryGirl.create(:user)
@@ -240,9 +240,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a TechManager, I can approve users and assign roles to them as DramaStudioManager" do
+specify "As a TechManager, I can approve users and assign roles to them as DramaStudioManager" do
   role = Role.create :name =>"TechManager"
   Role.create :name =>"DramaStudioManager"
   user = FactoryGirl.create(:user)
@@ -265,9 +265,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a SeniorCommittee, I can approve users and assign roles to them as DramaStudioManager" do
+specify "As a SeniorCommittee, I can approve users and assign roles to them as DramaStudioManager" do
   role = Role.create :name =>"SeniorCommittee"
   Role.create :name =>"DramaStudioManager"
   user = FactoryGirl.create(:user)
@@ -289,9 +289,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a TechManager, I can approve users and assign roles to them as SeniorCommittee" do
+specify "As a TechManager, I can approve users and assign roles to them as SeniorCommittee" do
   role = Role.create :name =>"TechManager"
   Role.create :name =>"SeniorCommittee"
   user = FactoryGirl.create(:user)
@@ -314,9 +314,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a SeniorCommittee, I can approve users and assign roles to them as SeniorCommittee" do
+specify "As a SeniorCommittee, I can approve users and assign roles to them as SeniorCommittee" do
   role = Role.create :name =>"SeniorCommittee"
   Role.create :name =>"SeniorCommittee"
   user = FactoryGirl.create(:user)
@@ -338,9 +338,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a TechManager, I can approve users and assign roles to them as SeniorCommittee" do
+specify "As a TechManager, I can approve users and assign roles to them as SeniorCommittee" do
   role = Role.create :name =>"TechManager"
   Role.create :name =>"SeniorCommittee"
   user = FactoryGirl.create(:user)
@@ -363,9 +363,9 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
- specify "As a SeniorCommittee, I can approve users and assign roles to them as SeniorCommittee" do
+specify "As a SeniorCommittee, I can approve users and assign roles to them as SeniorCommittee" do
   role = Role.create :name =>"SeniorCommittee"
   Role.create :name =>"SeniorCommittee"
   user = FactoryGirl.create(:user)
@@ -387,7 +387,7 @@ describe "User approval" do
   page.should_not have_link "Approve User"
   page.should have_content "List of currently approved users"
   page.should have_content "Imanewuser"
- end
+end
 
 
 end
