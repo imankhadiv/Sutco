@@ -18,12 +18,12 @@ module ApplicationHelper
    # content_tag(:tr, content_tag(:td, text, colspan: colspan, class: 'text-center text-muted' ), class: 'tr-no-record')
   #end
 
-  def link_to_icon(icon_name,link_name,url_or_object, options={})
-    link_to(("<div class='icon'><i class=#{icon_name}></i><span id=#{link_name}>#{link_name}</span></div>".html_safe),
-
-  url_or_object,
-    options )
-  end
+  #def link_to_icon(icon_name,link_name,url_or_object, options={})
+  #  link_to(("<div class='icon'><i class=#{icon_name}></i><span id=#{link_name}>#{link_name}</span></div>".html_safe),
+  #
+  #url_or_object,
+  #  options )
+  #end
 
   def link_to_button(button_name,link_name,url_or_object, options={})
     link_to(("<div class=#{button_name}><span id=#{link_name}>#{link_name}</span></div>".html_safe),

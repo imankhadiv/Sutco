@@ -81,7 +81,7 @@ class TrainingsController < ApplicationController
     end
 
     def set_nav_identifier
-	@current_nav_identifier	= :trainings
+	@current_nav_identifier	= :events
     end
 
 end

@@ -1,18 +1,16 @@
-%h1 Listing boards
+%h1 My message boards
 
-%table.table.table-striped.table-nonfluid.table-hover
-  %tr
-    %th Title
-    %th
-    %th
-
-
+%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
+  %thead
+    %tr
+      %th Boards
+      %th Conversations
+  %tbody
   - @boards.each do |board|
     %tr
-      %td= board.title
-      %td= link_to 'Show', board
-      -#%td= link_to 'Edit', edit_board_path(board)
-      %td= link_to 'Destroy', board, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    -if (board.authorized(current_user) || (current_user.role? "SeniorCommittee") || (current_user.role? "ProductionTeam"))
+      %td= link_to board.title, board
+      %td= board.conversations.count
 
 %br
 

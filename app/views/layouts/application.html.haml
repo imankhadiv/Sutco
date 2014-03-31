@@ -24,7 +24,8 @@
               %span.icon-bar
               %span.icon-bar
             = link_to :root, class: 'navbar-brand' do
-              %img{src: "/assets/SUTCO-ICON.png", height: "30", width: "auto"}
+              %img{src: image_path("SUTCO-ICON.png"), height: "30", width: "auto"}
+
             
           .collapse.navbar-collapse
             -if user_signed_in?
@@ -58,23 +59,28 @@
                         %i.icon-smile
                         Role Applications
               %ul.nav.navbar-nav
-                = navbar_link_to :workshops, title: "Workshops", identifier: :workshops do
-                  %i.icon-shopping-cart
-                  WORKSHOPS
-              %ul.nav.navbar-nav
-                = navbar_link_to :trainings, title: "Trainings", identifier: :trainings do
-                  %i.icon-tasks
-                  TRAININGS
-              %ul.nav.navbar-nav
-                = navbar_link_to :socials, title: "Socials", identifier: :socials do
-                  %i.icon-group
-                  SOCIALS
+                %li.dropdown{class: (:active if @current_nav_identifier == :events)}
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
+                    %i.icon-tasks
+                    = "EVENTS"
+                    %b.caret
+                  %ul.dropdown-menu
+                    = navbar_link_to :trainings, title: "Trainings" do
+                      %i.icon-tasks
+                      Trainings
+                    = navbar_link_to :workshops, title: "Workshops" do
+                      %i.icon-shopping-cart
+                      Workshops
+                    = navbar_link_to :socials, title: "Socials" do
+                      %i.icon-group
+                      Socials
+
               -if notification_number > 0
                 %ul.nav.navbar-nav
                   %li.dropdown{class: (:active if @current_nav_identifier == :boards)}
                     %a.dropdown-toggle{"data-toggle" => "dropdown", "data-target" => "", :href => boards_path}
                       %i.icon-edit
-                      MASSAGE BOARD
+                      MESSAGE BOARD
                       %b.caret
                       -if notification_number > 0
                         .badge.badge-important= notification_number
@@ -101,10 +107,10 @@
                       = "USERS"
                       %b.caret
                     %ul.dropdown-menu
-                      = navbar_link_to :users, title: "Users", identifier: :users do
+                      = navbar_link_to :users, title: "Users" do
                         %i.icon-user
                         Manage Users
-                      = navbar_link_to user_path(current_user), title: "Users", identifier: :users do
+                      = navbar_link_to user_path(current_user), title: "Users" do
                         %i.icon-user
                         My Profile
 

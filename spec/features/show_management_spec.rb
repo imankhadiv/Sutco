@@ -100,6 +100,14 @@ describe "Show tests" do
 
  describe "Deleting shows" do
    let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
+   specify "Given a show exists I can remove a show date from it" do
+     visit show_path(show_with_show_dates.id)
+     click_on "Remove Date"
+     page.should have_content "Show 1"
+     page.should have_content "Show date was successfully destroyed"
+   end
+
+   let!(:show_with_show_dates) { FactoryGirl.create(:show_with_show_dates) }
    specify "Given a show exists I can delete it" do
      visit show_path(show_with_show_dates.id)
      click_on "Delete"

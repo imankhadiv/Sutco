@@ -29,7 +29,7 @@
 }
 
 #roleapplication input[type=submit] {
-  padding:5px 15px; 
+  /*padding:5px 15px; */
   background:cornflowerblue; 
   border:0 none;
   cursor:pointer;

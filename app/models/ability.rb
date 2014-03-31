@@ -11,21 +11,21 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     if user.role? :member
-      can :read, [Show, ShowDate, Social]
+      can :read, [Show, ShowDate, ShowRole, Social]
       can :manage, [Foh, Board]
       can [:show, :update, :report], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can [:show, :create], [RoleApplication]
     end
     if user.role? :committee
-      can :read, [Show, ShowDate]
+      can :read, [Show, ShowRole,ShowDate]
       can [:show, :update, :report], User, :id=> user.id
       can  [:attend, :read], [Training, Workshop]
       can :manage, [Foh, Social, Board]
       can [:show, :create], [RoleApplication]
     end
     if user.role? :tech_manager
-      can :read, [Show,ShowDate, Social]
+      can :read, [Show,ShowDate, ShowRole,Social]
       can :manage, [Workshop, Foh, Training, User, RoleApplication, Board]
     end
     if user.role? :production_team
@@ -43,7 +43,7 @@ class Ability
 
     end
     if user.role? :senior_committee
-      can :read, [Show,ShowDate]
+      can :read, [Show,ShowRole,ShowDate]
       can :manage, [Foh, User, Social, Board]
       can [:crud, :attend], [Workshop, Training]
       can [:show, :create, :report], [RoleApplication]

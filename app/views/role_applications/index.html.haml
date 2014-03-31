@@ -9,17 +9,13 @@
       %th 
   %tbody
     - @role_applications.each do |role_application|
-
       - if ((role_application.status == "Pending") && (role_application.show_role.notexpired?))
-        %tr 
+        %tr
           %td= role_application.show_role.show.name
           %td= role_application.show_role.position
           %td= link_to role_application.user.firstname + " " + role_application.user.lastname, role_application.user
           %td= role_application.status
-          - if (role_application.status == "Pending")
-            %td= link_to 'Process Application', role_application
-          - elsif
-            %td= link_to 'View Application', role_application
+          %td= link_to 'Process Application', role_application
 
 
 %h1 All Applications
@@ -42,7 +38,7 @@
           %td= role_application.status
           - if (role_application.status == "Pending")
             %td= link_to 'Process Application', role_application
-          - elsif
+          - else
             %td= link_to 'View Application', role_application
 
 

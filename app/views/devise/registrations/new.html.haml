@@ -1,14 +1,18 @@
 // Sign up page for new users
-
-%h3  Sign Up
+.page-header
+  %h1 Sign Up
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = f.error_notification
 
   //Users need to fill in their details and then click submit
+  %h2 Please fill in your login information
   .form-inputs
     = f.input :email, :required => true, :autofocus => true
     = f.input :password, :required => true
     = f.input :password_confirmation, :required => true
+
+  %h2 Now fill in your Personal Details
+  .form-inputs
     = f.input :firstname
     = f.input :lastname
     = f.input :course
@@ -19,5 +23,7 @@
   .form-actions
     %br
     = f.submit 'Sign Up',:class => "btn btn-success"
+%br
+%br
 %br
 

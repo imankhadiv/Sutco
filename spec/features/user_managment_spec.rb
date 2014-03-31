@@ -38,9 +38,8 @@ specify "I can not visit the site before approval" do
    page.should_not have_content "HOME"
    page.should_not have_content "EVENT CALENDAR"
    page.should_not have_content "SHOWS"
-   page.should_not have_content "WORKSHOPS"
-   page.should_not have_content "TRAININGS"
-end
+   page.should_not have_content "EVENTS"
+ end
 
 specify "I can visit the site after approval" do
 
@@ -53,9 +52,23 @@ specify "I can visit the site after approval" do
   page.should have_content "HOME"
   page.should have_content "EVENT CALENDAR"
   page.should have_content "SHOWS"
-  page.should have_content "WORKSHOPS"
-  page.should have_content "TRAININGS"
-end
+  page.should have_content "EVENTS"
+ end
+
+ specify "I can visit the home page" do
+
+   user1 = User.create :email =>"testuser1@sheffield.ac.uk", :password =>"123456789",   :password_confirmation =>"123456789",   :firstname =>'myfirstname',  :lastname =>'mylastname',  :ucard =>'1234', :course =>'mycourse',  :level =>"Level1",  :approved =>TRUE
+   visit new_user_session_path
+   fill_in 'user_email', with: user1.email
+   fill_in 'user_password', with: user1.password
+   click_button "Sign in"
+   page.should_not have_content "Your account has not been approved by your administrator yet."
+   page.should have_content "HOME"
+   page.should have_content "EVENT CALENDAR"
+   page.should have_content "SHOWS"
+   page.should have_content "EVENTS"
+ end
+
 end
 
 describe "User approval" do
@@ -431,13 +444,13 @@ describe "Profile" do
     login_as(user, :scope => :user)
     visit calendars_path
     click_on "Profile"
-    click_on "Report"
+    click_on "Generate User Report"
     page.should have_content "User Profile"
     page.should have_content user.firstname
     page.should have_content user.lastname
     page.should have_content user.course
     page.should have_content user.level
-    click_on "Download"
+    click_on "Download Report (PDF)"
     response_headers["Content-Type"].should == "application/pdf"
   end
   specify "As a TechManager, I can view the profile report"  do
@@ -448,13 +461,13 @@ describe "Profile" do
     visit calendars_path
     click_on "Users"
     click_on "View My Profile"
-    click_on "Generate Report"
+    click_on "Generate User Report"
     page.should have_content "User Profile"
     page.should have_content user.firstname
     page.should have_content user.lastname
     page.should have_content user.course
     page.should have_content user.level
-    click_on "Download Report"
+    click_on "Download Report (PDF)"
     response_headers["Content-Type"].should == "application/pdf"
   end
   specify "As a TechManager, I can update my profile page"  do
@@ -505,5 +518,40 @@ describe "Profile" do
     page.should have_content "Newcourse"
     page.should have_content "4321"
     page.should have_content 'Level2'
+  end
+
+  specify "As a Member, I cannot update my profile page with blank fields" do
+    role = Role.create :name =>"Member"
+    user = FactoryGirl.create(:user)
+    user.roles << role
+    login_as(user, :scope => :user)
+    visit calendars_path
+    click_on "Profile"
+    click_on "Update My Profile"
+    fill_in "Password", with: "987654321"
+    fill_in "Password confirmation", with: "987654321"
+    fill_in "Current password", with: user.password
+    fill_in "Firstname", with: ""
+    fill_in "Lastname", with: ""
+    click_on "Update"
+    page.should have_content "can't be blank"
+  end
+
+  specify "As a Member, I can visit the homepage"  do
+    role = Role.create :name =>"Member"
+    user = FactoryGirl.create(:user)
+    user.roles << role
+    login_as(user, :scope => :user)
+    visit welcome_path
+    page.should have_content "Welcome to the SUTCo Management Application!"
+  end
+
+  specify "As a Member, I get an error page if I visit a non-existing page"  do
+    role = Role.create :name =>"Member"
+    user = FactoryGirl.create(:user)
+    user.roles << role
+    login_as(user, :scope => :user)
+    visit show_path(1000)
+    page.should have_content "Sorry, this page does not exist"
   end
 end

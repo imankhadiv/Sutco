@@ -25,7 +25,7 @@ describe "Messageboard tests" do
       click_on 'Add Conversation'
       page.should have_content "New conversation"
       fill_in "Title", with: "Title"
-      fill_in "Body", with: 'Body'
+      fill_in "Initial Comment", with: 'Initial Comment'
       click_button "Create Conversation"
 
 
@@ -45,6 +45,8 @@ describe "Messageboard tests" do
   describe "Show Message Board" do
 
     let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
+    show = Show.create director: 'Some Director', producer: 'Some Producer', name: 'Show 1'
+
     role = Role.create :name =>"Member"
     user = FactoryGirl.create(:user)
     user.roles << role
@@ -54,9 +56,7 @@ describe "Messageboard tests" do
       show_role = ShowRole.create :show_id => show_with_show_roles.id, :position => "something", :required_number => "1"
 
       visit boards_path
-      page.should have_content "Show 1"
-      click_link "Show"
-      page.should have_content "You can't view this board"
+      page.should_not have_link "Show 1"
     end
 
 

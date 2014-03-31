@@ -13,6 +13,10 @@
           %td= link_to c.show.name, c.show
           %td= c.position
           %td= c.required_number
-          %td= link_to 'Apply for show role', new_show_role_role_application_path(c)
+          -if(c.applied?(current_user.id))
+            %td= link_to 'View my application', current_user
+          -else
+            %td= link_to 'Apply for role', new_show_role_role_application_path(c)
+
 
 
