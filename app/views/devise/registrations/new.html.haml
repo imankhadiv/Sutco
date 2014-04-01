@@ -1,29 +1,36 @@
-// Sign up page for new users
-.page-header
-  %h1 Sign Up
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = f.error_notification
-
-  //Users need to fill in their details and then click submit
-  %h2 Please fill in your login information
-  .form-inputs
-    = f.input :email, :required => true, :autofocus => true
-    = f.input :password, :required => true
-    = f.input :password_confirmation, :required => true
-
-  %h2 Now fill in your Personal Details
-  .form-inputs
-    = f.input :firstname
-    = f.input :lastname
-    = f.input :course
-    = f.input :ucard
-    = f.input :level, collection: ['Level1','Level2','Level3','Level4'], as: :select, :label => "Current School Year/Level"
+//Signup page for new users
+.container.signup-form
+  .page-header
+    %h1 Sign Up
+  .signup.col-md-8.col-md-offset-2
+    = bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      =f.alert_message "Please fix the following errors", error_summary: false
 
 
-  .form-actions
-    %br
-    = f.submit 'Sign Up',:class => "btn btn-success"
-%br
-%br
-%br
+      %h2 Please fill in your login information
+      .form-inputs
+
+        = f.email_field :email
+        = f.password_field :password
+        = f.password_field :password_confirmation
+
+      %h2 Now fill in your Personal Details
+      .form-inputs
+
+        .col-md-6=f.text_field :firstname
+        .col-md-6=f.text_field :lastname
+        .col-md-4= f.text_field  :course
+        .col-md-4
+          = f.text_field :ucard
+        .col-md-4= f.select :level,  [ "Level1", "Level2", "Level3","Level4"]
+        %br
+        %br
+
+
+      .form-actions
+        %br
+        .btn.btn-primary.btn-lg.active= f.submit 'Sign Up'
+  %br
+  %br
+  %br
 

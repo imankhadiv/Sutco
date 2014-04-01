@@ -41,6 +41,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'      # Twitter bootstrap in sass form
 gem 'font-awesome-rails'  # Bootstrap's icons rendered as a font
+gem 'bootstrap_form'
 
 gem 'webshims-rails'
 
