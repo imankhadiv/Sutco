@@ -2,17 +2,22 @@
   .container
     %br
     - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-      %button.buttonshow
+      .buttonshow
         = link_to "Create New Show", new_show_path
-      %button.buttonworkshop
+      .buttonworkshop
         = link_to "Create New Workshop", new_workshop_path
-      %button.buttontraining
+      .buttontraining
         = link_to "Create New Training", new_training_path
-      %button.buttonsocial
+      .buttonsocial
         = link_to "Create New Social", new_social_path
-
+      %br
+      %br
+      %br
+      %br
+      %br
 
     %h2
+
       %ularrow= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")
       %mon= @date.strftime("%B %Y")
       %ularrow= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d")
@@ -25,18 +30,20 @@
 
         - for event in events
           - if(event.event_name.eql?'ShowDate')
-            //%ulshow
-            //  = link_to h(event .title), event
-            %button.linkshow
-              = link_to h(event .title), event
+            .linkshow
+              %a
+                = link_to h(event .title), event
           - elsif(event.event_name.eql?"Social")
-            %button.linksocial
-              = link_to h(event .title), event
+            .linksocial
+              %a
+                = link_to h(event .title), event
           - elsif(event.event_name.eql?"Training")
-            %button.linktraining
-              = link_to h(event .title), event
+            .linktraining
+              %a
+                = link_to h(event .title), event
           - elsif(event.event_name.eql?"Workshop")
-            %button.linkworkshop
-              = link_to h(event .title), event
+            .linkworkshop
+              %a
+                = link_to h(event .title), event
     %br
 

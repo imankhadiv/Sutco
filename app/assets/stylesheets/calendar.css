@@ -80,7 +80,9 @@
 }
 
 
-#calendar .linkshow {
+
+
+#calendar .linkshow a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: block;
     color: rgb(255, 255, 255);
@@ -97,7 +99,7 @@
   width: 100%;
 }
 
-#calendar .linktraining {
+#calendar .linktraining a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: block;
     color: rgb(255, 255, 255);
@@ -114,7 +116,7 @@
   width: 100%;
 }
 
-#calendar .linkworkshop {
+#calendar .linkworkshop a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: block;
     color: rgb(255, 255, 255);
@@ -131,7 +133,7 @@
   width: 100%;
 }
 
-#calendar .linksocial {
+#calendar .linksocial a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: block;
     color: rgb(255, 255, 255);
@@ -145,27 +147,17 @@
     color: #FFF;
     border: 0px none;
     outline: 0px none;
-  width: 100%;
+    width: 100%;
 }
 
 
 
-
-#calendar a{
-  color:#fff
-}
-
-
-
-
-#calendar .buttonshow {
+#calendar .buttonshow a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: inline;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    padding-top:35px;
     text-transform: uppercase;
     background: #00A3A3;
     color: #FFF;
@@ -173,18 +165,16 @@
     outline: 0px none;
     width: 130px;
     height: 130px;
-
+    float:left;
 
 }
 
-#calendar .buttonworkshop {
+#calendar .buttonworkshop a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: inline;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    padding-top:35px;
     text-transform: uppercase;
     background: #6BA5E7;
     color: #FFF;
@@ -192,18 +182,17 @@
     outline: 0px none;
     width: 130px;
     height: 130px;
+    float:left;
 
 
 }
 
-#calendar .buttonsocial {
+#calendar .buttonsocial a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: inline;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    padding-top:35px;
     text-transform: uppercase;
     background: #691BB8;
     color: #FFF;
@@ -211,19 +200,18 @@
     outline: 0px none;
     width: 130px;
     height: 130px;
+    float:left;
 
 
 }
 
 
-#calendar .buttontraining {
+#calendar .buttontraining a{
     font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
     display: inline;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
     text-align: center;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    padding-top:35px;
     text-transform: uppercase;
     background: #FE7C22;
     color: #FFF;
@@ -231,6 +219,8 @@
     outline: 0px none;
     width: 130px;
     height: 130px;
+    float:left;
+
 }
 
 

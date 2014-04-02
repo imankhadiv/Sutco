@@ -4,7 +4,7 @@
 .dashboard
   .container
     - if (current_user.role? "ProductionTeam")
-      %a.buttonshow{href:new_show_path, role:"button"} Create New Show
+      %a.buttonnewshow{href:new_show_path, role:"button"} Create New Show
       %br
 
     - @shows.each do |show|
