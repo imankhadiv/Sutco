@@ -4,7 +4,7 @@
 -if @training_records.empty?
   .jumbotron
     %h2 No user has registered for this training yet
-  %h3=link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,@workshop)
+  %h3=link_to('<i class="icon-circle-arrow-left"></i> Back'.html_safe,@training)
 
 -else
   = form_tag record_attendance_trainings_path, :method =>:put do
