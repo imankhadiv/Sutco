@@ -470,7 +470,8 @@ header a {
 
 .col1,
 .col2,
-.col3 {
+.col3,
+.col4 {
   width: 99%;
   margin: 1em auto
 }
@@ -769,6 +770,68 @@ header a {
   font-weight: bold;
 background-color: lightgrey;
   }
+
+
+
+
+
+
+
+.tile-13 {
+  text-align: left;
+  height: 130px;
+  background-color: #eeeeff;
+  color: #666699;
+   width: 75%;
+
+}
+
+.tile-13:hover {
+  background-color: #666699;
+  color: white;
+
+}
+
+.tile-13 div {
+  text-align: left;
+    padding-left: 30px;
+}
+
+.tile-13  .col1,
+.tile-13  .col2,
+.tile-13  .col3 {
+    float: left;
+  }
+
+.tile-13  .col1 {
+    margin-left: 0;
+    margin-top: 0;
+    padding-top: 1em;
+   width: 25%;
+  font-size: 20px;
+  font-weight: bold;
+background-color: black;
+color:white
+  }
+.tile-13  .col2 {
+    margin-top: 0;
+   padding: 0;
+    margin-left: 25%;
+   width: 15%
+  }
+.tile-13  .col3 {
+  margin-left: 40%;
+ width: 35%
+  }
+
+
+
+.tile-13 img {
+   padding-top: 15px;
+   padding-left: 15px;
+    width: 110px;
+   height: 110px;
+}
 
 .tile-3 p {
   font-size: 4em;

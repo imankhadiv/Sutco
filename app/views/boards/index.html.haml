@@ -1,17 +1,31 @@
 %h1 My message boards
 
-%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
-  %thead
-    %tr
-      %th Boards
-      %th Conversations
-  %tbody
-  - @boards.each do |board|
-    %tr
-    -if (board.authorized(current_user) || (current_user.role? "SeniorCommittee") || (current_user.role? "ProductionTeam"))
-      %td= link_to board.title, board
-      %td= board.conversations.count
 
-%br
 
--#= link_to 'New Board', new_board_path
+.dashboard.clearfix
+  %ul.tiles
+    - @boards.each do |board|
+      -if (board.authorized(current_user) || (current_user.role? "SeniorCommittee") || (current_user.role? "ProductionTeam"))
+        .tile.tile-big.tile-13{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+          .col1.clearfix
+            %i.icon-comments
+            -if(board.show_id==nil)
+              = link_to board.title, board
+            -else
+              = link_to board.show.name, board
+          .col2.clearfix
+            -if(board.show_id!=nil)
+              %img= image_tag board.show.image_url, alt: "No Poster";
+            -else
+              %img{src: image_path("sutco.jpg")}
+          .col3.clearfix
+
+            Conversations: #{board.conversations.count}
+
+            -if(board.show_id!=nil)
+              Followers: #{Board.board_users(board).count}
+            -else
+              Followers: #{User.count}
+
+
+
