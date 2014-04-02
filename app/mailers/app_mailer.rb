@@ -11,6 +11,7 @@ class AppMailer < ActionMailer::Base
   def comment_mail(user_id, board, comment)
     @url = 'http://localhost:3000'
     @comment = comment
+
     @recipients = User.where(id: User.get_production_team_members).pluck(:email) +
         User.where(id: Board.board_users(board)).pluck(:email) - User.where(id: user_id).pluck(:email)
     mail(to: (@recipients.uniq), subject: 'New Comment')
