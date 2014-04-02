@@ -3,8 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :conversation
   validates :body, presence: true
-
-
+  after_create :notify_users
 
   def notify_users
     board = Conversation.find(conversation_id).board
@@ -12,7 +11,6 @@ class Comment < ActiveRecord::Base
     users = User.ids - [user_id]
     users.each do |u|
         Notification.create(user_id:u,comment_id:id, conversation_id:conversation_id)
-
     end
     else
       role_applications = RoleApplication.where(status:'Approved')
@@ -20,7 +18,6 @@ class Comment < ActiveRecord::Base
         Notification.create(user_id:app.user_id,comment_id:id,conversation_id:conversation_id) if app.user_id != user_id
         notify_production_team
       end
-
     end
 
   end

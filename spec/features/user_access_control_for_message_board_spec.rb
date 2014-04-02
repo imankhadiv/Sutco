@@ -58,19 +58,24 @@ describe "Access control for different roles for message board" do
       page.should have_content "Add Conversation"
       page.should_not have_content "Remove conversation"
     end
+
+    let!(:board) { FactoryGirl.create(:board) }
+    let!(:conversation) { FactoryGirl.create(:conversation) }
     specify "As As a SeniorCommittee  member, I can remove conversations" do
-      pending
+
       role = Role.create :name =>"SeniorCommittee"
       user = FactoryGirl.create(:user)
-      board = FactoryGirl.create(:board)
       user.roles << role
       login_as(user, :scope => :user)
       user.roles << role
 
+      board.conversations << conversation
+      user.conversations << conversation
       visit board_path(board.id)
-      page.should have_content "Add Conversation"
-      puts user.roles.last
+      page.should have_link "Conversation 1"
       page.should have_content "Remove conversation"
+      click_on "Remove conversation"
+      page.should_not have_link "Conversation 1"
     end
 
   end
