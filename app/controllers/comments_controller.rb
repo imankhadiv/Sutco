@@ -2,22 +2,22 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
-  def index
-    @comments = Comment.all
-  end
+  #def index
+  #  @comments = Comment.all
+  #end
 
   # GET /comments/1
   def show
   end
 
   # GET /comments/new
-  def new
-    @comment = Comment.new
-    @board = Board.find(params[:board_id])
-
-    @conversation = Conversation.find(params[:conversation_id])
-
-  end
+  #def new
+  #  @comment = Comment.new
+  #  @board = Board.find(params[:board_id])
+  #
+  #  @conversation = Conversation.find(params[:conversation_id])
+  #
+  #end
 
   # GET /comments/1/edit
   def edit
@@ -30,14 +30,14 @@ class CommentsController < ApplicationController
     @board = Board.find(params[:board_id])
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(comment_params)
-    @comment.user_id = current_user.id
+    #@comment.user_id = current_user.id
 
     @count = @conversation.comments.count
 
     respond_to do |format|
      if @comment.save
       format.js   { render 'create_success' }
-      @comment.notify_users
+      #@comment.notify_users
       if(!@board.public)
         AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
       else

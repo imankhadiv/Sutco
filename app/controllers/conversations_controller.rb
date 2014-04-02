@@ -3,9 +3,9 @@ class ConversationsController < ApplicationController
   before_filter :set_nav_identifier
 
   # GET /conversations
-  def index
-    @conversations = Conversation.all
-  end
+  #def index
+  #  @conversations = Conversation.all
+  #end
 
   # GET /conversations/1
   def show
@@ -23,10 +23,10 @@ class ConversationsController < ApplicationController
   end
 
   # GET /conversations/1/edit
-  def edit
-    @board = Board.find(params[:board_id])
-
-  end
+  #def edit
+  #  @board = Board.find(params[:board_id])
+  #
+  #end
 
   #def ajax_get_comments
   #  # @comments = comments for the conversation I want
@@ -49,13 +49,13 @@ class ConversationsController < ApplicationController
   end
 
   # PATCH/PUT /conversations/1
-  def update
-    if @conversation.update(conversation_params)
-      redirect_to @conversation.board, notice: 'Conversation was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
+  #def update
+  #  if @conversation.update(conversation_params)
+  #    redirect_to @conversation.board, notice: 'Conversation was successfully updated.'
+  #  else
+  #    render action: 'edit'
+  #  end
+  #end
 
   # DELETE /conversations/1
   def destroy
