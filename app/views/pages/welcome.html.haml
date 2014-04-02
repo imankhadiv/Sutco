@@ -3,17 +3,85 @@
 .dashboard.clearfix
   %h2 Welcome to the SUTCo Management Application!
   %ul.tiles
-    .col1.clearfix
-      %li.tile.tile-big.tile-1.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
-        %div
-          %p You have unprocessed requests
-        %div
-          %p
-            =link_to "Process Role Applications", role_applications_path
-    .col2.clearfix
+    - if (current_user.role? "ProductionTeam")
+      .col1.clearfix
+        %li.tile.tile-big.tile-1.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+          %div
+            %p Manage Shows
+          %div
+            %p
+              =link_to "Go To Shows", shows_path
+    - if ((current_user.role? "TechManager") || (current_user.role? "SeniorCommittee"))
+      .col2.clearfix
+        %li.tile.tile-big.tile-5.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+          %div
+            %p Manage Training Sessions
+          %div
+            %p
+              =link_to "Go To Trainings", trainings_path
+      .col3.clearfix
+        %li.tile.tile-big.tile-6.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+          %div
+            %p Manage Workshops
+          %div
+            %p
+              =link_to "Go To Workshops", workshops_path
+
+    - if ((current_user.role? "ProductionTeam") || (current_user.role? "SeniorCommittee")  || (current_user.role? "Committee"))
+      .col1.clearfix
+        %li.tile.tile-big.tile-2.slideTextRight{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+
+          %div
+            %p
+              =link_to "Go To Socials", socials_path
+          %div
+            %p Manage Social Events
+
+
+
+
+    - if ((current_user.role? "TechManager") || (current_user.role? "SeniorCommittee"))
+      .col2.clearfix
+        %li.tile.tile-small.tile.tile-4.slideTextUp{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+          -if(User.not_approved.size > 0)
+            %div
+              %p You have unapproved users
+            %div
+              %p
+                =link_to "Process User Applications", users_path
+          -else
+            %div
+              %p Manage Users
+            %div
+              %p
+                =link_to "Users", users_path
+        - if (current_user.role? "TechManager")
+          %li.tile.tile-small.last.tile-10.slideTextRight{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+            -if(RoleApplication.get_unprocessed_applications.size > 0)
+              %div
+                %p
+                  =link_to "Process Role Applications", role_applications_path
+              %div
+                %p You have unprocessed role applications
+
+            -else
+              %div
+                %p
+                  =link_to "Role Applications", role_applications_path
+              %div
+                %p View Role Applications
+
+
+    .col3.clearfix
       %li.tile.tile-small.tile.tile-2.slideTextRight{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
         %div
           %p.icon-calendar
             =link_to "View Calendar", calendars_path
         %div
           %p Event Calendar
+      %li.tile.tile-small.last.tile-3.slideTextLeft{"data-page-name" => "random-restored-page", "data-page-type" => "s-page"}
+        %div
+          %span.icon-comments
+        %div
+          %p
+            =link_to "View Massage Board", boards_path
