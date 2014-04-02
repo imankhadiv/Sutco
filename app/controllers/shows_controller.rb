@@ -46,6 +46,9 @@ class ShowsController < ApplicationController
   # PATCH/PUT /shows/1
   def update
     if @show.update(show_params)
+      board = Board.find_by_show_id(@show.id)
+      board.title= @show.name
+      board.save
       redirect_to @show, notice: 'Show was successfully updated.'
     else
       render action: 'edit'
