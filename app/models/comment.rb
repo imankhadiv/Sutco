@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :conversation
   validates :body, presence: true
-  after_create :notify_users
+  after_create :notify_users, :send_mail
 
   def notify_users
     board = Conversation.find(conversation_id).board
@@ -20,6 +20,15 @@ class Comment < ActiveRecord::Base
       end
     end
 
+  end
+
+  def send_mail
+    board = Conversation.find(conversation_id).board
+    if(!board.public)
+      AppMailer.comment_mail(user_id, board, self).deliver
+    else
+      AppMailer.general_comment(user_id, self).deliver
+    end
   end
   private
   def notify_production_team
