@@ -1,7 +1,7 @@
 module TrainingsHelper
   def training_name_links(training)
     content_tag :h3 do
-    if (current_user.role? "ProductionTeam")
+    if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
       [
         link_to_button('buttonshowname',training.title,training),
         link_to_button('buttonedit','Edit', edit_training_path(training)),
