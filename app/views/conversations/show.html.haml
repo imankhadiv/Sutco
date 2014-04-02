@@ -19,10 +19,10 @@
     #comments= render @conversation.comments
 
   %i.h4.commenter= "Leave a comment"
-  = simple_form_for([@board, @conversation, @new_comment],remote: true) do |f|
-    = f.error_notification
-    = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter your Comment here'
-    = f.hidden_field :user_id, :value => current_user.id
+  = simple_form_for([@board, @conversation, Comment.new(user_id: current_user.id)],remote: true) do |f|
+    .form-inputs
+      = f.text_field :user_id, remote: true, style:"display:none"
+      = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter your Comment here'
     %p
     .form-actions
       = f.submit "Add Comment", remote: true, :class => 'btn btn-primary'

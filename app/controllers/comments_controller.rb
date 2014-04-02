@@ -30,25 +30,15 @@ class CommentsController < ApplicationController
     @board = Board.find(params[:board_id])
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(comment_params)
-    #@comment.user_id = current_user.id
-
     @count = @conversation.comments.count
 
     respond_to do |format|
      if @comment.save
       format.js   { render 'create_success' }
-      #@comment.notify_users
-      #if(!@board.public)
-      #  AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
-      #else
-      #  #AppMailer.general_comment(@comment.user_id, @comment).deliver
-      #end
      else
         format.js { render 'create_failure'}
       end
     end
-
-
   end
 
   # PATCH/PUT /comments/1
@@ -67,8 +57,6 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to [@board, @conversation], notice: 'Comment was successfully destroyed.'
   end
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

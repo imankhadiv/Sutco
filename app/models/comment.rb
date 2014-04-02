@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   belongs_to :conversation
   validates :body, presence: true
   after_create :notify_users, :send_mail
+  has_many :notifications, dependent: :destroy
 
   def notify_users
     board = Conversation.find(conversation_id).board
@@ -19,7 +20,6 @@ class Comment < ActiveRecord::Base
         notify_production_team
       end
     end
-
   end
 
   def send_mail
@@ -30,9 +30,9 @@ class Comment < ActiveRecord::Base
       AppMailer.general_comment(user_id, self).deliver
     end
   end
+
   private
   def notify_production_team
-
     members = (User.get_production_team_members)-[user_id]
     #members = member-[user_id]
     members.each do |member|
