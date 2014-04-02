@@ -42,39 +42,6 @@ describe "Messageboard tests" do
 
   end
 
-  describe "Show Message Board" do
-
-    let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
-    show = Show.create director: 'Some Director', producer: 'Some Producer', name: 'Show 1'
-
-    role = Role.create :name =>"Member"
-    user = FactoryGirl.create(:user)
-    user.roles << role
-    login_as(user, :scope => :user)
-
-    specify "As an unapproved role in a show, I can not view it's message board" do
-      show_role = ShowRole.create :show_id => show_with_show_roles.id, :position => "something", :required_number => "1"
-
-      visit boards_path
-      page.should_not have_link "Show 1"
-    end
-
-
-    specify "As an approved role in a show, i can view it's message board" do
-      pending
-      show = Show.create director: 'Some Director', producer: 'Some Producer', name: 'Show 1'
-      puts show.producer
-      show_role = ShowRole.create :show_id => show.id, :position => "something", :required_number => "1"
-      role_application = RoleApplication.create :user_id => user.id, :show_role_id => show_role.id, :content => "Some content", status: "Approved"
-      visit boards_path
-      page.should have_content "Show 1"
-      click_link "Show"
-      page.should have_content "Add Conversation"
-
-    end
-
-
-  end
 
 end
 

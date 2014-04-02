@@ -38,11 +38,11 @@ class CommentsController < ApplicationController
      if @comment.save
       format.js   { render 'create_success' }
       #@comment.notify_users
-      if(!@board.public)
-        AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
-      else
-        #AppMailer.general_comment(@comment.user_id, @comment).deliver
-      end
+      #if(!@board.public)
+      #  AppMailer.comment_mail(@comment.user_id, @board, @comment).deliver
+      #else
+      #  #AppMailer.general_comment(@comment.user_id, @comment).deliver
+      #end
      else
         format.js { render 'create_failure'}
       end
