@@ -62,7 +62,9 @@ describe "Show Message Board" do
     page.should have_link "Conversation 1"
     click_on 'Conversation 1'
     page.should have_content "Conversation 1"
-    Comment.create :body =>"Latest Comment", :conversation_id =>conversation.id, :user_id =>user.id
+    comment = Comment.create :body =>"Latest Comment", :conversation_id =>conversation.id, :user_id =>user.id
+    comment.notify_users
+    comment.send_mail
     visit board_conversation_path(Board.first.id, conversation.id)
     page.should have_content "Latest Comment"
   end
@@ -87,7 +89,9 @@ describe "Show Message Board" do
     page.should have_link "Conversation 1"
     click_on 'Conversation 1'
     page.should have_content "Conversation 1"
-    Comment.create :body =>"Latest Comment", :conversation_id =>conversation.id, :user_id =>user.id
+    comment = Comment.create :body =>"Latest Comment", :conversation_id =>conversation.id, :user_id =>user.id
+    comment.notify_users
+    comment.send_mail
     visit board_conversation_path(Board.first.id, conversation.id)
     page.should have_content "Latest Comment"
 

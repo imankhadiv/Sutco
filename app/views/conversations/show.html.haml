@@ -18,14 +18,8 @@
   -if(@comments)
     #comments= render @conversation.comments
 
-  %i.h4.commenter= "Leave a comment"
-  = simple_form_for([@board, @conversation, Comment.new(user_id: current_user.id)],remote: true) do |f|
-    .form-inputs
-      = f.text_field :user_id, remote: true, style:"display:none"
-      = f.text_area :body, :rows => 3, :cols => 70, :placeholder => 'Enter your Comment here'
-    %p
-    .form-actions
-      = f.submit "Add Comment", remote: true, :class => 'btn btn-primary'
+  = render 'comment_form'
+
   .div.tiles
     %p
       %br

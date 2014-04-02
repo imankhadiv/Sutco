@@ -3,4 +3,6 @@
     A new comment has been posted on @comment.conversation.title:
   %p
     = @comment.body
+    = "by " + @comment.user.firstname
+
   = link_to("View on website", board_conversation_url(@comment.conversation.board.id, @comment.conversation.id))
