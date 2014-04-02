@@ -31,10 +31,12 @@ class CommentsController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @comment = @conversation.comments.create(comment_params)
     @count = @conversation.comments.count
-
+    @comment.user_id = current_user.id
     respond_to do |format|
      if @comment.save
       format.js   { render 'create_success' }
+       @comment.notify_users
+       @comment.send_mail
      else
         format.js { render 'create_failure'}
       end

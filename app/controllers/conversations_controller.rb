@@ -11,6 +11,7 @@ class ConversationsController < ApplicationController
   def show
     @board = Board.find(params[:board_id])
     @comments = @conversation.comments
+    @new_comment = Comment.new
     Notification.remove_notification current_user,@conversation
   end
 

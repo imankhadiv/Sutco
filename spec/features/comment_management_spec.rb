@@ -19,6 +19,8 @@ describe "Adding Comments" do
     click_on 'Conversation 1'
     page.should have_content "Conversation 1"
     comment = Comment.create :body =>"Latest Comment", :conversation_id =>conversation.id, :user_id =>user.id
+    comment.notify_users
+    comment.send_mail
     visit board_conversation_path(board.id, conversation.id)
     page.should have_content "Latest Comment"
     logout(:user)
@@ -48,6 +50,8 @@ describe "Adding Comments" do
     click_on 'Conversation 1'
     page.should have_content "Conversation 1"
     comment = Comment.create :body =>"Latest Comment", :conversation_id =>conversation.id, :user_id =>user.id
+    comment.notify_users
+    comment.send_mail
     visit board_conversation_path(board.id, conversation.id)
     page.should have_content "Latest Comment"
     logout(:user)

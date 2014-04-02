@@ -3,7 +3,6 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :conversation
   validates :body, presence: true
-  after_create :notify_users, :send_mail
   has_many :notifications, dependent: :destroy
 
   def notify_users
