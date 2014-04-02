@@ -54,8 +54,8 @@ module ApplicationHelper
   def flash_class(name)
     if name == :notice
       'success'
-    elsif name == :notifications
-      'info'
+    #elsif name == :notifications
+    #  'info'
     else
       'danger'
     end
