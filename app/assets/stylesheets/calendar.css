@@ -9,11 +9,11 @@
   font-family: 'Lato';
   font-size: 16px;
   padding: 6px;
-  border: 2px solid #303030;
+  border: 1px solid #fff;
 }
 
 #calendar th {
-  background: #777777;
+  background: #444;
   color: #FFF;
   text-align: center;
   font-weight: normal;
@@ -22,19 +22,19 @@
 }
 
 #calendar td {
-  background: #777777;
-  color: #fff;
+  background: #E0E0E0;
+  color: #777;
   height: 80px;
   vertical-align: top;
   text-align: center;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 16px;
 
 }
 
 #calendar .notmonth {
-  background: #4E4E4E;
-  color: #CCC
+  background: #cecece;
+  color: #888
 }
 
 #calendar #month {
@@ -47,11 +47,12 @@
 #calendar #month a, #calendar #month a:hover {
   text-decoration: none;
   padding: 0 10px;
-  color: #fff;
+  color: #777;
 }
 
 #calendar .today {
-  background-color: #BBB;
+  background-color: #B2B2B2;
+  font-weight: bold;
   color:#fff
 }
 
