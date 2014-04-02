@@ -790,6 +790,20 @@ header a {
   transform: translateX(-100%)
 }
 
+.slideTextLeft span{
+  display: inline-block;
+  font-size: 4em;
+  margin-top: 1.7em
+}
+
+.slideTextLeft p{
+  display: inline-block;
+  font-size: 1em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
 /* rotate tile in 3D*/
 
 .rotate3d {
@@ -848,7 +862,7 @@ header a {
 .front span {
   display: inline-block;
   font-size: 4em;
-  margin-top: .5em
+  margin-top: 1.7em
 }
 
 .rotate3dY .back {
