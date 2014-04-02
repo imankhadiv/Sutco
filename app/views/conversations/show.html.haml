@@ -19,7 +19,6 @@
     #comments= render @conversation.comments
 
   = render 'comment_form'
-
   .div.tiles
     %p
       %br
@@ -37,4 +36,20 @@
 -#
 -#  }, 3000);
 
+:javascript
+   $('.loading').hide();
+   $(".btn").on("click", function() {
+       $(document).ajaxStart(function() {
 
+           $('.loading').show();
+            $(".new_comment").fadeToggle(3000);
+
+      });
+      $(document).ajaxStop(function() {
+           $('.loading').hide();
+           $(".new_comment").fadeToggle(500);
+
+
+
+    });
+  });
