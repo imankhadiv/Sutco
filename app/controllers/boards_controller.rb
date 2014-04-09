@@ -10,7 +10,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1
   def show
-    @conversations = @board.conversations
+    @conversations = @board.conversations.order('updated_at desc')
     unless (@board.authorized(current_user) || (current_user.role? "ProductionTeam") || (current_user.role? "SeniorCommittee"))
         flash[:error] = "You can't view this board"
         redirect_to root_path
