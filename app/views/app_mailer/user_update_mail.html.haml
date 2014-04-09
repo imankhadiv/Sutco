@@ -1,0 +1,10 @@
+%html
+  %body
+    %h3= "Your status has been updated"
+    -if(@user.approved)
+      %p
+        %b="Approval Status: Approved"
+    %b= "These are your current roles:"
+    -@user.roles.each do |role|
+      %p=role.name
+    %h3= link_to("Sign in to the SUTCO Website", root_url)

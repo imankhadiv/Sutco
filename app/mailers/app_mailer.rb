@@ -1,9 +1,9 @@
 class AppMailer < ActionMailer::Base
   default from: "sutcogenesys@gmail.com"
 
-  def welcome_email(user)
+  def user_update_mail(user)
     @user = user
-    mail(to: @user.email, subject: 'Status change')
+    mail(to: @user.email, subject: 'Your SUTCO Status has been changed')
   end
 
   def show_comment_mail(user_id, board, comment)

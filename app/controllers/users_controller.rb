@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   #edit user attributes such as approval status or roles
   def update
     if @user.update(user_params)
-      AppMailer.welcome_email(@user).deliver
+      AppMailer.user_update_mail(@user).deliver
       redirect_to users_path, notice: 'User was successfully edited.'
     else
       render action: 'edit'
