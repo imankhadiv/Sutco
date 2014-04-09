@@ -21,6 +21,8 @@ class ShowDate < ActiveRecord::Base
     positions = Position.where.not(id: Position.joins(:fohs).where(fohs: {show_date_id: id}))
     if positions.empty?
       return false
+    elsif self.date < Date.today
+      return false
     else
       return true
     end
