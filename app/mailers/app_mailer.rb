@@ -1,24 +1,22 @@
 class AppMailer < ActionMailer::Base
-  default to: Proc.new { User.pluck(:email) },
-          from: "sutcogenesys@gmail.com"
+  default from: "sutcogenesys@gmail.com"
 
   def welcome_email(user)
     @user = user
-    @url = 'http://localhost:3000'
     mail(to: @user.email, subject: 'Status change')
   end
 
-  def comment_mail(user_id, board, comment)
-    @url = 'http://localhost:3000'
+  def show_comment_mail(user_id, board, comment)
     @comment = comment
-
     @recipients = User.where(id: User.get_production_team_members).pluck(:email) +
         User.where(id: Board.board_users(board)).pluck(:email) - User.where(id: user_id).pluck(:email)
-    mail(to: (@recipients.uniq), subject: 'New Comment')
+    mail(to: (@recipients.uniq), subject: 'A new comment has been posted on ' + @comment.conversation.title, template_path: 'app_mailer',
+         template_name: 'comment_mail')
   end
 
-  def general_comment(user_id, comment)
+  def general_comment_mail(user_id, comment)
     @comment = comment
-    mail(to: (User.all.pluck(:email) - User.where(id: user_id).pluck(:email)), subject: 'New Comment')
+    mail(to: (User.all.pluck(:email) - User.where(id: user_id).pluck(:email)), subject: 'A new comment has been posted on ' + @comment.conversation.title,template_path: 'app_mailer',
+         template_name: 'comment_mail')
   end
 end
