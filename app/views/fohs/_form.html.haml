@@ -1,5 +1,4 @@
-- if @foh.errors.any?
-  =@foh.errors.full_messages.last
+
 
 .container
   .col-md-5
@@ -20,6 +19,10 @@
     #roleapplication 
       %ulblue 
         = link_to "Back To Show", @show_date.show
+
+  - if @foh.errors.any?
+    -@foh.errors.full_messages.each do |error|
+      .error=error
   .col-md-7
     %br
     = simple_form_for([@show_date,@foh]) do |f|

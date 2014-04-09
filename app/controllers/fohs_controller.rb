@@ -7,7 +7,7 @@ class FohsController < ApplicationController
   # GET /fohs
   def index
     @show_dates = ShowDate.all
-    @fohs = Foh.all
+    #@fohs = Foh.all
   end
 
   # GET /fohs/1
@@ -27,8 +27,8 @@ class FohsController < ApplicationController
   end
 
   # GET /fohs/1/edit
-  def edit
-  end
+  #def edit
+  #end
 
   # POST /fohs
   def create
