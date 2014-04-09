@@ -1,13 +1,12 @@
 class RoleApplicationsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_role_application, only: [:show, :edit, :update, :destroy]
+  before_action :set_role_application, only: [:show, :update, :destroy]
   before_filter :set_nav_identifier
 
   # GET /role_applications
   def index
-    @role_applications = RoleApplication.all
-@show_roles = ShowRole.all
-
+    @role_applications = RoleApplication.get_unprocessed_applications
+    #@show_roles = ShowRole.all
   end
 
   # GET /role_applications/1
@@ -16,13 +15,13 @@ class RoleApplicationsController < ApplicationController
 
   # GET /role_applications/new
   def new
-     @show_role = ShowRole.find(params[:show_role_id])
+    @show_role = ShowRole.find(params[:show_role_id])
     @role_application = RoleApplication.new
   end
 
   # GET /role_applications/1/edit
-  def edit
-  end
+  #def edit
+  #end
 
   # POST /role_applications
   def create
@@ -42,8 +41,8 @@ class RoleApplicationsController < ApplicationController
   def update
     if @role_application.update(role_application_params)
       redirect_to role_applications_url, notice: 'Role application was successfully updated.'
-    else
-      render action: 'edit'
+    #else
+    #  render action: 'edit'
     end
   end
 

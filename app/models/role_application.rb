@@ -7,7 +7,7 @@ class RoleApplication < ActiveRecord::Base
   def self.get_unprocessed_applications
     applications = Array.new
     RoleApplication.all.each do |application|
-       applications << application.id if ((application.status == "Pending") && (application.show_role.notexpired?))
+       applications << application if ((application.status == "Pending") && (application.show_role.notexpired?))
     end
     applications 
   end
