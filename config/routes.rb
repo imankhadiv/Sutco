@@ -1,5 +1,8 @@
 Team10MiniProject::Application.routes.draw do
 
+  root 'calendars#index'
+  get "pages/awaiting", as: :awaiting
+  get "pages/welcome", as: :welcome
 
   resources :boards  do
     resources :conversations do
@@ -8,20 +11,12 @@ Team10MiniProject::Application.routes.draw do
     end
   end
 
-  resources :roles
-
-  root 'calendars#index'
-  get "pages/awaiting", as: :awaiting
-  get "pages/welcome", as: :welcome
-
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
   resources :users do 
     member do
       get :report
     end
   end
-
-  resources :positions
 
   resources :shows
 
@@ -53,7 +48,6 @@ Team10MiniProject::Application.routes.draw do
       put :record_attendance
     end
   end
-
 
   resources :show_roles do
     resources :role_applications, only: [:new, :create, :show]
