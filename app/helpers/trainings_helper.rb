@@ -19,7 +19,7 @@ module TrainingsHelper
 
   def check_training_attendee(training)
     if(TrainingRecord.training_applied current_user.id, training.id).empty?
-       link_to "Attend Training", attend_training_path if training.date > Time.now
+       link_to "Attend Training", attend_training_path if training.date >= Date.today
     else
       "You have registered for #{training.title}"
     end
