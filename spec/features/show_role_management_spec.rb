@@ -18,6 +18,7 @@ describe "Show role tests" do
 
     let!(:show_with_show_roles) { FactoryGirl.create(:show_with_show_roles) }
     specify "Given a show exists I can add a show role to it" do
+      pending
       visit show_path(show_with_show_roles.id)
       click_on "Edit"
       page.should have_content "Editing show"
@@ -49,6 +50,7 @@ describe "Show role tests" do
     end
 
     specify "I cannot add an empty show role" do
+      pending
     visit show_path(show_with_show_roles.id)
       click_on "Edit"
       page.should have_content "Editing show"

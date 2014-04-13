@@ -1,6 +1,53 @@
 %h1 Editing show
 .div.tiles
-  = render 'form'
+  - if @show.errors.any?
+    -@show.errors.full_messages.each do |msg|
+      %li=msg
+
+  = simple_form_for(@show) do |f|
+    = f.error_notification
+    %p
+      .form-inputs
+        = f.input :name
+        = image_tag @show.image_url, size: "140x140" if @show.image?
+        = f.file_field :image
+        - if @show.image?
+          = f.label "Remove Avatar"
+          = f.check_box :remove_image
+          /Remove avatar
+        = f.hidden_field :image_cache
+        = f.input :director
+        = f.input :stage_manager
+        = f.input :producer
+        = f.label :synopsis
+        %p= f.text_area :synopsis, :rows => 3, :cols => 70
+        %p
+        %b Show Date(s):
+        = f.fields_for :show_dates do |u|
+          = render 'show_date_fields', :f => u
+        %p
+          = link_to_add_fields "Add Date", f, :show_dates
+
+    -#%p
+    -#  .form-inputs
+    -#    = f.fields_for :show_roles do |u|
+    -#      = render 'show_role_fields', :f => u
+    -if !@show.show_roles.empty?
+      %b Show Role(s):
+      %table.table.table-striped.table-bordered.table-responsive.table-nonfluid.table-hover
+        -@show.show_roles.each do |c|
+          -if(c.required_number)
+            %tr
+              %td= c.position
+              %td= c.required_number
+              %td= link_to 'Remove Role', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %p
+      .form-inputs
+        %p.fields
+          = link_to_add_fields "Add Role", f, :show_roles
+
+    .form-actions
+      = f.button :submit
 .div.tiles
   %p
     %br

@@ -1,13 +1,10 @@
 %p.fields
 
   = f.label :title, "Position"  
-  = f.select :position ,options_for_select(["Lighting Operator", "Lighting Designer", "Sound Operator", "Sound Designer", "Assistant Stage Manager", "Deputy Stage Manager", "Set Designer", "Set Construction", "Costume Designer", "Costume Team", "Make up", "Make up team", "Producer", "Director", "Dialect Coach", "Physical Coach","other"]) 
-  //= f.label :position
-  //%select#show_role_position{name: "show[show_roles_attributes][0][position]"}
-  //  %option{value: "January"} January
-  //  %option{value: "February"} February
-  //  %option{value: "December"} December
-  //  %option{value: "other"} Other
+  = f.select :position ,options_for_select(["Lighting Operator", "Lighting Designer", "Sound Operator",
+  "Sound Designer", "Assistant Stage Manager", "Deputy Stage Manager", "Set Designer",
+  "Set Construction", "Costume Designer", "Costume Team", "Make up",
+  "Make up team", "Producer", "Director", "Dialect Coach", "Physical Coach","Other"])
   :javascript
     $.fn.serializeObject = function()
     {

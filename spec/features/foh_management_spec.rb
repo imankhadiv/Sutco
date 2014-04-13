@@ -22,7 +22,7 @@ describe "FOH tests" do
     specify "Given a show exists with several show dates, I can view a list of these dates and Apply for front of house" do
       visit fohs_path
       page.should have_content "Show 1"
-      click_on "Apply"
+      click_on "Apply for front of house"
       page.should have_content "You are applying for a front of house position"
     end
   end
