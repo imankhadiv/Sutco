@@ -1,13 +1,15 @@
 #calendar
   .container
     %br
-    - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+    - if (current_user.role? "ProductionTeam")
       .buttonshow
         = link_to "Create New Show", new_show_path
+    - if ((current_user.role? "TechManager") || (current_user.role? "SeniorCommittee"))
       .buttonworkshop
         = link_to "Create New Workshop", new_workshop_path
       .buttontraining
         = link_to "Create New Training", new_training_path
+    - if ((current_user.role? "ProductionTeam") || (current_user.role? "SeniorCommittee")  || (current_user.role? "Committee"))
       .buttonsocial
         = link_to "Create New Social", new_social_path
       %br
