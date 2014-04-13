@@ -33,7 +33,7 @@ gem 'wkhtmltopdf-binary'
 # https://github.com/lwe/simple_enum            # Nice enum gem
 # https://github.com/pluginaweek/state_machine  # State machine implementation
 
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails'
 gem 'uglifier'            # Compresses javascript for faster load time
  
@@ -82,7 +82,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'    # The use of 'shoulda' and 'shoulda-context' will break testing in Ruby 1.9.3, so 'shoulda-matchers' instead
   
-  gem 'simplecov'           # Code test coverage
+  gem 'simplecov','~> 0.8.2'           # Code test coverage
   gem 'bootstrap-datepicker-rails'
-  gem 'capybara-bootstrap-datepicker'
+  #gem 'capybara-bootstrap-datepicker'
 end
