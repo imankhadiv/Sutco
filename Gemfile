@@ -40,7 +40,7 @@ gem 'uglifier'            # Compresses javascript for faster load time
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'      # Twitter bootstrap in sass form
-gem 'font-awesome-rails'  # Bootstrap's icons rendered as a font
+gem 'font-awesome-rails','~> 3.2.1'  # Bootstrap's icons rendered as a font
 gem 'bootstrap_form'
 
 gem 'webshims-rails'
