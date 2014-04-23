@@ -15,7 +15,7 @@
               = link_to board.show.name, board
           .col2.clearfix
             -if(board.show_id!=nil)
-              %img= image_tag board.show.image_url, alt: "No Poster";
+              = image_tag board.show.image_url, alt: "No Poster";
             -else
               %img{src: image_path("sutco.jpg")}
           .col3.clearfix
