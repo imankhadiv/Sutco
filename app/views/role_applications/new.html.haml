@@ -1,9 +1,12 @@
+// new role application for displayed show role
 %h2 You are applying for  #{@show_role.position} in #{@show_role.show.name}
 
+// display show detals
 .container
   .col-md-5
     %br
     %p
+      // display show image
       -if(@show_role.show.image?)
         = image_tag @show_role.show.image_url, alt: "No Poster", height: "auto", width: "320"
       -else

@@ -1,3 +1,5 @@
+// table displaying role applications to be processed
+
 %h1 To Be Processed
 %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
   %thead
@@ -8,6 +10,7 @@
       %th Status
       %th 
   %tbody
+    // display fields in database
     - @role_applications.each do |role_application|
       - if ((role_application.status == "Pending") && (role_application.show_role.notexpired?))
         %tr
@@ -18,6 +21,7 @@
           %td= link_to 'Process Application', role_application
 
 
+// display all existing applications
 %h1 All Applications
 %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle
   %thead
@@ -28,6 +32,7 @@
       %th Status
       %th 
   %tbody
+    // display fields in database
     - @role_applications.each do |role_application|
 
       - if (role_application.show_role.notexpired?)
@@ -36,6 +41,7 @@
           %td= role_application.show_role.position
           %td= link_to role_application.user.firstname + " " + role_application.user.lastname, role_application.user
           %td= role_application.status
+          // check if user already applied for role 
           - if (role_application.status == "Pending")
             %td= link_to 'Process Application', role_application
           - else

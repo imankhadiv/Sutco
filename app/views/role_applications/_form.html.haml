@@ -1,11 +1,11 @@
 = simple_form_for([@show_role, @role_application]) do |f|
-  // = f.error_notification
-  // %b= "You are applying for #{@show_role.position} in #{@show_role.show.name}"
 
+  // display errors, if any
   - if @role_application.errors.any?
     -@role_application.errors.full_messages.each do |msg|
       %li=msg
 
+  // form fields 
   .form-inputs
   %br
     %b= "Why are you applying for this role?"
@@ -14,6 +14,7 @@
     #roleapplication 
       = f.text_area :content
 
+  // submit application 
   .form-actions
     #roleapplication
       = f.button :submit, "Submit"

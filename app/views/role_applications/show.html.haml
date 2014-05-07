@@ -1,9 +1,10 @@
-
+// different displays according to user permissions
 - if (current_user.role? "TechManager")
   %h2= "Processing application for #{@role_application.show_role.position}"
 - else
   %h2= "Your application for #{@role_application.show_role.position}"
 
+// display show details in database
 .container
   .col-md-5
     %br
@@ -25,11 +26,13 @@
       %b Producer:
       = @role_application.show_role.show.producer
 
+    // link to show
     #roleapplication 
       %ulblue 
         = link_to "View The Show", @role_application.show_role.show
   .col-md-7
     %br
+    // display different links according to user permissions
     - if (current_user.role? "TechManager")
       %p
         %b Applicant name:
@@ -38,13 +41,14 @@
         %b Position:
         = @role_application.show_role.position
       
-
+      // display content inserted for the role
     %p
       %b Why are you applying for this role:
       %br
       = @role_application.content
       %br
     %p
+      // allow processing of applications for Tech Managers
       - if (current_user.role? "TechManager")
         = simple_form_for([@show_role, @role_application]) do |f|
           .form-inputs
@@ -59,6 +63,7 @@
             %ulblueright 
               = link_to "Back To Application List", role_applications_path
       - else
+        // View all records link
         %b Status:
         = @role_application.status
         %br

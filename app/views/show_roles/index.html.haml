@@ -1,3 +1,5 @@
+// display table with all available show roles
+
 %h1 Available show roles
 %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
   %thead
@@ -7,12 +9,16 @@
       %th Available number
       %th Options
   %tbody
+
+    // extract fields from database
     -@show_roles.each do |c|
       -if(c.notexpired?)
         %tr
           %td= link_to c.show.name, c.show
           %td= c.position
           %td= c.required_number
+
+          // display different links according to user permissions
           -if(c.applied?(current_user.id))
             %td= link_to 'View my application', current_user
           -else
