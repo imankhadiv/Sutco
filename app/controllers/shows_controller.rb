@@ -1,34 +1,33 @@
 #
-#
 # shows_controller.rb
 #
 # This is the controller class for Shows. Different users have different permissions to view, create, update and delete a show.
-
 #
 class ShowsController < ApplicationController
+  # Load resources and set actions available
   load_and_authorize_resource
   before_action :set_show, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
-  # GET /shows
+  # GET all shows
   def index
     @shows = Show.all
   end
 
-  # GET /shows/1
+  # GET show by ID
   def show
     @board = Board.find_by_show_id(@show.id)
     @show_roles = ShowRole.select('id').where(show_id: @show.id)
     @user_ids = RoleApplication.where(show_role_id: @show_roles, status: 'Approved').pluck(:user_id)
   end
 
-  # GET /shows/new
+  # GET new shows
   def new
     @show = Show.new
     @show.show_dates.build
     @show.show_roles.build
   end
 
-  # GET /shows/1/edit
+  # edit new shows
   def edit
   end
 
@@ -36,6 +35,7 @@ class ShowsController < ApplicationController
   def create
     @show = Show.new(show_params)
 
+    # Check successful update
     if @show.save
       redirect_to @show, notice: 'Show was successfully created.'
     else
@@ -43,10 +43,14 @@ class ShowsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shows/1
+  # Update show
   def update
+
+    # Check for successful update
     if @show.update(show_params)
+      # Find show by ID
       board = Board.find_by_show_id(@show.id)
+      # Update params
       board.title= @show.name
       board.save
       redirect_to @show, notice: 'Show was successfully updated.'
@@ -55,7 +59,7 @@ class ShowsController < ApplicationController
     end
   end
 
-  # DELETE /shows/1
+  # DELETE show by ID
   def destroy
     @show.destroy
     redirect_to shows_url, notice: 'Show was successfully destroyed.'
