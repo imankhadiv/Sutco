@@ -3,10 +3,11 @@
 
 .dashboard
   .container
+    // display links according to user permissions
     - if (current_user.role? "ProductionTeam")
       %a.buttonnewshow{href:new_show_path, role:"button"} Create New Show
       %br
-
+      // display shows 
     - @shows.each do |show|
       = show_name_links(show) # this method is defined in the shows_helper class to display the show name as well as related icons
 

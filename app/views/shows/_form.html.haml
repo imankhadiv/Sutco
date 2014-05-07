@@ -1,10 +1,13 @@
+// display errors, if any
 - if @show.errors.any?
   -@show.errors.full_messages.each do |msg|
     %li=msg
 
+// generate form 
 = simple_form_for(@show) do |f|
   = f.error_notification
   %p
+    // input required fields
     .form-inputs
       = f.input :name
       = image_tag @show.image_url, size: "140x140" if @show.image?
@@ -18,6 +21,7 @@
       = f.input :stage_manager
       = f.input :producer
       = f.input :synopsis
+      // allow multiple dates & roles to be inputted
       = f.fields_for :show_dates do |u|
         = render 'show_date_fields', :f => u
   %p
@@ -30,6 +34,6 @@
   %p
     = link_to_add_fields "Add Role", f, :show_roles
 
-
+  // submit form
   .form-actions
     = f.button :submit

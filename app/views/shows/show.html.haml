@@ -1,3 +1,4 @@
+// display link to message board if user has sufficient permissions
 .page-header
   %h1= @show.name
   -if @user_ids.include? current_user.id
@@ -5,6 +6,7 @@
       %i=link_to 'Go to Message Board', board_path(@board)
 
 %p
+  // show details
   -if(@show.image?)
     = image_tag @show.image_url, alt: "No Poster", height: 480, width: "auto"
   -else
@@ -23,6 +25,7 @@
   = @show.synopsis
 
 %p
+  // display all show dates
   -if !@show.show_dates.empty?
     %b Show Date(s):
     %table.table.table-striped.table-bordered.table-responsive.table-nonfluid.table-hover
@@ -36,6 +39,7 @@
             %td= link_to 'Remove Date', [@box,c], :method => :delete, :data => { :confirm => 'Are you sure?' }
 %p
 %p
+  // display all show roles
   -if !@show.show_roles.empty?
     %b Show Role(s):
     %table.table.table-striped.table-bordered.table-responsive.table-nonfluid.table-hover

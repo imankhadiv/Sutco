@@ -1,10 +1,13 @@
+// Show role fields to be inputted
 %p.fields
 
   = f.label :title, "Position"  
+  // select role from list 
   = f.select :position ,options_for_select(["Lighting Operator", "Lighting Designer", "Sound Operator",
   "Sound Designer", "Assistant Stage Manager", "Deputy Stage Manager", "Set Designer",
   "Set Construction", "Costume Designer", "Costume Team", "Make up",
   "Make up team", "Producer", "Director", "Dialect Coach", "Physical Coach","Other"])
+  // javascript used to display the 'Other' option
   :javascript
     $.fn.serializeObject = function()
     {

@@ -1,9 +1,13 @@
+// Edit show
+
 %h1 Editing show
 .div.tiles
+  // display errors, if any
   - if @show.errors.any?
     -@show.errors.full_messages.each do |msg|
       %li=msg
 
+  // display show fields in database
   = simple_form_for(@show) do |f|
     = f.error_notification
     %p
@@ -28,10 +32,7 @@
         %p
           = link_to_add_fields "Add Date", f, :show_dates
 
-    -#%p
-    -#  .form-inputs
-    -#    = f.fields_for :show_roles do |u|
-    -#      = render 'show_role_fields', :f => u
+    // display show roles, if any
     -if !@show.show_roles.empty?
       %b Show Role(s):
       %table.table.table-striped.table-bordered.table-responsive.table-nonfluid.table-hover
