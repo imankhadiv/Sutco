@@ -2,6 +2,7 @@ module ShowsHelper
   # this method is implemented to display the show name and three different icons for view, edit and delete buttons.
   def show_name_links(show)
     content_tag :h3 do
+    # control the navigation links for different categories of users
     if (current_user.role? "ProductionTeam")
       [
         link_to_button('buttonshowname',show.name,show),
@@ -18,6 +19,7 @@ module ShowsHelper
     end
   end
 
+  # control the navigation links for different categories of users
   def show_navigation_links(show)
   content_tag :h3 do
     if (current_user.role? "ProductionTeam")
