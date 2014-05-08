@@ -18,4 +18,5 @@
 - if (current_user.role? "TechManager")
   %a.btn.btn-primary.btn-lg{href:attendee_workshop_path(@workshop) , role: "button"} View registered users
 
+//displays navigation links based on user roles
 =workshop_navigation_links(@workshop)

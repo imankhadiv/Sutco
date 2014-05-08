@@ -1,8 +1,11 @@
+#
+# socials_helper.rb
+#
+# This is an helper class for Socials. It contains a method for displaying navigation links based on the current logged in user
+#
 module SocialsHelper
-
-
-
-  def social_navigation_links(social)
+# This method controls the navigation links for different user roles
+def social_navigation_links(social)
     content_tag :h3 do
       if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
         [

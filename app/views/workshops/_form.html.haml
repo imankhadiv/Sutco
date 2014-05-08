@@ -1,7 +1,8 @@
-
+//display errors (if any))
 = simple_form_for(@workshop) do |f|
   = f.error_notification
 
+  //display form to fill in required inputs
   .form-inputs
     = f.input :title
     = f.input :description

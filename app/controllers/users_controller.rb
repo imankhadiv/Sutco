@@ -1,11 +1,9 @@
 #
 # users_controller.rb
 #
-# This is the controller class for User. It em, contains validations for the user and also
+# This is the controller class for User. It contains validations for the user and also
 # contains additional methods for authentication and user roles.
 #
-#
-
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show, :report]
   before_action :set_records, only: [:show, :report]
@@ -25,6 +23,7 @@ class UsersController < ApplicationController
     @role_applications = @user.role_applications
   end
 
+  #custom method to generate reports for users based on events attended and roles they have taken on
   def report
     @role_applications = RoleApplication.where(user_id: @user, status: 'Approved')
   end 

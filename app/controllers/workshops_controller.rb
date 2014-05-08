@@ -1,8 +1,13 @@
+#
+# workshops_controller.rb
+#
+# This is the controller class for Workshop events. Different users have different permissions to view, create, update, and delete a workshop event.
+# Users can also attend and have their attendance record marked
+#
 class WorkshopsController < ApplicationController
   before_action :set_workshop, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
   load_and_authorize_resource
-
 
   # GET /workshops
   def index
@@ -49,6 +54,7 @@ class WorkshopsController < ApplicationController
     redirect_to workshops_url, notice: 'Workshop was successfully destroyed.'
   end
 
+  # Custom method to register to attend a workshop session
   def attend
     user_id = current_user.id
     workshop_id = params[:id]
@@ -56,12 +62,14 @@ class WorkshopsController < ApplicationController
     redirect_to @workshop, notice: "You have successfully registered for #{@workshop.title}"
   end
 
+  # Custom method to mark the attendance record of a workshop event
   def record_attendance
     WorkshopRecord.where(id:params[:unattended_ids]).update_all(attended:true)
     redirect_to workshops_url, notice: "Attendance was successfully updated"
   end
 
 
+  # Displays attendance records of a workshop
   def attendee
     @workshop_records =  @workshop.workshop_records
   end

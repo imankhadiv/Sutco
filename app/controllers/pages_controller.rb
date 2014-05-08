@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @current_nav_identifier = :home
   end
 
-  #page for after sign up but not yet activated
+  #page for after user has signed up but is not yet activated
   def awaiting
 
   end

@@ -1,7 +1,11 @@
+#
+# fohs_controller.rb
+#
+# This is the controller class for front of house for shows.
+#
 class FohsController < ApplicationController
   before_action :set_foh, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier
-
   load_and_authorize_resource
 
   # GET /fohs

@@ -1,4 +1,12 @@
+#
+# trainings_helper.rb
+#
+# This is an helper class for Training.
+# It contains a method for displaying navigation links based on the current logged in user.
+# It also provides custom display methods for training and can check a current user's attendance for an event
+#
 module TrainingsHelper
+  # This method is implemented to display the training name and three different icons for view, edit and delete buttons.
   def training_name_links(training)
     content_tag :h3 do
     if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
@@ -17,6 +25,7 @@ module TrainingsHelper
     end
   end
 
+  # This method checks if a user can attend or has registered to attend a training
   def check_training_attendee(training)
     if(TrainingRecord.training_applied current_user.id, training.id).empty?
        link_to "Attend Training", attend_training_path if training.date >= Date.today
@@ -25,6 +34,7 @@ module TrainingsHelper
     end
   end
 
+  # control the navigation links for different roles of users
   def training_navigation_links(training)
     content_tag :h3 do
       if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))

@@ -1,3 +1,4 @@
+//Displays a list of all training events
 .page-header
   %h1 List of trainings
 
@@ -8,7 +9,7 @@
       %br
 
     - @trainings.each do |training|
-      = training_name_links(training) # this method is defined in the shows_helper class to display the show name as well as related icons
+      = training_name_links(training) # displays the training name as well as related icons
       .tile.tile-big.tile-12{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
         .col1.clearfix
           %i.icon-tasks

@@ -1,5 +1,12 @@
+#
+# workshops_helper.rb
+#
+# This is an helper class for Workshops.
+# It contains a method for displaying navigation links based on the current logged in user.
+# It also provides custom display methods for workshops and can check a current user's attendance for an event
+#
 module WorkshopsHelper
-
+  # This method checks if a user can attend or has registered to attend a training
   def check_workshop_attendee(workshop)
     if(WorkshopRecord.workshop_applied current_user.id, workshop.id).empty?
       link_to "Attend Workshop", attend_workshop_path if workshop.date >= Date.today
@@ -8,6 +15,7 @@ module WorkshopsHelper
     end
   end
 
+  # control the navigation links for different user roles
   def workshop_navigation_links(workshop)
     content_tag :h3 do
       if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
