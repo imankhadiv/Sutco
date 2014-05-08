@@ -23,7 +23,6 @@ describe "Add/Edit/Delete workshops" do
   end
 
   specify "I cannot create a workshop with blank fields" do
-    #pending "input validation to be added"
     visit new_workshop_path
     click_button "Create Workshop"
     page.should have_content "can't be blank"

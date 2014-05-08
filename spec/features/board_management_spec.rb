@@ -13,7 +13,6 @@ describe "Messageboard tests" do
 
   describe "General messageboard" do
     let!(:board) { FactoryGirl.create(:board) }
-
     specify "I can view the general message board" do
       visit board_path(board.id)
       page.should have_content 'General Message Board'
@@ -27,14 +26,10 @@ describe "Messageboard tests" do
       fill_in "Title", with: "Title"
       fill_in "Initial Comment", with: 'Initial Comment'
       click_button "Create Conversation"
-
-
       page.should have_content "Conversation was successfully created."
-
     end
 
     specify "I cannot create conversation with blank fields" do
-
       visit new_board_conversation_path(board.id)
       click_button "Create Conversation"
       page.should have_content "can't be blank"

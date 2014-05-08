@@ -42,7 +42,6 @@ describe "Show tests" do
     end
 
     specify "I cannot create a show with blank fields" do
-      #pending "input validation to be added"
       visit new_show_path
       click_button "Create Show"
       page.should have_content "can't be blank"

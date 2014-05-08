@@ -73,7 +73,6 @@ describe "Access control for different roles for training model" do
     let!(:training) { FactoryGirl.create(:training) }
 #Editing
     specify "As a member, I can't Edit trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"Member"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -87,7 +86,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a production team member, I can't Edit trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"ProductionTeam"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -101,7 +99,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a committee member, I can't Edit trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"Committee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -115,7 +112,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a drama studio manager, I can't Edit trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"DramaStudioManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -129,7 +125,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a senior committee, I can Edit trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"SeniorCommittee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -143,7 +138,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a tech manager, I can Edit trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"TechManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -160,7 +154,6 @@ describe "Access control for different roles for training model" do
     let!(:training) { FactoryGirl.create(:training) }
     #Deleting
     specify "As a member, I can't Delete trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"Member"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -172,7 +165,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a production team member, I can't Delete trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"ProductionTeam"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -184,7 +176,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a committee member, I can't Delete trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"Committee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -196,7 +187,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a drama studio manager, I can't Delete trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"DramaStudioManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -208,7 +198,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a senior committee, I can Delete trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"SeniorCommittee"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -220,7 +209,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a tech manager, I can Delete trainings" do
-      #pending "Interface to be modified"
       role = Role.create :name =>"TechManager"
       user = FactoryGirl.create(:user)
       user.roles << role
@@ -233,9 +221,7 @@ describe "Access control for different roles for training model" do
   end
 
   describe "Applying for traings:" do
-
     let!(:training) { FactoryGirl.create(:training) }
-
     specify "As a member, I can Apply for a training session" do
       role = Role.create :name =>"Member"
       user = FactoryGirl.create(:user)
@@ -351,7 +337,6 @@ describe "Access control for different roles for training model" do
     end
 
     specify "As a senior committee, I can't record attendance for a training" do
-      #pending "SeniorCommittee recording attendance, to be confirmed and updated"
       role = Role.create :name =>"SeniorCommittee"
       user = FactoryGirl.create(:user)
       user.roles << role
