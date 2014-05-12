@@ -8,7 +8,7 @@ module SocialsHelper
 # This method is implemented to display the social name and three different icons for view, edit and delete buttons.
   def social_name_links(social)
     content_tag :h3 do
-    if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager")|| (current_user.role? "ProductionTeam"))
+    if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
       [
         link_to_button('buttonshowname',social.title,social),
         link_to_button('buttonedit','Edit', edit_social_path(social)),

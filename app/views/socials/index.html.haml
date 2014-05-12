@@ -6,7 +6,7 @@
 
 .dashboard.clearfix
   %ul.tiles
-    - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager") || (current_user.role? "ProductionTeam"))
+    - if ((current_user.role? "SeniorCommittee") || (current_user.role? "Committee") || (current_user.role? "ProductionTeam"))
       %a.buttonnewsocial{href:new_social_path, role:"button"} Create New Social
       %br
 

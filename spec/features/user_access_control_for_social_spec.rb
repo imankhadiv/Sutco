@@ -78,8 +78,6 @@ describe "Access control for different roles for social model" do
     login_as(user, :scope => :user)
     visit socials_path
     page.should_not have_link "Edit"
-    click_on "View"
-    page.should_not have_link "Edit"
     visit edit_social_path(social.id)
     page.should have_content "You are not authorized to access this page"
   end
@@ -90,8 +88,6 @@ describe "Access control for different roles for social model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit socials_path
-    page.should have_link "Edit"
-    click_on "View"
     page.should have_link "Edit"
     visit edit_social_path(social.id)
     page.should_not have_content "You are not authorized to access this page"
@@ -104,8 +100,6 @@ describe "Access control for different roles for social model" do
     login_as(user, :scope => :user)
     visit socials_path
     page.should have_link "Edit"
-    click_on "View"
-    page.should have_link "Edit"
     visit edit_social_path(social.id)
     page.should_not have_content "You are not authorized to access this page"
   end
@@ -116,8 +110,6 @@ describe "Access control for different roles for social model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit socials_path
-    page.should_not have_link "Edit"
-    click_on "View"
     page.should_not have_link "Edit"
     visit edit_social_path(social.id)
     page.should have_content "You are not authorized to access this page"
@@ -130,8 +122,6 @@ describe "Access control for different roles for social model" do
     login_as(user, :scope => :user)
     visit socials_path
     page.should have_link "Edit"
-    click_on "View"
-    page.should have_link "Edit"
     visit edit_social_path(social.id)
     page.should_not have_content "You are not authorized to access this page"
   end
@@ -142,8 +132,6 @@ describe "Access control for different roles for social model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit socials_path
-    page.should_not have_link "Edit"
-    click_on "View"
     page.should_not have_link "Edit"
     visit edit_social_path(social.id)
     page.should have_content "You are not authorized to access this page"
@@ -157,8 +145,6 @@ describe "Access control for different roles for social model" do
     login_as(user, :scope => :user)
     visit socials_path
     page.should_not have_link "Delete"
-    click_on "View"
-    page.should_not have_link "Delete"
   end
 
   specify "As a production team member, I can delete socials" do
@@ -167,8 +153,6 @@ describe "Access control for different roles for social model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit socials_path
-    page.should have_link "Delete"
-    click_on "View"
     page.should have_link "Delete"
   end
 
@@ -179,8 +163,6 @@ describe "Access control for different roles for social model" do
     login_as(user, :scope => :user)
     visit socials_path
     page.should have_link "Delete"
-    click_on "View"
-    page.should have_link "Delete"
   end
 
   specify "As a drama studio manager, I can't delete socials" do
@@ -189,8 +171,6 @@ describe "Access control for different roles for social model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit socials_path
-    page.should_not have_link "Delete"
-    click_on "View"
     page.should_not have_link "Delete"
   end
 
@@ -201,8 +181,6 @@ describe "Access control for different roles for social model" do
     login_as(user, :scope => :user)
     visit socials_path
     page.should have_link "Delete"
-    click_on "View"
-    page.should have_link "Delete"
   end
 
   specify "As a tech manager, I can't delete socials" do
@@ -211,8 +189,6 @@ describe "Access control for different roles for social model" do
     user.roles << role
     login_as(user, :scope => :user)
     visit socials_path
-    page.should_not have_link "Delete"
-    click_on "View"
     page.should_not have_link "Delete"
   end
 
