@@ -2,33 +2,31 @@
 .page-header
   %h1 List of Workshops
 
-%table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
-  %thead
-    %tr
-      %th Title
-      %th Date
-      %th Time
-      %th Duration
-      - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-        %th{colspan: "3"} Options
-      - else
-        %th Options
-  %tbody
-    - @workshops.each do |workshop|
-      %tr
-        %td= workshop.title
-        %td= workshop.date.strftime("%B %d, %Y")
-        %td= workshop.time.strftime("%I:%M%p")
-        %td  #{workshop.duration} minutes
-        %td= link_to 'View', workshop
-        - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-          %td= link_to 'Edit', edit_workshop_path(workshop)
-          %td= link_to 'Delete', workshop, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-- if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
-  %a.btn.btn-info.btn-lg{href: new_workshop_path, role: "button"} Create New Workshop
-  %br
-  %br
+
+.dashboard.clearfix
+  %ul.tiles
+    - if ((current_user.role? "SeniorCommittee") || (current_user.role? "TechManager"))
+      %a.buttonnewworkshop{href:new_workshop_path, role:"button"} Create New Workshop
+      %br
+
+    - @workshops.each do |workshop|
+      = workshop_name_links(workshop) # displays the workshop name as well as related icons
+      .tile.tile-big.tile-12{"data-page-name" => "random-r-page", "data-page-type" => "r-page"}
+        .col1.clearfix
+          %i.icon-tasks
+          #{workshop.title}
+        .col2.clearfix
+          %div
+            %p
+              = workshop.description
+
+        %figure
+          %figcaption.tile-caption.caption-right 
+            Date: #{workshop.date.strftime("%B %d, %Y")}
+            %br
+            Time: #{workshop.time.strftime("%I:%M%p")}
+            %br
+            Duration: #{workshop.duration} mins
 
 
