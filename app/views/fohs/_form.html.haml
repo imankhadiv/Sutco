@@ -17,7 +17,7 @@
 
     #roleapplication 
       %ulblue 
-        = link_to "Back To Show", @show_date.show
+        =link_to('<i class="icon-circle-arrow-left"></i> Back to Show'.html_safe,@show_date.show)
 
   - if @foh.errors.any?
     -@foh.errors.full_messages.each do |error|
