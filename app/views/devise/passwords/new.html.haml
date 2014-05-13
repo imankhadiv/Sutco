@@ -1,6 +1,7 @@
-
+%br/
+%br
 .container
-  .forgot-password.col-md-8.col-md-offset-2
+  .forgot-password.col-md-5.col-md-offset-3
     %h2 Forgot your password?
     .form{style: "background-color: rgba(4,17,8,0. 9)"}
       = bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
@@ -8,10 +9,14 @@
 
 
         = f.email_field :email, autofocus: true
-        %br/
-
-        .btn.btn-primary.btn-lg= f.submit 'Send reset password instruction'
-
-
-      %br/
+        =f.submit 'Send reset password instructions', :class=> 'btn btn-primary btn-large'
+        //.btn.btn-primary.btn-lg= f.submit 'Send reset password instructions'
+    %br/
+    %br/
+    %br/
     %b= render "devise/shared/links"
+    %br/
+
+%br/
+%br/
+%br/

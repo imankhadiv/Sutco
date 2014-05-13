@@ -1,6 +1,6 @@
 //Signup page for new users
-.container.signup-form
-  .page-header
+.container
+  .page-header{style: "text-align:center"}
     %h1 Sign Up
   .signup.col-md-8.col-md-offset-2
     = bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
@@ -29,8 +29,21 @@
 
       .form-actions
         %br
-        .btn.btn-primary.btn-lg.active= f.submit 'Sign Up'
+        =f.submit 'Sign Up', :class=>'btn btn-primary btn-lg active'
+        %br/
+        %br/
+        %br/
+        %br/
+
+    %br/
+    %br/
+    %br/
+  %br/
   %br
   %br
   %br
+  %br/
+  %br/
+  %br/
+
 
