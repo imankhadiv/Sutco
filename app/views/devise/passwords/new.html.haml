@@ -1,0 +1,17 @@
+
+.container
+  .forgot-password.col-md-8.col-md-offset-2
+    %h2 Forgot your password?
+    .form{style: "background-color: rgba(4,17,8,0. 9)"}
+      = bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        =f.alert_message "Please fix the following errors", error_summary: false
+
+
+        = f.email_field :email, autofocus: true
+        %br/
+
+        .btn.btn-primary.btn-lg= f.submit 'Send reset password instruction'
+
+
+      %br/
+    %b= render "devise/shared/links"
