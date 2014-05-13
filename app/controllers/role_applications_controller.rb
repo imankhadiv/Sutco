@@ -12,7 +12,7 @@ class RoleApplicationsController < ApplicationController
 
   # GET all unprocessed role applications
   def index
-    @role_applications = RoleApplication.get_unprocessed_applications
+    @role_applications = RoleApplication.all
   end
 
   # GET /role_applications/1
