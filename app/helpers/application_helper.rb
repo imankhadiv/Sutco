@@ -1,5 +1,11 @@
+#
+#
+#  application_helper.rb
+#
+#
 module ApplicationHelper
   attr_accessor :notification_number
+
   def nav_link_to(current_identifier, *args, &block)
     identifier = block_given? ? args[1].delete(:identifier) : args[2].delete(:identifier)
     content_tag :li, class: (:active if identifier == current_identifier) do
@@ -24,7 +30,7 @@ module ApplicationHelper
   #url_or_object,
   #  options )
   #end
-
+  # this method implemented for adding an icon view for a button
   def link_to_button(button_name,link_name,url_or_object, options={})
     link_to(("<div class=#{button_name}><span id=#{link_name}>#{link_name}</span></div>".html_safe),
      url_or_object,
@@ -51,6 +57,8 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
+
+  #this is the method for generating different flash messages. Sometimes info might be needed for different kind of messages
   def flash_class(name)
     if name == :notice
       'success'
@@ -61,10 +69,12 @@ module ApplicationHelper
     end
   end
 
+  # When each page loads the number of notifications for different message boards should be updated
   def notification_number
     @notifications = Notification.get_number_of_notifications current_user
   end
 
+  # For new notifications user needs to click on the conversation and navigates to that page. This method
   def get_conversations
     n = Notification.where(user_id:current_user)
     conversation_ids = Array.new
@@ -75,6 +85,8 @@ module ApplicationHelper
 
   end
 
+
+  # This method implemented to enable the user click on the notifications and be navigated to the message board
   def link_to_conversation conversation_id
     conversation = Conversation.find(conversation_id)
     board_conversation_path(conversation.board_id,conversation_id)

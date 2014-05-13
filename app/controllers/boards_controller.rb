@@ -1,3 +1,11 @@
+#
+#   boards_controller.rb
+#   There is one public message board in the system and one message board for each shows.
+#   Each board may has many conversations and each conversation may has many comments.
+#
+#
+
+
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show]#, :edit, :update, :destroy]
   before_filter :set_nav_identifier

@@ -1,3 +1,13 @@
+#
+#      conversations_controller.rb
+#
+# This is the controller class for Conversations. Each board might has many conversations and each conversation has many comments.
+#
+#
+#
+#
+
+
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :edit, :update, :destroy]
   before_filter :set_nav_identifier

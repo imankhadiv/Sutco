@@ -5,6 +5,8 @@ class Comment < ActiveRecord::Base
   validates :body, presence: true
   has_many :notifications, dependent: :destroy
 
+
+  # this method checks if the message board is public it notified everybody in the system except the current user.
   def notify_users
     board = Conversation.find(conversation_id).board
     if(board.public)
@@ -12,7 +14,7 @@ class Comment < ActiveRecord::Base
     users.each do |u|
         Notification.create(user_id:u,comment_id:id, conversation_id:conversation_id)
     end
-    else
+    else #if the board is not public, Notifications are sent to the specific people.
       role_applications = RoleApplication.where(status:'Approved')
       role_applications.each do |app|
         Notification.create(user_id:app.user_id,comment_id:id,conversation_id:conversation_id) if app.user_id != user_id
@@ -21,6 +23,7 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  # sending new email for new comments
   def send_mail
     board = Conversation.find(conversation_id).board
     if(!board.public)

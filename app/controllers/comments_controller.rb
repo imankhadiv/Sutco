@@ -1,3 +1,11 @@
+#
+#     comments_controller.rb
+#  This is the controller class for comments. Each conversation has many commnets.
+#
+#
+#
+
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 

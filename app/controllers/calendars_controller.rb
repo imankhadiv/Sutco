@@ -1,3 +1,10 @@
+#
+#  Calenders_controller.rb
+#
+#
+#
+
+
 class CalendarsController < ApplicationController
   #before_action :set_calendar, only: [:show]
   before_filter :set_nav_identifier
