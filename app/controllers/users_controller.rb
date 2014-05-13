@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   #custom method to generate reports for users based on events attended and roles they have taken on
   def report
     @role_applications = RoleApplication.where(user_id: @user, status: 'Approved')
-  end 
+  end
 
   #edit user attributes such as approval status or roles
   def update
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   #sets the navigation identifier for the users link on the menu bar
   def set_nav_identifier
-    @current_nav_identifier	= :users
+    @current_nav_identifier = :users
   end
 
   def set_records

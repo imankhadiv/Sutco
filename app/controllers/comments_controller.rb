@@ -9,23 +9,9 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-  # GET /comments
-  #def index
-  #  @comments = Comment.all
-  #end
-
   # GET /comments/1
   def show
   end
-
-  # GET /comments/new
-  #def new
-  #  @comment = Comment.new
-  #  @board = Board.find(params[:board_id])
-  #
-  #  @conversation = Conversation.find(params[:conversation_id])
-  #
-  #end
 
   # GET /comments/1/edit
   def edit
@@ -41,12 +27,12 @@ class CommentsController < ApplicationController
     @count = @conversation.comments.count
     @comment.user_id = current_user.id
     respond_to do |format|
-     if @comment.save
-      format.js   { render 'create_success' }
-       @comment.notify_users
-       @comment.send_mail
-     else
-        format.js { render 'create_failure'}
+      if @comment.save
+        format.js { render 'create_success' }
+        @comment.notify_users
+        @comment.send_mail
+      else
+        format.js { render 'create_failure' }
       end
     end
   end
@@ -69,13 +55,13 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def comment_params
-      params.require(:comment).permit(:user_id, :conversation_id, :body)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def comment_params
+    params.require(:comment).permit(:user_id, :conversation_id, :body)
+  end
 end

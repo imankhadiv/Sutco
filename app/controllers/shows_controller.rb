@@ -66,18 +66,18 @@ class ShowsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_show
-      @show = Show.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_show
+    @show = Show.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def show_params
-       params.require(:show).permit(:name, :image, :image_cache, :remove_image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :title, :date, :time, :_destroy], show_roles_attributes: [:id, :position, :required_number, :_destroy])
-    end
+  # Only allow a trusted parameter "white list" through.
+  def show_params
+    params.require(:show).permit(:name, :image, :image_cache, :remove_image, :director, :stage_manager, :producer, :synopsis, show_dates_attributes: [:id, :title, :date, :time, :_destroy], show_roles_attributes: [:id, :position, :required_number, :_destroy])
+  end
 
-    def set_nav_identifier
-	     @current_nav_identifier	= :shows
-    end
+  def set_nav_identifier
+    @current_nav_identifier = :shows
+  end
 
 end

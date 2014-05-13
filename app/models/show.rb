@@ -21,8 +21,7 @@ class Show < ActiveRecord::Base
 
   # create shows with unique show dates
   def show_dates_must_be_unique
-    errors.add(:show_dates, "can't be duplicated") unless
-        show_dates.map(&:date).uniq.count == show_dates.to_a.count
+    errors.add(:show_dates, "can't be duplicated") unless show_dates.map(&:date).uniq.count == show_dates.to_a.count
   end
 
 end

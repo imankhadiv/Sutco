@@ -15,8 +15,8 @@ class RoleApplication < ActiveRecord::Base
     applications = Array.new
     # store applications that have Pending status and non expired date
     RoleApplication.all.each do |application|
-       applications << application if ((application.status == "Pending") && (application.show_role.notexpired?))
+      applications << application if ((application.status == "Pending") && (application.show_role.notexpired?))
     end
-    applications 
+    applications
   end
 end

@@ -11,7 +11,7 @@ class ShowDatesController < ApplicationController
 
   # GET show date
   def show
-	  redirect_to @show_date.show
+    redirect_to @show_date.show
   end
 
   # DELETE show date by date
@@ -21,8 +21,8 @@ class ShowDatesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_show_date
-      @show_date = ShowDate.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_show_date
+    @show_date = ShowDate.find(params[:id])
+  end
 end

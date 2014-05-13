@@ -19,12 +19,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def set_nav_identifier
-	  @current_nav_identifier	= :signup
+    @current_nav_identifier = :signup
   end
 
- def after_inactive_sign_up_path_for(resource)
+  def after_inactive_sign_up_path_for(resource)
     awaiting_path
- end
+  end
+
   def after_update_path_for(resource)
     current_user
   end

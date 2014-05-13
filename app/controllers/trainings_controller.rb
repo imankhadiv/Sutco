@@ -57,34 +57,34 @@ class TrainingsController < ApplicationController
   def attend
     user_id = current_user.id
     training_id = params[:id]
-    TrainingRecord.create_new_record  user_id, training_id
+    TrainingRecord.create_new_record user_id, training_id
     redirect_to @training, notice: "You have successfully registered for #{@training.title}"
   end
 
   # Displays attendance records of a workshop
   def attendee
-    @training_records =  @training.training_records
+    @training_records = @training.training_records
   end
 
   # Custom method to mark the attendance record of a training event
   def record_attendance
-    TrainingRecord.where(id:params[:unattended_ids]).update_all(attended:true)
+    TrainingRecord.where(id: params[:unattended_ids]).update_all(attended: true)
     redirect_to trainings_url, notice: "The attendance was successfully updated"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_training
-      @training = Training.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_training
+    @training = Training.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def training_params
-      params.require(:training).permit(:title, :category, :description, :date, :time, :duration)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def training_params
+    params.require(:training).permit(:title, :category, :description, :date, :time, :duration)
+  end
 
-    def set_nav_identifier
-	@current_nav_identifier	= :events
-    end
+  def set_nav_identifier
+    @current_nav_identifier = :events
+  end
 
 end

@@ -58,34 +58,34 @@ class WorkshopsController < ApplicationController
   def attend
     user_id = current_user.id
     workshop_id = params[:id]
-    WorkshopRecord.create_new_record  user_id, workshop_id
+    WorkshopRecord.create_new_record user_id, workshop_id
     redirect_to @workshop, notice: "You have successfully registered for #{@workshop.title}"
   end
 
   # Custom method to mark the attendance record of a workshop event
   def record_attendance
-    WorkshopRecord.where(id:params[:unattended_ids]).update_all(attended:true)
+    WorkshopRecord.where(id: params[:unattended_ids]).update_all(attended: true)
     redirect_to workshops_url, notice: "Attendance was successfully updated"
   end
 
 
   # Displays attendance records of a workshop
   def attendee
-    @workshop_records =  @workshop.workshop_records
+    @workshop_records = @workshop.workshop_records
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_workshop
-      @workshop = Workshop.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_workshop
+    @workshop = Workshop.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def workshop_params
-      params.require(:workshop).permit(:title, :description, :date, :time, :duration)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def workshop_params
+    params.require(:workshop).permit(:title, :description, :date, :time, :duration)
+  end
 
-    def set_nav_identifier
-	    @current_nav_identifier	= :events
-    end
+  def set_nav_identifier
+    @current_nav_identifier = :events
+  end
 end

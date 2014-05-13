@@ -54,17 +54,17 @@ class SocialsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_social
-      @social = Social.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_social
+    @social = Social.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def social_params
-      params.require(:social).permit(:title, :location, :description, :date, :time, :duration)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def social_params
+    params.require(:social).permit(:title, :location, :description, :date, :time, :duration)
+  end
 
-    def set_nav_identifier
-      @current_nav_identifier	= :events
-    end
+  def set_nav_identifier
+    @current_nav_identifier = :events
+  end
 end

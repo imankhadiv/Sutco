@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
   def inactive_message
     if !approved?
       :not_approved
-    #else
-    #  super # Use whatever other message
+      #else
+      #  super # Use whatever other message
     end
   end
 
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   def self.get_production_team_members
     members = Array.new
     User.all.each do |user|
-       members << user.id if (user.role?"ProductionTeam")
+      members << user.id if (user.role? "ProductionTeam")
     end
     members
   end

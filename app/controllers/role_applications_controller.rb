@@ -51,17 +51,17 @@ class RoleApplicationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_role_application
-      @role_application = RoleApplication.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_role_application
+    @role_application = RoleApplication.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def role_application_params
-      params.require(:role_application).permit(:show_role_id, :user_id, :content, :status)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def role_application_params
+    params.require(:role_application).permit(:show_role_id, :user_id, :content, :status)
+  end
 
-    def set_nav_identifier
-	     @current_nav_identifier	= :shows
-    end
+  def set_nav_identifier
+    @current_nav_identifier = :shows
+  end
 end

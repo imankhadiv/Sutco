@@ -9,15 +9,15 @@ class Comment < ActiveRecord::Base
   # this method checks if the message board is public it notified everybody in the system except the current user.
   def notify_users
     board = Conversation.find(conversation_id).board
-    if(board.public)
-    users = User.ids - [user_id]
-    users.each do |u|
-        Notification.create(user_id:u,comment_id:id, conversation_id:conversation_id)
-    end
+    if (board.public)
+      users = User.ids - [user_id]
+      users.each do |u|
+        Notification.create(user_id: u, comment_id: id, conversation_id: conversation_id)
+      end
     else #if the board is not public, Notifications are sent to the specific people.
-      role_applications = RoleApplication.where(status:'Approved')
+      role_applications = RoleApplication.where(status: 'Approved')
       role_applications.each do |app|
-        Notification.create(user_id:app.user_id,comment_id:id,conversation_id:conversation_id) if app.user_id != user_id
+        Notification.create(user_id: app.user_id, comment_id: id, conversation_id: conversation_id) if app.user_id != user_id
         notify_production_team
       end
     end
@@ -26,7 +26,7 @@ class Comment < ActiveRecord::Base
   # sending new email for new comments
   def send_mail
     board = Conversation.find(conversation_id).board
-    if(!board.public)
+    if (!board.public)
       AppMailer.show_comment_mail(user_id, board, self).deliver
     else
       AppMailer.general_comment_mail(user_id, self).deliver
@@ -38,7 +38,7 @@ class Comment < ActiveRecord::Base
     members = (User.get_production_team_members)-[user_id]
     #members = member-[user_id]
     members.each do |member|
-      Notification.create(user_id:member,comment_id:id,conversation_id:conversation_id)
+      Notification.create(user_id: member, comment_id: id, conversation_id: conversation_id)
     end
 
   end

@@ -20,17 +20,12 @@ class ShowRolesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_show_role
-      @show_role = ShowRole.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    #def show_role_params
-    #  params.require(:show_role).permit(:position, :required_number, :show_id)
-    #end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_show_role
+    @show_role = ShowRole.find(params[:id])
+  end
 
   def set_nav_identifier
-    @current_nav_identifier	= :shows
+    @current_nav_identifier = :shows
   end
 end

@@ -7,7 +7,7 @@ class TrainingRecord < ActiveRecord::Base
   end
 
   def self.training_applied user_id, training_id
-      TrainingRecord.where(user_id:user_id,training_id:training_id)
+    TrainingRecord.where(user_id: user_id, training_id: training_id)
   end
 
 end

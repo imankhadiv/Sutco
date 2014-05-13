@@ -7,7 +7,7 @@ class WorkshopRecord < ActiveRecord::Base
   end
 
   def self.workshop_applied user_id, workshop_id
-    WorkshopRecord.where(user_id:user_id,workshop_id:workshop_id)
+    WorkshopRecord.where(user_id: user_id, workshop_id: workshop_id)
   end
 
 

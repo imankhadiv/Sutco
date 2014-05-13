@@ -1,8 +1,6 @@
 #
 #  Calenders_controller.rb
 #
-#
-#
 
 
 class CalendarsController < ApplicationController
@@ -17,35 +15,10 @@ class CalendarsController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 
-  # GET /calendars/1
-
-  #def show
-  #end
-  #
-  ## POST /calendars
-  #def create
-  #  @calendar = Calendar.new(calendar_params)
-  #
-  #  if @calendar.save
-  #    redirect_to @calendar, notice: 'Calendar was successfully created.'
-  #  else
-  #    render action: 'new'
-  #  end
-  #end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    #def set_calendar
-    #  @calendar = Calendar.find(params[:id])
-    #end
-    #
-    ## Only allow a trusted parameter "white list" through.
-    #def calendar_params
-    #  params.require(:calendar).permit(:title, :description, :date)
-    #end
-
-    def set_nav_identifier
-	@current_nav_identifier	= :calendar
-    end
+  def set_nav_identifier
+    @current_nav_identifier = :calendar
+  end
 
 end
