@@ -4,7 +4,7 @@
 # This is the controller class for front of house for shows.
 #
 class FohsController < ApplicationController
-  before_action :set_foh, only: [:show, :edit, :update, :destroy]
+  before_action :set_foh, only: [:edit, :update, :destroy]
   before_filter :set_nav_identifier
   load_and_authorize_resource
 
@@ -37,6 +37,7 @@ class FohsController < ApplicationController
       render action: 'new'
     end
   end
+
 
   private
   def set_nav_identifier

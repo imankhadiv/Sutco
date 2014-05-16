@@ -1,0 +1,17 @@
+//Lists all available front of house positions for which users can apply
+%h1 Filled front of house positions for #{@show_date.show.name} on #{@show_date.date.strftime("%B %d, %Y")}
+-if(!@fohs.empty?)
+  %table.table.table-striped.table-responsive.table-nonfluid.table-customstyle.table-hover
+    %thead
+      %tr
+        %th Position
+        %th User
+        %th Phone Number
+    %thead
+      -@fohs.each do |c|
+        %tr
+          %td= c.position.name
+          %td= link_to c.user.firstname + " " + c.user.lastname, c.user
+          %td= c.phone_number
+-else
+  %h3 No positions have been filled yet

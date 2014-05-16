@@ -23,7 +23,10 @@ Team10MiniProject::Application.routes.draw do
   resources :calendars
 
   resources :show_dates do
-    resources :fohs, only: [:new, :create, :show]
+    member do
+      get :show_foh
+    end
+    resources :fohs, only: [:new, :create]
   end
 
   resources :fohs, only: [:index]
