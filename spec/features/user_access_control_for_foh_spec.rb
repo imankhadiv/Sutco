@@ -34,7 +34,7 @@ describe "Access control for different roles for FOH model" do
     page.should have_content "You have successfully applied for the position"
   end
 
-  specify "As a production team member, I can You are applying for a front of house position" do
+  specify "As a production team member, I can apply for a front of house position" do
     role = Role.create :name =>"ProductionTeam"
     user = FactoryGirl.create(:user)
     user.roles << role
@@ -53,6 +53,30 @@ describe "Access control for different roles for FOH model" do
     fill_in "Phone number", with: "07405149580"
     click_button "Apply"
     page.should have_content "You have successfully applied for the position"
+  end
+
+  specify "As a production team member, I can View filled front of house positions for a show" do
+    role = Role.create :name =>"ProductionTeam"
+    user = FactoryGirl.create(:user)
+    user.roles << role
+    login_as(user, :scope => :user)
+    visit show_path(show_with_show_dates.id)
+    click_on "Apply for front of house"
+    page.should have_content "You are applying for a front of house position"
+    page.should have_content "Manager"
+    page.should have_content "Box Officer"
+    page.should have_content "Refreshment Officer"
+    page.should have_content "Usher 1"
+    page.should have_content "Usher 2"
+    page.should have_content "Usher 3"
+    page.should have_content "Usher 4"
+    page.choose("Manager")
+    fill_in "Phone number", with: "07405149580"
+    click_button "Apply"
+    page.should have_content "You have successfully applied for the position"
+    visit show_path(show_with_show_dates.id)
+    click_on "View filled positions"
+    page.should have_content "Filled front of house positions for"
   end
 
   specify "As a committee member, I can You are applying for a front of house position" do
